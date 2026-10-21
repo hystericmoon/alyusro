@@ -96,7 +96,7 @@ const btnGhostNight = 'btn-ghost-night';
       {
         sections.map((s) => (
           <li class="flex-none">
-            <a href={`#${s.id}`} class="inline-flex min-h-48 items-center whitespace-nowrap px-10 text-15 font-bold text-ink no-underline hover:underline">
+            <a href={`#${s.id}`} class="link-slide inline-flex min-h-48 items-center whitespace-nowrap px-10 text-15 font-bold text-ink [background-origin:content-box]">
               {s.label}
             </a>
           </li>
@@ -178,7 +178,7 @@ const btnGhostNight = 'btn-ghost-night';
               </thead>
               <tbody>
                 {v.fees.map((f) => (
-                  <tr>
+                  <tr class="transition-colors duration-150 hover:bg-paper">
                     <th scope="row" class="border-b border-rule py-16 pr-16 text-left font-medium">{f.item}</th>
                     <td class="border-b border-rule py-16 text-right font-bold tabular-nums">{f.value}</td>
                   </tr>

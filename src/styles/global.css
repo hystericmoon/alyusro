@@ -75,6 +75,17 @@
   --color-hill-3: #6E80A8;
   --color-hill-4: #3F5079;
 
+  /* Derived: living sky (landscape tint by time of day) */
+  --color-dawn-top: #D3DBEE;
+  --color-dawn-glow: #F2E4D3;
+  --color-dusk-top: #C9D0E6;
+  --color-dusk-glow: #F0D8C4;
+  --color-night-horizon: #2A3560;
+  --color-night-hill-1: #3A4670;
+  --color-night-hill-2: #2F3A61;
+  --color-night-hill-3: #263157;
+  --color-night-hill-4: #20294A;
+
   /* Type */
   --font-display: "Markazi Text", Georgia, serif;
   --font-body: "Atkinson Hyperlegible Next", "Segoe UI", Arial, sans-serif;
@@ -245,4 +256,80 @@ html:has(#menu-hp:popover-open) {
     background: var(--color-white);
     color: var(--color-ink);
   }
+}
+
+/*
+  Living sky. The landscape reads `data-sky` (dawn, day, dusk, night), set
+  from the time in Bogor on the homepage; without JS it stays "day", as
+  designed. All text pairs keep AA contrast in every state.
+*/
+.sky {
+  --sky-top: var(--color-mist);
+  --sky-bottom: var(--color-mist);
+  --land-ink: var(--color-ink);
+  --land-body: var(--color-body);
+  --h1: var(--color-hill-1);
+  --h2: var(--color-hill-2);
+  --h3: var(--color-hill-3);
+  --h4: var(--color-hill-4);
+  --stars: 0;
+  background: linear-gradient(var(--sky-top), var(--sky-bottom) 78%);
+  color: var(--land-ink);
+}
+.sky[data-sky="dawn"] {
+  --sky-top: var(--color-dawn-top);
+  --sky-bottom: var(--color-dawn-glow);
+  --stars: 0.25;
+}
+.sky[data-sky="dusk"] {
+  --sky-top: var(--color-dusk-top);
+  --sky-bottom: var(--color-dusk-glow);
+  --stars: 0.2;
+}
+.sky[data-sky="night"] {
+  --sky-top: var(--color-night-deep);
+  --sky-bottom: var(--color-night-horizon);
+  --land-ink: var(--color-white);
+  --land-body: var(--color-on-night-body);
+  --h1: var(--color-night-hill-1);
+  --h2: var(--color-night-hill-2);
+  --h3: var(--color-night-hill-3);
+  --h4: var(--color-night-hill-4);
+  --stars: 1;
+}
+.sky[data-sky="night"] .btn-secondary {
+  border-color: var(--color-on-night-body);
+  background: transparent;
+  color: var(--color-white);
+}
+.sky[data-sky="night"] .btn-secondary:hover {
+  background: var(--color-white);
+  color: var(--color-ink);
+}
+.sky [data-sun] {
+  transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.6s;
+}
+
+/* Night stars: a faint twinkle; static under reduced motion. */
+@keyframes twinkle {
+  0%, 100% { opacity: var(--o); }
+  50% { opacity: calc(var(--o) * 0.3); }
+}
+.star {
+  animation: twinkle var(--dur) ease-in-out var(--delay) infinite;
+  opacity: var(--o);
+}
+
+/* Underline that slides in on hover or focus, for menu and footer links. */
+.link-slide {
+  text-decoration: none;
+  background-image: linear-gradient(currentColor, currentColor);
+  background-repeat: no-repeat;
+  background-position: 0 calc(100% - 10px);
+  background-size: 0% 1px;
+  transition: background-size 200ms ease-out, color 150ms;
+}
+.link-slide:hover,
+.link-slide:focus-visible {
+  background-size: 100% 1px;
 }

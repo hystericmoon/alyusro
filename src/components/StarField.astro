@@ -1,0 +1,22 @@
+---
+// Faint twinkling stars. Decorative only (aria-hidden). The layer's opacity
+// comes from the `--stars` custom property, set by time of day.
+import { stars } from '@/lib/sky';
+
+interface Props {
+  count?: number;
+  seed?: number;
+  class?: string;
+}
+const { count = 36, seed = 7, class: className } = Astro.props;
+---
+<div aria-hidden="true" class:list={['pointer-events-none absolute [opacity:var(--stars)] transition-opacity duration-700', className]}>
+  {
+    stars(count, seed).map((s) => (
+      <span
+        class="star absolute rounded-full bg-on-night-list"
+        style={`left:${(s.x * 100).toFixed(2)}%;top:${(s.y * 100).toFixed(2)}%;width:${s.r * 2}px;height:${s.r * 2}px;--o:${s.o.toFixed(2)};--delay:${s.delay.toFixed(2)}s;--dur:${s.dur.toFixed(2)}s`}
+      />
+    ))
+  }
+</div>

@@ -2,6 +2,7 @@
 // Section 2: "Sehari di Al Yusro". The build renders a labelled example
 // Monday; the script below swaps in the live day (WIB) and refreshes every
 // 30 seconds. No aria-live here on purpose: no announcements every update.
+import StarField from '@/components/StarField.astro';
 import { site, school } from '@/lib/site';
 import { buildDay, calcPrayerTimes, evalTime, nowInWib, type DaySchedule } from '@/lib/day-view';
 
@@ -20,12 +21,13 @@ const config = JSON.stringify({
 const hours = ['04.00', '06.00', '08.00', '10.00', '12.00', '14.00', '16.00', '18.00', '20.00'];
 const at = (i: number) => `${(i / (hours.length - 1)) * 100}%`;
 ---
-<section aria-labelledby="g-day-title" class="bg-ink text-on-night">
+<section data-day-section aria-labelledby="g-day-title" class="relative overflow-hidden bg-ink text-on-night [--stars:0.5]">
+  <StarField count={42} seed={3} class="inset-x-0 top-0 h-[64px] sm:h-[84px]" />
   <div
     data-day-view
     data-motion="pending"
     data-config={config}
-    class="mx-auto box-border flex max-w-page flex-wrap items-start gap-x-64 gap-y-48 px-20 py-72 sm:px-40 sm:py-96"
+    class="relative mx-auto box-border flex max-w-page flex-wrap items-start gap-x-64 gap-y-48 px-20 py-72 sm:px-40 sm:py-96"
   >
     <div class="flex max-w-[520px] flex-[1_1_380px] flex-col gap-24">
       <h2
@@ -87,62 +89,42 @@ const at = (i: number) => `${(i / (hours.length - 1)) * 100}%`;
 </section>
 
 <script>
-  import { buildDay, calcPrayerTimes, nowInWib, prayerTimesFromApi, type DaySchedule, type PrayerMinutes } from '@/lib/day-view';
+  import { buildDay, nowInWib, START, END, type DaySchedule, type PrayerMinutes } from '@/lib/day-view';
+  import { calcFor, fetchFor, type PrayerConfig } from '@/lib/prayer-times';
+  import { starOpacity } from '@/lib/sky';
   import { loadGsap, onceInView, prefersReducedMotion } from '@/lib/motion';
 
-  type Config = {
-    schedule: DaySchedule;
-    geo: { lat: number; lng: number };
-    api: { url: string; city: string };
-  };
+  type Config = PrayerConfig & { schedule: DaySchedule };
 
   const root = document.querySelector<HTMLElement>('[data-day-view]');
-  if (root) {
+  const section = document.querySelector<HTMLElement>('[data-day-section]');
+  if (root && section) {
     const cfg = JSON.parse(root.dataset.config ?? '{}') as Config;
     const $ = (k: string) => root.querySelector<HTMLElement>(`[data-dv="${k}"]`) as HTMLElement;
     const line = root.querySelector<HTMLElement>('[data-now-line]') as HTMLElement;
     const motion = !prefersReducedMotion() && document.documentElement.classList.contains('motion-ok');
+    const setStars = (v: number) => section.style.setProperty('--stars', v.toFixed(2));
 
     let dateKey = '';
-    let pt: PrayerMinutes | null = null;
+    let pt: PrayerMinutes;
     let fromApi = false;
-    let revealed = !motion; // the now line only moves once it has animated in
-    let tween: { kill(): void } | null = null;
-
-    async function fetchPrayerTimes(iso: string) {
-      const key = `alyusro-shalat-${iso}`;
-      try {
-        const cached = sessionStorage.getItem(key);
-        if (cached) return JSON.parse(cached) as PrayerMinutes;
-      } catch {}
-      const url = cfg.api.url.replace('{city}', cfg.api.city).replace('{date}', iso);
-      const res = await fetch(url);
-      if (!res.ok) throw new Error(String(res.status));
-      const json = await res.json();
-      const times = prayerTimesFromApi(json?.data?.jadwal ?? {});
-      if (!times) throw new Error('bad jadwal');
-      try {
-        sessionStorage.setItem(key, JSON.stringify(times));
-      } catch {}
-      return times;
-    }
+    let intro: { kill(): void } | null = null; // the "now" line's intro tween
+    let introDone = !motion;
 
     function render() {
       const now = nowInWib();
       if (now.iso !== dateKey) {
         dateKey = now.iso;
         fromApi = false;
-        pt = calcPrayerTimes(now.y, now.m, now.d, cfg.geo.lat, cfg.geo.lng);
-        fetchPrayerTimes(now.iso)
-          .then((t) => {
-            if (dateKey !== now.iso) return;
-            pt = t;
-            fromApi = true;
-            render();
-          })
-          .catch(() => {}); // keep the calculated times
+        pt = calcFor(cfg, now);
+        fetchFor(cfg, now).then((t) => {
+          if (dateKey !== now.iso) return;
+          pt = t;
+          fromApi = true;
+          render();
+        }, () => {}); // keep the calculated times
       }
-      const day = buildDay(cfg.schedule, pt as PrayerMinutes, now.wd, now.min, true);
+      const day = buildDay(cfg.schedule, pt, now.wd, now.min, true);
       $('label').textContent = day.label;
       $('title').textContent = day.title;
       $('detail').textContent = day.detail;
@@ -158,7 +140,8 @@ const at = (i: number) => `${(i / (hours.length - 1)) * 100}%`;
       $('now').textContent = day.nowLabel;
       line.hidden = !day.showNow;
       // Until the intro has played, the CSS gate holds the line at 04.00.
-      if (revealed || !tween) line.style.top = day.nowTop;
+      if (introDone || !intro) line.style.top = day.nowTop;
+      if (introDone) setStars(starOpacity(now.min, pt));
       return day;
     }
 
@@ -167,17 +150,38 @@ const at = (i: number) => `${(i / (hours.length - 1)) * 100}%`;
     if (!motion) {
       root.dataset.motion = 'done';
     } else {
-      // Motion moment 3: the "now" line travels from 04.00 to the current time.
-      onceInView(root.querySelector('[data-dv="track"]') ?? root, async () => {
+      setStars(1); // the intro starts at 04.00, before Subuh
+      // Motion moment 3: the "now" line travels from 04.00 to the current time,
+      // and the stars fade as it passes dawn.
+      onceInView($('track'), async () => {
         const gsap = await loadGsap();
         const target = render().nowTop;
-        tween = gsap.fromTo(line, { top: '0%' }, { top: target, duration: 1.6, ease: 'power3.out', onComplete: () => { revealed = true; } });
+        const now = nowInWib().min;
+        const endStars = now >= START && now <= END ? starOpacity(now, pt) : 1;
+        intro = gsap.fromTo(
+          line,
+          { top: '0%' },
+          {
+            top: target,
+            duration: 1.6,
+            ease: 'power3.out',
+            // Dawn is only the first slice of the line's path, so the fade
+            // follows the tween's progress (first 60%) to stay perceptible.
+            onUpdate: function (this: { progress(): number }) {
+              setStars(1 - (1 - endStars) * Math.min(1, this.progress() / 0.6));
+            },
+            onComplete: () => {
+              introDone = true;
+              render();
+            },
+          },
+        );
         root.dataset.motion = 'done';
       });
     }
 
     setInterval(() => {
-      if (!revealed && tween) return;
+      if (intro && !introDone) return;
       render();
     }, 30000);
   }

@@ -1,0 +1,47 @@
+---
+// Homepage only: tints the Gunung Salak landscape by the time in Bogor and
+// moves the sun along its arc. Uses the same prayer times as the day view.
+import { site, school } from '@/lib/site';
+
+const config = JSON.stringify({ geo: school.geo, api: site.dailySchedule.prayerApi });
+---
+<template data-living-sky data-config={config}></template>
+
+<script>
+  import { nowInWib, type PrayerMinutes } from '@/lib/day-view';
+  import { calcFor, fetchFor, type PrayerConfig } from '@/lib/prayer-times';
+  import { skyAt, sunAt } from '@/lib/sky';
+
+  const cfgEl = document.querySelector<HTMLElement>('[data-living-sky]');
+  const land = document.querySelector<HTMLElement>('[data-landscape]');
+  const sun = land?.querySelector<SVGGElement>('[data-sun]');
+  if (cfgEl && land && sun) {
+    const cfg = JSON.parse(cfgEl.dataset.config ?? '{}') as PrayerConfig;
+    let day = '';
+    let pt: PrayerMinutes;
+
+    const paint = () => {
+      const now = nowInWib();
+      if (now.iso !== day) {
+        day = now.iso;
+        pt = calcFor(cfg, now);
+        fetchFor(cfg, now).then((t) => {
+          if (day === now.iso) {
+            pt = t;
+            paint();
+          }
+        }, () => {});
+      }
+      land.dataset.sky = skyAt(now.min, pt);
+      const pos = sunAt(now.min, pt);
+      if (pos) {
+        sun.style.transform = `translate(${pos.x}px, ${pos.y}px)`;
+        sun.style.opacity = '1';
+      } else {
+        sun.style.opacity = '0';
+      }
+    };
+    paint();
+    setInterval(paint, 5 * 60 * 1000);
+  }
+</script>

@@ -51,7 +51,7 @@ const isCurrent = (href: string) => norm(href) === here;
                       <a
                         href={l.href}
                         aria-current={isCurrent(l.href) ? 'page' : undefined}
-                        class="flex min-h-44 items-center justify-between gap-16 rounded-sm px-12 text-16 font-medium text-ink no-underline hover:bg-paper hover:text-ink hover:underline"
+                        class="flex min-h-44 items-center justify-between gap-16 rounded-sm px-12 text-16 font-medium text-ink no-underline transition-colors duration-150 hover:bg-paper hover:text-lapis aria-[current=page]:font-bold aria-[current=page]:text-lapis"
                       >
                         <span>{l.label}</span>
                         {l.note && <span class="whitespace-nowrap text-14 font-normal text-muted">{l.note}</span>}
@@ -67,7 +67,7 @@ const isCurrent = (href: string) => norm(href) === here;
     </nav>
 
     <div class="hidden flex-wrap items-center gap-x-20 gap-y-8 lg:flex">
-      <a href={actions.login.href} class="inline-flex min-h-44 items-center text-16 font-medium text-ink underline-offset-4">{actions.login.label}</a>
+      <a href={actions.login.href} class="link-slide inline-flex min-h-44 items-center text-16 font-medium text-ink">{actions.login.label}</a>
       <a href={actions.register.href} class="btn-primary">{actions.register.label}</a>
     </div>
 
