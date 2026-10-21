@@ -10,9 +10,9 @@ Not in scope: the login dashboard, the registration system, the article CMS. Tho
 
 ## Stack
 
-- Astro, static output. React islands only for interactive components: juz map class filter, article and facility filters, FAQ, mobile menu. Every non-interactive page ships zero client JS (desktop header menus are native `<details>`; the mobile menu island hydrates with `client:media` below 1024px only).
+- Astro, static output. Islands (written React-style, running on Preact via `@astrojs/preact` with compat; `react`/`react-dom` in package.json are npm aliases of `@preact/compat`) only for interactive components: juz map class filter, article and facility filters, FAQ, mobile menu. Every non-interactive page ships zero client JS (desktop header menus are native `<details>`; the mobile menu island hydrates with `client:media` below 1024px only).
 - The live day view is a small vanilla script (`src/components/home/DayView.astro`), sharing its logic with the build in `src/lib/day-view.ts`.
-- shadcn/ui primitives (Radix) for those islands, in `src/components/ui/`, restyled entirely with the tokens below. No shadcn default theme, colors, radius or fonts. `cn()` is clsx only (no tailwind-merge, to keep islands small).
+- shadcn/ui primitives for those islands, in `src/components/ui/`, restyled entirely with the tokens below. Radix 1.2 Dialog does not run on preact/compat, so `Sheet` keeps the shadcn API but uses the native `<dialog>`; Radix Toggle works as is. No shadcn default theme, colors, radius or fonts. `cn()` is clsx only (no tailwind-merge, to keep islands small).
 - Tailwind v4, themed in `src/styles/global.css` with `--*: initial`, so only the tokens below exist (colors, fonts, radius, font sizes named by pixel value, spacing at 1px per step: `p-24` is 24px). Extra fills the designs use are listed there as derived tokens.
 - GSAP for at most three motion moments: the juz map fills in class order (VII to XI) when it scrolls into view, the level terraces rise in sequence, and the day-view "now" line animates to the current time. GSAP is loaded only when motion is allowed. With `prefers-reduced-motion`, show the final state with no animation.
 - Components should map cleanly to Laravel Blade partials later (header, footer, juz map, day view, level page, fee table).

@@ -173,3 +173,8 @@
 .motion-ok:not(.motion-fallback) [data-day-view][data-motion="pending"] [data-now-line] {
   top: 0% !important;
 }
+
+/* No page scroll behind an open modal (mobile menu sheet). */
+html:has(dialog[open]:modal) {
+  overflow: hidden;
+}

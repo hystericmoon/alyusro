@@ -9,21 +9,17 @@
     "preview": "astro preview"
   },
   "dependencies": {
-    "@astrojs/react": "7.0.1",
-    "@radix-ui/react-dialog": "1.2.0",
+    "@astrojs/preact": "6.0.6",
     "@radix-ui/react-toggle": "1.1.19",
     "@tailwindcss/vite": "4.3.3",
     "astro": "7.3.5",
     "class-variance-authority": "0.7.1",
     "clsx": "2.1.1",
     "gsap": "3.15.0",
-    "react": "19.3.0",
-    "react-dom": "19.3.0",
+    "preact": "10.29.8",
+    "react": "npm:@preact/compat@18.3.2",
+    "react-dom": "npm:@preact/compat@18.3.2",
     "tailwindcss": "4.3.3"
-  },
-  "devDependencies": {
-    "@types/react": "19.3.0",
-    "@types/react-dom": "19.3.0"
   },
   "engines": {
     "node": ">=22"

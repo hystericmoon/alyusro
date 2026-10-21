@@ -28,7 +28,7 @@ export default function MobileMenu({ groups, login, register, currentPath }: Pro
         <MenuIcon />
         Menu
       </SheetTrigger>
-      <SheetContent aria-describedby={undefined}>
+      <SheetContent>
         <div className="flex items-center justify-between gap-16 border-b border-rule px-20 py-12">
           <SheetTitle className="text-27 font-semibold leading-none">Menu</SheetTitle>
           <SheetClose className="inline-flex min-h-44 min-w-44 cursor-pointer items-center justify-center gap-6 rounded-sm border-0 bg-transparent px-8 font-body text-16 font-medium text-ink">
@@ -39,7 +39,7 @@ export default function MobileMenu({ groups, login, register, currentPath }: Pro
         <nav aria-label="Menu utama" className="flex flex-col gap-24 px-20 py-24">
           {groups.map((g) => (
             <section key={g.label} className="flex flex-col">
-              <h2 className="m-0 mb-4 text-15 font-bold text-ink">{g.label}</h2>
+              <h3 className="m-0 mb-4 text-15 font-bold text-ink">{g.label}</h3>
               <ul className="m-0 list-none p-0">
                 {g.links.map((l) => (
                   <li key={l.href}>
