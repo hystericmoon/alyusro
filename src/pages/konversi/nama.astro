@@ -1,0 +1,125 @@
+---
+// /konversi/nama: Latin names to Arabic script, in the browser
+// (src/lib/nama-arab.ts). One name, or a list pasted from a spreadsheet
+// column, one name per line. Nothing is sent anywhere.
+import ContentPage from '@/components/content/ContentPage.astro';
+import { school } from '@/lib/site';
+---
+<ContentPage
+  title="Nama Latin ke Arab"
+  lede="Tulis nama dengan huruf Latin, dapatkan tulisan Arabnya. Bisa satu nama, atau banyak nama sekaligus untuk papan nama dan syahadah."
+  crumbs={[{ label: 'Layanan' }, { label: 'Nama Latin ke Arab' }]}
+  description="Ubah nama Latin ke tulisan Arab, satu per satu atau banyak sekaligus."
+>
+  <form data-nama class="flex flex-col gap-12" action="#hasil">
+    <label for="nama-input" class="text-17 font-bold text-ink">Nama, satu per baris</label>
+    <textarea
+      id="nama-input"
+      name="nama"
+      rows="4"
+      required
+      autocomplete="off"
+      spellcheck="false"
+      aria-describedby="nama-hint"
+      class="box-border min-h-[120px] w-full resize-y rounded-sm border border-chip-rule bg-white px-14 py-12 font-body text-18 leading-[1.5] text-ink"
+      placeholder="Contoh: Muhammad Al Fatih"
+    ></textarea>
+    <p id="nama-hint" class="m-0 text-15 text-muted">Untuk banyak nama, salin satu kolom dari Excel lalu tempel di sini.</p>
+    <div class="flex flex-wrap gap-12">
+      <button type="submit" class="btn-primary cursor-pointer border-0 font-body">Ubah ke huruf Arab</button>
+    </div>
+  </form>
+
+  <noscript>
+    <p class="mt-16 rounded-sm border border-notice-rule bg-notice px-16 py-12 text-notice-ink">Halaman ini memerlukan JavaScript untuk mengubah nama.</p>
+  </noscript>
+
+  <section id="hasil" aria-labelledby="hasil-title" data-result hidden class="mt-48">
+    <div class="flex flex-wrap items-center justify-between gap-12 border-b-2 border-ink pb-10">
+      <h2 id="hasil-title" class="m-0 text-34">Hasil</h2>
+      <button type="button" data-copy-all class="btn-secondary cursor-pointer font-body">Salin semua</button>
+    </div>
+    <p data-status aria-live="polite" class="mb-0 mt-12 text-15 text-muted"></p>
+    <ol data-list class="m-0 list-none p-0"></ol>
+  </section>
+
+  <h2 id="cara">Cara penulisan</h2>
+  <p>
+    Nama yang sudah lazim dalam bahasa Arab, seperti Muhammad, ‘Aisyah, atau ‘Abdurrahman, ditulis dengan ejaan Arab
+    bakunya. Nama lain ditulis menurut bunyinya: p menjadi ف, g menjadi ج, c menjadi تش, ng menjadi نج, dan akhiran
+    -ah menjadi ة. Nama yang ditulis menurut bunyi ditandai, jadi periksa kembali sebelum dicetak, terutama untuk
+    syahadah.
+  </p>
+  <p>Ada nama yang ejaannya kurang tepat? <a href={school.whatsapp.url}>Kabari kami lewat WhatsApp</a>.</p>
+</ContentPage>
+
+<script>
+  import { toArabic } from '@/lib/nama-arab';
+
+  const form = document.querySelector<HTMLFormElement>('[data-nama]');
+  const out = document.querySelector<HTMLElement>('[data-result]');
+  if (form && out) {
+    const input = form.querySelector('textarea') as HTMLTextAreaElement;
+    const list = out.querySelector('[data-list]') as HTMLElement;
+    const status = out.querySelector('[data-status]') as HTMLElement;
+    let results: string[] = [];
+
+    const copy = async (text: string, btn: HTMLButtonElement) => {
+      const label = btn.textContent;
+      try {
+        await navigator.clipboard.writeText(text);
+        btn.textContent = 'Tersalin';
+      } catch {
+        btn.textContent = 'Gagal menyalin';
+      }
+      setTimeout(() => (btn.textContent = label), 1600);
+    };
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const names = input.value.split(/\r?\n/).map((s) => s.trim()).filter(Boolean);
+      if (!names.length) return input.focus();
+      const items = names.map((n) => ({ latin: n, ...toArabic(n) }));
+      results = items.map((it) => it.arabic);
+      list.replaceChildren(
+        ...items.map((it) => {
+          const li = document.createElement('li');
+          li.className = 'flex flex-wrap items-center justify-between gap-x-16 gap-y-8 border-b border-rule py-16';
+          const text = document.createElement('div');
+          text.className = 'flex min-w-0 flex-col gap-4';
+          const latin = document.createElement('span');
+          latin.className = 'text-15 text-muted';
+          latin.textContent = it.latin;
+          const ar = document.createElement('span');
+          ar.lang = 'ar';
+          ar.dir = 'rtl';
+          ar.className = 'font-display text-[36px] font-semibold leading-[1.3] text-ink';
+          ar.textContent = it.arabic;
+          text.append(latin, ar);
+          if (it.bySound.length) {
+            const note = document.createElement('span');
+            note.className = 'text-14 text-muted';
+            note.textContent = `Ditulis menurut bunyi: ${it.bySound.join(', ')}. Periksa sebelum dicetak.`;
+            text.append(note);
+          }
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = 'btn-secondary cursor-pointer font-body';
+          btn.textContent = 'Salin';
+          btn.setAttribute('aria-label', `Salin ${it.latin}`);
+          btn.addEventListener('click', () => copy(it.arabic, btn));
+          li.append(text, btn);
+          return li;
+        }),
+      );
+      status.textContent = names.length === 1 ? 'Satu nama diubah.' : `${names.length} nama diubah.`;
+      (out.querySelector('[data-copy-all]') as HTMLElement).hidden = names.length < 2;
+      out.hidden = false;
+      out.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' });
+    });
+
+    out.querySelector<HTMLButtonElement>('[data-copy-all]')?.addEventListener('click', (e) =>
+      copy(results.join('\n'), e.currentTarget as HTMLButtonElement),
+    );
+  }
+</script>

@@ -346,6 +346,54 @@ html:has(#menu-hp:popover-open) {
   background: var(--color-white);
   color: var(--color-ink);
 }
+/*
+  Closing call to action on the landscape. A frosted panel over the sky, so
+  the hills show through; solid enough that every text pair keeps AA in all
+  four sky states (checked against the lightest and darkest sky behind it).
+*/
+.sky {
+  --panel-bg: rgb(255 255 255 / 0.82);
+  --panel-edge: rgb(255 255 255 / 0.9);
+  --panel-rule: var(--color-rule);
+  --panel-muted: var(--color-muted);
+  --panel-num: var(--color-lapis);
+  --panel-hover: var(--color-white);
+}
+.sky[data-sky="night"] {
+  --panel-bg: rgb(17 22 42 / 0.72);
+  --panel-edge: var(--color-night-rule-3);
+  --panel-rule: var(--color-night-rule);
+  --panel-muted: var(--color-on-night-muted);
+  --panel-num: var(--color-lapis-2);
+  --panel-hover: var(--color-night-panel);
+}
+.cta-panel {
+  background: var(--panel-bg);
+  border: 1px solid var(--panel-edge);
+  box-shadow: 0 1px 2px rgb(27 34 53 / 0.06), 0 12px 32px -12px rgb(27 34 53 / 0.25);
+  -webkit-backdrop-filter: blur(10px) saturate(1.2);
+  backdrop-filter: blur(10px) saturate(1.2);
+}
+.cta-badge {
+  background: var(--panel-bg);
+  border: 1px solid var(--panel-edge);
+  color: var(--land-ink);
+}
+.cta-step {
+  transition: background-color 150ms;
+}
+.cta-step:hover {
+  background: var(--panel-hover);
+  color: var(--land-ink);
+}
+.cta-arrow {
+  color: var(--panel-num);
+  transition: transform 200ms ease-out;
+}
+.cta-step:hover .cta-arrow,
+.cta-step:focus-visible .cta-arrow {
+  transform: translateX(4px);
+}
 .sky [data-sun] {
   transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.6s;
 }
@@ -419,6 +467,11 @@ html:has(#menu-hp:popover-open) {
     align-items: center;
     min-height: 44px;
   }
+  /* Keep the taller links on the same line as the "/" and the current page. */
+  nav[aria-label="Breadcrumb"] ol {
+    align-items: center;
+    row-gap: 0;
+  }
 
   /*
     Scroll cue for content wider than a phone (fee tables, the in-page menu):
@@ -437,4 +490,13 @@ html:has(#menu-hp:popover-open) {
     background-color: var(--scroll-bg);
   }
   .scroll-cue-white { --scroll-bg: var(--color-white); }
+}
+
+/* "Selanjutnya" link at the end of a content page. */
+.cta-arrow-next {
+  transition: transform 200ms ease-out;
+}
+.cta-next:hover .cta-arrow-next,
+.cta-next:focus-visible .cta-arrow-next {
+  transform: translateX(3px);
 }

@@ -40,7 +40,9 @@ Keep the current site’s URLs so links and search rankings survive:
 - `/artikel` and an article detail route: `Artikel`, `Artikel-detail`.
 - `/fasilitas`: `Fasilitas`.
 - `/prestasi`, `/kalender-akademik`, `/info/kajian`, `/pendidikan/tenaga/pendidik`: build with the content-page or list templates. Prestasi shows totals by competition and year; do not publish students’ full names without the school’s consent.
-- `/jadwal/shalat` and `/konversi/nama`: link out to the existing pages for now.
+- `/jadwal/shalat` (today and the month, Kemenag times via myquran with the build-time calculation as fallback) and `/konversi/nama` (Latin-to-Arabic names in the browser, `src/lib/nama-arab.ts`: dictionary first, then by sound). Both replace the Laravel pages.
+- `/404`: designed not-found page (levels, `/psb`, WhatsApp).
+- The closing call to action on every page is the Gunung Salak landscape (`Landscape.astro`): headline, "Daftar santri baru", and a "Mulai dari sini" panel (WhatsApp, `/psb`, map). Content pages end with a "Selanjutnya" link above it, not a second dark band.
 - Every “Daftar” button goes to `psb.registerUrls` in `site.json` (`/dashboard/register`, or `/psbmahadaly` for Ma’had ‘Aly).
 
 ## Low-maintenance rules (the school has little staff time)
@@ -72,6 +74,6 @@ Bracketed values in `site.json` and the designs: PSB year and wave dates, SPP pe
 
 ## Status
 
-Done: homepage, six level pages, `/psb`, `/artikel` and 78 migrated articles, `/kurikulum/tahfizh`, `/kurikulum/bahasa-arab`, `/tentang`, `/sehari-di-mahad`, `/info/kajian`, `/kalender-akademik`, `/pendidikan/tenaga/pendidik`, `/prestasi`, `/fasilitas`, Sveltia CMS.
+Done: homepage, six level pages, `/psb`, `/artikel` and 78 migrated articles, `/kurikulum/tahfizh`, `/kurikulum/bahasa-arab`, `/tentang`, `/sehari-di-mahad`, `/info/kajian`, `/kalender-akademik`, `/pendidikan/tenaga/pendidik`, `/prestasi`, `/fasilitas`, `/jadwal/shalat`, `/konversi/nama`, 404, Sveltia CMS for articles, page prose and `site.json` (every key declared in `public/admin/config.yml`; `scripts/check-site.mjs` runs as `prebuild` and stops a deploy if a save leaves a required value missing).
 
-Next: connect the repo to Netlify for a preview link (then set up CMS sign-in and the daily rebuild hook); `/ekstrakurikuler` and a "Lokasi dan kontak" page if the school supplies content; a CMS screen for editing site.json.
+Next: CMS sign-in and the daily rebuild hook (`DEPLOY_HOOK_URL` secret); turn off Netlify's "Powered by Netlify" badge; `/ekstrakurikuler` and a "Lokasi dan kontak" page if the school supplies content.

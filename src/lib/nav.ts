@@ -1,4 +1,4 @@
-import { levels, loginUrl, registerUrl, schoolUrl, infoGroupUrl } from './site';
+import { levels, loginUrl, registerUrl, infoGroupUrl } from './site';
 
 export type NavLink = { label: string; href: string; note?: string };
 export type NavGroup = { label: string; links: NavLink[] };
@@ -49,8 +49,8 @@ export const footerNav: NavGroup[] = [
   {
     label: 'Layanan',
     links: [
-      { label: 'Jadwal shalat', href: schoolUrl('/jadwal/shalat') },
-      { label: 'Nama Latin ke Arab', href: schoolUrl('/konversi/nama') },
+      { label: 'Jadwal shalat', href: '/jadwal/shalat/' },
+      { label: 'Nama Latin ke Arab', href: '/konversi/nama/' },
       { label: 'Info kajian', href: '/info/kajian/' },
       { label: 'Grup info WhatsApp', href: infoGroupUrl },
     ],

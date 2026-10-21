@@ -269,7 +269,11 @@ export function buildDay(schedule: DaySchedule, pt: PrayerMinutes, wd: number, n
       }
       const isCur = live && weekday && cur === b;
       const tone = isCur ? 'bg-amber shadow-[0_0_0_2px_var(--color-white)]' : 'bg-sky-100';
-      return `<div class="absolute inset-x-0 box-border flex flex-wrap content-start gap-x-8 overflow-hidden rounded-md px-10 py-3 text-13 leading-[1.4] text-ink ${tone}" style="${pos}"${isCur ? ' data-current="true"' : ''}><strong class="font-bold">${esc(b.name)}</strong><span class="tabular-nums">${fmt(b.a)}–${fmt(b.b)}</span></div>`;
+      // An hour is about 34px tall: tighten the type so a long name fits on
+      // two lines on phones, and drop the time there (the axis shows it).
+      const short = b.b - b.a <= 75;
+      const type = short ? 'py-2 text-12 leading-[1.2] sm:py-3 sm:text-13 sm:leading-[1.4]' : 'py-3 text-13 leading-[1.4]';
+      return `<div class="absolute inset-x-0 box-border flex flex-wrap content-start gap-x-8 overflow-hidden rounded-md px-10 ${type} text-ink ${tone}" style="${pos}"${isCur ? ' data-current="true"' : ''}><strong class="font-bold">${esc(b.name)}</strong><span class="tabular-nums${short ? ' max-sm:hidden' : ''}">${fmt(b.a)}–${fmt(b.b)}</span></div>`;
     })
     .join('');
 

@@ -19,8 +19,8 @@ const socialList =
 <footer aria-labelledby={labelledBy}>
   <slot name="lead" />
   <div class="bg-ink text-on-night-body">
-    <div class="mx-auto box-border grid max-w-page grid-cols-[repeat(auto-fit,minmax(min(200px,100%),1fr))] gap-x-40 gap-y-32 px-20 pb-48 pt-32 text-15 sm:px-40">
-      <div class="flex flex-col gap-8">
+    <div class="mx-auto box-border grid max-w-page grid-cols-2 gap-x-24 gap-y-32 sm:grid-cols-[repeat(auto-fit,minmax(200px,1fr))] sm:gap-x-40 px-20 pb-48 pt-32 text-15 sm:px-40">
+      <div class="col-span-2 flex flex-col gap-8 sm:col-span-1">
         <p class="m-0 font-display text-26 font-semibold leading-[1.1] text-white">{school.name}</p>
         <p class="m-0">{school.address}</p>
         <a href={school.whatsapp.url} class="inline-flex min-h-44 items-center font-bold text-white underline-offset-4 hover:text-on-night-body">WhatsApp {school.whatsapp.display}</a>
@@ -30,7 +30,7 @@ const socialList =
           <nav aria-label={group.label} class="flex flex-col">
             <p class="m-0 mb-2 font-bold text-white">{group.label}</p>
             {group.links.map((l) => (
-              <a href={l.href} class="link-slide inline-flex min-h-44 items-center self-start text-on-night-body hover:text-white">{l.label}</a>
+              <a href={l.href} class="link-slide inline-flex min-h-44 items-center self-start py-6 leading-[1.3] text-on-night-body hover:text-white">{l.label}</a>
             ))}
           </nav>
         ))

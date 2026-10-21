@@ -6,7 +6,7 @@
     "nameArVerify": true,
     "foundation": "Yayasan Al Yusr Mulia Bogor",
     "url": "https://mahadalyusro.sch.id",
-    "_urlNote": "The school's existing Laravel site. Login, registration, prayer times, name converter and the WhatsApp info group stay there; links to them use this origin.",
+    "_urlNote": "The school's existing Laravel site. Login, registration and the WhatsApp info group stay there; links to them use this origin.",
     "legalEntityNote": "National curriculum equivalency runs through PKBM Al Yusro",
     "address": "Desa Gunung Mulya, Kecamatan Tenjolaya, Kabupaten Bogor, Jawa Barat",
     "mapsUrl": "https://maps.app.goo.gl/3H8h2iucQwDajhV39",
