@@ -10,6 +10,9 @@ interface Props {
   currentPath?: string;
 }
 const { currentPath = '/' } = Astro.props;
+const norm = (p: string) => p.replace(/\/$/, '') || '/';
+const here = norm(currentPath);
+const isCurrent = (href: string) => norm(href) === here;
 ---
 <a
   href="#isi"
@@ -17,7 +20,7 @@ const { currentPath = '/' } = Astro.props;
 >Langsung ke isi</a>
 <header class="border-b border-rule">
   <div class="mx-auto box-border flex max-w-page flex-wrap items-center gap-x-16 gap-y-12 px-16 py-16 sm:gap-x-32 sm:px-40">
-    <a href="/" class="mr-auto flex min-h-44 items-center gap-12 text-ink no-underline hover:text-ink" aria-current={currentPath === '/' ? 'page' : undefined}>
+    <a href="/" class="mr-auto flex min-h-44 items-center gap-12 text-ink no-underline hover:text-ink" aria-current={here === '/' ? 'page' : undefined}>
       <span
         aria-hidden="true"
         class="box-border flex size-40 flex-none items-center justify-center rounded-full border-[1.5px] border-dashed border-placeholder text-11 leading-none text-muted sm:size-44"
@@ -34,7 +37,10 @@ const { currentPath = '/' } = Astro.props;
           mainNav.map((group) => (
             <li class="relative">
               <details name="menu-utama" class="group">
-                <summary class="flex min-h-44 cursor-pointer select-none items-center gap-6 rounded-sm px-10 text-16 font-medium text-ink">
+                <summary
+                  aria-current={group.links.some((l) => isCurrent(l.href)) ? 'true' : undefined}
+                  class="flex min-h-44 cursor-pointer select-none items-center gap-6 rounded-sm px-10 text-16 font-medium text-ink aria-[current]:border-b-2 aria-[current]:border-lapis aria-[current]:font-bold aria-[current]:text-lapis"
+                >
                   {group.label}
                   <svg aria-hidden="true" width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="group-open:rotate-180">
                     <path d="M2.5 4.5 6 8l3.5-3.5" />
@@ -45,7 +51,7 @@ const { currentPath = '/' } = Astro.props;
                     <li>
                       <a
                         href={l.href}
-                        aria-current={currentPath === l.href ? 'page' : undefined}
+                        aria-current={isCurrent(l.href) ? 'page' : undefined}
                         class="flex min-h-44 items-center justify-between gap-16 rounded-sm px-12 text-16 font-medium text-ink no-underline hover:bg-paper hover:text-ink hover:underline"
                       >
                         <span>{l.label}</span>
@@ -75,7 +81,7 @@ const { currentPath = '/' } = Astro.props;
         groups={mainNav}
         login={actions.login}
         register={actions.register}
-        currentPath={currentPath}
+        currentPath={here}
       />
     </div>
   </div>

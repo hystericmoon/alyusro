@@ -1,0 +1,6 @@
+---
+// /mahad-aly keeps the current site's URL; same template as the other levels.
+import LevelPage from '@/components/level/LevelPage.astro';
+import { levelBySlug } from '@/lib/site';
+---
+<LevelPage level={levelBySlug('mahad-aly')} />

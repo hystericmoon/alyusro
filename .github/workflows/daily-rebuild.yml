@@ -1,0 +1,23 @@
+# Rebuilds the static site every morning (WIB) so dated content stays true:
+# PSB waves whose test date has passed disappear, and a level whose waves
+# are all past switches to "Pendaftaran belum dibuka".
+# Setup: create a build hook in Netlify (Site configuration > Build hooks) or
+# a deploy hook in Cloudflare Pages, and save its URL as the repository
+# secret DEPLOY_HOOK_URL. Without the secret this workflow does nothing.
+name: Daily rebuild
+
+on:
+  schedule:
+    - cron: '7 17 * * *' # 00:07 WIB
+  workflow_dispatch:
+
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger deploy hook
+        env:
+          HOOK: ${{ secrets.DEPLOY_HOOK_URL }}
+        run: |
+          if [ -z "$HOOK" ]; then echo "DEPLOY_HOOK_URL not set, skipping."; exit 0; fi
+          curl -fsS -X POST "$HOOK"

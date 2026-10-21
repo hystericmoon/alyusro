@@ -29,7 +29,8 @@
     "halaqahRatio": {
       "ideal": 8,
       "max": 12
-    }
+    },
+    "teachersNote": "Pengajar ma’had lulusan Universitas Islam Madinah, Universitas Internasional Afrika Sudan, Universitas Al-Azhar Mesir, LIPIA Jakarta, STIBA Ar Raayah, universitas di Yaman, STDI Imam Syafi’i, dan lainnya. Muhaffizh diutamakan yang telah menyelesaikan hafalan 30 juz secara mutqin."
   },
   "psb": {
     "academicYear": "[2027/2028]",
@@ -57,6 +58,10 @@
     "registerUrls": {
       "default": "/dashboard/register",
       "mahad-aly": "/psbmahadaly"
+    },
+    "brochures": {
+      "_note": "PDF link per level slug. A level without one shows no brochure button.",
+      "madrasah": null
     }
   },
   "levels": [
@@ -68,7 +73,9 @@
       "setara": "Setara TK",
       "durationLabel": "Usia",
       "duration": "4–6 tahun",
+      "intro": "Pendidikan anak usia 4–6 tahun agar tumbuh mencintai Al-Qur’an, shalih dan shalihah, berakhlak mulia, cerdas, sehat, dan ceria.",
       "target": "Juz 30",
+      "targetNote": "Juz 30 menjadi juz pertama yang dihafal, sama seperti di semua jenjang Al Yusro.",
       "juzMap": [
         {
           "label": "Selama TAUD",
@@ -80,7 +87,15 @@
       "fees": null,
       "psbOpen": false,
       "head": null,
-      "headRole": "Kepala TAUD"
+      "headRole": "Kepala TAUD",
+      "outcomes": [
+        "Memiliki dasar aqidah yang kuat dan benar",
+        "Mampu membaca Al-Qur’an",
+        "Menghafal juz 30",
+        "Terbiasa dengan adab Islami dan menghafal doa sehari-hari",
+        "Mengenal praktik wudhu dan shalat",
+        "Mampu membaca dan menulis huruf Latin serta berhitung dasar"
+      ]
     },
     {
       "slug": "kuttab",
@@ -90,13 +105,23 @@
       "setara": "Setara SD",
       "durationLabel": "Lama belajar",
       "duration": "6 tahun",
+      "intro": "Pendidikan dasar setara SD selama enam tahun, dengan prioritas tahfizh Al-Qur’an dan bahasa Arab serta pelajaran umum sesuai ketentuan pemerintah.",
       "target": "Minimal 6 juz",
+      "targetNote": "Santri Kuttab menyelesaikan minimal 6 juz sebelum lulus.",
       "juzCount": 6,
       "juzMap": null,
       "fees": null,
       "psbOpen": false,
       "head": "Elan Susanto, S.Pd.",
-      "headRole": "Kepala Kuttab Al Yusro"
+      "headRole": "Kepala Kuttab Al Yusro",
+      "outcomes": [
+        "Hafal Al-Qur’an minimal 6 juz",
+        "Hafal hadits-hadits pilihan",
+        "Memahami ilmu syar’i dasar: aqidah, hadits, fiqh, dan lainnya",
+        "Menguasai bahasa Arab dasar secara lisan, tulisan, dan bacaan",
+        "Menguasai doa harian dan praktik ibadah dengan benar",
+        "Memahami pelajaran umum seperti Bahasa Indonesia, Bahasa Inggris, Matematika, IPA, dan IPS"
+      ]
     },
     {
       "slug": "mahdon",
@@ -106,7 +131,9 @@
       "setara": "Setingkat kelas 5–6 SD",
       "durationLabel": "Lama program",
       "duration": "[lama program]",
+      "intro": "Program tahfizh dan bahasa Arab setingkat kelas 5–6 SD, untuk membentengi anak dari pengaruh pergaulan bebas, dengan tahsin, pendidikan diniyyah, praktik ibadah, dan bimbingan belajar sekolah.",
       "target": "Minimal 3 juz",
+      "targetNote": "Tiga juz secara mutqin, ditambah bacaan shalat, adzan, dzikir pagi dan petang, doa harian, dan hadits pilihan.",
       "juzMap": [
         {
           "label": "Selama program",
@@ -134,7 +161,16 @@
       "feesYear": "[tahun ajaran]",
       "psbOpen": false,
       "head": null,
-      "headRole": "Kepala Mahdhon Tarbawi"
+      "headRole": "Kepala Mahdhon Tarbawi",
+      "outcomes": [
+        "Aqidah, ibadah, dan karakter sesuai Al-Qur’an dan As-Sunnah",
+        "Membaca Al-Qur’an dengan baik dan benar serta menguasai tajwid",
+        "Berbahasa Arab dasar secara lisan dan tulisan",
+        "Terbiasa dengan akhlak mulia dan adab Islami",
+        "Terbiasa berdoa, berdzikir, dan shalat lima waktu tepat waktu di masjid",
+        "Menghafal hadits-hadits pilihan",
+        "Mandiri, kreatif, berprestasi, dan lulus sekolah formal dengan nilai memuaskan"
+      ]
     },
     {
       "slug": "madrasah",
@@ -144,7 +180,9 @@
       "setara": "Setara SMP",
       "durationLabel": "Lama belajar",
       "duration": "3 tahun, kelas VII–IX",
+      "intro": "Pendidikan pesantren setara SMP. Dalam tiga tahun santri menghafal 20 juz, berbahasa Arab aktif, dan menempuh kurikulum nasional jenjang kesetaraan.",
       "target": "20 juz",
+      "targetNote": "Dimulai dari juz 30 ke 26, lalu juz 1 sampai 15. Setiap juz diuji sebelum santri lanjut ke juz berikutnya.",
       "targetDecision": "20 juz per curriculum page (site's Madrasah page says 30; resolved to 20, confirm with school)",
       "juzMap": [
         {
@@ -205,7 +243,16 @@
       "feesYear": "2027/2028",
       "psbOpen": true,
       "head": "Dede Iskandar, Lc.",
-      "headRole": "Kepala Madrasah Al Yusro"
+      "headRole": "Kepala Madrasah Al Yusro",
+      "outcomes": [
+        "Membaca Al-Qur’an sesuai ilmu tajwid",
+        "Hafal 20 juz secara mutqin, berlanjut ke 30 juz bersanad di Darul ‘Ilmi",
+        "Memahami dan mengamalkan ilmu syar’i sesuai pemahaman salafush shalih",
+        "Berakhlak mulia dan beradab Islami",
+        "Mampu berbahasa Arab secara lisan dan tulisan",
+        "Menguasai dasar-dasar ilmu komputer dan IT",
+        "Memiliki kompetensi kurikulum nasional jenjang kesetaraan"
+      ]
     },
     {
       "slug": "darul-ilmi",
@@ -215,7 +262,9 @@
       "setara": "Setara SMA",
       "durationLabel": "Lama belajar",
       "duration": "Kelas X–XII",
+      "intro": "Pendidikan pesantren setara SMA. Santri melanjutkan 10 juz hingga hafalan genap 30 juz bersanad, dengan bahasa Arab aktif dan kurikulum nasional jenjang kesetaraan.",
       "target": "Genap 30 juz",
+      "targetNote": "Melanjutkan 20 juz dari Madrasah. Santri pindahan dengan urutan hafalan berbeda dikonversi sesuai target ma’had.",
       "juzMapPrior": {
         "label": "Dari Madrasah",
         "juz": [
@@ -266,7 +315,16 @@
       "fees": null,
       "psbOpen": false,
       "head": "Syaepudin, S.Ud., M.H.",
-      "headRole": "Kepala Darul ‘Ilmi"
+      "headRole": "Kepala Darul ‘Ilmi",
+      "outcomes": [
+        "Membaca Al-Qur’an sesuai ilmu tajwid",
+        "Hafal Al-Qur’an 30 juz secara mutqin dan bersanad",
+        "Memahami dan mengamalkan ilmu syar’i sesuai pemahaman salafush shalih",
+        "Berakhlak mulia dan beradab Islami",
+        "Mampu berbahasa Arab secara lisan dan tulisan",
+        "Menguasai dasar-dasar ilmu komputer dan IT",
+        "Memiliki kompetensi kurikulum nasional jenjang kesetaraan"
+      ]
     },
     {
       "slug": "mahad-aly",
@@ -276,7 +334,9 @@
       "setara": "Setara D2",
       "durationLabel": "Lama belajar",
       "duration": "4 semester dan 1 tahun praktik",
+      "intro": "Program kaderisasi guru dan musyrif untuk lulusan pesantren atau SMA/MA sederajat. Empat semester belajar, lalu satu tahun praktik lapangan dan pembekalan life skill.",
       "target": "Minimal 15 juz",
+      "targetNote": "Minimal 15 juz dengan tahsin dan tajwid yang benar.",
       "juzCount": 15,
       "juzMap": null,
       "fees": [
@@ -298,7 +358,19 @@
       "feesNote": "Beasiswa penuh, termasuk asrama dan uang makan.",
       "psbOpen": "[status]",
       "head": "Mohammad Deni Atmaja Kusuma Putra, Lc.",
-      "headRole": "Kepala Ma’had ‘Aly"
+      "headRole": "Kepala Ma’had ‘Aly",
+      "outcomes": [
+        "Beraqidah lurus, berakhlak mulia, dan memahami ilmu syar’i dasar",
+        "Hafal minimal 15 juz dengan tahsin dan tajwid yang benar",
+        "Berbahasa Arab aktif secara lisan dan tulisan",
+        "Mampu mengajarkan Al-Qur’an dan ilmu syar’i di kelas maupun di masyarakat",
+        "Memahami kepengasuhan pesantren",
+        "Hafal hadits dan mutun dasar",
+        "Bersemangat dakwah dan peduli sosial",
+        "Mandiri, siap memimpin dan dipimpin, serta pekerja keras",
+        "Terampil berbicara di depan umum dan berorganisasi",
+        "Siap melanjutkan studi ke perguruan tinggi Timur Tengah"
+      ]
     }
   ],
   "dailySchedule": {
