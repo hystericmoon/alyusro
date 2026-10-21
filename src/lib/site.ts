@@ -9,8 +9,8 @@ export type Level = (typeof data.levels)[number] & {
 export const school = data.school;
 export const levels = data.levels as Level[];
 
-/** Values written as "[...]" in site.json are placeholders still to confirm with the school. */
-export const isPlaceholder = (v: unknown): boolean => typeof v === 'string' && /^\[.*\]$/.test(v.trim());
+/** Values containing "[...]" in site.json are placeholders (or part-placeholders) still to confirm. */
+export const isPlaceholder = (v: unknown): boolean => typeof v === 'string' && /\[[^\]]*\]/.test(v);
 
 /**
  * The value, or null when it is a placeholder or empty. Pages never show a

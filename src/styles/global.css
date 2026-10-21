@@ -75,6 +75,11 @@
   --color-hill-3: #6E80A8;
   --color-hill-4: #3F5079;
 
+  /* Derived: dated-content notice (Artikel-detail) */
+  --color-notice: #FFF4DC;
+  --color-notice-rule: #8A5A00;
+  --color-notice-ink: #4A3200;
+
   /* Derived: living sky (landscape tint by time of day) */
   --color-dawn-top: #D3DBEE;
   --color-dawn-glow: #F2E4D3;
@@ -333,3 +338,23 @@ html:has(#menu-hp:popover-open) {
 .link-slide:focus-visible {
   background-size: 100% 1px;
 }
+
+/* Article body (Artikel-detail .ad). Arabic blocks keep lang/dir from the content. */
+.prose-ad {
+  font-size: 19px;
+  line-height: 1.7;
+}
+.prose-ad > :first-child { margin-top: 0; }
+.prose-ad h2 { margin: 56px 0 14px; font-family: var(--font-display); font-size: 40px; font-weight: 600; line-height: 1.05; }
+.prose-ad h3 { margin: 40px 0 10px; font-family: var(--font-display); font-size: 30px; font-weight: 600; line-height: 1.1; }
+.prose-ad p { margin: 0 0 18px; }
+.prose-ad ul, .prose-ad ol { margin: 0 0 18px; padding-left: 24px; }
+.prose-ad li { margin-bottom: 8px; }
+.prose-ad a { text-underline-offset: 3px; }
+.prose-ad blockquote { margin: 0 0 18px; padding-left: 20px; border-left: 3px solid var(--color-lapis-2); color: var(--color-body); }
+.prose-ad [lang="ar"] { font-family: var(--font-display); font-size: 1.3em; line-height: 1.9; }
+.prose-ad p[lang="ar"], .prose-ad blockquote[lang="ar"] { text-align: right; }
+.prose-ad blockquote[lang="ar"] { border-left: 0; border-right: 3px solid var(--color-lapis-2); padding: 0 20px 0 0; }
+.prose-ad span[lang="ar"] { font-size: 1.2em; }
+/* ﷻ ﷺ in titles, see titleHtml() */
+.honorific { font-size: 0.55em; line-height: 0; vertical-align: 0.15em; }

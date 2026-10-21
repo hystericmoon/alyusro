@@ -1,0 +1,145 @@
+---
+// /artikel/{slug} (design/Artikel-detail.dc.html). Slugs match the old site,
+// so existing links and search results keep working.
+import { render } from 'astro:content';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Landscape from '@/components/home/Landscape.astro';
+import ArticleCover from '@/components/artikel/ArticleCover.astro';
+import { getArticles, formatDate, isOld, kicker, related, seriesNeighbours, titleHtml, NEWS, type Article } from '@/lib/articles';
+
+export async function getStaticPaths() {
+  const all = await getArticles();
+  return all.map((article) => ({ params: { slug: article.id }, props: { article, all } }));
+}
+
+const { article, all } = Astro.props as { article: Article; all: Article[] };
+const { Content } = await render(article);
+const d = article.data;
+const old = isOld(article);
+// The design's notice points to PSB info; kajian series only need the date warning.
+const psbRelated = !d.series;
+const { prev, next } = seriesNeighbours(all, article);
+const more = related(all, article);
+const moreTitle = d.series ? `Serial ${d.series} lainnya` : `${NEWS} lainnya`;
+const url = new URL(`/artikel/${article.id}/`, Astro.site).toString();
+const share = {
+  whatsapp: `https://wa.me/?text=${encodeURIComponent(`${d.title} ${url}`)}`,
+  facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`,
+};
+const pageTitle = d.series ? `${d.series}, ${d.title}` : d.title;
+const shareBtn =
+  'box-border inline-flex min-h-44 items-center rounded-sm border border-ink bg-white px-16 font-body text-15 font-bold text-ink no-underline transition-colors duration-150 hover:bg-ink hover:text-white';
+---
+<BaseLayout title={pageTitle} description={d.excerpt} footerLabelledBy="g-foot-title">
+  <article class="mx-auto box-border max-w-page px-20 pb-80 pt-24 sm:px-40 sm:pb-96 sm:pt-32">
+    <nav aria-label="Breadcrumb" class="text-15 leading-[1.6]">
+      <ol class="m-0 flex list-none flex-wrap gap-10 p-0 text-muted">
+        <li><a href="/">Beranda</a></li>
+        <li aria-hidden="true">/</li>
+        <li><a href="/artikel/">Kajian &amp; artikel</a></li>
+        <li aria-hidden="true">/</li>
+        <li aria-current="page" class="text-ink">{kicker(article)}</li>
+      </ol>
+    </nav>
+
+    <header class="mx-auto mt-40 max-w-[760px]">
+      {d.series && <p class="m-0 mb-12 text-15 font-bold text-lapis">{d.series}</p>}
+      <h1 class="m-0 mb-20 font-display text-[clamp(44px,5.6vw,80px)] font-semibold leading-[0.95] [text-wrap:balance]" set:html={titleHtml(d.title)} />
+      <p class="m-0 text-15 leading-[1.5] text-muted">
+        Oleh <strong class="text-ink">{d.author}</strong><br />
+        <time datetime={d.date.toISOString()}>{formatDate(d.date)}</time> • {d.category}
+      </p>
+    </header>
+
+    {
+      old && (
+        <div class="mx-auto mt-28 flex max-w-[760px] flex-wrap items-center gap-x-20 gap-y-8 border-l-4 border-notice-rule bg-notice px-20 py-18 text-16 leading-[1.5]">
+          <p class="m-0 flex-[1_1_320px] text-notice-ink">
+            Artikel ini terbit lebih dari setahun lalu.{psbRelated && ' Biaya, syarat, dan jadwal terbaru ada di halaman pendaftaran.'}
+          </p>
+          {psbRelated && (
+            <a href="/psb/" class="inline-flex min-h-44 items-center font-bold text-notice-ink underline-offset-4 hover:text-ink">
+              Lihat info terbaru
+            </a>
+          )}
+        </div>
+      )
+    }
+
+    <div class="mx-auto my-40 max-w-[1040px]">
+      <ArticleCover article={article} ratio="16/8" decorative={false} eager natural />
+    </div>
+
+    <div class="mx-auto max-w-[760px]">
+      <div class="prose-ad">
+        <Content />
+      </div>
+
+      {
+        (prev || next) && (
+          <nav aria-label={`Serial ${d.series}`} class="mt-48 flex flex-wrap justify-between gap-16 border-t border-rule pt-24">
+            {prev && (
+              <a href={`/artikel/${prev.id}/`} class="flex min-h-64 max-w-[48%] flex-col gap-2 text-ink no-underline hover:text-lapis max-sm:max-w-full">
+                <span class="text-14 text-muted">Pertemuan sebelumnya</span>
+                <span class="font-display text-22 font-semibold leading-[1.15] underline underline-offset-4" set:html={titleHtml(prev.data.title)} />
+              </a>
+            )}
+            {next && (
+              <a href={`/artikel/${next.id}/`} class="ml-auto flex min-h-64 max-w-[48%] flex-col items-end gap-2 text-right text-ink no-underline hover:text-lapis max-sm:max-w-full">
+                <span class="text-14 text-muted">Pertemuan berikutnya</span>
+                <span class="font-display text-22 font-semibold leading-[1.15] underline underline-offset-4" set:html={titleHtml(next.data.title)} />
+              </a>
+            )}
+          </nav>
+        )
+      }
+
+      <div class="mt-32 flex flex-wrap items-center gap-10">
+        <span class="mr-6 text-15 font-bold">Bagikan</span>
+        <a href={share.whatsapp} class={shareBtn}>WhatsApp</a>
+        <a href={share.facebook} class={shareBtn}>Facebook</a>
+        <button type="button" data-copy={url} hidden class:list={[shareBtn, 'cursor-pointer']}>Salin tautan</button>
+        <span data-copy-status role="status" class="text-14 text-muted"></span>
+      </div>
+    </div>
+  </article>
+
+  <aside aria-labelledby="ad-more" class="border-t border-rule bg-white">
+    <div class="mx-auto box-border max-w-page px-20 pb-80 pt-64 sm:px-40">
+      <h2 id="ad-more" class="m-0 mb-28 font-display text-[40px] font-semibold leading-none">{moreTitle}</h2>
+      <ul class="m-0 grid list-none grid-cols-[repeat(auto-fit,minmax(min(300px,100%),1fr))] gap-32 p-0">
+        {
+          more.map((a) => (
+            <li class="flex flex-col gap-8 border-t-2 border-ink pt-16">
+              <a href={`/artikel/${a.id}/`} class="font-display text-[28px] font-semibold leading-[1.1] text-ink underline-offset-4 hover:text-lapis">
+                <Fragment set:html={titleHtml(a.data.title)} />
+              </a>
+              <span class="text-14 text-muted">
+                {kicker(a)} • {formatDate(a.data.date)}
+              </span>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </aside>
+
+  <Landscape slot="footer-lead" />
+</BaseLayout>
+
+<script>
+  // "Salin tautan" only appears when the Clipboard API is available.
+  const btn = document.querySelector<HTMLButtonElement>('[data-copy]');
+  const status = document.querySelector<HTMLElement>('[data-copy-status]');
+  if (btn && status && navigator.clipboard) {
+    btn.hidden = false;
+    btn.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(btn.dataset.copy ?? location.href);
+        status.textContent = 'Tautan disalin.';
+      } catch {
+        status.textContent = 'Tautan tidak dapat disalin.';
+      }
+    });
+  }
+</script>

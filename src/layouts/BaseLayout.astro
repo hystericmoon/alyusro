@@ -20,6 +20,9 @@ const {
 } = Astro.props;
 const fullTitle = title ? `${title} | ${school.name}` : school.name;
 const canonical = new URL(Astro.url.pathname, Astro.site);
+// Preview builds stay out of search engines, so they don't compete with the
+// live site. Set PUBLIC_INDEXABLE=true on the host when this becomes the real site.
+const indexable = import.meta.env.PUBLIC_INDEXABLE === 'true';
 ---
 <!doctype html>
 <html lang="id">
@@ -29,6 +32,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
+    {!indexable && <meta name="robots" content="noindex, nofollow" />}
     <meta name="theme-color" content="#1B2235" />
     <link rel="icon" href="/favicon.png" type="image/png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />

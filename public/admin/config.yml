@@ -1,0 +1,92 @@
+# Sveltia CMS: the article editor for school staff, at /admin.
+# Articles are Markdown files in src/content/artikel; saving one commits it to
+# GitHub, and the host rebuilds the site. Fields must match src/content.config.ts.
+#
+# Sign-in: staff need a GitHub account with write access to the repository.
+# Either sign in with a GitHub personal access token (Sveltia's "Sign in with
+# token"), or set up one-click GitHub login by deploying the free Sveltia CMS
+# Authenticator on Cloudflare Workers and putting its URL in `base_url` below.
+backend:
+  name: github
+  repo: hystericmoon/alyusro
+  branch: main
+  # base_url: https://sveltia-cms-auth.<your-account>.workers.dev
+
+media_folder: public/uploads/artikel
+public_folder: /uploads/artikel
+
+collections:
+  - name: artikel
+    label: Artikel
+    label_singular: Artikel
+    description: Kajian, serial belajar, dan kabar ma’had. Artikel terbaru tampil paling atas.
+    folder: src/content/artikel
+    extension: md
+    format: frontmatter
+    create: true
+    slug: '{{slug}}'
+    summary: '{{title}} ({{date | date(''DD/MM/YYYY'')}})'
+    sortable_fields: [date, title, series]
+    view_groups:
+      - label: Serial
+        field: series
+    fields:
+      - label: Judul
+        name: title
+        widget: string
+        hint: Untuk serial, tulis "Pertemuan ke-N: topik", misalnya "Pertemuan ke-3: Bahaya kesyirikan".
+      - label: Serial
+        name: series
+        widget: select
+        required: false
+        options: [Tauhid Gaya Hidup, Mengenal Allah, Mengenal Nabi ﷺ, Mengenal Islam, Mengenal Fikih Romadhon]
+        hint: Kosongkan untuk berita atau tulisan lepas. Serial baru bisa ditambahkan oleh tim IT di config.yml.
+      - label: Pertemuan ke-
+        name: part
+        widget: number
+        value_type: int
+        min: 1
+        required: false
+      - label: Tanggal terbit
+        name: date
+        widget: datetime
+      - label: Penulis
+        name: author
+        widget: string
+      - label: Kategori
+        name: category
+        widget: select
+        options: [Aqidah, Fiqih, Khutbah, Prestasi, Kegiatan santri, Kerja sama, Karya tulis BPIP, Materi Kuttab]
+      - label: Gambar sampul
+        name: cover
+        widget: image
+        required: false
+        hint: Hindari foto yang menampakkan wajah santri sampai ada izin dari ma’had. Tanpa gambar, artikel memakai sampul tulisan otomatis.
+      - label: Teks alternatif sampul
+        name: coverAlt
+        widget: string
+        required: false
+        hint: Wajib bila ada gambar. Jelaskan isi gambar dalam satu kalimat, misalnya "Sampul Tauhid Gaya Hidup pertemuan ke-3 dengan gambar kapal layar". Jangan tulis "Deskripsi Gambar".
+      - label: Ringkasan
+        name: excerpt
+        widget: text
+        required: false
+        hint: Satu atau dua kalimat untuk daftar artikel dan pratinjau di WhatsApp.
+      - label: Simpan sebagai draf
+        name: draft
+        widget: boolean
+        default: false
+        required: false
+      - label: Isi artikel
+        name: body
+        widget: markdown
+        hint: Ayat dan teks Arab dari artikel lama tersimpan sebagai HTML dengan lang="ar" dir="rtl" agar terbaca benar; biarkan tanda itu tetap ada.
+      - label: Jumlah dibaca (arsip situs lama)
+        name: views
+        widget: number
+        value_type: int
+        required: false
+      - label: Alamat di situs lama
+        name: sourceUrl
+        widget: string
+        required: false
