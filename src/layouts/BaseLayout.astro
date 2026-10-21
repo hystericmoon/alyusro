@@ -10,6 +10,11 @@ interface Props {
   /** Pages with a GSAP moment opt in; everyone else ships no inline script. */
   motion?: boolean;
   footerLabelledBy?: string;
+  /** Share image for WhatsApp/Facebook previews; a site path or absolute URL. */
+  image?: string;
+  imageAlt?: string;
+  /** Article metadata switches og:type to article and adds Article JSON-LD. */
+  article?: { published: Date; author: string; section?: string };
 }
 
 const {
@@ -17,12 +22,56 @@ const {
   description = 'Pesantren tahfizh dan bahasa Arab di kaki Gunung Salak, Tenjolaya, Kabupaten Bogor.',
   motion = false,
   footerLabelledBy,
+  image = '/og/beranda.jpg',
+  imageAlt = 'Ma’had Tahfizh Al Yusro, pesantren tahfizh di kaki Gunung Salak',
+  article,
 } = Astro.props;
 const fullTitle = title ? `${title} | ${school.name}` : school.name;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 // Preview builds stay out of search engines, so they don't compete with the
 // live site. Set PUBLIC_INDEXABLE=true on the host when this becomes the real site.
 const indexable = import.meta.env.PUBLIC_INDEXABLE === 'true';
+// WhatsApp previews are unreliable with WebP covers, so on Netlify they go
+// through its image CDN as JPEG; elsewhere the file is used as is.
+const shareImage =
+  process.env.NETLIFY === 'true' && image.startsWith('/') && image.endsWith('.webp')
+    ? `/.netlify/images?url=${encodeURIComponent(image)}&fm=jpg&w=1200&q=80`
+    : image;
+const imageUrl = new URL(shareImage, Astro.site).toString();
+const isHome = Astro.url.pathname === '/';
+// Structured data: the school on the homepage, Article on article pages.
+const jsonLd = isHome
+  ? {
+      '@context': 'https://schema.org',
+      '@type': 'EducationalOrganization',
+      name: school.name,
+      alternateName: school.nameAr,
+      url: new URL('/', Astro.site).toString(),
+      logo: new URL('/logo-mark.png', Astro.site).toString(),
+      image: imageUrl,
+      telephone: '+62' + school.whatsapp.display.replace(/\D/g, '').replace(/^0/, ''),
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: 'Desa Gunung Mulya',
+        addressLocality: 'Tenjolaya',
+        addressRegion: 'Jawa Barat',
+        addressCountry: 'ID',
+      },
+      geo: { '@type': 'GeoCoordinates', latitude: school.geo.lat, longitude: school.geo.lng },
+    }
+  : article
+    ? {
+        '@context': 'https://schema.org',
+        '@type': 'Article',
+        headline: title,
+        description,
+        image: imageUrl,
+        datePublished: article.published.toISOString(),
+        author: { '@type': 'Person', name: article.author },
+        publisher: { '@type': 'Organization', name: school.name, logo: { '@type': 'ImageObject', url: new URL('/logo-mark.png', Astro.site).toString() } },
+        mainEntityOfPage: canonical.toString(),
+      }
+    : null;
 ---
 <!doctype html>
 <html lang="id">
@@ -33,6 +82,18 @@ const indexable = import.meta.env.PUBLIC_INDEXABLE === 'true';
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
     {!indexable && <meta name="robots" content="noindex, nofollow" />}
+    <meta property="og:site_name" content={school.name} />
+    <meta property="og:locale" content="id_ID" />
+    <meta property="og:type" content={article ? 'article' : 'website'} />
+    <meta property="og:title" content={title ?? school.name} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={imageUrl} />
+    <meta property="og:image:alt" content={imageAlt} />
+    {article && <meta property="article:published_time" content={article.published.toISOString()} />}
+    {article?.section && <meta property="article:section" content={article.section} />}
+    <meta name="twitter:card" content="summary_large_image" />
+    {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
     <meta name="theme-color" content="#1B2235" />
     <link rel="icon" href="/favicon.png" type="image/png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />

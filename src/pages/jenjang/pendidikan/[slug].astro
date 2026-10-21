@@ -7,7 +7,7 @@ export function getStaticPaths() {
   const prefix = '/jenjang/pendidikan/';
   return levels
     .filter((l) => l.path.startsWith(prefix))
-    .map((level) => ({ params: { slug: level.path.slice(prefix.length) }, props: { level } }));
+    .map((level) => ({ params: { slug: level.path.slice(prefix.length).replace(/\/$/, '') }, props: { level } }));
 }
 
 const { level } = Astro.props as { level: Level };

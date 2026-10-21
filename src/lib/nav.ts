@@ -8,33 +8,33 @@ export const mainNav: NavGroup[] = [
   {
     label: 'Profil',
     links: [
-      { label: 'Tentang kami', href: '/tentang' },
-      { label: 'Pengajar dan pengurus', href: '/pendidikan/tenaga/pendidik' },
-      { label: 'Fasilitas', href: '/fasilitas' },
-      { label: 'Prestasi', href: '/prestasi' },
+      { label: 'Tentang kami', href: '/tentang/' },
+      { label: 'Pengajar dan pengurus', href: '/pendidikan/tenaga/pendidik/' },
+      { label: 'Fasilitas', href: '/fasilitas/' },
+      { label: 'Prestasi', href: '/prestasi/' },
     ],
   },
   {
     label: 'Jenjang',
     links: [
       ...levels.map((l) => ({ label: l.name, href: l.path, note: l.setara })),
-      { label: 'Info pendaftaran', href: '/psb' },
+      { label: 'Info pendaftaran', href: '/psb/' },
     ],
   },
   {
     label: 'Kurikulum',
     links: [
-      { label: 'Tahfizh', href: '/kurikulum/tahfizh' },
-      { label: 'Bahasa Arab', href: '/kurikulum/bahasa-arab' },
-      { label: 'Sehari di ma’had', href: '/sehari-di-mahad' },
-      { label: 'Kalender akademik', href: '/kalender-akademik' },
+      { label: 'Tahfizh', href: '/kurikulum/tahfizh/' },
+      { label: 'Bahasa Arab', href: '/kurikulum/bahasa-arab/' },
+      { label: 'Sehari di ma’had', href: '/sehari-di-mahad/' },
+      { label: 'Kalender akademik', href: '/kalender-akademik/' },
     ],
   },
   {
     label: 'Kajian & artikel',
     links: [
-      { label: 'Artikel', href: '/artikel' },
-      { label: 'Info kajian', href: '/info/kajian' },
+      { label: 'Artikel', href: '/artikel/' },
+      { label: 'Info kajian', href: '/info/kajian/' },
     ],
   },
 ];
@@ -51,7 +51,7 @@ export const footerNav: NavGroup[] = [
     links: [
       { label: 'Jadwal shalat', href: schoolUrl('/jadwal/shalat') },
       { label: 'Nama Latin ke Arab', href: schoolUrl('/konversi/nama') },
-      { label: 'Info kajian', href: '/info/kajian' },
+      { label: 'Info kajian', href: '/info/kajian/' },
       { label: 'Grup info WhatsApp', href: infoGroupUrl },
     ],
   },

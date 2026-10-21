@@ -409,3 +409,32 @@ html:has(#menu-hp:popover-open) {
   :where(.prose-k) th:last-child, :where(.prose-k) td:last-child { padding-right: 0; }
   :where(.prose-k) [lang="ar"] { font-family: var(--font-display); font-size: 1.25em; }
 }
+
+@layer components {
+  /* Breadcrumb links and links that stand alone in a table cell are separate
+     targets (not inline in a sentence), so they get the 44px minimum. */
+  nav[aria-label="Breadcrumb"] a,
+  :is(th, td) > a:only-child {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+
+  /*
+    Scroll cue for content wider than a phone (fee tables, the in-page menu):
+    soft shadows appear at whichever edge has more to scroll to. Pure CSS
+    (background-attachment: local), so it needs no JS. Set --scroll-bg to
+    the surface colour behind it.
+  */
+  .scroll-cue {
+    --scroll-bg: var(--color-paper);
+    overflow-x: auto;
+    background:
+      linear-gradient(to right, var(--scroll-bg) 30%, transparent) left / 40px 100% no-repeat local,
+      linear-gradient(to left, var(--scroll-bg) 30%, transparent) right / 40px 100% no-repeat local,
+      radial-gradient(farthest-side at 0 50%, rgb(27 34 53 / 0.2), transparent) left / 14px 100% no-repeat scroll,
+      radial-gradient(farthest-side at 100% 50%, rgb(27 34 53 / 0.2), transparent) right / 14px 100% no-repeat scroll;
+    background-color: var(--scroll-bg);
+  }
+  .scroll-cue-white { --scroll-bg: var(--color-white); }
+}

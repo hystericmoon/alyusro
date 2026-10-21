@@ -51,7 +51,7 @@ const current = last >= today;
           <tbody>
             {cal.events.map((e) => (
               <tr class:list={[(e.end ?? e.start) < today && 'text-muted']}>
-                <td class="whitespace-nowrap">{range(e)}</td>
+                <td class="w-[42%] sm:w-auto sm:whitespace-nowrap">{range(e)}</td>
                 <td>{e.label}</td>
               </tr>
             ))}
@@ -70,7 +70,7 @@ const current = last >= today;
           <tbody>
             {cal.events.map((e) => (
               <tr>
-                <td class="whitespace-nowrap">{range(e)}</td>
+                <td class="w-[42%] sm:w-auto sm:whitespace-nowrap">{range(e)}</td>
                 <td>{e.label}</td>
               </tr>
             ))}

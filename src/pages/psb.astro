@@ -131,7 +131,7 @@ const td = 'border-b border-rule py-18';
                 {year ? `Tahun ajaran ${year}. ` : ''}Gelombang yang sudah lewat otomatis disembunyikan.
               </p>
             </div>
-            <div class="min-w-0 flex-[1.4_1_480px] overflow-x-auto">
+            <div class="scroll-cue min-w-0 flex-[1.4_1_480px]">
               {v.wavesAnnounced ? (
                 <table class="w-full min-w-[420px] border-collapse">
                   <caption class="sr-only">Jadwal gelombang pendaftaran {v.level.name}</caption>
@@ -168,7 +168,8 @@ const td = 'border-b border-rule py-18';
     <div class={wrap}>
       <h2 id="p-biaya" class:list={[h2, 'mb-12']}>Biaya per jenjang</h2>
       <p class="m-0 mb-32 max-w-[42em] text-body">Satu tabel untuk membandingkan. Jenjang yang rinciannya belum dipublikasikan bisa ditanyakan lewat WhatsApp.</p>
-      <div class="overflow-x-auto" tabindex="0" role="region" aria-label="Tabel biaya, dapat digeser ke samping">
+      <p class="m-0 mb-12 text-14 text-muted lg:hidden" aria-hidden="true">Geser tabel ke samping untuk melihat semua kolom.</p>
+      <div class="scroll-cue scroll-cue-white" tabindex="0" role="region" aria-label="Tabel biaya, dapat digeser ke samping">
         <table class="w-full min-w-[820px] border-collapse tabular-nums">
           <caption class="sr-only">Perbandingan biaya per jenjang</caption>
           <thead>
