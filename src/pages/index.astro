@@ -1,0 +1,14 @@
+---
+// Homepage (design/Beranda-gabungan.dc.html): exactly four sections.
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import HeroMap from '@/components/home/HeroMap.astro';
+import DayView from '@/components/home/DayView.astro';
+import Terraces from '@/components/home/Terraces.astro';
+import Landscape from '@/components/home/Landscape.astro';
+---
+<BaseLayout motion footerLabelledBy="g-foot-title">
+  <HeroMap />
+  <DayView />
+  <Terraces />
+  <Landscape slot="footer-lead" />
+</BaseLayout>

@@ -1,0 +1,8 @@
+# Static Astro build. Cloudflare Pages uses the same command and output
+# directory (see wrangler.toml); both read the Node version from .nvmrc.
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"

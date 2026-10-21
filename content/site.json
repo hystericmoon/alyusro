@@ -1,0 +1,388 @@
+{
+  "_note": "Single source of truth. Every page reads from here. Values in [brackets] are placeholders to confirm with the school.",
+  "school": {
+    "name": "Ma’had Tahfizh Al Yusro",
+    "nameAr": "معهد تحفيظ اليسرى",
+    "nameArVerify": true,
+    "foundation": "Yayasan Al Yusr Mulia Bogor",
+    "url": "https://mahadalyusro.sch.id",
+    "_urlNote": "The school's existing Laravel site. Login, registration, prayer times, name converter and the WhatsApp info group stay there; links to them use this origin.",
+    "legalEntityNote": "National curriculum equivalency runs through PKBM Al Yusro",
+    "address": "Desa Gunung Mulya, Kecamatan Tenjolaya, Kabupaten Bogor, Jawa Barat",
+    "mapsUrl": "https://maps.app.goo.gl/3H8h2iucQwDajhV39",
+    "geo": {
+      "lat": -6.66,
+      "lng": 106.7
+    },
+    "whatsapp": {
+      "display": "0819-3892-6972",
+      "url": "https://wa.me/6281938926972"
+    },
+    "infoGroupUrl": "/konversi/masuk-grup-info",
+    "loginUrl": "/dashboard/login",
+    "social": {
+      "handle": "@mahadtahfizhalyusro",
+      "instagram": true,
+      "facebook": true,
+      "youtube": true
+    },
+    "halaqahRatio": {
+      "ideal": 8,
+      "max": 12
+    }
+  },
+  "psb": {
+    "academicYear": "[2027/2028]",
+    "note": "Waves whose test date has passed must be hidden automatically. If all waves are past, the level shows 'Belum dibuka'.",
+    "waves": {
+      "madrasah": [
+        {
+          "name": "Pertama",
+          "opens": "[YYYY-MM-DD]",
+          "test": "[YYYY-MM-DD]"
+        },
+        {
+          "name": "Kedua",
+          "opens": "[YYYY-MM-DD]",
+          "test": "[YYYY-MM-DD]"
+        },
+        {
+          "name": "Ketiga",
+          "opens": "[YYYY-MM-DD]",
+          "test": "[YYYY-MM-DD]"
+        }
+      ]
+    },
+    "testLocation": "Offline di Ma’had Tahfizh Al Yusro",
+    "registerUrls": {
+      "default": "/dashboard/register",
+      "mahad-aly": "/psbmahadaly"
+    }
+  },
+  "levels": [
+    {
+      "slug": "taud",
+      "path": "/jenjang/pendidikan/taud",
+      "name": "TAUD",
+      "nameAr": "",
+      "setara": "Setara TK",
+      "durationLabel": "Usia",
+      "duration": "4–6 tahun",
+      "target": "Juz 30",
+      "juzMap": [
+        {
+          "label": "Selama TAUD",
+          "juz": [
+            30
+          ]
+        }
+      ],
+      "fees": null,
+      "psbOpen": false,
+      "head": null,
+      "headRole": "Kepala TAUD"
+    },
+    {
+      "slug": "kuttab",
+      "path": "/jenjang/pendidikan/kuttab",
+      "name": "Kuttab",
+      "nameAr": "الكتّاب",
+      "setara": "Setara SD",
+      "durationLabel": "Lama belajar",
+      "duration": "6 tahun",
+      "target": "Minimal 6 juz",
+      "juzCount": 6,
+      "juzMap": null,
+      "fees": null,
+      "psbOpen": false,
+      "head": "Elan Susanto, S.Pd.",
+      "headRole": "Kepala Kuttab Al Yusro"
+    },
+    {
+      "slug": "mahdon",
+      "path": "/jenjang/pendidikan/mahdon",
+      "name": "Mahdhon Tarbawi",
+      "nameAr": "المحضن التربوي",
+      "setara": "Setingkat kelas 5–6 SD",
+      "durationLabel": "Lama program",
+      "duration": "[lama program]",
+      "target": "Minimal 3 juz",
+      "juzMap": [
+        {
+          "label": "Selama program",
+          "juz": [
+            30,
+            29,
+            28
+          ]
+        }
+      ],
+      "fees": [
+        {
+          "item": "Biaya pendaftaran",
+          "amount": 300000
+        },
+        {
+          "item": "Uang pangkal",
+          "amount": 10500000
+        },
+        {
+          "item": "Daftar ulang tahunan",
+          "amount": 2800000
+        }
+      ],
+      "feesYear": "[tahun ajaran]",
+      "psbOpen": false,
+      "head": null,
+      "headRole": "Kepala Mahdhon Tarbawi"
+    },
+    {
+      "slug": "madrasah",
+      "path": "/jenjang/pendidikan/madrasah",
+      "name": "Madrasah",
+      "nameAr": "المدرسة",
+      "setara": "Setara SMP",
+      "durationLabel": "Lama belajar",
+      "duration": "3 tahun, kelas VII–IX",
+      "target": "20 juz",
+      "targetDecision": "20 juz per curriculum page (site's Madrasah page says 30; resolved to 20, confirm with school)",
+      "juzMap": [
+        {
+          "label": "Kelas VII",
+          "juz": [
+            30,
+            29,
+            28,
+            27,
+            26
+          ]
+        },
+        {
+          "label": "Kelas VIII",
+          "juz": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+          ]
+        },
+        {
+          "label": "Kelas IX",
+          "juz": [
+            11,
+            12,
+            13,
+            14,
+            15
+          ]
+        }
+      ],
+      "fees": [
+        {
+          "item": "Biaya pendaftaran",
+          "amount": 400000
+        },
+        {
+          "item": "Daftar ulang",
+          "amount": 19500000
+        },
+        {
+          "item": "Biaya tahunan",
+          "amount": 3750000
+        },
+        {
+          "item": "SPP",
+          "amount": 1650000,
+          "period": "[per bulan?]"
+        }
+      ],
+      "feesYear": "2027/2028",
+      "psbOpen": true,
+      "head": "Dede Iskandar, Lc.",
+      "headRole": "Kepala Madrasah Al Yusro"
+    },
+    {
+      "slug": "darul-ilmi",
+      "path": "/jenjang/pendidikan/darul-ilmi",
+      "name": "Darul ‘Ilmi",
+      "nameAr": "دار العلم",
+      "setara": "Setara SMA",
+      "durationLabel": "Lama belajar",
+      "duration": "Kelas X–XII",
+      "target": "Genap 30 juz",
+      "juzMapPrior": {
+        "label": "Dari Madrasah",
+        "juz": [
+          30,
+          29,
+          28,
+          27,
+          26,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15
+        ]
+      },
+      "juzMap": [
+        {
+          "label": "Kelas X",
+          "juz": [
+            16,
+            17,
+            18,
+            19,
+            20
+          ]
+        },
+        {
+          "label": "Kelas XI",
+          "juz": [
+            21,
+            22,
+            23,
+            24,
+            25
+          ]
+        }
+      ],
+      "fees": null,
+      "psbOpen": false,
+      "head": "Syaepudin, S.Ud., M.H.",
+      "headRole": "Kepala Darul ‘Ilmi"
+    },
+    {
+      "slug": "mahad-aly",
+      "path": "/mahad-aly",
+      "name": "Ma’had ‘Aly",
+      "nameAr": "المعهد العالي",
+      "setara": "Setara D2",
+      "durationLabel": "Lama belajar",
+      "duration": "4 semester dan 1 tahun praktik",
+      "target": "Minimal 15 juz",
+      "juzCount": 15,
+      "juzMap": null,
+      "fees": [
+        {
+          "item": "Biaya pendaftaran",
+          "amount": 250000
+        },
+        {
+          "item": "Daftar ulang",
+          "amount": 0,
+          "label": "Tidak ada"
+        },
+        {
+          "item": "Biaya tahunan",
+          "amount": 0,
+          "label": "Tidak ada"
+        }
+      ],
+      "feesNote": "Beasiswa penuh, termasuk asrama dan uang makan.",
+      "psbOpen": "[status]",
+      "head": "Mohammad Deni Atmaja Kusuma Putra, Lc.",
+      "headRole": "Kepala Ma’had ‘Aly"
+    }
+  ],
+  "dailySchedule": {
+    "source": "/kurikulum/tahfizh",
+    "prayerTimes": "Use the same Kemenag/myquran API the current /jadwal/shalat page uses, for Kab. Bogor. Client-side calc in design is a stand-in (Fajr 20°, Isha 18°, Asr shadow 1, +2 min ihtiyat).",
+    "prayerApi": {
+      "url": "https://api.myquran.com/v2/sholat/jadwal/{city}/{date}",
+      "city": "1204",
+      "cityName": "KAB. BOGOR"
+    },
+    "timeExpressions": "start/end accept HH:MM, a prayer name (subuh, terbit, zhuhur, ashar, maghrib, isya) plus or minus minutes, and min(a, b).",
+    "weekday": [
+      {
+        "name": "Setoran sabaq",
+        "days": "Senin–Jumat",
+        "start": "05:00",
+        "end": "06:30",
+        "detail": "Santri menyetorkan hafalan baru kepada muhaffizh selepas Subuh."
+      },
+      {
+        "name": "Hifzhul jadid",
+        "days": "Senin–Jumat",
+        "start": "07:00",
+        "end": "10:00",
+        "detail": "Menambah hafalan baru di waktu Dhuha, tiga sesi 60 menit."
+      },
+      {
+        "name": "[Jadwal pelajaran sekolah dan bahasa Arab]",
+        "days": "Senin–Jumat",
+        "start": "10:00",
+        "end": "ashar-5",
+        "placeholder": true
+      },
+      {
+        "name": "Setoran sabaq atau manzil",
+        "days": "Senin–Kamis",
+        "start": "ashar+15",
+        "end": "min(ashar+75, maghrib-60)",
+        "detail": "Mengulang hafalan di hadapan muhaffizh, selesai paling lambat satu jam sebelum Maghrib."
+      },
+      {
+        "name": "Khataman tilawah",
+        "days": "Jumat",
+        "start": "ashar+15",
+        "end": "maghrib-10",
+        "detail": "Khataman tilawah Al-Qur’an setiap Jumat, di antara Ashar dan Maghrib."
+      },
+      {
+        "name": "Isti’dad",
+        "days": "Senin–Jumat",
+        "start": "maghrib+15",
+        "end": "maghrib+60",
+        "detail": "Persiapan hafalan untuk esok hari, 45 menit di antara Maghrib dan Isya."
+      }
+    ],
+    "saturday": {
+      "title": "Sabtu: tasmi’ dan kajian pagi",
+      "detail": "Hafalan diperdengarkan sebelum kajian Sabtu pagi, lalu tadabbur Al-Qur’an di halaqah."
+    },
+    "sunday": {
+      "title": "[Kegiatan hari Ahad]",
+      "detail": ""
+    }
+  },
+  "kajianRutin": [
+    {
+      "name": "Kajian tafsir Al-Qur’an",
+      "when": "Pekanan, [hari dan jam]",
+      "audience": "Santri dan masyarakat umum"
+    },
+    {
+      "name": "Kajian Rabu malam",
+      "when": "Rabu, ba’da [waktu]",
+      "audience": "[Tema atau kitab]"
+    },
+    {
+      "name": "Kajian muslimah",
+      "when": "[Hari dan jam]",
+      "audience": "Khusus muslimah"
+    },
+    {
+      "name": "Kajian wali santri",
+      "when": "[Jadwal]",
+      "audience": "Orang tua dan wali santri"
+    }
+  ]
+}

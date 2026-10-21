@@ -1,0 +1,44 @@
+---
+// Shared footer bar (Beranda-gabungan). The homepage passes its Gunung Salak
+// landscape into the `lead` slot; other pages show the bar alone.
+import { footerNav } from '@/lib/nav';
+import { school, currentYear } from '@/lib/site';
+
+interface Props {
+  labelledBy?: string;
+}
+const { labelledBy } = Astro.props;
+const socials = [
+  school.social.instagram && 'Instagram',
+  school.social.facebook && 'Facebook',
+  school.social.youtube && 'YouTube',
+].filter(Boolean) as string[];
+const socialList =
+  socials.length > 1 ? `${socials.slice(0, -1).join(', ')}, dan ${socials[socials.length - 1]}` : socials[0];
+---
+<footer aria-labelledby={labelledBy}>
+  <slot name="lead" />
+  <div class="bg-ink text-on-night-body">
+    <div class="mx-auto box-border grid max-w-page grid-cols-[repeat(auto-fit,minmax(min(200px,100%),1fr))] gap-x-40 gap-y-32 px-20 pb-48 pt-32 text-15 sm:px-40">
+      <div class="flex flex-col gap-8">
+        <p class="m-0 font-display text-26 font-semibold leading-[1.1] text-white">{school.name}</p>
+        <p class="m-0">{school.address}</p>
+        <a href={school.whatsapp.url} class="inline-flex min-h-44 items-center font-bold text-white underline-offset-4 hover:text-on-night-body">WhatsApp {school.whatsapp.display}</a>
+      </div>
+      {
+        footerNav.map((group) => (
+          <nav aria-label={group.label} class="flex flex-col">
+            <p class="m-0 mb-2 font-bold text-white">{group.label}</p>
+            {group.links.map((l) => (
+              <a href={l.href} class="inline-flex min-h-44 items-center text-on-night-body hover:text-white">{l.label}</a>
+            ))}
+          </nav>
+        ))
+      }
+    </div>
+    <div class="mx-auto box-border flex max-w-page flex-wrap justify-between gap-x-24 gap-y-8 border-t border-night-rule px-20 pb-32 pt-20 text-14 text-on-night-muted sm:px-40">
+      <span>© {currentYear} {school.name}</span>
+      {socialList && <span>{socialList}: {school.social.handle}</span>}
+    </div>
+  </div>
+</footer>

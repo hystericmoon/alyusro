@@ -1,0 +1,82 @@
+---
+// Shared header (Beranda-gabungan). Desktop menus are native <details>
+// disclosures, so pages without islands ship no JS; below 1024px the
+// MobileMenu island takes over and only hydrates at that width.
+import MobileMenu from '@/components/islands/MobileMenu';
+import { mainNav, actions } from '@/lib/nav';
+import { school } from '@/lib/site';
+
+interface Props {
+  currentPath?: string;
+}
+const { currentPath = '/' } = Astro.props;
+---
+<a
+  href="#isi"
+  class="absolute left-16 top-[-100px] z-50 rounded-sm bg-ink px-16 py-10 text-16 font-bold text-white focus:top-16 focus:text-white"
+>Langsung ke isi</a>
+<header class="border-b border-rule">
+  <div class="mx-auto box-border flex max-w-page flex-wrap items-center gap-x-16 gap-y-12 px-16 py-16 sm:gap-x-32 sm:px-40">
+    <a href="/" class="mr-auto flex min-h-44 items-center gap-12 text-ink no-underline hover:text-ink" aria-current={currentPath === '/' ? 'page' : undefined}>
+      <span
+        aria-hidden="true"
+        class="box-border flex size-40 flex-none items-center justify-center rounded-full border-[1.5px] border-dashed border-placeholder text-11 leading-none text-muted sm:size-44"
+      >logo</span>
+      <span class="flex flex-col gap-3">
+        <span class="font-display text-22 font-semibold leading-none sm:text-27">{school.name}</span>
+        <span class="text-12 leading-[1.2] text-muted sm:text-13">Tenjolaya, Kabupaten Bogor</span>
+      </span>
+    </a>
+
+    <nav aria-label="Menu utama" class="hidden lg:block">
+      <ul class="m-0 flex list-none flex-wrap gap-x-4 p-0">
+        {
+          mainNav.map((group) => (
+            <li class="relative">
+              <details name="menu-utama" class="group">
+                <summary class="flex min-h-44 cursor-pointer select-none items-center gap-6 rounded-sm px-10 text-16 font-medium text-ink">
+                  {group.label}
+                  <svg aria-hidden="true" width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="group-open:rotate-180">
+                    <path d="M2.5 4.5 6 8l3.5-3.5" />
+                  </svg>
+                </summary>
+                <ul class="absolute left-0 top-full z-40 m-0 mt-6 box-border flex min-w-[320px] list-none flex-col rounded-md border border-rule bg-white p-8">
+                  {group.links.map((l) => (
+                    <li>
+                      <a
+                        href={l.href}
+                        aria-current={currentPath === l.href ? 'page' : undefined}
+                        class="flex min-h-44 items-center justify-between gap-16 rounded-sm px-12 text-16 font-medium text-ink no-underline hover:bg-paper hover:text-ink hover:underline"
+                      >
+                        <span>{l.label}</span>
+                        {l.note && <span class="whitespace-nowrap text-14 font-normal text-muted">{l.note}</span>}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </details>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <div class="hidden flex-wrap items-center gap-x-20 gap-y-8 lg:flex">
+      <a href={actions.login.href} class="inline-flex min-h-44 items-center text-16 font-medium text-ink underline-offset-4">{actions.login.label}</a>
+      <a
+        href={actions.register.href}
+        class="inline-flex min-h-48 items-center justify-center rounded-sm bg-lapis px-22 text-16 font-bold text-white no-underline hover:text-white"
+      >{actions.register.label}</a>
+    </div>
+
+    <div class="lg:hidden">
+      <MobileMenu
+        client:media="(max-width: 1023.98px)"
+        groups={mainNav}
+        login={actions.login}
+        register={actions.register}
+        currentPath={currentPath}
+      />
+    </div>
+  </div>
+</header>

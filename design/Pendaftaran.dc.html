@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<title>Pendaftaran santri baru</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;500;700&amp;family=Markazi+Text:wght@400;500;600;700&amp;display=swap">
+<style>
+body{margin:0}
+a{color:#26418F}a:hover{color:#1B2235}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid #26418F;outline-offset:2px;box-shadow:0 0 0 2px #FFFFFF}
+summary{list-style:none}summary::-webkit-details-marker{display:none}
+details[open] .faq-plus{transform:rotate(45deg)}
+</style>
+</helmet>
+<div style="background: #F7F7F4; color: #1B2235; font-family: 'Atkinson Hyperlegible Next', 'Segoe UI', Arial, sans-serif; font-size: 17px; line-height: 1.6">
+
+<header style="border-bottom: 1px solid #D9DCE4">
+<div style="max-width: 1280px; margin: 0 auto; padding: 16px 40px; box-sizing: border-box; display: flex; flex-wrap: wrap; align-items: center; gap: 12px 32px">
+<a href="Beranda-gabungan.dc.html" style="display: flex; align-items: center; gap: 12px; min-height: 44px; margin-right: auto; color: #1B2235; text-decoration: none">
+<span aria-hidden="true" style="width: 44px; height: 44px; flex: none; box-sizing: border-box; border: 1.5px dashed #8A93A8; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; line-height: 1; color: #4A5368">logo</span>
+<span style="display: flex; flex-direction: column; gap: 3px"><span style="font-family: 'Markazi Text', Georgia, serif; font-size: 27px; font-weight: 600; line-height: 1">Ma’had Tahfizh Al Yusro</span><span style="font-size: 13px; line-height: 1.2; color: #4A5368">Tenjolaya, Kabupaten Bogor</span></span>
+</a>
+<nav aria-label="Menu utama"><ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0 4px">
+<li><a href="#" style="display: flex; align-items: center; min-height: 44px; padding: 0 10px; font-size: 16px; font-weight: 500; color: #1B2235; text-decoration: none">Profil</a></li>
+<li><a href="Jenjang-template.dc.html" style="display: flex; align-items: center; min-height: 44px; padding: 0 10px; font-size: 16px; font-weight: 500; color: #1B2235; text-decoration: none">Jenjang</a></li>
+<li><a href="Kurikulum-tahfizh.dc.html" style="display: flex; align-items: center; min-height: 44px; padding: 0 10px; font-size: 16px; font-weight: 500; color: #1B2235; text-decoration: none">Kurikulum</a></li>
+<li><a href="Artikel.dc.html" style="display: flex; align-items: center; min-height: 44px; padding: 0 10px; font-size: 16px; font-weight: 500; color: #1B2235; text-decoration: none">Kajian &amp; artikel</a></li>
+</ul></nav>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px 20px">
+<a href="#" style="display: inline-flex; align-items: center; min-height: 44px; font-size: 16px; font-weight: 500; color: #1B2235; text-underline-offset: 4px">Masuk wali &amp; asatidz</a>
+<a href="Pendaftaran.dc.html" aria-current="page" style="display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 22px; background: #26418F; color: #FFFFFF; font-size: 16px; font-weight: 700; text-decoration: none; border-radius: 2px">Daftar santri baru</a>
+</div>
+</div>
+</header>
+
+<section aria-labelledby="p-title" style="max-width: 1280px; margin: 0 auto; padding: 32px 40px 80px; box-sizing: border-box">
+<nav aria-label="Breadcrumb" style="margin-bottom: 40px; font-size: 15px"><ol style="list-style: none; margin: 0; padding: 0; display: flex; gap: 10px; color: #4A5368"><li><a href="Beranda-gabungan.dc.html">Beranda</a></li><li aria-hidden="true">/</li><li aria-current="page" style="color: #1B2235">Pendaftaran</li></ol></nav>
+<div style="display: flex; flex-wrap: wrap; align-items: flex-start; gap: 40px 64px">
+<div style="flex: 1 1 380px; max-width: 520px; display: flex; flex-direction: column; gap: 20px">
+<h1 id="p-title" style="margin: 0; font-family: 'Markazi Text', Georgia, serif; font-size: clamp(56px, 6.6vw, 96px); font-weight: 600; line-height: 0.92; text-wrap: balance">Pendaftaran santri baru</h1>
+<p style="margin: 0; font-size: 19px; color: #2C3448; text-wrap: pretty">Pendaftaran dilakukan online, lalu tes masuk langsung di ma’had. Mulai dari jenjang yang sesuai usia anak.</p>
+<p style="margin: 0; font-size: 15px; color: #4A5368">Ada pertanyaan sebelum mendaftar? <a href="https://wa.me/6281938926972" style="font-weight: 700">Tanya tim pendaftaran lewat WhatsApp</a></p>
+</div>
+<div style="flex: 1.4 1 520px; min-width: 0">
+<h2 style="margin: 0 0 12px; font-size: 15px; font-weight: 700; color: #4A5368">Status pendaftaran per jenjang</h2>
+<ul style="list-style: none; margin: 0; padding: 0; border-top: 2px solid #1B2235">
+<li style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px 20px; padding: 16px 0; border-bottom: 1px solid #D9DCE4"><span style="flex: 1 1 180px; font-family: 'Markazi Text', Georgia, serif; font-size: 28px; font-weight: 600; line-height: 1.1">Madrasah <span style="font-family: 'Atkinson Hyperlegible Next', sans-serif; font-size: 14px; font-weight: 500; color: #4A5368">setara SMP</span></span><span style="flex: 1 1 200px; font-weight: 700; color: #26418F">Dibuka, tahun ajaran [2027/2028]</span><a href="#" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 18px; background: #26418F; color: #FFFFFF; font-size: 15px; font-weight: 700; text-decoration: none; border-radius: 2px">Daftar Madrasah</a></li>
+<li style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px 20px; padding: 16px 0; border-bottom: 1px solid #D9DCE4"><span style="flex: 1 1 180px; font-family: 'Markazi Text', Georgia, serif; font-size: 28px; font-weight: 600; line-height: 1.1">Ma’had ‘Aly <span style="font-family: 'Atkinson Hyperlegible Next', sans-serif; font-size: 14px; font-weight: 500; color: #4A5368">setara D2, beasiswa penuh</span></span><span style="flex: 1 1 200px; font-weight: 700; color: #26418F">[Status pendaftaran]</span><a href="#" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 18px; border: 1px solid #26418F; color: #26418F; font-size: 15px; font-weight: 700; text-decoration: none; border-radius: 2px; box-sizing: border-box">Daftar Ma’had ‘Aly</a></li>
+<li style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px 20px; padding: 16px 0; border-bottom: 1px solid #D9DCE4"><span style="flex: 1 1 180px; font-family: 'Markazi Text', Georgia, serif; font-size: 28px; font-weight: 600; line-height: 1.1">Darul ‘Ilmi <span style="font-family: 'Atkinson Hyperlegible Next', sans-serif; font-size: 14px; font-weight: 500; color: #4A5368">setara SMA</span></span><span style="flex: 1 1 200px; color: #4A5368">Belum dibuka</span><a href="#" style="display: inline-flex; align-items: center; min-height: 44px; font-size: 15px; font-weight: 700; text-underline-offset: 4px">Kabari saya</a></li>
+<li style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px 20px; padding: 16px 0; border-bottom: 1px solid #D9DCE4"><span style="flex: 1 1 180px; font-family: 'Markazi Text', Georgia, serif; font-size: 28px; font-weight: 600; line-height: 1.1">Mahdhon Tarbawi <span style="font-family: 'Atkinson Hyperlegible Next', sans-serif; font-size: 14px; font-weight: 500; color: #4A5368">kelas 5–6 SD</span></span><span style="flex: 1 1 200px; color: #4A5368">Belum dibuka</span><a href="#" style="display: inline-flex; align-items: center; min-height: 44px; font-size: 15px; font-weight: 700; text-underline-offset: 4px">Kabari saya</a></li>
+<li style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px 20px; padding: 16px 0; border-bottom: 1px solid #D9DCE4"><span style="flex: 1 1 180px; font-family: 'Markazi Text', Georgia, serif; font-size: 28px; font-weight: 600; line-height: 1.1">Kuttab <span style="font-family: 'Atkinson Hyperlegible Next', sans-serif; font-size: 14px; font-weight: 500; color: #4A5368">setara SD</span></span><span style="flex: 1 1 200px; color: #4A5368">Belum dibuka</span><a href="#" style="display: inline-flex; align-items: center; min-height: 44px; font-size: 15px; font-weight: 700; text-underline-offset: 4px">Kabari saya</a></li>
+<li style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px 20px; padding: 16px 0; border-bottom: 1px solid #D9DCE4"><span style="flex: 1 1 180px; font-family: 'Markazi Text', Georgia, serif; font-size: 28px; font-weight: 600; line-height: 1.1">TAUD <span style="font-family: 'Atkinson Hyperlegible Next', sans-serif; font-size: 14px; font-weight: 500; color: #4A5368">usia 4–6 tahun</span></span><span style="flex: 1 1 200px; color: #4A5368">Belum dibuka</span><a href="#" style="display: inline-flex; align-items: center; min-height: 44px; font-size: 15px; font-weight: 700; text-underline-offset: 4px">Kabari saya</a></li>
+</ul>
+</div>
+</div>
+</section>
+
+<section aria-labelledby="p-alur" style="background: #FFFFFF">
+<div style="max-width: 1280px; margin: 0 auto; padding: 80px 40px; box-sizing: border-box">
+<h2 id="p-alur" style="margin: 0 0 12px; font-family: 'Markazi Text', Georgia, serif; font-size: clamp(40px, 4.2vw, 56px); font-weight: 600; line-height: 1">Alur pendaftaran</h2>
+<p style="margin: 0 0 36px; max-width: 40em; color: #2C3448">Berlaku untuk semua jenjang. Ma’had ‘Aly memakai akun pendaftaran tersendiri dan berkasnya diverifikasi panitia sebelum tes.</p>
+<ol style="list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(230px, 100%), 1fr)); gap: 24px">
+<li style="display: flex; flex-direction: column; gap: 8px; padding-top: 16px; border-top: 2px solid #1B2235"><span style="font-family: 'Markazi Text', Georgia, serif; font-size: 44px; line-height: 0.9; color: #26418F">1</span><strong>Isi formulir online</strong><span style="font-size: 15px; color: #2C3448">Buat akun, isi data santri, dan unggah berkas.</span></li>
+<li style="display: flex; flex-direction: column; gap: 8px; padding-top: 16px; border-top: 2px solid #1B2235"><span style="font-family: 'Markazi Text', Georgia, serif; font-size: 44px; line-height: 0.9; color: #26418F">2</span><strong>Bayar biaya pendaftaran</strong><span style="font-size: 15px; color: #2C3448">Transfer ke rekening yayasan. Besarnya berbeda per jenjang, lihat tabel biaya.</span></li>
+<li style="display: flex; flex-direction: column; gap: 8px; padding-top: 16px; border-top: 2px solid #1B2235"><span style="font-family: 'Markazi Text', Georgia, serif; font-size: 44px; line-height: 0.9; color: #26418F">3</span><strong>Ikuti tes masuk di ma’had</strong><span style="font-size: 15px; color: #2C3448">Tes dilaksanakan langsung di Tenjolaya sesuai gelombang yang dipilih.</span></li>
+<li style="display: flex; flex-direction: column; gap: 8px; padding-top: 16px; border-top: 2px solid #1B2235"><span style="font-family: 'Markazi Text', Georgia, serif; font-size: 44px; line-height: 0.9; color: #26418F">4</span><strong>Daftar ulang</strong><span style="font-size: 15px; color: #2C3448">Setelah dinyatakan diterima, selesaikan daftar ulang sebelum tahun ajaran dimulai.</span></li>
+</ol>
+</div>
+</section>
+
+<section aria-labelledby="p-gelombang">
+<div style="max-width: 1280px; margin: 0 auto; padding: 80px 40px; box-sizing: border-box; display: flex; flex-wrap: wrap; gap: 32px 64px">
+<div style="flex: 1 1 300px; max-width: 420px">
+<h2 id="p-gelombang" style="margin: 0 0 12px; font-family: 'Markazi Text', Georgia, serif; font-size: clamp(40px, 4.2vw, 56px); font-weight: 600; line-height: 1">Gelombang Madrasah</h2>
+<p style="margin: 0; color: #2C3448">Tahun ajaran [2027/2028]. Gelombang yang sudah lewat otomatis disembunyikan.</p>
+</div>
+<div style="flex: 1.4 1 480px; min-width: 0; overflow-x: auto">
+<table style="width: 100%; min-width: 420px; border-collapse: collapse">
+<caption style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">Jadwal gelombang pendaftaran Madrasah</caption>
+<thead><tr><th scope="col" style="text-align: left; padding: 0 0 10px; font-size: 14px; font-weight: 500; color: #4A5368; border-bottom: 2px solid #1B2235">Gelombang</th><th scope="col" style="text-align: left; padding: 0 0 10px; font-size: 14px; font-weight: 500; color: #4A5368; border-bottom: 2px solid #1B2235">Pendaftaran dibuka</th><th scope="col" style="text-align: left; padding: 0 0 10px; font-size: 14px; font-weight: 500; color: #4A5368; border-bottom: 2px solid #1B2235">Tes masuk</th></tr></thead>
+<tbody>
+<tr><th scope="row" style="text-align: left; padding: 16px 0; border-bottom: 1px solid #D9DCE4">Pertama</th><td style="padding: 16px 0; border-bottom: 1px solid #D9DCE4">[tanggal]</td><td style="padding: 16px 0; border-bottom: 1px solid #D9DCE4">[tanggal]</td></tr>
+<tr><th scope="row" style="text-align: left; padding: 16px 0; border-bottom: 1px solid #D9DCE4">Kedua</th><td style="padding: 16px 0; border-bottom: 1px solid #D9DCE4">[tanggal]</td><td style="padding: 16px 0; border-bottom: 1px solid #D9DCE4">[tanggal]</td></tr>
+<tr><th scope="row" style="text-align: left; padding: 16px 0; border-bottom: 1px solid #D9DCE4">Ketiga</th><td style="padding: 16px 0; border-bottom: 1px solid #D9DCE4">[tanggal]</td><td style="padding: 16px 0; border-bottom: 1px solid #D9DCE4">[tanggal]</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+
+<section aria-labelledby="p-biaya" style="background: #FFFFFF">
+<div style="max-width: 1280px; margin: 0 auto; padding: 80px 40px; box-sizing: border-box">
+<h2 id="p-biaya" style="margin: 0 0 12px; font-family: 'Markazi Text', Georgia, serif; font-size: clamp(40px, 4.2vw, 56px); font-weight: 600; line-height: 1">Biaya per jenjang</h2>
+<p style="margin: 0 0 32px; max-width: 42em; color: #2C3448">Satu tabel untuk membandingkan. Jenjang yang rinciannya belum dipublikasikan bisa ditanyakan lewat WhatsApp.</p>
+<div style="overflow-x: auto">
+<table style="width: 100%; min-width: 820px; border-collapse: collapse; font-variant-numeric: tabular-nums">
+<caption style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">Perbandingan biaya per jenjang</caption>
+<thead><tr>
+<th scope="col" style="text-align: left; padding: 0 16px 12px 0; font-size: 14px; font-weight: 500; color: #4A5368; border-bottom: 2px solid #1B2235">Jenjang</th>
+<th scope="col" style="text-align: right; padding: 0 16px 12px; font-size: 14px; font-weight: 500; color: #4A5368; border-bottom: 2px solid #1B2235">Pendaftaran</th>
+<th scope="col" style="text-align: right; padding: 0 16px 12px; font-size: 14px; font-weight: 500; color: #4A5368; border-bottom: 2px solid #1B2235">Biaya masuk</th>
+<th scope="col" style="text-align: right; padding: 0 16px 12px; font-size: 14px; font-weight: 500; color: #4A5368; border-bottom: 2px solid #1B2235">Biaya tahunan</th>
+<th scope="col" style="text-align: right; padding: 0 0 12px 16px; font-size: 14px; font-weight: 500; color: #4A5368; border-bottom: 2px solid #1B2235">SPP</th>
+</tr></thead>
+<tbody>
+<tr><th scope="row" style="text-align: left; padding: 18px 16px 18px 0; border-bottom: 1px solid #D9DCE4">Madrasah</th><td style="text-align: right; padding: 18px 16px; border-bottom: 1px solid #D9DCE4; font-weight: 700">Rp400.000</td><td style="text-align: right; padding: 18px 16px; border-bottom: 1px solid #D9DCE4; font-weight: 700">Rp19.500.000</td><td style="text-align: right; padding: 18px 16px; border-bottom: 1px solid #D9DCE4; font-weight: 700">Rp3.750.000</td><td style="text-align: right; padding: 18px 0 18px 16px; border-bottom: 1px solid #D9DCE4; font-weight: 700">Rp1.650.000 <span style="font-weight: 400; color: #4A5368">[periode]</span></td></tr>
+<tr><th scope="row" style="text-align: left; padding: 18px 16px 18px 0; border-bottom: 1px solid #D9DCE4">Mahdhon Tarbawi</th><td style="text-align: right; padding: 18px 16px; border-bottom: 1px solid #D9DCE4; font-weight: 700">Rp300.000</td><td style="text-align: right; padding: 18px 16px; border-bottom: 1px solid #D9DCE4; font-weight: 700">Rp10.500.000</td><td style="text-align: right; padding: 18px 16px; border-bottom: 1px solid #D9DCE4; font-weight: 700">Rp2.800.000</td><td style="text-align: right; padding: 18px 0 18px 16px; border-bottom: 1px solid #D9DCE4; color: #4A5368">Belum dipublikasikan</td></tr>
+<tr><th scope="row" style="text-align: left; padding: 18px 16px 18px 0; border-bottom: 1px solid #D9DCE4">Ma’had ‘Aly</th><td style="text-align: right; padding: 18px 16px; border-bottom: 1px solid #D9DCE4; font-weight: 700">Rp250.000</td><td colspan="3" style="text-align: right; padding: 18px 0 18px 16px; border-bottom: 1px solid #D9DCE4; font-weight: 700; color: #26418F">Beasiswa penuh, termasuk asrama dan makan</td></tr>
+<tr><th scope="row" style="text-align: left; padding: 18px 16px 18px 0; border-bottom: 1px solid #D9DCE4">Darul ‘Ilmi</th><td colspan="4" style="text-align: right; padding: 18px 0 18px 16px; border-bottom: 1px solid #D9DCE4; color: #4A5368">Belum dipublikasikan. <a href="https://wa.me/6281938926972" style="font-weight: 700">Tanya biaya</a></td></tr>
+<tr><th scope="row" style="text-align: left; padding: 18px 16px 18px 0; border-bottom: 1px solid #D9DCE4">Kuttab</th><td colspan="4" style="text-align: right; padding: 18px 0 18px 16px; border-bottom: 1px solid #D9DCE4; color: #4A5368">Belum dipublikasikan. <a href="https://wa.me/6281938926972" style="font-weight: 700">Tanya biaya</a></td></tr>
+<tr><th scope="row" style="text-align: left; padding: 18px 16px 18px 0; border-bottom: 1px solid #D9DCE4">TAUD</th><td colspan="4" style="text-align: right; padding: 18px 0 18px 16px; border-bottom: 1px solid #D9DCE4; color: #4A5368">Belum dipublikasikan. <a href="https://wa.me/6281938926972" style="font-weight: 700">Tanya biaya</a></td></tr>
+</tbody>
+</table>
+</div>
+<p style="margin: 16px 0 0; font-size: 14px; color: #4A5368">Biaya Madrasah untuk tahun ajaran 2027/2028. Biaya masuk Madrasah tercatat sebagai daftar ulang, Mahdhon Tarbawi sebagai uang pangkal.</p>
+</div>
+</section>
+
+<section aria-labelledby="p-berkas">
+<div style="max-width: 1280px; margin: 0 auto; padding: 80px 40px; box-sizing: border-box">
+<h2 id="p-berkas" style="margin: 0 0 32px; font-family: 'Markazi Text', Georgia, serif; font-size: clamp(40px, 4.2vw, 56px); font-weight: 600; line-height: 1">Berkas yang disiapkan</h2>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(380px, 100%), 1fr)); gap: 32px 64px">
+<div>
+<h3 style="margin: 0 0 8px; font-size: 18px">Madrasah dan jenjang lain</h3>
+<ul style="margin: 0; padding: 0 0 0 20px; color: #2C3448"><li>[Daftar berkas dari panitia PSB]</li></ul>
+</div>
+<div>
+<h3 style="margin: 0 0 8px; font-size: 18px">Ma’had ‘Aly</h3>
+<ul style="margin: 0; padding: 0 0 0 20px; color: #2C3448; display: flex; flex-direction: column; gap: 4px">
+<li>Fotokopi KTP dan Kartu Keluarga</li>
+<li>Fotokopi ijazah SMA atau sederajat; siswa kelas XII boleh menyusul</li>
+<li>Surat keterangan sehat dari dokter</li>
+<li>Surat izin orang tua</li>
+<li>Pas foto 3×4 sebanyak 2 lembar</li>
+<li>Bukti transfer biaya pendaftaran</li>
+</ul>
+<p style="margin: 12px 0 0; font-size: 15px; color: #4A5368">Syarat: lulusan SMA atau sederajat, usia maksimal 20 tahun, belum menikah dan siap tidak menikah selama masa studi.</p>
+</div>
+</div>
+</div>
+</section>
+
+<section aria-labelledby="p-faq" style="background: #FFFFFF">
+<div style="max-width: 1280px; margin: 0 auto; padding: 80px 40px; box-sizing: border-box; display: flex; flex-wrap: wrap; gap: 32px 64px">
+<h2 id="p-faq" style="flex: 1 1 300px; max-width: 420px; margin: 0; font-family: 'Markazi Text', Georgia, serif; font-size: clamp(40px, 4.2vw, 56px); font-weight: 600; line-height: 1">Pertanyaan yang sering diajukan</h2>
+<div style="flex: 1.4 1 480px; min-width: 0; border-top: 2px solid #1B2235">
+<details style="border-bottom: 1px solid #D9DCE4"><summary style="display: flex; justify-content: space-between; align-items: center; gap: 16px; min-height: 64px; cursor: pointer; font-weight: 700">Di mana tes masuk dilaksanakan?<span aria-hidden="true" class="faq-plus" style="font-size: 24px; font-weight: 400; transition: transform .15s">+</span></summary><p style="margin: 0 0 20px; color: #2C3448">Tes masuk dilaksanakan langsung di Ma’had Tahfizh Al Yusro, Desa Gunung Mulya, Tenjolaya, Kabupaten Bogor, sesuai jadwal gelombang.</p></details>
+<details style="border-bottom: 1px solid #D9DCE4"><summary style="display: flex; justify-content: space-between; align-items: center; gap: 16px; min-height: 64px; cursor: pointer; font-weight: 700">Anak saya sudah punya hafalan. Apakah dihitung?<span aria-hidden="true" class="faq-plus" style="font-size: 24px; font-weight: 400; transition: transform .15s">+</span></summary><p style="margin: 0 0 20px; color: #2C3448">Ya. Hafalan santri baru atau pindahan yang urutannya berbeda dikonversi sesuai target ma’had.</p></details>
+<details style="border-bottom: 1px solid #D9DCE4"><summary style="display: flex; justify-content: space-between; align-items: center; gap: 16px; min-height: 64px; cursor: pointer; font-weight: 700">Bagaimana orang tua memantau hafalan anak?<span aria-hidden="true" class="faq-plus" style="font-size: 24px; font-weight: 400; transition: transform .15s">+</span></summary><p style="margin: 0 0 20px; color: #2C3448">Setiap setoran dicatat di buku mutaba’ah, direkap tiap bulan, dan bukunya diserahkan kepada wali santri saat kenaikan kelas sebagai laporan pencapaian hafalan.</p></details>
+<details style="border-bottom: 1px solid #D9DCE4"><summary style="display: flex; justify-content: space-between; align-items: center; gap: 16px; min-height: 64px; cursor: pointer; font-weight: 700">Berapa santri dalam satu halaqah?<span aria-hidden="true" class="faq-plus" style="font-size: 24px; font-weight: 400; transition: transform .15s">+</span></summary><p style="margin: 0 0 20px; color: #2C3448">Idealnya delapan santri untuk satu muhaffizh, paling banyak dua belas. Muhaffizh juga menjadi musyrif, pengasuh santri di halaqahnya.</p></details>
+<details style="border-bottom: 1px solid #D9DCE4"><summary style="display: flex; justify-content: space-between; align-items: center; gap: 16px; min-height: 64px; cursor: pointer; font-weight: 700">Apakah ada program untuk santri putri?<span aria-hidden="true" class="faq-plus" style="font-size: 24px; font-weight: 400; transition: transform .15s">+</span></summary><p style="margin: 0 0 20px; color: #2C3448">Ada. Ma’had memiliki asrama, kelas, dan gedung terpisah untuk santri putra dan putri, dengan program tahfizh putra dan putri masing-masing.</p></details>
+</div>
+</div>
+</section>
+
+<section aria-label="Kontak pendaftaran" style="background: #1B2235; color: #F3F5FA">
+<div style="max-width: 1280px; margin: 0 auto; padding: 64px 40px; box-sizing: border-box; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 24px 48px">
+<p style="margin: 0; max-width: 18em; font-family: 'Markazi Text', Georgia, serif; font-size: clamp(32px, 3.4vw, 44px); font-weight: 600; line-height: 1.05; color: #FFFFFF">Masih ragu memilih jenjang? Tanyakan langsung.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 12px">
+<a href="https://wa.me/6281938926972" style="display: inline-flex; align-items: center; min-height: 48px; padding: 0 22px; background: #FFFFFF; color: #1B2235; font-weight: 700; text-decoration: none; border-radius: 2px">WhatsApp 0819-3892-6972</a>
+<a href="#" style="display: inline-flex; align-items: center; min-height: 48px; padding: 0 20px; box-sizing: border-box; border: 1px solid #C9D1E6; color: #FFFFFF; font-weight: 700; text-decoration: none; border-radius: 2px">Unduh brosur Madrasah (PDF)</a>
+</div>
+</div>
+</section>
+<footer style="background: #1B2235; color: #AEB6CF; border-top: 1px solid #333D5C"><div style="max-width: 1280px; margin: 0 auto; padding: 24px 40px; box-sizing: border-box; font-size: 14px">© 2026 Ma’had Tahfizh Al Yusro. [Footer lanskap Gunung Salak, sama dengan beranda]</div></footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":3700}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

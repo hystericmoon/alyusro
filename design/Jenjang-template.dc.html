@@ -1,0 +1,364 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<title>Halaman jenjang</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;500;700&amp;family=Markazi+Text:wght@400;500;600;700&amp;display=swap">
+<style>
+body{margin:0}
+a{color:#26418F}a:hover{color:#1B2235}
+a:focus-visible,button:focus-visible{outline:2px solid #26418F;outline-offset:2px;box-shadow:0 0 0 2px #FFFFFF}
+</style>
+</helmet>
+<div style="background: #F7F7F4; color: #1B2235; font-family: 'Atkinson Hyperlegible Next', 'Segoe UI', Arial, sans-serif; font-size: 17px; line-height: 1.6">
+
+<header style="border-bottom: 1px solid #D9DCE4">
+<div style="max-width: 1280px; margin: 0 auto; padding: 16px 40px; box-sizing: border-box; display: flex; flex-wrap: wrap; align-items: center; gap: 12px 32px">
+<a href="Beranda-gabungan.dc.html" style="display: flex; align-items: center; gap: 12px; min-height: 44px; margin-right: auto; color: #1B2235; text-decoration: none">
+<span aria-hidden="true" style="width: 44px; height: 44px; flex: none; box-sizing: border-box; border: 1.5px dashed #8A93A8; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; line-height: 1; color: #4A5368">logo</span>
+<span style="display: flex; flex-direction: column; gap: 3px">
+<span style="font-family: 'Markazi Text', Georgia, serif; font-size: 27px; font-weight: 600; line-height: 1">Ma’had Tahfizh Al Yusro</span>
+<span style="font-size: 13px; line-height: 1.2; color: #4A5368">Tenjolaya, Kabupaten Bogor</span>
+</span>
+</a>
+<nav aria-label="Menu utama">
+<ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0 4px">
+<li><button type="button" aria-expanded="false" style="display: flex; align-items: center; gap: 6px; min-height: 44px; padding: 0 10px; background: transparent; border: 0; font: inherit; font-size: 16px; font-weight: 500; color: #1B2235; cursor: pointer">Profil<svg aria-hidden="true" width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 4.5 6 8l3.5-3.5"></path></svg></button></li>
+<li><button type="button" aria-expanded="false" aria-current="true" style="display: flex; align-items: center; gap: 6px; min-height: 44px; padding: 0 10px; background: transparent; border: 0; border-bottom: 2px solid #26418F; font: inherit; font-size: 16px; font-weight: 700; color: #26418F; cursor: pointer">Jenjang<svg aria-hidden="true" width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 4.5 6 8l3.5-3.5"></path></svg></button></li>
+<li><button type="button" aria-expanded="false" style="display: flex; align-items: center; gap: 6px; min-height: 44px; padding: 0 10px; background: transparent; border: 0; font: inherit; font-size: 16px; font-weight: 500; color: #1B2235; cursor: pointer">Kurikulum<svg aria-hidden="true" width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 4.5 6 8l3.5-3.5"></path></svg></button></li>
+<li><button type="button" aria-expanded="false" style="display: flex; align-items: center; gap: 6px; min-height: 44px; padding: 0 10px; background: transparent; border: 0; font: inherit; font-size: 16px; font-weight: 500; color: #1B2235; cursor: pointer">Kajian &amp; artikel<svg aria-hidden="true" width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 4.5 6 8l3.5-3.5"></path></svg></button></li>
+</ul>
+</nav>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px 20px">
+<a href="#" style="display: inline-flex; align-items: center; min-height: 44px; font-size: 16px; font-weight: 500; color: #1B2235; text-underline-offset: 4px">Masuk wali &amp; asatidz</a>
+<a href="#" style="display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 22px; background: #26418F; color: #FFFFFF; font-size: 16px; font-weight: 700; text-decoration: none; border-radius: 2px">Daftar santri baru</a>
+</div>
+</div>
+</header>
+
+<section aria-labelledby="j-title" style="max-width: 1280px; margin: 0 auto; padding: 32px 40px 72px; box-sizing: border-box">
+<nav aria-label="Breadcrumb" style="margin-bottom: 40px; font-size: 15px">
+<ol style="list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 4px 10px; color: #4A5368">
+<li><a href="Beranda-gabungan.dc.html" style="text-underline-offset: 3px">Beranda</a></li>
+<li aria-hidden="true">/</li>
+<li><a href="#" style="text-underline-offset: 3px">Jenjang</a></li>
+<li aria-hidden="true">/</li>
+<li aria-current="page" style="color: #1B2235">{{lv.name}}</li>
+</ol>
+</nav>
+<div style="display: flex; flex-wrap: wrap; align-items: flex-start; gap: 48px 64px">
+<div style="flex: 1 1 420px; max-width: 640px; display: flex; flex-direction: column; gap: 22px">
+<div style="display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 20px">
+<h1 id="j-title" style="margin: 0; font-family: 'Markazi Text', Georgia, serif; font-size: clamp(56px, 7vw, 104px); font-weight: 600; line-height: 0.92">{{lv.name}}</h1>
+<sc-if value="{{lv.hasAr}}" hint-placeholder-val="{{true}}"><span lang="ar" dir="rtl" style="font-family: 'Markazi Text', Georgia, serif; font-size: 44px; line-height: 1.1; color: #26418F">{{lv.ar}}</span></sc-if>
+</div>
+<p style="margin: 0; max-width: 34em; font-size: 19px; line-height: 1.6; color: #2C3448; text-wrap: pretty">{{lv.intro}}</p>
+<div style="display: flex; flex-wrap: wrap; gap: 12px">
+<sc-if value="{{lv.psb}}" hint-placeholder-val="{{true}}"><a href="#pendaftaran" style="display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 22px; background: #26418F; color: #FFFFFF; font-size: 16px; font-weight: 700; text-decoration: none; border-radius: 2px">Daftar {{lv.name}}</a></sc-if>
+<a href="https://wa.me/6281938926972" style="display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 48px; padding: 0 20px; box-sizing: border-box; background: #FFFFFF; color: #1B2235; border: 1px solid #1B2235; font-size: 16px; font-weight: 700; text-decoration: none; border-radius: 2px"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8.5 8.5 0 0 1-12.6 7.4L3 21l1.6-5.2A8.5 8.5 0 1 1 21 12z"></path></svg>Tanya tentang {{lv.name}}</a>
+</div>
+</div>
+<dl style="flex: 1 1 360px; min-width: 0; margin: 0; background: #FFFFFF; border: 1px solid #D9DCE4; padding: 8px 28px; box-sizing: border-box">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 16px; padding: 16px 0; border-bottom: 1px solid #E3E6EE"><dt style="color: #4A5368">Setara</dt><dd style="margin: 0; font-weight: 700; text-align: right">{{lv.setara}}</dd></div>
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 16px; padding: 16px 0; border-bottom: 1px solid #E3E6EE"><dt style="color: #4A5368">{{lv.lamaLabel}}</dt><dd style="margin: 0; font-weight: 700; text-align: right">{{lv.lama}}</dd></div>
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 16px; padding: 16px 0; border-bottom: 1px solid #E3E6EE"><dt style="color: #4A5368">Target hafalan</dt><dd style="margin: 0; font-weight: 700; text-align: right">{{lv.target}}</dd></div>
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 16px; padding: 16px 0; border-bottom: 1px solid #E3E6EE"><dt style="color: #4A5368">Biaya pendaftaran</dt><dd style="margin: 0; font-weight: 700; text-align: right">{{lv.regFee}}</dd></div>
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 4px 16px; padding: 16px 0"><dt style="color: #4A5368">Pendaftaran</dt><dd style="margin: 0; font-weight: 700; text-align: right; color: {{lv.statusColor}}">{{lv.status}}</dd></div>
+</dl>
+</div>
+</section>
+
+<nav aria-label="Isi halaman" style="position: sticky; top: 0; z-index: 3; background: #F7F7F4; border-top: 1px solid #D9DCE4; border-bottom: 1px solid #D9DCE4">
+<ul style="max-width: 1280px; margin: 0 auto; padding: 0 30px; box-sizing: border-box; list-style: none; display: flex; flex-wrap: wrap; gap: 0 4px">
+<li><a href="#hafalan" style="display: inline-flex; align-items: center; min-height: 48px; padding: 0 10px; font-size: 15px; font-weight: 700; color: #1B2235; text-decoration: none">Hafalan</a></li>
+<li><a href="#lulusan" style="display: inline-flex; align-items: center; min-height: 48px; padding: 0 10px; font-size: 15px; font-weight: 700; color: #1B2235; text-decoration: none">Target lulusan</a></li>
+<li><a href="#biaya" style="display: inline-flex; align-items: center; min-height: 48px; padding: 0 10px; font-size: 15px; font-weight: 700; color: #1B2235; text-decoration: none">Biaya</a></li>
+<li><a href="#pendaftaran" style="display: inline-flex; align-items: center; min-height: 48px; padding: 0 10px; font-size: 15px; font-weight: 700; color: #1B2235; text-decoration: none">Pendaftaran</a></li>
+<li><a href="#pengajar" style="display: inline-flex; align-items: center; min-height: 48px; padding: 0 10px; font-size: 15px; font-weight: 700; color: #1B2235; text-decoration: none">Pengajar</a></li>
+</ul>
+</nav>
+
+<section id="hafalan" aria-labelledby="j-hafalan" style="background: #FFFFFF">
+<div style="max-width: 1280px; margin: 0 auto; padding: 80px 40px; box-sizing: border-box; display: flex; flex-wrap: wrap; align-items: flex-start; gap: 40px 64px">
+<div style="flex: 1 1 320px; max-width: 420px; display: flex; flex-direction: column; gap: 16px">
+<h2 id="j-hafalan" style="margin: 0; font-family: 'Markazi Text', Georgia, serif; font-size: clamp(40px, 4.2vw, 56px); font-weight: 600; line-height: 1">Target hafalan: {{lv.target}}</h2>
+<p style="margin: 0; color: #2C3448">{{lv.targetNote}}</p>
+<ul style="list-style: none; margin: 8px 0 0; padding: 0; border-top: 1px solid #D9DCE4">
+<sc-for list="{{lv.years}}" as="yr" hint-placeholder-count="3">
+<li style="display: flex; align-items: center; gap: 12px; padding: 12px 0; border-bottom: 1px solid #D9DCE4">
+<span aria-hidden="true" style="width: 14px; height: 14px; flex: none; background: {{yr.c}}; box-shadow: inset 0 0 0 1px rgba(27, 34, 53, .3)"></span>
+<span style="font-weight: 700; flex: 1 1 auto">{{yr.k}}</span>
+<span style="color: #2C3448">{{yr.v}}</span>
+</li>
+</sc-for>
+</ul>
+<a href="#" style="align-self: flex-start; display: inline-flex; align-items: center; min-height: 44px; font-weight: 700; text-underline-offset: 4px">Lihat kurikulum tahfizh</a>
+</div>
+<div style="flex: 1.4 1 520px; min-width: 0">
+<sc-if value="{{lv.hasMap}}" hint-placeholder-val="{{true}}">
+<div role="img" aria-label="{{lv.mapLabel}}" style="display: grid; grid-template-columns: repeat(10, minmax(0, 1fr)); gap: 6px">
+<sc-for list="{{lv.cells}}" as="c" hint-placeholder-count="30">
+<div style="aspect-ratio: 1 / 1; display: flex; align-items: center; justify-content: center; border-radius: 2px; font-size: 16px; font-weight: 700; font-variant-numeric: tabular-nums; background: {{c.bg}}; color: {{c.fg}}">{{c.n}}</div>
+</sc-for>
+</div>
+</sc-if>
+<sc-if value="{{lv.countOnly}}" hint-placeholder-val="{{false}}">
+<div style="display: flex; flex-direction: column; gap: 14px; padding: 28px; border: 1px solid #D9DCE4; box-sizing: border-box">
+<div aria-hidden="true" style="display: flex; gap: 4px; height: 56px">
+<sc-for list="{{lv.tickOn}}" as="t" hint-placeholder-count="6"><span style="flex: 1 1 0; background: #26418F"></span></sc-for>
+<sc-for list="{{lv.tickOff}}" as="t" hint-placeholder-count="24"><span style="flex: 1 1 0; background: #E3E6EE"></span></sc-for>
+</div>
+<p style="margin: 0; font-size: 15px; color: #2C3448">{{lv.count}} dari 30 juz. Urutan juz untuk jenjang ini: [isi dari bidang tahfizh].</p>
+</div>
+</sc-if>
+</div>
+</div>
+</section>
+
+<section id="lulusan" aria-labelledby="j-lulusan">
+<div style="max-width: 1280px; margin: 0 auto; padding: 80px 40px; box-sizing: border-box">
+<h2 id="j-lulusan" style="margin: 0 0 32px; font-family: 'Markazi Text', Georgia, serif; font-size: clamp(40px, 4.2vw, 56px); font-weight: 600; line-height: 1">Lulusan {{lv.name}} diharapkan</h2>
+<ul style="list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(340px, 100%), 1fr)); gap: 0 48px; border-top: 2px solid #1B2235">
+<sc-for list="{{lv.outcomes}}" as="o" hint-placeholder-count="7">
+<li style="padding: 16px 0; border-bottom: 1px solid #D9DCE4; color: #1B2235; text-wrap: pretty">{{o}}</li>
+</sc-for>
+</ul>
+</div>
+</section>
+
+<section id="biaya" aria-labelledby="j-biaya" style="background: #FFFFFF">
+<div style="max-width: 1280px; margin: 0 auto; padding: 80px 40px; box-sizing: border-box; display: flex; flex-wrap: wrap; gap: 32px 64px">
+<div style="flex: 1 1 300px; max-width: 420px; display: flex; flex-direction: column; gap: 12px">
+<h2 id="j-biaya" style="margin: 0; font-family: 'Markazi Text', Georgia, serif; font-size: clamp(40px, 4.2vw, 56px); font-weight: 600; line-height: 1">Biaya</h2>
+<sc-if value="{{lv.hasFees}}" hint-placeholder-val="{{true}}"><p style="margin: 0; color: #2C3448">{{lv.feeNote}}</p></sc-if>
+</div>
+<div style="flex: 1.4 1 480px; min-width: 0">
+<sc-if value="{{lv.hasFees}}" hint-placeholder-val="{{true}}">
+<table style="width: 100%; border-collapse: collapse; font-size: 17px">
+<caption style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">Rincian biaya {{lv.name}}</caption>
+<thead><tr><th scope="col" style="text-align: left; padding: 0 0 10px; font-size: 14px; color: #4A5368; font-weight: 500; border-bottom: 2px solid #1B2235">Komponen</th><th scope="col" style="text-align: right; padding: 0 0 10px; font-size: 14px; color: #4A5368; font-weight: 500; border-bottom: 2px solid #1B2235">Jumlah</th></tr></thead>
+<tbody>
+<sc-for list="{{lv.fees}}" as="f" hint-placeholder-count="4">
+<tr><th scope="row" style="text-align: left; padding: 16px 0; font-weight: 500; border-bottom: 1px solid #D9DCE4">{{f.k}}</th><td style="text-align: right; padding: 16px 0; font-weight: 700; font-variant-numeric: tabular-nums; border-bottom: 1px solid #D9DCE4">{{f.v}}</td></tr>
+</sc-for>
+</tbody>
+</table>
+</sc-if>
+<sc-if value="{{lv.noFees}}" hint-placeholder-val="{{false}}">
+<div style="display: flex; flex-direction: column; align-items: flex-start; gap: 14px; padding: 28px; border: 1px dashed #8A93A8">
+<p style="margin: 0; font-family: 'Markazi Text', Georgia, serif; font-size: 28px; font-weight: 600; line-height: 1.15">Rincian biaya {{lv.name}} belum dipublikasikan</p>
+<p style="margin: 0; color: #2C3448">Tim pendaftaran bisa menjelaskan biaya pendaftaran, daftar ulang, dan biaya tahunan lewat WhatsApp.</p>
+<a href="https://wa.me/6281938926972" style="display: inline-flex; align-items: center; min-height: 48px; padding: 0 20px; background: #26418F; color: #FFFFFF; font-size: 16px; font-weight: 700; text-decoration: none; border-radius: 2px">Tanya biaya lewat WhatsApp</a>
+</div>
+</sc-if>
+</div>
+</div>
+</section>
+
+<section id="pendaftaran" aria-labelledby="j-daftar" style="background: #1B2235; color: #F3F5FA">
+<div style="max-width: 1280px; margin: 0 auto; padding: 80px 40px; box-sizing: border-box">
+<sc-if value="{{lv.psb}}" hint-placeholder-val="{{true}}">
+<div style="display: flex; flex-wrap: wrap; gap: 40px 64px">
+<div style="flex: 1 1 340px; max-width: 460px; display: flex; flex-direction: column; gap: 16px">
+<h2 id="j-daftar" style="margin: 0; font-family: 'Markazi Text', Georgia, serif; font-size: clamp(40px, 4.2vw, 56px); font-weight: 600; line-height: 1; color: #FFFFFF">Pendaftaran tahun ajaran [2027/2028]</h2>
+<p style="margin: 0; color: #C9D1E6">Tes masuk dilaksanakan langsung di Ma’had Tahfizh Al Yusro. Pilih gelombang yang paling dekat.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 12px; margin-top: 8px">
+<a href="#" style="display: inline-flex; align-items: center; min-height: 48px; padding: 0 22px; background: #FFFFFF; color: #1B2235; font-size: 16px; font-weight: 700; text-decoration: none; border-radius: 2px">Isi formulir pendaftaran</a>
+<a href="#" style="display: inline-flex; align-items: center; min-height: 48px; padding: 0 20px; box-sizing: border-box; border: 1px solid #C9D1E6; color: #FFFFFF; font-size: 16px; font-weight: 700; text-decoration: none; border-radius: 2px">Unduh brosur (PDF)</a>
+</div>
+</div>
+<div style="flex: 1.4 1 480px; min-width: 0; display: flex; flex-direction: column; gap: 32px">
+<ol style="list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr)); gap: 16px">
+<li style="display: flex; flex-direction: column; gap: 6px; padding-top: 14px; border-top: 2px solid #F3F5FA"><span style="font-family: 'Markazi Text', Georgia, serif; font-size: 32px; line-height: 1; color: #AEB6CF">1</span><span>Isi formulir pendaftaran online</span></li>
+<li style="display: flex; flex-direction: column; gap: 6px; padding-top: 14px; border-top: 2px solid #F3F5FA"><span style="font-family: 'Markazi Text', Georgia, serif; font-size: 32px; line-height: 1; color: #AEB6CF">2</span><span>Bayar biaya pendaftaran {{lv.regFee}}</span></li>
+<li style="display: flex; flex-direction: column; gap: 6px; padding-top: 14px; border-top: 2px solid #F3F5FA"><span style="font-family: 'Markazi Text', Georgia, serif; font-size: 32px; line-height: 1; color: #AEB6CF">3</span><span>Ikuti tes masuk di ma’had sesuai gelombang</span></li>
+<li style="display: flex; flex-direction: column; gap: 6px; padding-top: 14px; border-top: 2px solid #F3F5FA"><span style="font-family: 'Markazi Text', Georgia, serif; font-size: 32px; line-height: 1; color: #AEB6CF">4</span><span>Daftar ulang setelah diterima</span></li>
+</ol>
+<table style="width: 100%; border-collapse: collapse">
+<caption style="text-align: left; padding-bottom: 10px; font-weight: 700; color: #FFFFFF">Jadwal gelombang</caption>
+<thead><tr>
+<th scope="col" style="text-align: left; padding: 0 0 10px; font-size: 14px; font-weight: 500; color: #AEB6CF; border-bottom: 1px solid #44507A">Gelombang</th>
+<th scope="col" style="text-align: left; padding: 0 0 10px; font-size: 14px; font-weight: 500; color: #AEB6CF; border-bottom: 1px solid #44507A">Pendaftaran dibuka</th>
+<th scope="col" style="text-align: left; padding: 0 0 10px; font-size: 14px; font-weight: 500; color: #AEB6CF; border-bottom: 1px solid #44507A">Tes masuk</th>
+</tr></thead>
+<tbody>
+<tr><th scope="row" style="text-align: left; padding: 14px 0; font-weight: 700; border-bottom: 1px solid #333D5C">Pertama</th><td style="padding: 14px 0; border-bottom: 1px solid #333D5C">[tanggal]</td><td style="padding: 14px 0; border-bottom: 1px solid #333D5C">[tanggal]</td></tr>
+<tr><th scope="row" style="text-align: left; padding: 14px 0; font-weight: 700; border-bottom: 1px solid #333D5C">Kedua</th><td style="padding: 14px 0; border-bottom: 1px solid #333D5C">[tanggal]</td><td style="padding: 14px 0; border-bottom: 1px solid #333D5C">[tanggal]</td></tr>
+<tr><th scope="row" style="text-align: left; padding: 14px 0; font-weight: 700; border-bottom: 1px solid #333D5C">Ketiga</th><td style="padding: 14px 0; border-bottom: 1px solid #333D5C">[tanggal]</td><td style="padding: 14px 0; border-bottom: 1px solid #333D5C">[tanggal]</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{lv.closed}}" hint-placeholder-val="{{false}}">
+<div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 24px 64px">
+<div style="flex: 1 1 420px; max-width: 640px; display: flex; flex-direction: column; gap: 14px">
+<h2 id="j-daftar" style="margin: 0; font-family: 'Markazi Text', Georgia, serif; font-size: clamp(40px, 4.2vw, 56px); font-weight: 600; line-height: 1; color: #FFFFFF">Pendaftaran {{lv.name}} belum dibuka</h2>
+<p style="margin: 0; color: #C9D1E6">Masuk grup info Al Yusro untuk kabar saat pendaftaran berikutnya dibuka, atau tanyakan kuota lewat WhatsApp.</p>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 12px">
+<a href="#" style="display: inline-flex; align-items: center; min-height: 48px; padding: 0 22px; background: #FFFFFF; color: #1B2235; font-size: 16px; font-weight: 700; text-decoration: none; border-radius: 2px">Masuk grup info</a>
+<a href="https://wa.me/6281938926972" style="display: inline-flex; align-items: center; min-height: 48px; padding: 0 20px; box-sizing: border-box; border: 1px solid #C9D1E6; color: #FFFFFF; font-size: 16px; font-weight: 700; text-decoration: none; border-radius: 2px">Tanya lewat WhatsApp</a>
+</div>
+</div>
+</sc-if>
+</div>
+</section>
+
+<section id="pengajar" aria-labelledby="j-pengajar">
+<div style="max-width: 1280px; margin: 0 auto; padding: 80px 40px; box-sizing: border-box; display: flex; flex-wrap: wrap; gap: 32px 64px">
+<div style="flex: 1 1 300px; max-width: 420px; display: flex; flex-direction: column; gap: 6px">
+<h2 id="j-pengajar" style="margin: 0 0 10px; font-family: 'Markazi Text', Georgia, serif; font-size: clamp(40px, 4.2vw, 56px); font-weight: 600; line-height: 1">Pengajar</h2>
+<p style="margin: 0; font-size: 15px; color: #4A5368">{{lv.headRole}}</p>
+<p style="margin: 0; font-family: 'Markazi Text', Georgia, serif; font-size: 30px; font-weight: 600; line-height: 1.15">{{lv.head}}</p>
+</div>
+<p style="flex: 1.4 1 480px; margin: 0; font-size: 19px; line-height: 1.6; color: #2C3448; text-wrap: pretty">Pengajar ma’had lulusan Universitas Islam Madinah, Universitas Internasional Afrika Sudan, Universitas Al-Azhar Mesir, LIPIA Jakarta, STIBA Ar Raayah, universitas di Yaman, STDI Imam Syafi’i, dan lainnya. Muhaffizh diutamakan yang telah menyelesaikan hafalan 30 juz secara mutqin.</p>
+</div>
+</section>
+
+<nav aria-label="Jenjang lain" style="border-top: 1px solid #D9DCE4">
+<div style="max-width: 1280px; margin: 0 auto; padding: 32px 40px 56px; box-sizing: border-box; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px">
+<sc-if value="{{hasPrev}}" hint-placeholder-val="{{true}}">
+<button type="button" onClick="{{goPrev}}" style="display: flex; flex-direction: column; align-items: flex-start; gap: 2px; min-height: 64px; padding: 12px 0; background: transparent; border: 0; font: inherit; color: #1B2235; cursor: pointer; text-align: left"><span style="font-size: 14px; color: #4A5368">Jenjang sebelumnya</span><span style="font-family: 'Markazi Text', Georgia, serif; font-size: 30px; font-weight: 600; line-height: 1.1; text-decoration: underline; text-underline-offset: 4px">{{prevName}}</span></button>
+</sc-if>
+<sc-if value="{{hasNext}}" hint-placeholder-val="{{true}}">
+<button type="button" onClick="{{goNext}}" style="margin-left: auto; display: flex; flex-direction: column; align-items: flex-end; gap: 2px; min-height: 64px; padding: 12px 0; background: transparent; border: 0; font: inherit; color: #1B2235; cursor: pointer; text-align: right"><span style="font-size: 14px; color: #4A5368">Jenjang berikutnya</span><span style="font-family: 'Markazi Text', Georgia, serif; font-size: 30px; font-weight: 600; line-height: 1.1; text-decoration: underline; text-underline-offset: 4px">{{nextName}}</span></button>
+</sc-if>
+</div>
+</nav>
+
+<footer style="background: #1B2235; color: #C9D1E6">
+<div style="max-width: 1280px; margin: 0 auto; padding: 32px 40px; box-sizing: border-box; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; font-size: 14px">
+<span>© 2026 Ma’had Tahfizh Al Yusro. Desa Gunung Mulya, Tenjolaya, Kabupaten Bogor.</span>
+<span>[Footer lanskap Gunung Salak, sama dengan beranda]</span>
+</div>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"jenjang":{"editor":"enum","options":["TAUD","Kuttab","Mahdhon Tarbawi","Madrasah","Darul ‘Ilmi","Ma’had ‘Aly"],"default":"Madrasah"},"showArabic":{"editor":"boolean","default":true},"$preview":{"width":1440,"height":3500}}'>
+class Component extends DCLogic {
+  renderVals() {
+    var self = this;
+    var ORDER = ['TAUD', 'Kuttab', 'Mahdhon Tarbawi', 'Madrasah', 'Darul ‘Ilmi', 'Ma’had ‘Aly'];
+    var range = function (a, b) { var r = []; var s = a <= b ? 1 : -1; for (var i = a; i !== b + s; i += s) r.push(i); return r; };
+    var syariOutcomes = function (hafalan) {
+      return [
+        'Membaca Al-Qur’an sesuai ilmu tajwid',
+        hafalan,
+        'Memahami dan mengamalkan ilmu syar’i sesuai pemahaman salafush shalih',
+        'Berakhlak mulia dan beradab Islami',
+        'Mampu berbahasa Arab secara lisan dan tulisan',
+        'Menguasai dasar-dasar ilmu komputer dan IT',
+        'Memiliki kompetensi kurikulum nasional jenjang kesetaraan'
+      ];
+    };
+    var D = {
+      'TAUD': {
+        ar: '', setara: 'Setara TK', lamaLabel: 'Usia', lama: '4–6 tahun', target: 'Juz 30',
+        intro: 'Pendidikan anak usia 4–6 tahun agar tumbuh mencintai Al-Qur’an, shalih dan shalihah, berakhlak mulia, cerdas, sehat, dan ceria.',
+        targetNote: 'Juz 30 menjadi juz pertama yang dihafal, sama seperti di semua jenjang Al Yusro.',
+        years: [{ k: 'Selama TAUD', v: 'Juz 30', c: '#26418F', juz: [30] }],
+        outcomes: ['Memiliki dasar aqidah yang kuat dan benar', 'Mampu membaca Al-Qur’an', 'Menghafal juz 30', 'Terbiasa dengan adab Islami dan menghafal doa sehari-hari', 'Mengenal praktik wudhu dan shalat', 'Mampu membaca dan menulis huruf Latin serta berhitung dasar'],
+        fees: [], feeNote: '', psb: false, head: '[Nama kepala TAUD]', headRole: 'Kepala TAUD'
+      },
+      'Kuttab': {
+        ar: 'الكتّاب', setara: 'Setara SD', lamaLabel: 'Lama belajar', lama: '6 tahun', target: 'Minimal 6 juz', count: 6,
+        intro: 'Pendidikan dasar setara SD selama enam tahun, dengan prioritas tahfizh Al-Qur’an dan bahasa Arab serta pelajaran umum sesuai ketentuan pemerintah.',
+        targetNote: 'Santri Kuttab menyelesaikan minimal 6 juz sebelum lulus.',
+        years: [{ k: 'Selama Kuttab', v: 'Minimal 6 juz', c: '#26418F' }],
+        outcomes: ['Hafal Al-Qur’an minimal 6 juz', 'Hafal hadits-hadits pilihan', 'Memahami ilmu syar’i dasar: aqidah, hadits, fiqh, dan lainnya', 'Menguasai bahasa Arab dasar secara lisan, tulisan, dan bacaan', 'Menguasai doa harian dan praktik ibadah dengan benar', 'Memahami pelajaran umum seperti Bahasa Indonesia, Bahasa Inggris, Matematika, IPA, dan IPS'],
+        fees: [], feeNote: '', psb: false, head: 'Elan Susanto, S.Pd.', headRole: 'Kepala Kuttab Al Yusro'
+      },
+      'Mahdhon Tarbawi': {
+        ar: 'المحضن التربوي', setara: 'Setingkat kelas 5–6 SD', lamaLabel: 'Lama program', lama: '[lama program]', target: 'Minimal 3 juz',
+        intro: 'Program tahfizh dan bahasa Arab setingkat kelas 5–6 SD, untuk membentengi anak dari pengaruh pergaulan bebas, dengan tahsin, pendidikan diniyyah, praktik ibadah, dan bimbingan belajar sekolah.',
+        targetNote: 'Tiga juz secara mutqin, ditambah bacaan shalat, adzan, dzikir pagi dan petang, doa harian, dan hadits pilihan.',
+        years: [{ k: 'Selama program', v: 'Juz 30, 29, dan 28', c: '#26418F', juz: [30, 29, 28] }],
+        outcomes: ['Aqidah, ibadah, dan karakter sesuai Al-Qur’an dan As-Sunnah', 'Membaca Al-Qur’an dengan baik dan benar serta menguasai tajwid', 'Berbahasa Arab dasar secara lisan dan tulisan', 'Terbiasa dengan akhlak mulia dan adab Islami', 'Terbiasa berdoa, berdzikir, dan shalat lima waktu tepat waktu di masjid', 'Menghafal hadits-hadits pilihan', 'Mandiri, kreatif, berprestasi, dan lulus sekolah formal dengan nilai memuaskan'],
+        fees: [{ k: 'Biaya pendaftaran', v: 'Rp300.000' }, { k: 'Uang pangkal', v: 'Rp10.500.000' }, { k: 'Daftar ulang tahunan', v: 'Rp2.800.000' }],
+        feeNote: 'Berlaku untuk tahun ajaran [tahun].', psb: false, head: '[Nama kepala program]', headRole: 'Kepala Mahdhon Tarbawi'
+      },
+      'Madrasah': {
+        ar: 'المدرسة', setara: 'Setara SMP', lamaLabel: 'Lama belajar', lama: '3 tahun, kelas VII–IX', target: '20 juz',
+        intro: 'Pendidikan pesantren setara SMP. Dalam tiga tahun santri menghafal 20 juz, berbahasa Arab aktif, dan menempuh kurikulum nasional jenjang kesetaraan.',
+        targetNote: 'Dimulai dari juz 30 ke 26, lalu juz 1 sampai 15. Setiap juz diuji sebelum santri lanjut ke juz berikutnya.',
+        years: [
+          { k: 'Kelas VII', v: 'Juz 30–26', c: '#DCE3F3', juz: range(30, 26) },
+          { k: 'Kelas VIII', v: 'Juz 1–10', c: '#8DA3D9', juz: range(1, 10) },
+          { k: 'Kelas IX', v: 'Juz 11–15', c: '#26418F', juz: range(11, 15) }
+        ],
+        outcomes: syariOutcomes('Hafal 20 juz secara mutqin, berlanjut ke 30 juz bersanad di Darul ‘Ilmi'),
+        fees: [{ k: 'Biaya pendaftaran', v: 'Rp400.000' }, { k: 'Daftar ulang', v: 'Rp19.500.000' }, { k: 'Biaya tahunan', v: 'Rp3.750.000' }, { k: 'SPP [per bulan]', v: 'Rp1.650.000' }],
+        feeNote: 'Berlaku untuk tahun ajaran 2027/2028.', psb: true, head: 'Dede Iskandar, Lc.', headRole: 'Kepala Madrasah Al Yusro'
+      },
+      'Darul ‘Ilmi': {
+        ar: 'دار العلم', setara: 'Setara SMA', lamaLabel: 'Lama belajar', lama: 'Kelas X–XII', target: 'Genap 30 juz',
+        intro: 'Pendidikan pesantren setara SMA. Santri melanjutkan 10 juz hingga hafalan genap 30 juz bersanad, dengan bahasa Arab aktif dan kurikulum nasional jenjang kesetaraan.',
+        targetNote: 'Melanjutkan 20 juz dari Madrasah. Santri pindahan dengan urutan hafalan berbeda dikonversi sesuai target ma’had.',
+        years: [
+          { k: 'Dari Madrasah', v: 'Juz 30–26 dan 1–15', c: '#C6D2EE', juz: range(30, 26).concat(range(1, 15)) },
+          { k: 'Kelas X', v: 'Juz 16–20', c: '#4F6DB8', juz: range(16, 20) },
+          { k: 'Kelas XI', v: 'Juz 21–25', c: '#26418F', juz: range(21, 25) }
+        ],
+        outcomes: syariOutcomes('Hafal Al-Qur’an 30 juz secara mutqin dan bersanad'),
+        fees: [], feeNote: '', psb: false, head: 'Syaepudin, S.Ud., M.H.', headRole: 'Kepala Darul ‘Ilmi'
+      },
+      'Ma’had ‘Aly': {
+        ar: 'المعهد العالي', setara: 'Setara D2', lamaLabel: 'Lama belajar', lama: '4 semester dan 1 tahun praktik', target: 'Minimal 15 juz', count: 15,
+        intro: 'Program kaderisasi guru dan musyrif untuk lulusan pesantren atau SMA/MA sederajat. Empat semester belajar, lalu satu tahun praktik lapangan dan pembekalan life skill.',
+        targetNote: 'Minimal 15 juz dengan tahsin dan tajwid yang benar.',
+        years: [{ k: 'Selama program', v: 'Minimal 15 juz', c: '#26418F' }],
+        outcomes: ['Beraqidah lurus, berakhlak mulia, dan memahami ilmu syar’i dasar', 'Hafal minimal 15 juz dengan tahsin dan tajwid yang benar', 'Berbahasa Arab aktif secara lisan dan tulisan', 'Mampu mengajarkan Al-Qur’an dan ilmu syar’i di kelas maupun di masyarakat', 'Memahami kepengasuhan pesantren', 'Hafal hadits dan mutun dasar', 'Bersemangat dakwah dan peduli sosial', 'Mandiri, siap memimpin dan dipimpin, serta pekerja keras', 'Terampil berbicara di depan umum dan berorganisasi', 'Siap melanjutkan studi ke perguruan tinggi Timur Tengah'],
+        fees: [{ k: 'Biaya pendaftaran', v: 'Rp250.000' }, { k: 'Daftar ulang', v: 'Tidak ada' }, { k: 'Biaya tahunan', v: 'Tidak ada' }],
+        feeNote: 'Beasiswa penuh, termasuk asrama dan uang makan.', psb: false, head: 'Mohammad Deni Atmaja Kusuma Putra, Lc.', headRole: 'Kepala Ma’had ‘Aly'
+      }
+    };
+    var key = (this.state && this.state.lv) || this.props.jenjang || 'Madrasah';
+    if (!D[key]) key = 'Madrasah';
+    var d = D[key];
+    var showAr = this.props.showArabic ?? true;
+    var colorOf = {};
+    d.years.forEach(function (y) { (y.juz || []).forEach(function (j) { colorOf[j] = y.c; }); });
+    var darkSet = { '#26418F': 1, '#4F6DB8': 1 };
+    var cells = [];
+    for (var n = 1; n <= 30; n++) {
+      var c = colorOf[n];
+      cells.push({ n: n, bg: c || '#EEF0F4', fg: c ? (darkSet[c] ? '#FFFFFF' : '#1B2235') : '#5B6374' });
+    }
+    var hasMap = Object.keys(colorOf).length > 0;
+    var count = d.count || 0;
+    var ticks = function (len) { var a = []; for (var i = 0; i < len; i++) a.push(i); return a; };
+    var mapLabel = 'Juz yang dihafal di ' + key + ': ' + d.years.map(function (y) { return y.k + ' ' + y.v; }).join(', ') + '.';
+    var idx = ORDER.indexOf(key);
+    var hasFees = d.fees.length > 0;
+    return {
+      lv: {
+        name: key, ar: d.ar, hasAr: showAr && d.ar.length > 0,
+        intro: d.intro, setara: d.setara, lamaLabel: d.lamaLabel, lama: d.lama, target: d.target, targetNote: d.targetNote,
+        regFee: hasFees ? d.fees[0].v : 'Belum dipublikasikan',
+        status: d.psb ? 'Dibuka' : 'Belum dibuka',
+        statusColor: d.psb ? '#26418F' : '#4A5368',
+        years: d.years, outcomes: d.outcomes,
+        hasMap: hasMap, countOnly: !hasMap, count: count,
+        tickOn: ticks(count), tickOff: ticks(30 - count),
+        cells: cells, mapLabel: mapLabel,
+        fees: d.fees, feeNote: d.feeNote, hasFees: hasFees, noFees: !hasFees,
+        psb: d.psb, closed: !d.psb,
+        head: d.head, headRole: d.headRole
+      },
+      hasPrev: idx > 0, hasNext: idx < ORDER.length - 1,
+      prevName: idx > 0 ? ORDER[idx - 1] : '', nextName: idx < ORDER.length - 1 ? ORDER[idx + 1] : '',
+      goPrev: function () { if (idx > 0) self.setState({ lv: ORDER[idx - 1] }); },
+      goNext: function () { if (idx < ORDER.length - 1) self.setState({ lv: ORDER[idx + 1] }); }
+    };
+  }
+}
+</script>
+</body>
+</html>

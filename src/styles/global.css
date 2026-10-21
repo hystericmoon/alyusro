@@ -1,0 +1,175 @@
+@import "tailwindcss";
+
+/*
+  Design tokens. Tailwind's own theme is wiped (`--*: initial`) so only these
+  values exist: no default palette, radius, font or spacing scale can leak in.
+  Core values come from CLAUDE.md; "derived" values are the extra fills the
+  approved designs in design/*.dc.html use (night panel, sky bands, terraces,
+  landscape). Spacing is 1px per step, so `p-24` is 24px, matching the specs.
+*/
+@theme {
+  --*: initial;
+
+  /* Breakpoints */
+  --breakpoint-sm: 40rem;   /* 640px */
+  --breakpoint-md: 47.5rem; /* 760px */
+  --breakpoint-lg: 64rem;   /* 1024px */
+  --breakpoint-xl: 80rem;   /* 1280px */
+
+  --spacing: 1px;
+  --container-page: 1280px;
+
+  /* Core colors (CLAUDE.md) */
+  --color-paper: #F7F7F4;
+  --color-white: #FFFFFF;
+  --color-ink: #1B2235;
+  --color-body: #2C3448;
+  --color-muted: #4A5368;
+  --color-rule: #D9DCE4;
+  --color-lapis: #26418F;
+  --color-amber: #F2A33A; /* time only: the "now" line and the sun */
+  --color-transparent: transparent;
+  --color-current: currentColor;
+
+  /* Lapis scale for the juz map, one step per class */
+  --color-lapis-1: #DCE3F3;
+  --color-lapis-2: #B7C6E9;
+  --color-lapis-3: #8DA3D9;
+  --color-lapis-4: #4F6DB8;
+  --color-lapis-5: #26418F;
+
+  /* Derived: light UI */
+  --color-placeholder: #8A93A8; /* dashed outline of logo/photo placeholders */
+  --color-chip-rule: #C9CDD8;
+  --color-juz-off: #EEF0F4;
+  --color-juz-off-ink: #5B6374;
+
+  /* Derived: night section (day view, footer bar) */
+  --color-night-panel: #242D47;
+  --color-night-deep: #11162A;
+  --color-night-rule: #333D5C;
+  --color-night-rule-2: #343E5E;
+  --color-night-dash: #5A6688;
+  --color-night-placeholder: #6E7DA3;
+  --color-on-night: #F3F5FA;
+  --color-on-night-body: #C9D1E6;
+  --color-on-night-soft: #D5DAEA;
+  --color-on-night-list: #E4E8F2;
+  --color-on-night-muted: #AEB6CF;
+
+  /* Derived: sky bands and level terraces */
+  --color-sky-50: #E3E8F5;
+  --color-sky-100: #C6D2EE;
+  --color-sky-200: #A3B5E2;
+  --color-sky-dawn: #3F5DAA;
+  --color-sky-500: #4A68B5;
+  --color-sky-600: #33509F;
+
+  /* Derived: Gunung Salak landscape */
+  --color-mist: #E4E9F2;
+  --color-hill-1: #C3CDE0;
+  --color-hill-2: #9AA9C6;
+  --color-hill-3: #6E80A8;
+  --color-hill-4: #3F5079;
+
+  /* Type */
+  --font-display: "Markazi Text", Georgia, serif;
+  --font-body: "Atkinson Hyperlegible Next", "Segoe UI", Arial, sans-serif;
+  --default-font-family: var(--font-body);
+
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* Font sizes named by their pixel value, as specified in the designs */
+  --text-11: 11px;
+  --text-12: 12px;
+  --text-13: 13px;
+  --text-14: 14px;
+  --text-15: 15px;
+  --text-16: 16px;
+  --text-17: 17px;
+  --text-18: 18px;
+  --text-19: 19px;
+  --text-22: 22px;
+  --text-25: 25px;
+  --text-26: 26px;
+  --text-27: 27px;
+  --text-30: 30px;
+  --text-32: 32px;
+  --text-34: 34px;
+
+  /* Radius: 2px buttons and cells, 4–6px panels */
+  --radius-none: 0;
+  --radius-sm: 2px;
+  --radius-xs: 3px;
+  --radius-md: 4px;
+  --radius-lg: 6px;
+  --radius-full: 9999px;
+
+  --default-transition-duration: 150ms;
+  --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    margin: 0;
+    background: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-body);
+    font-size: 17px;
+    line-height: 1.6;
+  }
+  a {
+    color: var(--color-lapis);
+  }
+  a:hover {
+    color: var(--color-ink);
+  }
+  /* Two-tone ring: lapis outline plus a white halo, visible on paper and on night */
+  a:focus-visible,
+  button:focus-visible,
+  summary:focus-visible,
+  [tabindex]:focus-visible {
+    outline: 2px solid var(--color-lapis);
+    outline-offset: 2px;
+    box-shadow: 0 0 0 2px var(--color-white);
+  }
+  summary {
+    list-style: none;
+  }
+  summary::-webkit-details-marker {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+/*
+  Motion gates. `motion-ok` is set in <head> only when the visitor allows
+  motion, so the pre-animation state never applies under reduced motion or
+  without JS. `motion-fallback` is added after a timeout in case a script
+  never loads, so content is never left hidden.
+*/
+.motion-ok:not(.motion-fallback) [data-juz-grid][data-motion="pending"] [data-juz-cell] {
+  background-color: var(--color-juz-off) !important;
+  color: var(--color-juz-off-ink) !important;
+}
+.motion-ok:not(.motion-fallback) [data-terraces][data-motion="pending"] [data-terrace] {
+  opacity: 0;
+  transform: translateY(48px);
+}
+.motion-ok:not(.motion-fallback) [data-day-view][data-motion="pending"] [data-now-line] {
+  top: 0% !important;
+}
