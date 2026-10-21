@@ -6,17 +6,20 @@ A volunteer redesign of https://mahadalyusro.sch.id (Ma’had Tahfizh Al Yusro, 
 
 A clickable, deployable static preview of the whole public site, built from the designs in `design/`, with real content from `content/site.json`. It must be easy for the school’s small IT & Multimedia team to adopt later.
 
-Not in scope: the login dashboard, the registration system, the article CMS. Those stay on the school’s existing Laravel system. Link to them by their current URLs.
+Not in scope: the login dashboard and the registration system. Those stay on the school’s existing Laravel system. Link to them by their current URLs. Articles move to this repo (see Stack).
 
 ## Stack
 
-- Astro, static output. Islands (written React-style, running on Preact via `@astrojs/preact` with compat; `react`/`react-dom` in package.json are npm aliases of `@preact/compat`) only for interactive components: juz map class filter, article and facility filters, FAQ, mobile menu. Every non-interactive page ships zero client JS (desktop header menus are native `<details>`; the mobile menu island hydrates with `client:media` below 1024px only).
-- The live day view is a small vanilla script (`src/components/home/DayView.astro`), sharing its logic with the build in `src/lib/day-view.ts`.
-- shadcn/ui primitives for those islands, in `src/components/ui/`, restyled entirely with the tokens below. Radix 1.2 Dialog does not run on preact/compat, so `Sheet` keeps the shadcn API but uses the native `<dialog>`; Radix Toggle works as is. No shadcn default theme, colors, radius or fonts. `cn()` is clsx only (no tailwind-merge, to keep islands small).
-- Tailwind v4, themed in `src/styles/global.css` with `--*: initial`, so only the tokens below exist (colors, fonts, radius, font sizes named by pixel value, spacing at 1px per step: `p-24` is 24px). Extra fills the designs use are listed there as derived tokens.
-- GSAP for at most three motion moments: the juz map fills in class order (VII to XI) when it scrolls into view, the level terraces rise in sequence, and the day-view "now" line animates to the current time. GSAP is loaded only when motion is allowed. With `prefers-reduced-motion`, show the final state with no animation.
-- Components should map cleanly to Laravel Blade partials later (header, footer, juz map, day view, level page, fee table).
-- Deploy target: Cloudflare Pages or Netlify (`netlify.toml`, `wrangler.toml`; build `npm run build`, output `dist`, Node 22 via `.nvmrc`).
+- Astro, static output, no UI framework and no component library. Interactive parts are native HTML plus a small script beside the component, so each maps cleanly to a Laravel Blade partial (header, footer, juz map, day view, level page, fee table).
+  - Filter chips: `<button aria-pressed>` + a few lines of script (juz map, article and facility filters).
+  - FAQ: native `<details>`. Desktop menus: `<details name>` disclosures.
+  - Mobile menu: native Popover API (`popovertarget`), no JS.
+  - Every non-interactive page ships zero client JS.
+- The live day view is a small script (`src/components/home/DayView.astro`) sharing its logic with the build in `src/lib/day-view.ts`.
+- Tailwind v4, themed in `src/styles/global.css` with `--*: initial`, so only the tokens below exist (colors, fonts, radius, font sizes named by pixel value, spacing at 1px per step: `p-24` is 24px). Extra fills the designs use are listed there as derived tokens. Buttons are shared classes: `btn-primary`, `btn-secondary`, `btn-light`, `btn-ghost-night`.
+- Motion: GSAP for at most three moments: the juz map fills in class order (VII to XI) when it scrolls into view, the level terraces rise in sequence, and the day-view "now" line animates to the current time. GSAP loads only when motion is allowed. Everything else is CSS: micro-interactions (button press, chip preview, terrace lift), the living sky (sun position and sky tint follow the time in Bogor), and night stars in the day view. With `prefers-reduced-motion`, show the final state with no animation.
+- Articles: Astro content collection in `src/content/artikel/` (Markdown), edited by school staff through Sveltia CMS at `/admin`. Login, registration and PSB forms stay on the school's Laravel system.
+- Deploy target: Cloudflare Pages or Netlify (`netlify.toml`, `wrangler.toml`; build `npm run build`, output `dist`, Node 22 via `.nvmrc`). The preview is `noindex` until the school switches over.
 
 ## Source files
 

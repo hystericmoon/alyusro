@@ -1,8 +1,7 @@
 ---
-// Shared header (Beranda-gabungan). Desktop menus are native <details>
-// disclosures, so pages without islands ship no JS; below 1024px the
-// MobileMenu island takes over and only hydrates at that width.
-import MobileMenu from '@/components/islands/MobileMenu';
+// Shared header (Beranda-gabungan). No JavaScript: desktop menus are native
+// <details> disclosures, and below 1024px the menu is a native popover.
+import MobileMenu from '@/components/MobileMenu.astro';
 import { mainNav, actions } from '@/lib/nav';
 import { school } from '@/lib/site';
 
@@ -69,20 +68,11 @@ const isCurrent = (href: string) => norm(href) === here;
 
     <div class="hidden flex-wrap items-center gap-x-20 gap-y-8 lg:flex">
       <a href={actions.login.href} class="inline-flex min-h-44 items-center text-16 font-medium text-ink underline-offset-4">{actions.login.label}</a>
-      <a
-        href={actions.register.href}
-        class="inline-flex min-h-48 items-center justify-center rounded-sm bg-lapis px-22 text-16 font-bold text-white no-underline hover:text-white"
-      >{actions.register.label}</a>
+      <a href={actions.register.href} class="btn-primary">{actions.register.label}</a>
     </div>
 
     <div class="lg:hidden">
-      <MobileMenu
-        client:media="(max-width: 1023.98px)"
-        groups={mainNav}
-        login={actions.login}
-        register={actions.register}
-        currentPath={here}
-      />
+      <MobileMenu groups={mainNav} login={actions.login} register={actions.register} isCurrent={isCurrent} />
     </div>
   </div>
 </header>
