@@ -1,0 +1,376 @@
+@import "tailwindcss";
+
+/*
+  Design tokens. Tailwind's own theme is wiped (`--*: initial`) so only these
+  values exist: no default palette, radius, font or spacing scale can leak in.
+  Core values come from CLAUDE.md; "derived" values are the extra fills the
+  approved designs in design/*.dc.html use (night panel, sky bands, terraces,
+  landscape). Spacing is 1px per step, so `p-24` is 24px, matching the specs.
+*/
+@theme {
+  --*: initial;
+
+  /* Breakpoints */
+  --breakpoint-sm: 40rem;   /* 640px */
+  --breakpoint-md: 47.5rem; /* 760px */
+  --breakpoint-lg: 64rem;   /* 1024px */
+  --breakpoint-xl: 80rem;   /* 1280px */
+
+  --spacing: 1px;
+  --container-page: 1280px;
+
+  /* Core colors (CLAUDE.md) */
+  --color-paper: #F7F7F4;
+  --color-white: #FFFFFF;
+  --color-ink: #1B2235;
+  --color-body: #2C3448;
+  --color-muted: #4A5368;
+  --color-rule: #D9DCE4;
+  --color-lapis: #26418F;
+  --color-lapis-deep: #1E3474; /* derived: primary button hover/press */
+  --color-amber: #F2A33A; /* time only: the "now" line and the sun */
+  --color-transparent: transparent;
+  --color-current: currentColor;
+
+  /* Lapis scale for the juz map, one step per class */
+  --color-lapis-1: #DCE3F3;
+  --color-lapis-2: #B7C6E9;
+  --color-lapis-3: #8DA3D9;
+  --color-lapis-4: #4F6DB8;
+  --color-lapis-5: #26418F;
+
+  /* Derived: light UI */
+  --color-placeholder: #8A93A8; /* dashed outline of logo/photo placeholders */
+  --color-chip-rule: #C9CDD8;
+  --color-putri: #7A2E5A; /* derived: 'Area putri' tag (Fasilitas) */
+  --color-rule-soft: #E3E6EE; /* fact-list dividers, empty count ticks */
+  --color-juz-off: #EEF0F4;
+  --color-juz-off-ink: #5B6374;
+
+  /* Derived: night section (day view, footer bar) */
+  --color-night-panel: #242D47;
+  --color-night-deep: #11162A;
+  --color-night-rule: #333D5C;
+  --color-night-rule-2: #343E5E;
+  --color-night-rule-3: #44507A; /* table header rule on night */
+  --color-night-dash: #5A6688;
+  --color-night-placeholder: #6E7DA3;
+  --color-on-night: #F3F5FA;
+  --color-on-night-body: #C9D1E6;
+  --color-on-night-soft: #D5DAEA;
+  --color-on-night-list: #E4E8F2;
+  --color-on-night-muted: #AEB6CF;
+
+  /* Derived: sky bands and level terraces */
+  --color-sky-50: #E3E8F5;
+  --color-sky-100: #C6D2EE;
+  --color-sky-200: #A3B5E2;
+  --color-sky-dawn: #3F5DAA;
+  --color-sky-500: #4A68B5;
+  --color-sky-600: #33509F;
+
+  /* Derived: Gunung Salak landscape */
+  --color-mist: #E4E9F2;
+  --color-hill-1: #C3CDE0;
+  --color-hill-2: #9AA9C6;
+  --color-hill-3: #6E80A8;
+  --color-hill-4: #3F5079;
+
+  /* Derived: dated-content notice (Artikel-detail) */
+  --color-notice: #FFF4DC;
+  --color-notice-rule: #8A5A00;
+  --color-notice-ink: #4A3200;
+
+  /* Derived: living sky (landscape tint by time of day) */
+  --color-dawn-top: #D3DBEE;
+  --color-dawn-glow: #F2E4D3;
+  --color-dusk-top: #C9D0E6;
+  --color-dusk-glow: #F0D8C4;
+  --color-night-horizon: #2A3560;
+  --color-night-hill-1: #3A4670;
+  --color-night-hill-2: #2F3A61;
+  --color-night-hill-3: #263157;
+  --color-night-hill-4: #20294A;
+
+  /* Type */
+  --font-display: "Markazi Text", Georgia, serif;
+  --font-body: "Atkinson Hyperlegible Next", "Segoe UI", Arial, sans-serif;
+  --default-font-family: var(--font-body);
+
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* Font sizes named by their pixel value, as specified in the designs */
+  --text-11: 11px;
+  --text-12: 12px;
+  --text-13: 13px;
+  --text-14: 14px;
+  --text-15: 15px;
+  --text-16: 16px;
+  --text-17: 17px;
+  --text-18: 18px;
+  --text-19: 19px;
+  --text-22: 22px;
+  --text-25: 25px;
+  --text-26: 26px;
+  --text-27: 27px;
+  --text-30: 30px;
+  --text-32: 32px;
+  --text-34: 34px;
+
+  /* Radius: 2px buttons and cells, 4–6px panels */
+  --radius-none: 0;
+  --radius-sm: 2px;
+  --radius-xs: 3px;
+  --radius-md: 4px;
+  --radius-lg: 6px;
+  --radius-full: 9999px;
+
+  --default-transition-duration: 150ms;
+  --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    margin: 0;
+    background: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-body);
+    font-size: 17px;
+    line-height: 1.6;
+  }
+  a {
+    color: var(--color-lapis);
+  }
+  a:hover {
+    color: var(--color-ink);
+  }
+  /* Two-tone ring: lapis outline plus a white halo, visible on paper and on night */
+  a:focus-visible,
+  button:focus-visible,
+  summary:focus-visible,
+  [tabindex]:focus-visible {
+    outline: 2px solid var(--color-lapis);
+    outline-offset: 2px;
+    box-shadow: 0 0 0 2px var(--color-white);
+  }
+  summary {
+    list-style: none;
+  }
+  summary::-webkit-details-marker {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+/*
+  Motion gates. `motion-ok` is set in <head> only when the visitor allows
+  motion, so the pre-animation state never applies under reduced motion or
+  without JS. `motion-fallback` is added after a timeout in case a script
+  never loads, so content is never left hidden.
+*/
+.motion-ok:not(.motion-fallback) [data-juz-grid][data-motion="pending"] [data-juz-cell] {
+  background-color: var(--color-juz-off) !important;
+  color: var(--color-juz-off-ink) !important;
+}
+.motion-ok:not(.motion-fallback) [data-terraces][data-motion="pending"] [data-terrace] {
+  opacity: 0;
+  transform: translateY(48px);
+}
+.motion-ok:not(.motion-fallback) [data-day-view][data-motion="pending"] [data-now-line] {
+  top: 0% !important;
+}
+
+/* No page scroll behind the open mobile menu. */
+html:has(#menu-hp:popover-open) {
+  overflow: hidden;
+}
+
+/*
+  Buttons. Micro-interactions are CSS only: a colour shift on hover and a
+  1px press on click. The reduced-motion rule above removes the transitions.
+*/
+@layer components {
+  .btn-primary,
+  .btn-secondary,
+  .btn-light,
+  .btn-ghost-night {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    box-sizing: border-box;
+    min-height: 48px;
+    padding: 0 20px;
+    border-radius: var(--radius-sm);
+    font-size: 16px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: background-color 150ms, color 150ms, border-color 150ms, transform 120ms;
+  }
+  :is(.btn-primary, .btn-secondary, .btn-light, .btn-ghost-night):active {
+    transform: translateY(1px);
+  }
+  .btn-primary {
+    padding: 0 22px;
+    background: var(--color-lapis);
+    color: var(--color-white);
+  }
+  .btn-primary:hover {
+    background: var(--color-lapis-deep);
+    color: var(--color-white);
+  }
+  /* Outline on light backgrounds */
+  .btn-secondary {
+    border: 1px solid var(--color-ink);
+    background: var(--color-white);
+    color: var(--color-ink);
+  }
+  .btn-secondary:hover {
+    background: var(--color-ink);
+    color: var(--color-white);
+  }
+  /* Solid white on night backgrounds */
+  .btn-light {
+    padding: 0 22px;
+    background: var(--color-white);
+    color: var(--color-ink);
+  }
+  .btn-light:hover {
+    background: var(--color-sky-50);
+    color: var(--color-ink);
+  }
+  /* Outline on night backgrounds */
+  .btn-ghost-night {
+    border: 1px solid var(--color-on-night-body);
+    color: var(--color-white);
+  }
+  .btn-ghost-night:hover {
+    background: var(--color-white);
+    color: var(--color-ink);
+  }
+}
+
+/*
+  Living sky. The landscape reads `data-sky` (dawn, day, dusk, night), set
+  from the time in Bogor on the homepage; without JS it stays "day", as
+  designed. All text pairs keep AA contrast in every state.
+*/
+.sky {
+  --sky-top: var(--color-mist);
+  --sky-bottom: var(--color-mist);
+  --land-ink: var(--color-ink);
+  --land-body: var(--color-body);
+  --h1: var(--color-hill-1);
+  --h2: var(--color-hill-2);
+  --h3: var(--color-hill-3);
+  --h4: var(--color-hill-4);
+  --stars: 0;
+  background: linear-gradient(var(--sky-top), var(--sky-bottom) 78%);
+  color: var(--land-ink);
+}
+.sky[data-sky="dawn"] {
+  --sky-top: var(--color-dawn-top);
+  --sky-bottom: var(--color-dawn-glow);
+  --stars: 0.25;
+}
+.sky[data-sky="dusk"] {
+  --sky-top: var(--color-dusk-top);
+  --sky-bottom: var(--color-dusk-glow);
+  --stars: 0.2;
+}
+.sky[data-sky="night"] {
+  --sky-top: var(--color-night-deep);
+  --sky-bottom: var(--color-night-horizon);
+  --land-ink: var(--color-white);
+  --land-body: var(--color-on-night-body);
+  --h1: var(--color-night-hill-1);
+  --h2: var(--color-night-hill-2);
+  --h3: var(--color-night-hill-3);
+  --h4: var(--color-night-hill-4);
+  --stars: 1;
+}
+.sky[data-sky="night"] .btn-secondary {
+  border-color: var(--color-on-night-body);
+  background: transparent;
+  color: var(--color-white);
+}
+.sky[data-sky="night"] .btn-secondary:hover {
+  background: var(--color-white);
+  color: var(--color-ink);
+}
+.sky [data-sun] {
+  transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.6s;
+}
+
+/* Night stars: a faint twinkle; static under reduced motion. */
+@keyframes twinkle {
+  0%, 100% { opacity: var(--o); }
+  50% { opacity: calc(var(--o) * 0.3); }
+}
+.star {
+  animation: twinkle var(--dur) ease-in-out var(--delay) infinite;
+  opacity: var(--o);
+}
+
+/* Underline that slides in on hover or focus, for menu and footer links. */
+.link-slide {
+  text-decoration: none;
+  background-image: linear-gradient(currentColor, currentColor);
+  background-repeat: no-repeat;
+  background-position: 0 calc(100% - 10px);
+  background-size: 0% 1px;
+  transition: background-size 200ms ease-out, color 150ms;
+}
+.link-slide:hover,
+.link-slide:focus-visible {
+  background-size: 100% 1px;
+}
+
+/* Article body (Artikel-detail .ad). Arabic blocks keep lang/dir from the content. */
+@layer components {
+  :where(.prose-ad) { font-size: 19px; line-height: 1.7; }
+  :where(.prose-ad) > :first-child { margin-top: 0; }
+  :where(.prose-ad) h2 { margin: 56px 0 14px; font-family: var(--font-display); font-size: 40px; font-weight: 600; line-height: 1.05; }
+  :where(.prose-ad) h3 { margin: 40px 0 10px; font-family: var(--font-display); font-size: 30px; font-weight: 600; line-height: 1.1; }
+  :where(.prose-ad) p { margin: 0 0 18px; }
+  :where(.prose-ad) ul, :where(.prose-ad) ol { margin: 0 0 18px; padding-left: 24px; }
+  :where(.prose-ad) li { margin-bottom: 8px; }
+  :where(.prose-ad) a { text-underline-offset: 3px; }
+  :where(.prose-ad) blockquote { margin: 0 0 18px; padding-left: 20px; border-left: 3px solid var(--color-lapis-2); color: var(--color-body); }
+  :where(.prose-ad) [lang="ar"] { font-family: var(--font-display); font-size: 1.3em; line-height: 1.9; }
+  :where(.prose-ad) p[lang="ar"], :where(.prose-ad) blockquote[lang="ar"] { text-align: right; }
+  :where(.prose-ad) blockquote[lang="ar"] { border-left: 0; border-right: 3px solid var(--color-lapis-2); padding: 0 20px 0 0; }
+  :where(.prose-ad) span[lang="ar"] { font-size: 1.2em; }
+  /* ﷻ ﷺ in titles, see titleHtml() */
+  .honorific { font-size: 0.55em; line-height: 0; vertical-align: 0.15em; }
+}
+
+/* Content pages (Kurikulum-tahfizh .k-body) */
+@layer components {
+  :where(.prose-k) > :first-child { margin-top: 0; }
+  :where(.prose-k) h2 { margin: 72px 0 16px; font-family: var(--font-display); font-size: 44px; font-weight: 600; line-height: 1.05; scroll-margin-top: 24px; }
+  :where(.prose-k) h3 { margin: 32px 0 8px; font-size: 19px; font-weight: 700; line-height: 1.35; }
+  :where(.prose-k) p { margin: 0 0 16px; }
+  :where(.prose-k) ul, :where(.prose-k) ol { margin: 0 0 16px; padding-left: 22px; }
+  :where(.prose-k) li { margin-bottom: 8px; }
+  :where(.prose-k) table { width: 100%; border-collapse: collapse; margin: 8px 0 24px; font-size: 16px; font-variant-numeric: tabular-nums; }
+  :where(.prose-k) th, :where(.prose-k) td { text-align: left; padding: 12px 16px 12px 0; border-bottom: 1px solid var(--color-rule); vertical-align: top; }
+  :where(.prose-k) thead th { font-size: 14px; font-weight: 500; color: var(--color-muted); border-bottom: 2px solid var(--color-ink); }
+  :where(.prose-k) tbody th { font-weight: 700; }
+  :where(.prose-k) th:last-child, :where(.prose-k) td:last-child { padding-right: 0; }
+  :where(.prose-k) [lang="ar"] { font-family: var(--font-display); font-size: 1.25em; }
+}

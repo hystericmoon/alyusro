@@ -1,0 +1,35 @@
+---
+// /tentang (new): profile, vision and mission from the live homepage, plus
+// the programmes and leaders from site.json.
+import { getHalaman } from '@/lib/halaman';
+import ContentPage from '@/components/content/ContentPage.astro';
+import { levels, levelSummary, school } from '@/lib/site';
+
+const page = await getHalaman('tentang');
+const toc = [...page.headings, { id: 'program', text: 'Program pendidikan' }];
+---
+<ContentPage title={page.data.title} lede={page.data.lede} crumbs={[{ label: 'Profil' }, { label: 'Tentang kami' }]} toc={toc} cta={{ text: 'Datang dan lihat langsung', label: 'Buka peta lokasi', href: school.mapsUrl }}>
+  <Fragment set:html={page.html} />
+  <p>
+    <a href={school.mapsUrl}>Buka peta lokasi</a> • <a href={school.whatsapp.url}>WhatsApp {school.whatsapp.display}</a>
+  </p>
+  <p class="text-15 text-muted">Penyelenggara: {school.foundation}. {school.legalEntityNote.replace('National curriculum equivalency runs through', 'Ijazah kesetaraan kurikulum nasional melalui')}.</p>
+
+  <h2 id="program">Program pendidikan</h2>
+  <table>
+    <caption class="sr-only">Program pendidikan</caption>
+    <thead><tr><th scope="col">Jenjang</th><th scope="col">Setara</th><th scope="col">Target hafalan</th></tr></thead>
+    <tbody>
+      {
+        levels.map((l) => (
+          <tr>
+            <th scope="row"><a href={l.path}>{l.name}</a></th>
+            <td>{levelSummary(l)}</td>
+            <td>{l.target}</td>
+          </tr>
+        ))
+      }
+    </tbody>
+  </table>
+  <p>Kenali para pimpinan di halaman <a href="/pendidikan/tenaga/pendidik/">pengajar dan pengurus</a>.</p>
+</ContentPage>

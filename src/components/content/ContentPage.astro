@@ -1,0 +1,81 @@
+---
+// Content page template (design/Kurikulum-tahfizh.dc.html): breadcrumb,
+// title and lede, then a sticky "Di halaman ini" list beside the body.
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Landscape from '@/components/home/Landscape.astro';
+
+export type Crumb = { label: string; href?: string };
+export type TocItem = { id: string; text: string };
+
+interface Props {
+  title: string;
+  lede: string;
+  crumbs: Crumb[];
+  toc?: TocItem[];
+  description?: string;
+  /** Closing band, e.g. { text: 'Lihat target hafalan tiap jenjang', label: 'Pilih jenjang', href: '/#jenjang' } */
+  cta?: { text: string; label: string; href: string };
+  motion?: boolean;
+}
+const { title, lede, crumbs, toc = [], description, cta, motion } = Astro.props;
+---
+<BaseLayout title={title} description={description ?? lede} footerLabelledBy="g-foot-title" motion={motion}>
+  <div class="mx-auto box-border max-w-page px-20 pt-24 sm:px-40 sm:pt-32">
+    <nav aria-label="Breadcrumb" class="text-15">
+      <ol class="m-0 flex list-none flex-wrap gap-10 p-0 text-muted">
+        <li><a href="/">Beranda</a></li>
+        {
+          crumbs.map((c, i) => (
+            <>
+              <li aria-hidden="true">/</li>
+              {i === crumbs.length - 1 ? (
+                <li aria-current="page" class="text-ink">{c.label}</li>
+              ) : c.href ? (
+                <li><a href={c.href}>{c.label}</a></li>
+              ) : (
+                <li>{c.label}</li>
+              )}
+            </>
+          ))
+        }
+      </ol>
+    </nav>
+    <div class="max-w-[860px] pb-48 pt-32 sm:pb-56 sm:pt-40">
+      <h1 class="m-0 mb-20 font-display text-[clamp(52px,6.6vw,96px)] font-semibold leading-[0.92] [text-wrap:balance]">{title}</h1>
+      <p class="m-0 text-[21px] leading-[1.6] text-body [text-wrap:pretty]">{lede}</p>
+    </div>
+  </div>
+
+  <slot name="before" />
+  <div class="mx-auto box-border flex max-w-page flex-wrap items-start gap-x-80 gap-y-32 border-t border-rule px-20 pb-80 sm:px-40 sm:pb-96">
+    {
+      toc.length > 1 && (
+        <nav aria-label="Isi halaman" class="w-full pt-32 text-15 leading-[1.4] lg:sticky lg:top-0 lg:w-auto lg:flex-[0_1_240px]">
+          <p class="m-0 mb-12 font-bold text-muted">Di halaman ini</p>
+          <ol class="m-0 list-none border-l-2 border-rule p-0">
+            {toc.map((t) => (
+              <li>
+                <a href={`#${t.id}`} class="-ml-2 flex min-h-44 items-center border-l-2 border-transparent pl-14 text-ink no-underline transition-colors duration-150 hover:border-lapis hover:text-lapis">
+                  {t.text}
+                </a>
+              </li>
+            ))}
+          </ol>
+        </nav>
+      )
+    }
+    <article class="prose-k min-w-0 max-w-[760px] flex-[1_1_560px] pt-32">
+      <slot />
+      {
+        cta && (
+          <div class="mt-64 flex flex-wrap items-center justify-between gap-x-32 gap-y-16 bg-ink p-28 text-on-night">
+            <p class="m-0 font-display text-30 font-semibold leading-[1.1] text-white" style="margin:0">{cta.text}</p>
+            <a href={cta.href} class="btn-light">{cta.label}</a>
+          </div>
+        )
+      }
+    </article>
+  </div>
+  <slot name="after" />
+  <Landscape slot="footer-lead" />
+</BaseLayout>

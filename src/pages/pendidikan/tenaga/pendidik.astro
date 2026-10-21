@@ -1,0 +1,41 @@
+---
+// /pendidikan/tenaga/pendidik: leaders from site.json (no photos until the
+// school supplies them and confirms its imagery policy).
+import ContentPage from '@/components/content/ContentPage.astro';
+import { site, school, levels } from '@/lib/site';
+
+const people = (site.staff as { people: { role: string; name: string }[] }).people;
+const isLevelHead = (role: string) => levels.some((l) => l.headRole === role);
+const groups = [
+  { id: 'pimpinan', title: 'Pimpinan ma’had', items: people.filter((p) => /^(Mudir|Sekretaris|Bendahara)$/.test(p.role)) },
+  { id: 'jenjang', title: 'Kepala jenjang', items: people.filter((p) => isLevelHead(p.role) || /^Kepala (Kuttab|Madrasah|Darul|Ma’had)/.test(p.role)) },
+  { id: 'bidang', title: 'Kepala bidang', items: people.filter((p) => /^Kepala Bidang/.test(p.role)) },
+];
+---
+<ContentPage
+  title="Pengajar dan pengurus"
+  lede="Para pimpinan dan kepala bidang yang mengelola pendidikan di Ma’had Tahfizh Al Yusro."
+  crumbs={[{ label: 'Profil' }, { label: 'Pengajar dan pengurus' }]}
+  toc={groups.map((g) => ({ id: g.id, text: g.title }))}
+>
+  {
+    groups.map((g, i) => (
+      <>
+        <h2 id={g.id} style={i === 0 ? 'margin-top:0' : undefined}>{g.title}</h2>
+        <table>
+          <caption class="sr-only">{g.title}</caption>
+          <thead><tr><th scope="col">Jabatan</th><th scope="col">Nama</th></tr></thead>
+          <tbody>
+            {g.items.map((p) => (
+              <tr>
+                <td>{p.role}</td>
+                <th scope="row">{p.name}</th>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </>
+    ))
+  }
+  <p>{school.teachersNote}</p>
+</ContentPage>

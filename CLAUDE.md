@@ -1,0 +1,77 @@
+# Al Yusro website rebuild
+
+A volunteer redesign of https://mahadalyusro.sch.id (Ma’had Tahfizh Al Yusro, a tahfizh pesantren in Tenjolaya, Bogor), built as a working preview to offer the school for free. Audience: parents choosing a level for their child, mostly on phones. All site copy is Indonesian.
+
+## Goal of this repo
+
+A clickable, deployable static preview of the whole public site, built from the designs in `design/`, with real content from `content/site.json`. It must be easy for the school’s small IT & Multimedia team to adopt later.
+
+Not in scope: the login dashboard and the registration system. Those stay on the school’s existing Laravel system. Link to them by their current URLs. Articles move to this repo (see Stack).
+
+## Stack
+
+- Astro, static output, no UI framework and no component library. Interactive parts are native HTML plus a small script beside the component, so each maps cleanly to a Laravel Blade partial (header, footer, juz map, day view, level page, fee table).
+  - Filter chips: `<button aria-pressed>` + a few lines of script (juz map, article and facility filters).
+  - FAQ: native `<details>`. Desktop menus: `<details name>` disclosures.
+  - Mobile menu: native Popover API (`popovertarget`), no JS.
+  - Every non-interactive page ships zero client JS.
+- The live day view is a small script (`src/components/home/DayView.astro`) sharing its logic with the build in `src/lib/day-view.ts`.
+- Tailwind v4, themed in `src/styles/global.css` with `--*: initial`, so only the tokens below exist (colors, fonts, radius, font sizes named by pixel value, spacing at 1px per step: `p-24` is 24px). Extra fills the designs use are listed there as derived tokens. Buttons are shared classes: `btn-primary`, `btn-secondary`, `btn-light`, `btn-ghost-night`.
+- Motion: GSAP for at most three moments: the juz map fills in class order (VII to XI) when it scrolls into view, the level terraces rise in sequence, and the day-view "now" line animates to the current time. GSAP loads only when motion is allowed. Everything else is CSS: micro-interactions (button press, chip preview, terrace lift), the living sky (sun position and sky tint follow the time in Bogor), and night stars in the day view. With `prefers-reduced-motion`, show the final state with no animation.
+- Articles: Astro content collection in `src/content/artikel/` (Markdown), edited by school staff through Sveltia CMS at `/admin`. Login, registration and PSB forms stay on the school's Laravel system.
+- Deploy target: Netlify (`netlify.toml`; build `npm run build`, output `dist`, Node 22 via `.nvmrc` and `engines`). Headers and redirects live in `public/_headers` and `public/_redirects`. Cloudflare Pages also works (`wrangler.toml`) but cannot proxy `/dashboard` to Laravel later, so Netlify is the chosen host. The preview is `noindex` until the school switches over.
+
+## Source files
+
+- `design/*.dc.html`: approved designs. They use a template syntax (`{{hole}}`, `<sc-for>`, `<sc-if>`, `<x-dc>`, `<helmet>`, a `DCLogic` class in a script). Treat them as visual and markup specs. Convert holes and loops into Astro props and `.map()`, move logic into small scripts. Keep the markup, spacing, type, colors, and accessibility attributes as designed.
+- `design/Peta-situs.dc.html`: the site map and content inventory. It is the page list for this build.
+- `content/site.json`: single source of truth for levels, fees, PSB waves, FAQ, schedule, staff, academic calendar, contact. Pages must read from it; never hard-code a fee, date, or target in a page. Values containing `[...]` are placeholders: `known()` in `src/lib/site.ts` hides them, so no bracket ever reaches a page.
+- `content/prestasi.json`: achievements without students' names. `content/fasilitas.json`: facility photos with alt text and captions.
+- `src/content/artikel/*.md`: articles (migrated from the old site, students' names reduced to initials, covers with faces replaced by typographic covers). `src/content/halaman/*.md`: prose for content pages; they can quote site.json with `{{halaqah.ideal}}` etc. (see `src/lib/halaman.ts`). Both are editable in Sveltia CMS at `/admin`.
+
+## Pages and URLs
+
+Keep the current site’s URLs so links and search rankings survive:
+
+- `/` homepage: `Beranda-gabungan` (hafalan map hero, “Sehari di Al Yusro” day view, levels as terraces, Gunung Salak landscape footer). Exactly four sections.
+- `/jenjang/pendidikan/{taud,kuttab,mahdon,madrasah,darul-ilmi}` and `/mahad-aly`: one template, `Jenjang-template`.
+- `/psb`: `Pendaftaran` hub.
+- `/kurikulum/tahfizh`: `Kurikulum-tahfizh` content page. Same template for `/kurikulum/bahasa-arab`, `/tentang` (new), `/sehari-di-mahad` (new); use clearly marked placeholder content where the school has none.
+- `/artikel` and an article detail route: `Artikel`, `Artikel-detail`.
+- `/fasilitas`: `Fasilitas`.
+- `/prestasi`, `/kalender-akademik`, `/info/kajian`, `/pendidikan/tenaga/pendidik`: build with the content-page or list templates. Prestasi shows totals by competition and year; do not publish students’ full names without the school’s consent.
+- `/jadwal/shalat` and `/konversi/nama`: link out to the existing pages for now.
+- Every “Daftar” button goes to `psb.registerUrls` in `site.json` (`/dashboard/register`, or `/psbmahadaly` for Ma’had ‘Aly).
+
+## Low-maintenance rules (the school has little staff time)
+
+- One source for anything dated or priced: `site.json`.
+- Time-sensitive blocks hide themselves when stale: past PSB waves disappear; a level with no future wave shows “Pendaftaran belum dibuka” and links to the WhatsApp info group.
+- Missing data gets a designed empty state (e.g. “Rincian biaya belum dipublikasikan” + WhatsApp button), never a blank label.
+- Articles older than 12 months show the notice from `Artikel-detail`.
+- Prayer times come from the same Kemenag/myquran API the current `/jadwal/shalat` uses (Kab. Bogor). The client-side calculation in the design is a fallback only.
+
+## Design system
+
+- Type: Markazi Text (headings, Arabic) + Atkinson Hyperlegible Next (body, UI), Google Fonts.
+- Colors: paper `#F7F7F4`, white `#FFFFFF`, ink `#1B2235`, body text `#2C3448`, muted `#4A5368`, rule `#D9DCE4`, lapis `#26418F`. Lapis scale for the juz map: `#DCE3F3 #B7C6E9 #8DA3D9 #4F6DB8 #26418F`. Amber `#F2A33A` is used only for time (the “now” line, the sun).
+- Radius 2px on buttons and cells, 4–6px on panels. No photos of faces; photo slots are placeholders until the school supplies images and confirms its imagery policy.
+
+## Accessibility (must keep)
+
+- WCAG 2.2 AA contrast on every text pair (all design pairs were checked).
+- Touch targets at least 44px. Visible focus ring that works on light and dark backgrounds.
+- Arabic text in `lang="ar" dir="rtl"`. Juz map has a text `aria-label`; class buttons use `aria-pressed`.
+- Live day view updates without `aria-live` (no announcements every 30 seconds). Selection readouts may use `aria-live="polite"`.
+- Real `<table>` elements for fees, waves, and schedules. Breadcrumbs with `aria-current="page"`.
+- Every image needs real alt text. The current site ships “Deskripsi Gambar” and empty alts; do not repeat that.
+
+## Placeholders to confirm with the school
+
+Bracketed values in `site.json` and the designs: PSB year and wave dates, SPP period, Mahdhon program length, TAUD and Mahdhon heads, school hours in the day view, Sunday activities, kajian times, Ma’had ‘Aly registration status, Madrasah target (20 vs 30 juz), Arabic spelling of the school name, logo file, photos.
+
+## Status
+
+Done: homepage, six level pages, `/psb`, `/artikel` and 78 migrated articles, `/kurikulum/tahfizh`, `/kurikulum/bahasa-arab`, `/tentang`, `/sehari-di-mahad`, `/info/kajian`, `/kalender-akademik`, `/pendidikan/tenaga/pendidik`, `/prestasi`, `/fasilitas`, Sveltia CMS.
+
+Next: connect the repo to Netlify for a preview link (then set up CMS sign-in and the daily rebuild hook); `/ekstrakurikuler` and a "Lokasi dan kontak" page if the school supplies content; a CMS screen for editing site.json.

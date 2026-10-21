@@ -1,0 +1,29 @@
+---
+// /sehari-di-mahad (new): the live day view, then the full timetable.
+import ContentPage from '@/components/content/ContentPage.astro';
+import DayView from '@/components/home/DayView.astro';
+import ScheduleTable from '@/components/content/ScheduleTable.astro';
+import { site, known } from '@/lib/site';
+
+const ds = site.dailySchedule as unknown as { saturday: { title: string; detail: string }; sunday: { title: string; detail: string } };
+const sunday = known(ds.sunday.title);
+---
+<ContentPage
+  title="Sehari di ma’had"
+  lede="Hari santri dimulai sebelum Subuh dan ditutup dengan persiapan hafalan esok hari. Jadwal di bawah mengikuti waktu shalat setempat, sehingga bergeser sedikit sepanjang tahun."
+  crumbs={[{ label: 'Kurikulum' }, { label: 'Sehari di ma’had' }]}
+  toc={[
+    { id: 'jadwal', text: 'Jadwal tahfizh' },
+    { id: 'akhir-pekan', text: 'Akhir pekan' },
+  ]}
+  motion
+  cta={{ text: 'Cara santri menghafal dan diuji', label: 'Kurikulum tahfizh', href: '/kurikulum/tahfizh/' }}
+>
+  <DayView slot="before" />
+  <h2 id="jadwal" style="margin-top:0">Jadwal tahfizh</h2>
+  <ScheduleTable />
+  <h2 id="akhir-pekan">Akhir pekan</h2>
+  <p><strong>Sabtu.</strong> {ds.saturday.detail}</p>
+  {sunday && <p><strong>Ahad.</strong> {ds.sunday.detail || sunday}</p>}
+  <p class="text-15 text-muted">Jam pelajaran sekolah dan bahasa Arab mengisi waktu antara Dhuha dan Ashar; rinciannya mengikuti jadwal tiap jenjang.</p>
+</ContentPage>

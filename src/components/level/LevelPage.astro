@@ -1,0 +1,309 @@
+---
+// Level page template (design/Jenjang-template.dc.html). Everything comes
+// from the level's entry in content/site.json via buildLevel().
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Landscape from '@/components/home/Landscape.astro';
+import { buildLevel } from '@/lib/level';
+import { school, infoGroupUrl, levelSummary, type Level } from '@/lib/site';
+
+interface Props {
+  level: Level;
+}
+const v = buildLevel(Astro.props.level);
+const lv = v.level;
+
+// Static class names per tone, so Tailwind can see them.
+const CELL: Record<string, string> = {
+  'lapis-1': 'bg-lapis-1 text-ink',
+  'lapis-2': 'bg-lapis-2 text-ink',
+  'lapis-3': 'bg-lapis-3 text-ink',
+  'lapis-4': 'bg-lapis-4 text-white',
+  'lapis-5': 'bg-lapis-5 text-white',
+  'sky-100': 'bg-sky-100 text-ink',
+};
+const SWATCH: Record<string, string> = {
+  'lapis-1': 'bg-lapis-1', 'lapis-2': 'bg-lapis-2', 'lapis-3': 'bg-lapis-3',
+  'lapis-4': 'bg-lapis-4', 'lapis-5': 'bg-lapis-5', 'sky-100': 'bg-sky-100',
+};
+const sections = [
+  { id: 'hafalan', label: 'Hafalan' },
+  { id: 'lulusan', label: 'Target lulusan' },
+  { id: 'biaya', label: 'Biaya' },
+  { id: 'pendaftaran', label: 'Pendaftaran' },
+  { id: 'pengajar', label: 'Pengajar' },
+];
+const h2 = 'm-0 font-display text-[clamp(40px,4.2vw,56px)] font-semibold leading-none';
+const wrap = 'mx-auto box-border max-w-page px-20 py-64 sm:px-40 sm:py-80';
+const btnLight = 'btn-light';
+const btnGhostNight = 'btn-ghost-night';
+---
+<BaseLayout title={lv.name} description={`${lv.name} (${levelSummary(lv)}). ${lv.intro}`} footerLabelledBy="g-foot-title">
+  <section aria-labelledby="j-title" class="mx-auto box-border max-w-page px-20 pb-56 pt-24 sm:px-40 sm:pb-72 sm:pt-32">
+    <nav aria-label="Breadcrumb" class="mb-32 text-15 sm:mb-40">
+      <ol class="m-0 flex list-none flex-wrap gap-x-10 gap-y-4 p-0 text-muted">
+        <li><a href="/" class="underline-offset-[3px]">Beranda</a></li>
+        <li aria-hidden="true">/</li>
+        <li><a href="/#jenjang" class="underline-offset-[3px]">Jenjang</a></li>
+        <li aria-hidden="true">/</li>
+        <li aria-current="page" class="text-ink">{lv.name}</li>
+      </ol>
+    </nav>
+    <div class="flex flex-wrap items-start gap-x-64 gap-y-48">
+      <div class="flex max-w-[640px] flex-[1_1_420px] flex-col gap-22">
+        <div class="flex flex-wrap items-baseline gap-x-20 gap-y-6">
+          <h1 id="j-title" class="m-0 font-display text-[clamp(56px,7vw,104px)] font-semibold leading-[0.92]">{lv.name}</h1>
+          {lv.nameAr && <span lang="ar" dir="rtl" class="font-display text-[44px] leading-[1.1] text-lapis">{lv.nameAr}</span>}
+        </div>
+        <p class="m-0 max-w-[34em] text-19 leading-[1.6] text-body [text-wrap:pretty]">{lv.intro}</p>
+        <div class="flex flex-wrap gap-12">
+          {
+            v.open && (
+              <a href="#pendaftaran" class="btn-primary">
+                Daftar {lv.name}
+              </a>
+            )
+          }
+          <a href={school.whatsapp.url} class="btn-secondary">
+            <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8.5 8.5 0 0 1-12.6 7.4L3 21l1.6-5.2A8.5 8.5 0 1 1 21 12z"></path></svg>
+            Tanya tentang {lv.name}
+          </a>
+        </div>
+      </div>
+      <dl class="m-0 box-border min-w-0 flex-[1_1_360px] border border-rule bg-white px-20 py-8 sm:px-28">
+        {
+          [...v.facts, ['Biaya pendaftaran', v.regFee]].map(([k, val]) => (
+            <div class="flex flex-wrap justify-between gap-x-16 gap-y-4 border-b border-rule-soft py-16">
+              <dt class="text-muted">{k}</dt>
+              <dd class="m-0 text-right font-bold">{val}</dd>
+            </div>
+          ))
+        }
+        <div class="flex flex-wrap items-center justify-between gap-x-16 gap-y-4 py-16">
+          <dt class="text-muted">Pendaftaran</dt>
+          <dd class:list={['m-0 text-right font-bold', v.open ? 'text-lapis' : 'text-muted']}>{v.open ? 'Dibuka' : 'Belum dibuka'}</dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+  <nav aria-label="Isi halaman" class="sticky top-0 z-[3] border-y border-rule bg-paper">
+    <ul class="m-0 mx-auto box-border flex max-w-page list-none gap-x-4 overflow-x-auto p-0 px-10 sm:flex-wrap sm:px-30">
+      {
+        sections.map((s) => (
+          <li class="flex-none">
+            <a href={`#${s.id}`} class="link-slide inline-flex min-h-48 items-center whitespace-nowrap px-10 text-15 font-bold text-ink [background-origin:content-box]">
+              {s.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+
+  <section id="hafalan" aria-labelledby="j-hafalan" class="scroll-mt-48 bg-white">
+    <div class:list={[wrap, 'flex flex-wrap items-start gap-x-64 gap-y-40']}>
+      <div class="flex max-w-[420px] flex-[1_1_320px] flex-col gap-16">
+        <h2 id="j-hafalan" class={h2}>Target hafalan: {lv.target}</h2>
+        <p class="m-0 text-body">{lv.targetNote}</p>
+        <ul class="m-0 mt-8 list-none border-t border-rule p-0">
+          {
+            v.juzRows.map((r) => (
+              <li class="flex items-center gap-12 border-b border-rule py-12">
+                <span aria-hidden="true" class:list={['size-14 flex-none shadow-[inset_0_0_0_1px_rgb(27_34_53/0.3)]', SWATCH[r.tone]]} />
+                <span class="flex-auto font-bold">{r.label}</span>
+                <span class="text-right text-body">{r.value}</span>
+              </li>
+            ))
+          }
+        </ul>
+        <a href="/kurikulum/tahfizh" class="inline-flex min-h-44 items-center self-start font-bold underline-offset-4">Lihat kurikulum tahfizh</a>
+      </div>
+      <div class="min-w-0 flex-[1.4_1_520px]">
+        {
+          v.hasMap ? (
+            <div role="img" aria-label={v.mapLabel} class="grid grid-cols-5 gap-6 sm:grid-cols-10">
+              {v.cells.map((c) => (
+                <div class:list={['flex aspect-square items-center justify-center rounded-sm text-16 font-bold tabular-nums', c.tone ? CELL[c.tone] : 'bg-juz-off text-juz-off-ink']}>
+                  {c.n}
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div class="box-border flex flex-col gap-14 border border-rule p-20 sm:p-28">
+              <div aria-hidden="true" class="flex h-56 gap-4">
+                {Array.from({ length: 30 }, (_, i) => (
+                  <span class:list={['flex-[1_1_0]', i < v.juzCount ? 'bg-lapis' : 'bg-rule-soft']} />
+                ))}
+              </div>
+              <p class="m-0 text-15 text-body">
+                {v.juzCount} dari 30 juz, mengikuti urutan hafalan di halaman kurikulum tahfizh.
+              </p>
+            </div>
+          )
+        }
+      </div>
+    </div>
+  </section>
+
+  <section id="lulusan" aria-labelledby="j-lulusan" class="scroll-mt-48">
+    <div class={wrap}>
+      <h2 id="j-lulusan" class:list={[h2, 'mb-32']}>Lulusan {lv.name} diharapkan</h2>
+      <ul class="m-0 grid list-none grid-cols-[repeat(auto-fit,minmax(min(340px,100%),1fr))] gap-x-48 border-t-2 border-ink p-0">
+        {lv.outcomes.map((o) => <li class="border-b border-rule py-16 text-ink [text-wrap:pretty]">{o}</li>)}
+      </ul>
+    </div>
+  </section>
+
+  <section id="biaya" aria-labelledby="j-biaya" class="scroll-mt-48 bg-white">
+    <div class:list={[wrap, 'flex flex-wrap gap-x-64 gap-y-32']}>
+      <div class="flex max-w-[420px] flex-[1_1_300px] flex-col gap-12">
+        <h2 id="j-biaya" class={h2}>Biaya</h2>
+        {v.fees.length > 0 && v.feeNote && <p class="m-0 text-body">{v.feeNote}</p>}
+      </div>
+      <div class="min-w-0 flex-[1.4_1_480px]">
+        {
+          v.fees.length > 0 ? (
+            <table class="w-full border-collapse text-17">
+              <caption class="sr-only">Rincian biaya {lv.name}</caption>
+              <thead>
+                <tr>
+                  <th scope="col" class="border-b-2 border-ink pb-10 text-left text-14 font-medium text-muted">Komponen</th>
+                  <th scope="col" class="border-b-2 border-ink pb-10 text-right text-14 font-medium text-muted">Jumlah</th>
+                </tr>
+              </thead>
+              <tbody>
+                {v.fees.map((f) => (
+                  <tr class="transition-colors duration-150 hover:bg-paper">
+                    <th scope="row" class="border-b border-rule py-16 pr-16 text-left font-medium">{f.item}</th>
+                    <td class="border-b border-rule py-16 text-right font-bold tabular-nums">{f.value}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          ) : (
+            <div class="flex flex-col items-start gap-14 border border-dashed border-placeholder p-20 sm:p-28">
+              <p class="m-0 font-display text-[28px] font-semibold leading-[1.15]">Rincian biaya {lv.name} belum dipublikasikan</p>
+              <p class="m-0 text-body">Tim pendaftaran bisa menjelaskan biaya pendaftaran, daftar ulang, dan biaya tahunan lewat WhatsApp.</p>
+              <a href={school.whatsapp.url} class="btn-primary">
+                Tanya biaya lewat WhatsApp
+              </a>
+            </div>
+          )
+        }
+      </div>
+    </div>
+  </section>
+
+  <section id="pendaftaran" aria-labelledby="j-daftar" class="scroll-mt-48 bg-ink text-on-night">
+    <div class={wrap}>
+      {
+        v.open ? (
+          <div class="flex flex-wrap gap-x-64 gap-y-40">
+            <div class="flex max-w-[460px] flex-[1_1_340px] flex-col gap-16">
+              <h2 id="j-daftar" class:list={[h2, 'text-white']}>
+                {v.academicYear ? `Pendaftaran tahun ajaran ${v.academicYear}` : `Pendaftaran ${lv.name} dibuka`}
+              </h2>
+              <p class="m-0 text-on-night-body">Tes masuk dilaksanakan langsung di {school.name}. Pilih gelombang yang paling dekat.</p>
+              <div class="mt-8 flex flex-wrap gap-12">
+                <a href={v.registerUrl} class={btnLight}>Isi formulir pendaftaran</a>
+                {v.brochureUrl && <a href={v.brochureUrl} class={btnGhostNight}>Unduh brosur (PDF)</a>}
+              </div>
+            </div>
+            <div class="flex min-w-0 flex-[1.4_1_480px] flex-col gap-32">
+              <ol class="m-0 grid list-none grid-cols-[repeat(auto-fit,minmax(min(200px,100%),1fr))] gap-16 p-0">
+                {[
+                  'Isi formulir pendaftaran online',
+                  `Bayar biaya pendaftaran ${v.regFee}`,
+                  'Ikuti tes masuk di ma’had sesuai gelombang',
+                  'Daftar ulang setelah diterima',
+                ].map((step, i) => (
+                  <li class="flex flex-col gap-6 border-t-2 border-on-night pt-14">
+                    <span aria-hidden="true" class="font-display text-32 leading-none text-on-night-muted">{i + 1}</span>
+                    <span>{step}</span>
+                  </li>
+                ))}
+              </ol>
+              {v.wavesAnnounced ? (
+                <table class="w-full border-collapse">
+                  <caption class="pb-10 text-left font-bold text-white">Jadwal gelombang</caption>
+                  <thead>
+                    <tr>
+                      {['Gelombang', 'Pendaftaran dibuka', 'Tes masuk'].map((h) => (
+                        <th scope="col" class="border-b border-night-rule-3 pb-10 pr-12 text-left text-14 font-medium text-on-night-muted">{h}</th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {v.waves.map((w) => (
+                      <tr>
+                        <th scope="row" class="border-b border-night-rule py-14 pr-12 text-left font-bold">{w.name}</th>
+                        <td class="border-b border-night-rule py-14 pr-12">{w.opens ?? 'Segera diumumkan'}</td>
+                        <td class="border-b border-night-rule py-14">{w.test ?? 'Segera diumumkan'}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              ) : (
+                <p class="m-0 border-t border-night-rule-3 pt-16 text-on-night-body">
+                  Jadwal gelombang dan tes masuk belum diumumkan.{' '}
+                  <a href={school.whatsapp.url} class="font-bold text-white underline-offset-4 hover:text-on-night-body">Tanyakan lewat WhatsApp</a>
+                </p>
+              )}
+            </div>
+          </div>
+        ) : (
+          <div class="flex flex-wrap items-end justify-between gap-x-64 gap-y-24">
+            <div class="flex max-w-[640px] flex-[1_1_420px] flex-col gap-14">
+              <h2 id="j-daftar" class:list={[h2, 'text-white']}>Pendaftaran {lv.name} belum dibuka</h2>
+              <p class="m-0 text-on-night-body">Masuk grup info Al Yusro untuk kabar saat pendaftaran berikutnya dibuka, atau tanyakan kuota lewat WhatsApp.</p>
+            </div>
+            <div class="flex flex-wrap gap-12">
+              <a href={infoGroupUrl} class={btnLight}>Masuk grup info</a>
+              <a href={school.whatsapp.url} class={btnGhostNight}>Tanya lewat WhatsApp</a>
+            </div>
+          </div>
+        )
+      }
+    </div>
+  </section>
+
+  <section id="pengajar" aria-labelledby="j-pengajar" class="scroll-mt-48">
+    <div class:list={[wrap, 'flex flex-wrap gap-x-64 gap-y-32']}>
+      <div class="flex max-w-[420px] flex-[1_1_300px] flex-col gap-6">
+        <h2 id="j-pengajar" class:list={[h2, 'mb-10']}>Pengajar</h2>
+        {
+          v.head && (
+            <>
+              <p class="m-0 text-15 text-muted">{lv.headRole}</p>
+              <p class="m-0 font-display text-30 font-semibold leading-[1.15]">{v.head}</p>
+            </>
+          )
+        }
+      </div>
+      <p class="m-0 flex-[1.4_1_480px] text-19 leading-[1.6] text-body [text-wrap:pretty]">{school.teachersNote}</p>
+    </div>
+  </section>
+
+  <nav aria-label="Jenjang lain" class="border-t border-rule">
+    <div class="mx-auto box-border flex max-w-page flex-wrap justify-between gap-16 px-20 pb-56 pt-32 sm:px-40">
+      {
+        v.prev && (
+          <a href={v.prev.path} class="flex min-h-64 flex-col items-start gap-2 py-12 text-ink no-underline hover:text-lapis">
+            <span class="text-14 text-muted">Jenjang sebelumnya</span>
+            <span class="font-display text-30 font-semibold leading-[1.1] underline underline-offset-4">{v.prev.name}</span>
+          </a>
+        )
+      }
+      {
+        v.next && (
+          <a href={v.next.path} class="ml-auto flex min-h-64 flex-col items-end gap-2 py-12 text-right text-ink no-underline hover:text-lapis">
+            <span class="text-14 text-muted">Jenjang berikutnya</span>
+            <span class="font-display text-30 font-semibold leading-[1.1] underline underline-offset-4">{v.next.name}</span>
+          </a>
+        )
+      }
+    </div>
+  </nav>
+
+  <Landscape slot="footer-lead" />
+</BaseLayout>

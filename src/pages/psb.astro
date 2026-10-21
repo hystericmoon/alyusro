@@ -1,0 +1,277 @@
+---
+// /psb (design/Pendaftaran.dc.html): status per level, flow, waves, a fee
+// comparison table, documents, FAQ (native <details>), contact. All from
+// content/site.json; unknown values are hidden.
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Landscape from '@/components/home/Landscape.astro';
+import { buildLevel } from '@/lib/level';
+import { site, school, levels, known, numberWord, registerUrl, infoGroupUrl, type Level } from '@/lib/site';
+
+type RawFee = { item: string; amount: number; label?: string; period?: string };
+const rupiah = (n: number) => `Rp${n.toLocaleString('id-ID')}`;
+const lower = (s: string) => s.charAt(0).toLowerCase() + s.slice(1);
+const year = known(site.psb.academicYear);
+
+// Status list: open levels first, then the rest from the oldest level down.
+const views = levels.map((l) => buildLevel(l));
+const ordered = [...views.filter((v) => v.open), ...views.filter((v) => !v.open).reverse()];
+
+// Fee comparison: map each level's items onto four comparable columns.
+const COLS = [
+  { key: 'reg', label: 'Pendaftaran', match: /pendaftaran/i },
+  { key: 'entry', label: 'Biaya masuk', match: /^(uang pangkal|daftar ulang)$/i },
+  { key: 'yearly', label: 'Biaya tahunan', match: /tahunan/i },
+  { key: 'spp', label: 'SPP', match: /^spp/i },
+];
+const feeRows = levels.map((l: Level) => {
+  const fees = (l.fees ?? []) as RawFee[];
+  const cell = (re: RegExp) => fees.find((f) => re.test(f.item));
+  const cells = COLS.map((c) => cell(c.match));
+  const free = l.feesNote && cells.slice(1, 3).every((f) => f && f.amount === 0);
+  return { level: l, fees, cells, free };
+});
+const entryNotes = feeRows
+  .map((r) => ({ name: r.level.name, item: r.cells[1] }))
+  .filter((r) => r.item && r.item.amount > 0)
+  .map((r) => `${r.name} sebagai ${lower(r.item!.item)}`);
+const feeYears = levels
+  .filter((l) => l.fees && known((l as Level & { feesYear?: string }).feesYear))
+  .map((l) => `${l.name} untuk tahun ajaran ${(l as Level & { feesYear?: string }).feesYear}`);
+
+const docs = site.psb.documents as Record<string, { items: string[]; note?: string } | string>;
+const docLevels = levels.filter((l) => typeof docs[l.slug] === 'object');
+const docHeading = ordered.find((v) => !docLevels.includes(v.level))?.level.name;
+const faq = site.psb.faq.map((f) => ({
+  q: f.q,
+  a: f.a.replace('{ideal}', numberWord(school.halaqahRatio.ideal)).replace('{max}', numberWord(school.halaqahRatio.max)),
+}));
+const brochure = Object.entries(site.psb.brochures as Record<string, string | null>).find(([k, v]) => !k.startsWith('_') && v);
+
+const h2 = 'm-0 font-display text-[clamp(40px,4.2vw,56px)] font-semibold leading-none';
+const wrap = 'mx-auto box-border max-w-page px-20 py-64 sm:px-40 sm:py-80';
+const th = 'border-b-2 border-ink pb-12 text-14 font-medium text-muted';
+const td = 'border-b border-rule py-18';
+---
+<BaseLayout title="Pendaftaran santri baru" description="Status pendaftaran, alur, biaya per jenjang, dan berkas yang disiapkan untuk mendaftar di Ma’had Tahfizh Al Yusro." footerLabelledBy="g-foot-title">
+  <section aria-labelledby="p-title" class="mx-auto box-border max-w-page px-20 pb-64 pt-24 sm:px-40 sm:pb-80 sm:pt-32">
+    <nav aria-label="Breadcrumb" class="mb-32 text-15 sm:mb-40">
+      <ol class="m-0 flex list-none gap-10 p-0 text-muted">
+        <li><a href="/">Beranda</a></li>
+        <li aria-hidden="true">/</li>
+        <li aria-current="page" class="text-ink">Pendaftaran</li>
+      </ol>
+    </nav>
+    <div class="flex flex-wrap items-start gap-x-64 gap-y-40">
+      <div class="flex max-w-[520px] flex-[1_1_380px] flex-col gap-20">
+        <h1 id="p-title" class="m-0 font-display text-[clamp(56px,6.6vw,96px)] font-semibold leading-[0.92] [text-wrap:balance]">Pendaftaran santri baru</h1>
+        <p class="m-0 text-19 text-body [text-wrap:pretty]">Pendaftaran dilakukan online, lalu tes masuk langsung di ma’had. Mulai dari jenjang yang sesuai usia anak.</p>
+        <p class="m-0 text-15 text-muted">Ada pertanyaan sebelum mendaftar? <a href={school.whatsapp.url} class="font-bold">Tanya tim pendaftaran lewat WhatsApp</a></p>
+      </div>
+      <div class="min-w-0 flex-[1.4_1_520px]">
+        <h2 class="m-0 mb-12 text-15 font-bold text-muted">Status pendaftaran per jenjang</h2>
+        <ul class="m-0 list-none border-t-2 border-ink p-0">
+          {
+            ordered.map((v) => (
+              <li class="flex flex-wrap items-center gap-x-20 gap-y-8 border-b border-rule py-16">
+                <span class="flex-[1_1_180px] font-display text-[28px] font-semibold leading-[1.1]">
+                  {v.level.name}{' '}
+                  <span class="font-body text-14 font-medium text-muted">{lower(v.level.setara)}</span>
+                </span>
+                {v.open ? (
+                  <>
+                    <span class="flex-[1_1_200px] font-bold text-lapis">Dibuka{year ? `, tahun ajaran ${year}` : ''}</span>
+                    <a href={registerUrl(v.level.slug)} class="btn-primary min-h-44 px-18 text-15">Daftar {v.level.name}</a>
+                  </>
+                ) : (
+                  <>
+                    <span class="flex-[1_1_200px] text-muted">Belum dibuka</span>
+                    <a href={infoGroupUrl} class="inline-flex min-h-44 items-center text-15 font-bold underline-offset-4" aria-label={`Kabari saya saat pendaftaran ${v.level.name} dibuka`}>Kabari saya</a>
+                  </>
+                )}
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="p-alur" class="bg-white">
+    <div class={wrap}>
+      <h2 id="p-alur" class:list={[h2, 'mb-12']}>Alur pendaftaran</h2>
+      <p class="m-0 mb-36 max-w-[40em] text-body">Berlaku untuk semua jenjang. Ma’had ‘Aly memakai akun pendaftaran tersendiri dan berkasnya diverifikasi panitia sebelum tes.</p>
+      <ol class="m-0 grid list-none grid-cols-[repeat(auto-fit,minmax(min(230px,100%),1fr))] gap-24 p-0">
+        {
+          [
+            ['Isi formulir online', 'Buat akun, isi data santri, dan unggah berkas.'],
+            ['Bayar biaya pendaftaran', 'Transfer ke rekening yayasan. Besarnya berbeda per jenjang, lihat tabel biaya.'],
+            ['Ikuti tes masuk di ma’had', 'Tes dilaksanakan langsung di Tenjolaya sesuai gelombang yang dipilih.'],
+            ['Daftar ulang', 'Setelah dinyatakan diterima, selesaikan daftar ulang sebelum tahun ajaran dimulai.'],
+          ].map(([t, d], i) => (
+            <li class="flex flex-col gap-8 border-t-2 border-ink pt-16">
+              <span aria-hidden="true" class="font-display text-[44px] leading-[0.9] text-lapis">{i + 1}</span>
+              <strong>{t}</strong>
+              <span class="text-15 text-body">{d}</span>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
+
+  {
+    views
+      .filter((v) => v.open)
+      .map((v) => (
+        <section aria-labelledby={`p-gelombang-${v.level.slug}`}>
+          <div class:list={[wrap, 'flex flex-wrap gap-x-64 gap-y-32']}>
+            <div class="max-w-[420px] flex-[1_1_300px]">
+              <h2 id={`p-gelombang-${v.level.slug}`} class:list={[h2, 'mb-12']}>Gelombang {v.level.name}</h2>
+              <p class="m-0 text-body">
+                {year ? `Tahun ajaran ${year}. ` : ''}Gelombang yang sudah lewat otomatis disembunyikan.
+              </p>
+            </div>
+            <div class="min-w-0 flex-[1.4_1_480px] overflow-x-auto">
+              {v.wavesAnnounced ? (
+                <table class="w-full min-w-[420px] border-collapse">
+                  <caption class="sr-only">Jadwal gelombang pendaftaran {v.level.name}</caption>
+                  <thead>
+                    <tr>
+                      {['Gelombang', 'Pendaftaran dibuka', 'Tes masuk'].map((h) => (
+                        <th scope="col" class:list={[th, 'text-left']}>{h}</th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {v.waves.map((w) => (
+                      <tr>
+                        <th scope="row" class:list={[td, 'text-left']}>{w.name}</th>
+                        <td class={td}>{w.opens ?? 'Segera diumumkan'}</td>
+                        <td class={td}>{w.test ?? 'Segera diumumkan'}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              ) : (
+                <p class="m-0 border-t-2 border-ink pt-16 text-body">
+                  Jadwal gelombang dan tes masuk belum diumumkan.{' '}
+                  <a href={school.whatsapp.url} class="font-bold">Tanyakan lewat WhatsApp</a>
+                </p>
+              )}
+            </div>
+          </div>
+        </section>
+      ))
+  }
+
+  <section aria-labelledby="p-biaya" class="bg-white">
+    <div class={wrap}>
+      <h2 id="p-biaya" class:list={[h2, 'mb-12']}>Biaya per jenjang</h2>
+      <p class="m-0 mb-32 max-w-[42em] text-body">Satu tabel untuk membandingkan. Jenjang yang rinciannya belum dipublikasikan bisa ditanyakan lewat WhatsApp.</p>
+      <div class="overflow-x-auto" tabindex="0" role="region" aria-label="Tabel biaya, dapat digeser ke samping">
+        <table class="w-full min-w-[820px] border-collapse tabular-nums">
+          <caption class="sr-only">Perbandingan biaya per jenjang</caption>
+          <thead>
+            <tr>
+              <th scope="col" class:list={[th, 'pr-16 text-left']}>Jenjang</th>
+              {COLS.map((c, i) => <th scope="col" class:list={[th, 'text-right', i === COLS.length - 1 ? 'pl-16' : 'px-16']}>{c.label}</th>)}
+            </tr>
+          </thead>
+          <tbody>
+            {
+              feeRows.map((r) => (
+                <tr class="transition-colors duration-150 hover:bg-paper">
+                  <th scope="row" class:list={[td, 'pr-16 text-left']}>{r.level.name}</th>
+                  {r.fees.length === 0 ? (
+                    <td colspan={COLS.length} class:list={[td, 'pl-16 text-right text-muted']}>
+                      Belum dipublikasikan. <a href={school.whatsapp.url} class="font-bold">Tanya biaya</a>
+                    </td>
+                  ) : r.free ? (
+                    <>
+                      <td class:list={[td, 'px-16 text-right font-bold']}>{r.cells[0] ? rupiah(r.cells[0].amount) : '–'}</td>
+                      <td colspan={COLS.length - 1} class:list={[td, 'pl-16 text-right font-bold text-lapis']}>{r.level.feesNote?.replace(/\.$/, '')}</td>
+                    </>
+                  ) : (
+                    r.cells.map((f, i) => (
+                      <td class:list={[td, 'text-right', i === COLS.length - 1 ? 'pl-16' : 'px-16', f ? 'font-bold' : 'text-muted']}>
+                        {f ? (f.amount === 0 && f.label ? f.label : rupiah(f.amount)) : 'Belum dipublikasikan'}
+                        {f && known(f.period) && <span class="font-normal text-muted"> {f.period}</span>}
+                      </td>
+                    ))
+                  )}
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+      {
+        (feeYears.length > 0 || entryNotes.length > 0) && (
+          <p class="m-0 mt-16 text-14 text-muted">
+            {feeYears.length > 0 && `Biaya ${feeYears.join(', ')}. `}
+            {entryNotes.length > 0 && `Biaya masuk ${entryNotes.join(', ')}.`}
+          </p>
+        )
+      }
+    </div>
+  </section>
+
+  <section aria-labelledby="p-berkas">
+    <div class={wrap}>
+      <h2 id="p-berkas" class:list={[h2, 'mb-32']}>Berkas yang disiapkan</h2>
+      <div class="grid grid-cols-[repeat(auto-fit,minmax(min(380px,100%),1fr))] gap-x-64 gap-y-32">
+        <div>
+          <h3 class="m-0 mb-8 text-18">{docHeading ? `${docHeading} dan jenjang lain` : 'Jenjang lain'}</h3>
+          <p class="m-0 text-body">
+            Daftar berkas diumumkan panitia saat pendaftaran dibuka. <a href={school.whatsapp.url} class="font-bold">Tanyakan lewat WhatsApp</a>
+          </p>
+        </div>
+        {
+          docLevels.map((l) => {
+            const d = docs[l.slug] as { items: string[]; note?: string };
+            return (
+              <div>
+                <h3 class="m-0 mb-8 text-18">{l.name}</h3>
+                <ul class="m-0 flex flex-col gap-4 pl-20 text-body">
+                  {d.items.map((it) => <li>{it}</li>)}
+                </ul>
+                {d.note && <p class="m-0 mt-12 text-15 text-muted">{d.note}</p>}
+              </div>
+            );
+          })
+        }
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="p-faq" class="bg-white">
+    <div class:list={[wrap, 'flex flex-wrap gap-x-64 gap-y-32']}>
+      <h2 id="p-faq" class:list={[h2, 'max-w-[420px] flex-[1_1_300px]']}>Pertanyaan yang sering diajukan</h2>
+      <div class="min-w-0 flex-[1.4_1_480px] border-t-2 border-ink">
+        {
+          faq.map((f) => (
+            <details class="group border-b border-rule">
+              <summary class="flex min-h-64 cursor-pointer items-center justify-between gap-16 font-bold transition-colors duration-150 hover:text-lapis">
+                {f.q}
+                <span aria-hidden="true" class="text-[24px] font-normal transition-transform duration-150 group-open:rotate-45">+</span>
+              </summary>
+              <p class="m-0 mb-20 text-body">{f.a}</p>
+            </details>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section aria-label="Kontak pendaftaran" class="bg-ink text-on-night">
+    <div class="mx-auto box-border flex max-w-page flex-wrap items-center justify-between gap-x-48 gap-y-24 px-20 py-56 sm:px-40 sm:py-64">
+      <p class="m-0 max-w-[18em] font-display text-[clamp(32px,3.4vw,44px)] font-semibold leading-[1.05] text-white">Masih ragu memilih jenjang? Tanyakan langsung.</p>
+      <div class="flex flex-wrap gap-12">
+        <a href={school.whatsapp.url} class="btn-light">WhatsApp {school.whatsapp.display}</a>
+        {brochure && <a href={brochure[1]!} class="btn-ghost-night">Unduh brosur {levels.find((l) => l.slug === brochure[0])?.name} (PDF)</a>}
+      </div>
+    </div>
+  </section>
+
+  <Landscape slot="footer-lead" />
+</BaseLayout>

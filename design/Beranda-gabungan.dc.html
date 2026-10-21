@@ -1,0 +1,487 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<title>Beranda gabungan</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;500;700&amp;family=Markazi+Text:wght@400;500;600;700&amp;display=swap">
+<style>
+body{margin:0}
+a{color:#26418F}a:hover{color:#1B2235}
+a:focus-visible,button:focus-visible{outline:2px solid #26418F;outline-offset:2px;box-shadow:0 0 0 2px #FFFFFF}
+@media (prefers-reduced-motion: reduce){*{transition:none !important}}
+@media (max-width: 760px){.g-steps{flex-direction:column !important;align-items:stretch !important}.g-step{min-height:0 !important;border-radius:6px !important}}
+@media (max-width: 640px){.g-pg{flex-basis:96px !important;font-size:12px !important}}
+</style>
+</helmet>
+<div style="background: #F7F7F4; color: #1B2235; font-family: 'Atkinson Hyperlegible Next', 'Segoe UI', Arial, sans-serif; font-size: 17px; line-height: 1.6">
+
+<header style="border-bottom: 1px solid #D9DCE4">
+<div style="max-width: 1280px; margin: 0 auto; padding: 16px 40px; box-sizing: border-box; display: flex; flex-wrap: wrap; align-items: center; gap: 12px 32px">
+<a href="#" style="display: flex; align-items: center; gap: 12px; min-height: 44px; margin-right: auto; color: #1B2235; text-decoration: none">
+<span aria-hidden="true" style="width: 44px; height: 44px; flex: none; box-sizing: border-box; border: 1.5px dashed #8A93A8; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; line-height: 1; color: #4A5368">logo</span>
+<span style="display: flex; flex-direction: column; gap: 3px">
+<span style="font-family: 'Markazi Text', Georgia, serif; font-size: 27px; font-weight: 600; line-height: 1">Ma’had Tahfizh Al Yusro</span>
+<span style="font-size: 13px; line-height: 1.2; color: #4A5368">Tenjolaya, Kabupaten Bogor</span>
+</span>
+</a>
+<nav aria-label="Menu utama">
+<ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0 4px">
+<li><button type="button" aria-expanded="false" style="display: flex; align-items: center; gap: 6px; min-height: 44px; padding: 0 10px; background: transparent; border: 0; font: inherit; font-size: 16px; font-weight: 500; color: #1B2235; cursor: pointer">Profil<svg aria-hidden="true" width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 4.5 6 8l3.5-3.5"></path></svg></button></li>
+<li><button type="button" aria-expanded="false" style="display: flex; align-items: center; gap: 6px; min-height: 44px; padding: 0 10px; background: transparent; border: 0; font: inherit; font-size: 16px; font-weight: 500; color: #1B2235; cursor: pointer">Jenjang<svg aria-hidden="true" width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 4.5 6 8l3.5-3.5"></path></svg></button></li>
+<li><button type="button" aria-expanded="false" style="display: flex; align-items: center; gap: 6px; min-height: 44px; padding: 0 10px; background: transparent; border: 0; font: inherit; font-size: 16px; font-weight: 500; color: #1B2235; cursor: pointer">Kurikulum<svg aria-hidden="true" width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 4.5 6 8l3.5-3.5"></path></svg></button></li>
+<li><button type="button" aria-expanded="false" style="display: flex; align-items: center; gap: 6px; min-height: 44px; padding: 0 10px; background: transparent; border: 0; font: inherit; font-size: 16px; font-weight: 500; color: #1B2235; cursor: pointer">Kajian &amp; artikel<svg aria-hidden="true" width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 4.5 6 8l3.5-3.5"></path></svg></button></li>
+</ul>
+</nav>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px 20px">
+<a href="#" style="display: inline-flex; align-items: center; min-height: 44px; font-size: 16px; font-weight: 500; color: #1B2235; text-underline-offset: 4px">Masuk wali &amp; asatidz</a>
+<a href="#" style="display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 22px; background: #26418F; color: #FFFFFF; font-size: 16px; font-weight: 700; text-decoration: none; border-radius: 2px">Daftar santri baru</a>
+</div>
+</div>
+</header>
+
+<section aria-labelledby="g-hero-title" style="max-width: 1280px; margin: 0 auto; padding: 72px 40px 96px; box-sizing: border-box; display: flex; flex-wrap: wrap; align-items: flex-start; gap: 56px 64px">
+<div style="flex: 1 1 380px; max-width: 540px; display: flex; flex-direction: column; gap: 24px; padding-top: 8px">
+<sc-if value="{{showArabic}}" hint-placeholder-val="{{true}}">
+<p lang="ar" dir="rtl" style="margin: 0; align-self: flex-start; font-family: 'Markazi Text', Georgia, serif; font-size: 34px; line-height: 1.2; color: #26418F">معهد تحفيظ اليسرى</p>
+</sc-if>
+<h1 id="g-hero-title" style="margin: 0; font-family: 'Markazi Text', Georgia, serif; font-size: clamp(52px, 6.4vw, 92px); font-weight: 600; line-height: 0.95; letter-spacing: -0.01em; text-wrap: balance">Hafalan 30 juz, ditempuh juz demi juz</h1>
+<p style="margin: 0; max-width: 34em; font-size: 19px; line-height: 1.6; color: #2C3448; text-wrap: pretty">Pesantren tahfizh dan bahasa Arab di kaki Gunung Salak, Bogor. Santri menghafal Al-Qur’an secara mutqin dan bersanad, berbahasa Arab aktif, dan tetap menempuh kurikulum nasional.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 12px">
+<a href="#" style="display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 22px; background: #26418F; color: #FFFFFF; font-size: 16px; font-weight: 700; text-decoration: none; border-radius: 2px">Daftar santri baru</a>
+<a href="https://wa.me/6281938926972" style="display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 48px; padding: 0 20px; box-sizing: border-box; background: #FFFFFF; color: #1B2235; border: 1px solid #1B2235; font-size: 16px; font-weight: 700; text-decoration: none; border-radius: 2px"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8.5 8.5 0 0 1-12.6 7.4L3 21l1.6-5.2A8.5 8.5 0 1 1 21 12z"></path></svg>Tanya lewat WhatsApp</a>
+</div>
+<p style="margin: 0; padding-top: 20px; border-top: 1px solid #D9DCE4; font-size: 15px; color: #4A5368">Pendaftaran Madrasah (setara SMP) tahun ajaran [2027/2028] sedang dibuka. <a href="#" style="font-weight: 700; text-underline-offset: 3px">Lihat jadwal dan biaya</a></p>
+</div>
+<div style="flex: 1.35 1 560px; min-width: 0; background: #FFFFFF; border: 1px solid #D9DCE4; padding: 10px; box-sizing: border-box">
+<div style="border: 1px solid #B7C6E9; padding: 32px; display: flex; flex-direction: column; gap: 20px">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<h2 style="margin: 0; font-family: 'Markazi Text', Georgia, serif; font-size: 32px; font-weight: 600; line-height: 1.1">Peta hafalan Madrasah dan Darul ‘Ilmi</h2>
+<p style="margin: 0; max-width: 46em; font-size: 15px; color: #4A5368">Dimulai dari juz 30 hingga 26, lalu juz 1 sampai 25. Setiap juz diuji dulu sebelum santri lanjut ke juz berikutnya.</p>
+</div>
+<div role="img" aria-label="Peta hafalan: kelas VII juz 30 sampai 26, kelas VIII juz 1 sampai 10, kelas IX juz 11 sampai 15, kelas X juz 16 sampai 20, kelas XI juz 21 sampai 25." style="display: grid; grid-template-columns: repeat(10, minmax(0, 1fr)); gap: 6px">
+<sc-for list="{{cells}}" as="c" hint-placeholder-count="30">
+<div style="aspect-ratio: 1 / 1; display: flex; align-items: center; justify-content: center; border-radius: 2px; font-size: 16px; font-weight: 700; font-variant-numeric: tabular-nums; background: {{c.bg}}; color: {{c.fg}}; transition: background-color .2s, color .2s">{{c.n}}</div>
+</sc-for>
+</div>
+<div role="group" aria-label="Pilih kelas" style="display: flex; flex-wrap: wrap; gap: 8px">
+<button type="button" onClick="{{chip.all.pick}}" aria-pressed="{{chip.all.pressed}}" style="display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 14px; font: inherit; font-size: 15px; font-weight: 700; line-height: 1.2; cursor: pointer; border-radius: 2px; transition: background-color .15s, color .15s; background: {{chip.all.bg}}; color: {{chip.all.fg}}; border: 1px solid {{chip.all.br}}">Semua kelas</button>
+<button type="button" onClick="{{chip.VII.pick}}" aria-pressed="{{chip.VII.pressed}}" style="display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 14px; font: inherit; font-size: 15px; font-weight: 700; line-height: 1.2; cursor: pointer; border-radius: 2px; transition: background-color .15s, color .15s; background: {{chip.VII.bg}}; color: {{chip.VII.fg}}; border: 1px solid {{chip.VII.br}}"><span aria-hidden="true" style="width: 12px; height: 12px; flex: none; background: #DCE3F3; box-shadow: inset 0 0 0 1px rgba(27, 34, 53, .3)"></span>Kelas VII <span style="font-weight: 400">juz 30–26</span></button>
+<button type="button" onClick="{{chip.VIII.pick}}" aria-pressed="{{chip.VIII.pressed}}" style="display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 14px; font: inherit; font-size: 15px; font-weight: 700; line-height: 1.2; cursor: pointer; border-radius: 2px; transition: background-color .15s, color .15s; background: {{chip.VIII.bg}}; color: {{chip.VIII.fg}}; border: 1px solid {{chip.VIII.br}}"><span aria-hidden="true" style="width: 12px; height: 12px; flex: none; background: #B7C6E9; box-shadow: inset 0 0 0 1px rgba(27, 34, 53, .3)"></span>Kelas VIII <span style="font-weight: 400">juz 1–10</span></button>
+<button type="button" onClick="{{chip.IX.pick}}" aria-pressed="{{chip.IX.pressed}}" style="display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 14px; font: inherit; font-size: 15px; font-weight: 700; line-height: 1.2; cursor: pointer; border-radius: 2px; transition: background-color .15s, color .15s; background: {{chip.IX.bg}}; color: {{chip.IX.fg}}; border: 1px solid {{chip.IX.br}}"><span aria-hidden="true" style="width: 12px; height: 12px; flex: none; background: #8DA3D9; box-shadow: inset 0 0 0 1px rgba(27, 34, 53, .3)"></span>Kelas IX <span style="font-weight: 400">juz 11–15</span></button>
+<button type="button" onClick="{{chip.X.pick}}" aria-pressed="{{chip.X.pressed}}" style="display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 14px; font: inherit; font-size: 15px; font-weight: 700; line-height: 1.2; cursor: pointer; border-radius: 2px; transition: background-color .15s, color .15s; background: {{chip.X.bg}}; color: {{chip.X.fg}}; border: 1px solid {{chip.X.br}}"><span aria-hidden="true" style="width: 12px; height: 12px; flex: none; background: #4F6DB8; box-shadow: inset 0 0 0 1px rgba(27, 34, 53, .3)"></span>Kelas X <span style="font-weight: 400">juz 16–20</span></button>
+<button type="button" onClick="{{chip.XI.pick}}" aria-pressed="{{chip.XI.pressed}}" style="display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 14px; font: inherit; font-size: 15px; font-weight: 700; line-height: 1.2; cursor: pointer; border-radius: 2px; transition: background-color .15s, color .15s; background: {{chip.XI.bg}}; color: {{chip.XI.fg}}; border: 1px solid {{chip.XI.br}}"><span aria-hidden="true" style="width: 12px; height: 12px; flex: none; background: #26418F; box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .5)"></span>Kelas XI <span style="font-weight: 400">juz 21–25</span></button>
+</div>
+<p aria-live="polite" style="margin: 0; min-height: 2.6em; font-family: 'Markazi Text', Georgia, serif; font-size: 25px; line-height: 1.3; color: #1B2235; text-wrap: pretty">{{readout}}</p>
+</div>
+</div>
+</section>
+
+<section aria-labelledby="g-day-title" style="background: #1B2235; color: #F3F5FA">
+<div style="max-width: 1280px; margin: 0 auto; padding: 96px 40px; box-sizing: border-box; display: flex; flex-wrap: wrap; align-items: flex-start; gap: 48px 64px">
+<div style="flex: 1 1 380px; max-width: 520px; display: flex; flex-direction: column; gap: 24px">
+<h2 id="g-day-title" style="margin: 0; font-family: 'Markazi Text', Georgia, serif; font-size: clamp(44px, 5vw, 72px); font-weight: 600; line-height: 0.98; color: #FFFFFF; text-wrap: balance">Hari santri dimulai sebelum Subuh</h2>
+<p style="margin: 0; max-width: 32em; font-size: 18px; line-height: 1.65; color: #C9D1E6; text-wrap: pretty">Setoran selepas Subuh, hafalan baru di waktu Dhuha, sekolah dan bahasa Arab, muraja’ah selepas Ashar, lalu persiapan hafalan esok di antara Maghrib dan Isya.</p>
+<div style="background: #242D47; border-radius: 6px; padding: 24px; display: flex; flex-direction: column; gap: 8px">
+<p style="margin: 0; font-size: 14px; color: #AEB6CF">Saat ini di Al Yusro, {{dayName}} pukul {{nowLabel}} WIB</p>
+<p style="margin: 0; font-family: 'Markazi Text', Georgia, serif; font-size: 32px; font-weight: 600; line-height: 1.1; color: #FFFFFF">{{curTitle}}</p>
+<sc-if value="{{hasDetail}}" hint-placeholder-val="{{true}}">
+<p style="margin: 0; font-size: 15px; line-height: 1.6; color: #D5DAEA">{{curDetail}}</p>
+</sc-if>
+<p style="margin: 8px 0 0; padding-top: 12px; border-top: 1px solid #343E5E; font-size: 15px; color: #F2A33A">{{nextText}}</p>
+</div>
+<a href="#" style="align-self: flex-start; display: inline-flex; align-items: center; min-height: 44px; font-size: 16px; font-weight: 700; color: #FFFFFF; text-underline-offset: 4px">Lihat kurikulum tahfizh</a>
+</div>
+<div style="flex: 1 1 520px; min-width: 0; background: #242D47; border-radius: 6px; padding: 24px 24px 20px; box-sizing: border-box">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 4px 16px; margin-bottom: 22px">
+<h3 style="margin: 0; font-size: 18px; font-weight: 700; line-height: 1.3; color: #FFFFFF">Jadwal harian santri</h3>
+<p style="margin: 0; font-size: 14px; color: #AEB6CF">{{scheduleNote}}</p>
+</div>
+<div style="display: flex; gap: 10px; padding-top: 8px">
+<div aria-hidden="true" style="position: relative; flex: 0 0 42px; height: 544px; font-size: 12px; line-height: 1; color: #AEB6CF; font-variant-numeric: tabular-nums">
+<span style="position: absolute; left: 0; top: 0%; transform: translateY(-50%)">04.00</span>
+<span style="position: absolute; left: 0; top: 12.5%; transform: translateY(-50%)">06.00</span>
+<span style="position: absolute; left: 0; top: 25%; transform: translateY(-50%)">08.00</span>
+<span style="position: absolute; left: 0; top: 37.5%; transform: translateY(-50%)">10.00</span>
+<span style="position: absolute; left: 0; top: 50%; transform: translateY(-50%)">12.00</span>
+<span style="position: absolute; left: 0; top: 62.5%; transform: translateY(-50%)">14.00</span>
+<span style="position: absolute; left: 0; top: 75%; transform: translateY(-50%)">16.00</span>
+<span style="position: absolute; left: 0; top: 87.5%; transform: translateY(-50%)">18.00</span>
+<span style="position: absolute; left: 0; top: 100%; transform: translateY(-50%)">20.00</span>
+</div>
+<div aria-hidden="true" style="position: relative; flex: 0 0 8px; height: 544px; border-radius: 4px; overflow: hidden">
+<span style="position: absolute; left: 0; right: 0; top: {{band.night1.top}}; height: {{band.night1.h}}; background: #11162A"></span>
+<span style="position: absolute; left: 0; right: 0; top: {{band.dawn.top}}; height: {{band.dawn.h}}; background: #3F5DAA"></span>
+<span style="position: absolute; left: 0; right: 0; top: {{band.morning.top}}; height: {{band.morning.h}}; background: #A3B5E2"></span>
+<span style="position: absolute; left: 0; right: 0; top: {{band.day.top}}; height: {{band.day.h}}; background: #E3E8F5"></span>
+<span style="position: absolute; left: 0; right: 0; top: {{band.afternoon.top}}; height: {{band.afternoon.h}}; background: #C6D2EE"></span>
+<span style="position: absolute; left: 0; right: 0; top: {{band.dusk.top}}; height: {{band.dusk.h}}; background: #4A68B5"></span>
+<span style="position: absolute; left: 0; right: 0; top: {{band.night2.top}}; height: {{band.night2.h}}; background: #11162A"></span>
+</div>
+<div style="position: relative; flex: 1 1 auto; min-width: 0; height: 544px">
+<span aria-hidden="true" style="position: absolute; left: 0; right: 0; top: 0%; border-top: 1px solid #333D5C"></span>
+<span aria-hidden="true" style="position: absolute; left: 0; right: 0; top: 12.5%; border-top: 1px solid #333D5C"></span>
+<span aria-hidden="true" style="position: absolute; left: 0; right: 0; top: 25%; border-top: 1px solid #333D5C"></span>
+<span aria-hidden="true" style="position: absolute; left: 0; right: 0; top: 37.5%; border-top: 1px solid #333D5C"></span>
+<span aria-hidden="true" style="position: absolute; left: 0; right: 0; top: 50%; border-top: 1px solid #333D5C"></span>
+<span aria-hidden="true" style="position: absolute; left: 0; right: 0; top: 62.5%; border-top: 1px solid #333D5C"></span>
+<span aria-hidden="true" style="position: absolute; left: 0; right: 0; top: 75%; border-top: 1px solid #333D5C"></span>
+<span aria-hidden="true" style="position: absolute; left: 0; right: 0; top: 87.5%; border-top: 1px solid #333D5C"></span>
+<span aria-hidden="true" style="position: absolute; left: 0; right: 0; top: 100%; border-top: 1px solid #333D5C"></span>
+<sc-for list="{{prayers}}" as="p" hint-placeholder-count="5">
+<span aria-hidden="true" style="position: absolute; left: 0; right: 0; top: {{p.top}}; border-top: 1px dashed #5A6688"></span>
+</sc-for>
+<sc-for list="{{blocks}}" as="b" hint-placeholder-count="5">
+<sc-if value="{{b.ph}}" hint-placeholder-val="{{false}}">
+<div style="position: absolute; left: 0; right: 0; top: {{b.top}}; height: {{b.h}}; box-sizing: border-box; padding: 8px 12px; border: 1.5px dashed #6E7DA3; border-radius: 4px; overflow: hidden; font-size: 13px; line-height: 1.35; color: #C9D1E6">{{b.name}}</div>
+</sc-if>
+<sc-if value="{{b.real}}" hint-placeholder-val="{{true}}">
+<div style="position: absolute; left: 0; right: 0; top: {{b.top}}; height: {{b.h}}; box-sizing: border-box; padding: 3px 10px; border-radius: 4px; overflow: hidden; display: flex; flex-wrap: wrap; align-content: flex-start; column-gap: 8px; font-size: 13px; line-height: 1.4; color: #1B2235; background: {{b.bg}}; box-shadow: {{b.ring}}"><strong style="font-weight: 700">{{b.name}}</strong><span style="font-variant-numeric: tabular-nums">{{b.time}}</span></div>
+</sc-if>
+</sc-for>
+<sc-if value="{{showNow}}" hint-placeholder-val="{{true}}">
+<div aria-hidden="true" style="position: absolute; left: -6px; right: 0; top: {{nowTop}}; height: 0; border-top: 2px solid #F2A33A; z-index: 2">
+<span style="position: absolute; left: 0; top: -6px; width: 10px; height: 10px; border-radius: 50%; background: #F2A33A"></span>
+<span style="position: absolute; right: 0; top: -24px; padding: 1px 8px; border-radius: 3px; background: #F2A33A; color: #1B2235; font-size: 12px; font-weight: 700; line-height: 1.5; font-variant-numeric: tabular-nums">{{nowLabel}}</span>
+</div>
+</sc-if>
+</div>
+<ul class="g-pg" aria-label="Waktu shalat hari ini" style="list-style: none; margin: 0; padding: 0; position: relative; flex: 0 0 140px; height: 544px; font-size: 13px; line-height: 1.2">
+<sc-for list="{{prayers}}" as="p" hint-placeholder-count="5">
+<li style="position: absolute; left: 0; right: 0; top: {{p.top}}; transform: translateY(-50%); display: flex; justify-content: space-between; align-items: baseline; gap: 6px; color: #E4E8F2">
+<span>{{p.name}} <span lang="ar" dir="rtl" style="color: #AEB6CF">{{p.ar}}</span></span>
+<span style="font-weight: 700; font-variant-numeric: tabular-nums">{{p.time}}</span>
+</li>
+</sc-for>
+</ul>
+</div>
+<p style="margin: 18px 0 0; font-size: 13px; color: #AEB6CF">Waktu shalat untuk wilayah Tenjolaya, Bogor.</p>
+</div>
+</div>
+</section>
+
+<section aria-labelledby="g-jenjang-title" style="background: #FFFFFF">
+<div style="max-width: 1280px; margin: 0 auto; padding: 96px 40px 0; box-sizing: border-box">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 16px 48px; margin-bottom: 48px">
+<h2 id="g-jenjang-title" style="margin: 0; max-width: 12em; font-family: 'Markazi Text', Georgia, serif; font-size: clamp(40px, 4.4vw, 64px); font-weight: 600; line-height: 1">Dari TK hingga D2, jenjang demi jenjang</h2>
+<p style="margin: 0; max-width: 28em; color: #4A5368">Setiap jenjang punya target hafalan sendiri. Pilih yang sesuai usia anak.</p>
+</div>
+<ol class="g-steps" style="list-style: none; margin: 0; padding: 0; display: flex; align-items: flex-end; gap: 6px">
+<li class="g-step" style="flex: 1 1 0; min-width: 0; min-height: 210px; box-sizing: border-box; padding: 22px 18px 12px; background: #E3E8F5; color: #1B2235; border-radius: 6px 6px 0 0; display: flex; flex-direction: column; gap: 4px">
+<h3 style="margin: 0; font-family: 'Markazi Text', Georgia, serif; font-size: 30px; font-weight: 600; line-height: 1.05">TAUD</h3>
+<p style="margin: 0; font-size: 15px; line-height: 1.45; color: #2C3448">Setara TK, usia 4–6 tahun</p>
+<p style="margin: auto 0 0; padding-top: 12px; font-size: 14px; line-height: 1.4; color: #2C3448">Target hafalan<br><strong style="font-size: 17px; color: #1B2235">Juz 30</strong></p>
+<a href="#" aria-label="Lihat jenjang TAUD" style="display: inline-flex; align-items: center; min-height: 44px; font-size: 15px; font-weight: 700; color: #1B2235; text-underline-offset: 4px">Lihat jenjang</a>
+</li>
+<li class="g-step" style="flex: 1 1 0; min-width: 0; min-height: 246px; box-sizing: border-box; padding: 22px 18px 12px; background: #C6D2EE; color: #1B2235; border-radius: 6px 6px 0 0; display: flex; flex-direction: column; gap: 4px">
+<h3 style="margin: 0; font-family: 'Markazi Text', Georgia, serif; font-size: 30px; font-weight: 600; line-height: 1.05">Kuttab</h3>
+<sc-if value="{{showArabic}}" hint-placeholder-val="{{true}}"><span lang="ar" dir="rtl" style="align-self: flex-start; font-family: 'Markazi Text', Georgia, serif; font-size: 22px; line-height: 1.2; color: #2C3448">الكتّاب</span></sc-if>
+<p style="margin: 0; font-size: 15px; line-height: 1.45; color: #2C3448">Setara SD, ditempuh 6 tahun</p>
+<p style="margin: auto 0 0; padding-top: 12px; font-size: 14px; line-height: 1.4; color: #2C3448">Target hafalan<br><strong style="font-size: 17px; color: #1B2235">Minimal 6 juz</strong></p>
+<a href="#" aria-label="Lihat jenjang Kuttab" style="display: inline-flex; align-items: center; min-height: 44px; font-size: 15px; font-weight: 700; color: #1B2235; text-underline-offset: 4px">Lihat jenjang</a>
+</li>
+<li class="g-step" style="flex: 1 1 0; min-width: 0; min-height: 282px; box-sizing: border-box; padding: 22px 18px 12px; background: #A3B5E2; color: #1B2235; border-radius: 6px 6px 0 0; display: flex; flex-direction: column; gap: 4px">
+<h3 style="margin: 0; font-family: 'Markazi Text', Georgia, serif; font-size: 30px; font-weight: 600; line-height: 1.05">Mahdhon Tarbawi</h3>
+<sc-if value="{{showArabic}}" hint-placeholder-val="{{true}}"><span lang="ar" dir="rtl" style="align-self: flex-start; font-family: 'Markazi Text', Georgia, serif; font-size: 22px; line-height: 1.2; color: #1B2235">المحضن التربوي</span></sc-if>
+<p style="margin: 0; font-size: 15px; line-height: 1.45; color: #1B2235">Setingkat kelas 5–6 SD</p>
+<p style="margin: auto 0 0; padding-top: 12px; font-size: 14px; line-height: 1.4; color: #1B2235">Target hafalan<br><strong style="font-size: 17px">Minimal 3 juz</strong></p>
+<a href="#" aria-label="Lihat jenjang Mahdhon Tarbawi" style="display: inline-flex; align-items: center; min-height: 44px; font-size: 15px; font-weight: 700; color: #1B2235; text-underline-offset: 4px">Lihat jenjang</a>
+</li>
+<li class="g-step" style="flex: 1 1 0; min-width: 0; min-height: 318px; box-sizing: border-box; padding: 22px 18px 12px; background: #4A68B5; color: #FFFFFF; border-radius: 6px 6px 0 0; display: flex; flex-direction: column; gap: 4px">
+<h3 style="margin: 0; font-family: 'Markazi Text', Georgia, serif; font-size: 30px; font-weight: 600; line-height: 1.05">Madrasah</h3>
+<sc-if value="{{showArabic}}" hint-placeholder-val="{{true}}"><span lang="ar" dir="rtl" style="align-self: flex-start; font-family: 'Markazi Text', Georgia, serif; font-size: 22px; line-height: 1.2; color: #FFFFFF">المدرسة</span></sc-if>
+<p style="margin: 0; font-size: 15px; line-height: 1.45; color: #FFFFFF">Setara SMP, kelas VII–IX</p>
+<span style="align-self: flex-start; margin-top: 6px; padding: 3px 10px; border-radius: 2px; background: #FFFFFF; color: #26418F; font-size: 13px; font-weight: 700; line-height: 1.4">Pendaftaran dibuka</span>
+<p style="margin: auto 0 0; padding-top: 12px; font-size: 14px; line-height: 1.4; color: #FFFFFF">Target hafalan<br><strong style="font-size: 17px">20 juz</strong></p>
+<a href="#" aria-label="Lihat jenjang Madrasah" style="display: inline-flex; align-items: center; min-height: 44px; font-size: 15px; font-weight: 700; color: #FFFFFF; text-underline-offset: 4px">Lihat jenjang</a>
+</li>
+<li class="g-step" style="flex: 1 1 0; min-width: 0; min-height: 354px; box-sizing: border-box; padding: 22px 18px 12px; background: #33509F; color: #FFFFFF; border-radius: 6px 6px 0 0; display: flex; flex-direction: column; gap: 4px">
+<h3 style="margin: 0; font-family: 'Markazi Text', Georgia, serif; font-size: 30px; font-weight: 600; line-height: 1.05">Darul ‘Ilmi</h3>
+<sc-if value="{{showArabic}}" hint-placeholder-val="{{true}}"><span lang="ar" dir="rtl" style="align-self: flex-start; font-family: 'Markazi Text', Georgia, serif; font-size: 22px; line-height: 1.2; color: #FFFFFF">دار العلم</span></sc-if>
+<p style="margin: 0; font-size: 15px; line-height: 1.45; color: #FFFFFF">Setara SMA</p>
+<p style="margin: auto 0 0; padding-top: 12px; font-size: 14px; line-height: 1.4; color: #FFFFFF">Target hafalan<br><strong style="font-size: 17px">Genap 30 juz bersanad</strong></p>
+<a href="#" aria-label="Lihat jenjang Darul ‘Ilmi" style="display: inline-flex; align-items: center; min-height: 44px; font-size: 15px; font-weight: 700; color: #FFFFFF; text-underline-offset: 4px">Lihat jenjang</a>
+</li>
+<li class="g-step" style="flex: 1 1 0; min-width: 0; min-height: 390px; box-sizing: border-box; padding: 22px 18px 12px; background: #26418F; color: #FFFFFF; border-radius: 6px 6px 0 0; display: flex; flex-direction: column; gap: 4px">
+<h3 style="margin: 0; font-family: 'Markazi Text', Georgia, serif; font-size: 30px; font-weight: 600; line-height: 1.05">Ma’had ‘Aly</h3>
+<sc-if value="{{showArabic}}" hint-placeholder-val="{{true}}"><span lang="ar" dir="rtl" style="align-self: flex-start; font-family: 'Markazi Text', Georgia, serif; font-size: 22px; line-height: 1.2; color: #FFFFFF">المعهد العالي</span></sc-if>
+<p style="margin: 0; font-size: 15px; line-height: 1.45; color: #FFFFFF">Setara D2, beasiswa penuh termasuk asrama dan makan</p>
+<p style="margin: auto 0 0; padding-top: 12px; font-size: 14px; line-height: 1.4; color: #FFFFFF">Target hafalan<br><strong style="font-size: 17px">Minimal 15 juz</strong></p>
+<a href="#" aria-label="Lihat jenjang Ma’had ‘Aly" style="display: inline-flex; align-items: center; min-height: 44px; font-size: 15px; font-weight: 700; color: #FFFFFF; text-underline-offset: 4px">Lihat jenjang</a>
+</li>
+</ol>
+</div>
+<div aria-hidden="true" style="height: 6px; background: #1B2235"></div>
+</section>
+
+<footer aria-labelledby="g-foot-title">
+<div style="position: relative; overflow: hidden; background: #E4E9F2; color: #1B2235; padding: 0 0 300px">
+<div style="position: relative; z-index: 1; max-width: 1280px; margin: 0 auto; padding: 96px 40px 0; box-sizing: border-box">
+<div style="max-width: 760px; display: flex; flex-direction: column; gap: 22px">
+<h2 id="g-foot-title" style="margin: 0; font-family: 'Markazi Text', Georgia, serif; font-size: clamp(44px, 5.2vw, 76px); font-weight: 600; line-height: 0.98; text-wrap: balance">Belajar dan menghafal di kaki Gunung Salak</h2>
+<p style="margin: 0; max-width: 33em; font-size: 18px; color: #2C3448; text-wrap: pretty">Udara sejuk, jauh dari keramaian kota. Santri tinggal di ma’had dan menyetorkan hafalan setiap hari dalam halaqah kecil, idealnya delapan santri untuk satu muhaffizh.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 12px">
+<a href="#" style="display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 22px; background: #26418F; color: #FFFFFF; font-size: 16px; font-weight: 700; text-decoration: none; border-radius: 2px">Daftar santri baru</a>
+<a href="https://maps.app.goo.gl/3H8h2iucQwDajhV39" style="display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 48px; padding: 0 20px; box-sizing: border-box; background: transparent; color: #1B2235; border: 1px solid #1B2235; font-size: 16px; font-weight: 700; text-decoration: none; border-radius: 2px"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"></path><circle cx="12" cy="9.5" r="2.5"></circle></svg>Buka peta lokasi</a>
+</div>
+</div>
+</div>
+<svg aria-hidden="true" viewBox="0 0 1440 460" preserveAspectRatio="xMidYMax slice" style="position: absolute; left: 0; bottom: 0; width: 100%; height: 380px; display: block">
+<circle cx="1150" cy="150" r="46" fill="#F2A33A"></circle>
+<path d="M0 300 C 160 282 320 246 470 200 C 580 166 660 126 728 96 C 760 82 784 64 806 60 C 826 57 842 70 860 86 C 878 102 896 112 914 106 C 936 98 952 80 974 76 C 996 72 1018 90 1046 116 C 1104 168 1190 214 1290 244 C 1350 262 1400 272 1440 276 L 1440 460 L 0 460 Z" fill="#C3CDE0"></path>
+<path d="M0 352 C 110 334 220 318 330 322 C 450 326 540 296 650 288 C 760 280 850 312 960 306 C 1070 300 1170 270 1270 272 C 1350 274 1405 286 1440 292 L 1440 460 L 0 460 Z" fill="#9AA9C6"></path>
+<path d="M0 394 C 130 368 250 366 370 380 C 500 396 620 354 760 358 C 880 362 970 396 1090 390 C 1210 384 1320 352 1440 358 L 1440 460 L 0 460 Z" fill="#6E80A8"></path>
+<path d="M0 428 C 180 404 340 410 500 420 C 690 432 860 398 1050 404 C 1210 409 1340 424 1440 420 L 1440 460 L 0 460 Z" fill="#3F5079"></path>
+<path d="M0 452 C 220 440 420 444 640 450 C 860 456 1080 440 1300 444 C 1370 446 1410 448 1440 448 L 1440 460 L 0 460 Z" fill="#1B2235"></path>
+</svg>
+</div>
+<div style="background: #1B2235; color: #C9D1E6">
+<div style="max-width: 1280px; margin: 0 auto; padding: 32px 40px 48px; box-sizing: border-box; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr)); gap: 32px 40px; font-size: 15px">
+<div style="display: flex; flex-direction: column; gap: 8px">
+<p style="margin: 0; font-family: 'Markazi Text', Georgia, serif; font-size: 26px; font-weight: 600; line-height: 1.1; color: #FFFFFF">Ma’had Tahfizh Al Yusro</p>
+<p style="margin: 0">Desa Gunung Mulya, Kecamatan Tenjolaya, Kabupaten Bogor, Jawa Barat</p>
+<a href="https://wa.me/6281938926972" style="display: inline-flex; align-items: center; min-height: 44px; color: #FFFFFF; font-weight: 700; text-underline-offset: 4px">WhatsApp 0819-3892-6972</a>
+</div>
+<nav aria-label="Profil" style="display: flex; flex-direction: column; gap: 2px">
+<p style="margin: 0 0 6px; font-weight: 700; color: #FFFFFF">Profil</p>
+<a href="#" style="color: #C9D1E6; min-height: 32px; display: inline-flex; align-items: center">Tentang kami</a>
+<a href="#" style="color: #C9D1E6; min-height: 32px; display: inline-flex; align-items: center">Pengajar dan pengurus</a>
+<a href="#" style="color: #C9D1E6; min-height: 32px; display: inline-flex; align-items: center">Fasilitas</a>
+<a href="#" style="color: #C9D1E6; min-height: 32px; display: inline-flex; align-items: center">Prestasi</a>
+</nav>
+<nav aria-label="Kurikulum" style="display: flex; flex-direction: column; gap: 2px">
+<p style="margin: 0 0 6px; font-weight: 700; color: #FFFFFF">Kurikulum</p>
+<a href="#" style="color: #C9D1E6; min-height: 32px; display: inline-flex; align-items: center">Tahfizh</a>
+<a href="#" style="color: #C9D1E6; min-height: 32px; display: inline-flex; align-items: center">Bahasa Arab</a>
+<a href="#" style="color: #C9D1E6; min-height: 32px; display: inline-flex; align-items: center">Sehari di ma’had</a>
+<a href="#" style="color: #C9D1E6; min-height: 32px; display: inline-flex; align-items: center">Kalender akademik</a>
+</nav>
+<nav aria-label="Layanan" style="display: flex; flex-direction: column; gap: 2px">
+<p style="margin: 0 0 6px; font-weight: 700; color: #FFFFFF">Layanan</p>
+<a href="#" style="color: #C9D1E6; min-height: 32px; display: inline-flex; align-items: center">Jadwal shalat</a>
+<a href="#" style="color: #C9D1E6; min-height: 32px; display: inline-flex; align-items: center">Nama Latin ke Arab</a>
+<a href="#" style="color: #C9D1E6; min-height: 32px; display: inline-flex; align-items: center">Info kajian</a>
+<a href="#" style="color: #C9D1E6; min-height: 32px; display: inline-flex; align-items: center">Grup info WhatsApp</a>
+</nav>
+</div>
+<div style="max-width: 1280px; margin: 0 auto; padding: 20px 40px 32px; box-sizing: border-box; border-top: 1px solid #333D5C; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; font-size: 14px; color: #AEB6CF">
+<span>© 2026 Ma’had Tahfizh Al Yusro</span>
+<span>Instagram, Facebook, dan YouTube: @mahadtahfizhalyusro</span>
+</div>
+</div>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"showArabic":{"editor":"boolean","default":true},"previewTime":{"editor":"text","default":""},"previewDay":{"editor":"enum","options":["Hari ini","Senin","Selasa","Rabu","Kamis","Jumat","Sabtu","Ahad"],"default":"Hari ini"},"$preview":{"width":1440,"height":3500}}'>
+class Component extends DCLogic {
+  componentDidMount() {
+    var self = this;
+    this._timer = setInterval(function () { self.forceUpdate(); }, 30000);
+  }
+  componentWillUnmount() {
+    if (this._timer) clearInterval(this._timer);
+  }
+  prayerTimes(y, m, d) {
+    var lat = -6.66, lng = 106.70, tz = 7;
+    var rad = Math.PI / 180, deg = 180 / Math.PI;
+    var fix = function (a, b) { a = a - b * Math.floor(a / b); return a < 0 ? a + b : a; };
+    var Y = y, M = m;
+    if (M <= 2) { Y -= 1; M += 12; }
+    var A = Math.floor(Y / 100), B = 2 - A + Math.floor(A / 4);
+    var jd = Math.floor(365.25 * (Y + 4716)) + Math.floor(30.6001 * (M + 1)) + d + B - 1524.5 - lng / (15 * 24);
+    var sun = function (t) {
+      var D = jd + t - 2451545.0;
+      var g = fix(357.529 + 0.98560028 * D, 360);
+      var q = fix(280.459 + 0.98564736 * D, 360);
+      var L = fix(q + 1.915 * Math.sin(g * rad) + 0.020 * Math.sin(2 * g * rad), 360);
+      var e = 23.439 - 0.00000036 * D;
+      var RA = Math.atan2(Math.cos(e * rad) * Math.sin(L * rad), Math.cos(L * rad)) * deg / 15;
+      return { decl: Math.asin(Math.sin(e * rad) * Math.sin(L * rad)) * deg, eqt: q / 15 - fix(RA, 24) };
+    };
+    var noon = function (t) { return fix(12 - sun(t).eqt, 24); };
+    var angleTime = function (a, t, ccw) {
+      var s = sun(t);
+      var T = Math.acos((-Math.sin(a * rad) - Math.sin(s.decl * rad) * Math.sin(lat * rad)) / (Math.cos(s.decl * rad) * Math.cos(lat * rad))) * deg / 15;
+      return noon(t) + (ccw ? -T : T);
+    };
+    var asrTime = function (t) {
+      var s = sun(t);
+      var a = -Math.atan(1 / (1 + Math.tan(Math.abs(lat - s.decl) * rad))) * deg;
+      return angleTime(a, t, false);
+    };
+    var t = { fajr: 5, sunrise: 6, dhuhr: 12, asr: 13, maghrib: 18, isha: 18 };
+    for (var i = 0; i < 2; i++) {
+      t = {
+        fajr: angleTime(20, t.fajr / 24, true),
+        sunrise: angleTime(0.833, t.sunrise / 24, true),
+        dhuhr: noon(t.dhuhr / 24),
+        asr: asrTime(t.asr / 24),
+        maghrib: angleTime(0.833, t.maghrib / 24, false),
+        isha: angleTime(18, t.isha / 24, false)
+      };
+    }
+    var out = {};
+    for (var k in t) out[k] = Math.round((t[k] + tz - lng / 15) * 60) + 2;
+    return out;
+  }
+  renderVals() {
+    var self = this;
+    var pv = this.props || {};
+
+    var sel = (this.state && this.state.sel) || 'all';
+    var C = {
+      VII: { bg: '#DCE3F3', fg: '#1B2235' },
+      VIII: { bg: '#B7C6E9', fg: '#1B2235' },
+      IX: { bg: '#8DA3D9', fg: '#1B2235' },
+      X: { bg: '#4F6DB8', fg: '#FFFFFF' },
+      XI: { bg: '#26418F', fg: '#FFFFFF' }
+    };
+    var classOf = function (n) {
+      if (n >= 26) return 'VII';
+      if (n <= 10) return 'VIII';
+      if (n <= 15) return 'IX';
+      if (n <= 20) return 'X';
+      return 'XI';
+    };
+    var cells = [];
+    for (var n = 1; n <= 30; n++) {
+      var k = classOf(n);
+      var on = sel === 'all' || sel === k;
+      cells.push({ n: n, bg: on ? C[k].bg : '#EEF0F4', fg: on ? C[k].fg : '#5B6374' });
+    }
+    var chip = {};
+    ['all', 'VII', 'VIII', 'IX', 'X', 'XI'].forEach(function (key) {
+      var p = sel === key;
+      chip[key] = {
+        pressed: p ? 'true' : 'false',
+        bg: p ? '#1B2235' : '#FFFFFF',
+        fg: p ? '#FFFFFF' : '#1B2235',
+        br: p ? '#1B2235' : '#C9CDD8',
+        pick: function () { self.setState({ sel: key }); }
+      };
+    });
+    var readouts = {
+      all: 'Lima tahun, 30 juz: 20 juz di Madrasah (kelas VII–IX), lalu 10 juz di Darul ‘Ilmi (kelas X–XI).',
+      VII: 'Kelas VII memulai dari juz 30 sampai 26, lima juz pertama.',
+      VIII: 'Kelas VIII menghafal sepuluh juz, dari juz 1 sampai 10.',
+      IX: 'Kelas IX menghafal juz 11 sampai 15. Hafalan Madrasah genap 20 juz.',
+      X: 'Kelas X, tahun pertama hafalan Darul ‘Ilmi: juz 16 sampai 20.',
+      XI: 'Kelas XI menghafal juz 21 sampai 25. Hafalan genap 30 juz.'
+    };
+
+    var now = new Date(Date.now() + 7 * 3600 * 1000);
+    var y = now.getUTCFullYear(), mo = now.getUTCMonth() + 1, d = now.getUTCDate();
+    var wd = now.getUTCDay();
+    var dayNames = ['Ahad', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
+    var pd = dayNames.indexOf(pv.previewDay);
+    if (pd >= 0) wd = pd;
+    var nowMin = now.getUTCHours() * 60 + now.getUTCMinutes();
+    var mt = /^(\d{1,2})[.:](\d{2})$/.exec(String(pv.previewTime || '').trim());
+    if (mt) nowMin = Math.min(1439, parseInt(mt[1], 10) * 60 + parseInt(mt[2], 10));
+    var pt = this.prayerTimes(y, mo, d);
+    var pad = function (v) { return (v < 10 ? '0' : '') + v; };
+    var fmt = function (mins) { return pad(Math.floor(mins / 60)) + '.' + pad(mins % 60); };
+    var START = 240, END = 1200, SPAN = END - START;
+    var pct = function (mins) { return ((Math.max(START, Math.min(END, mins)) - START) / SPAN * 100).toFixed(3) + '%'; };
+    var len = function (a, b) { return (Math.max(0, Math.min(END, b) - Math.max(START, a)) / SPAN * 100).toFixed(3) + '%'; };
+    var friday = wd === 5;
+    var weekday = wd >= 1 && wd <= 5;
+    var raw = [
+      { name: 'Setoran sabaq', detail: 'Santri menyetorkan hafalan baru kepada muhaffizh selepas Subuh.', a: 300, b: 390 },
+      { name: 'Hifzhul jadid', detail: 'Menambah hafalan baru di waktu Dhuha, tiga sesi 60 menit.', a: 420, b: 600 },
+      { name: '[Jadwal pelajaran sekolah dan bahasa Arab]', detail: '', a: 600, b: pt.asr - 5, ph: true },
+      friday
+        ? { name: 'Khataman tilawah', detail: 'Khataman tilawah Al-Qur’an setiap Jumat, di antara Ashar dan Maghrib.', a: pt.asr + 15, b: pt.maghrib - 10 }
+        : { name: 'Setoran sabaq atau manzil', detail: 'Mengulang hafalan di hadapan muhaffizh, selesai paling lambat satu jam sebelum Maghrib.', a: pt.asr + 15, b: Math.min(pt.asr + 75, pt.maghrib - 60) },
+      { name: 'Isti’dad', detail: 'Persiapan hafalan untuk esok hari, 45 menit di antara Maghrib dan Isya.', a: pt.maghrib + 15, b: pt.maghrib + 60 }
+    ];
+    var cur = null;
+    if (weekday) {
+      raw.forEach(function (b) { if (nowMin >= b.a && nowMin < b.b) cur = b; });
+    }
+    var prayers = [
+      { name: 'Subuh', ar: 'الفجر', m: pt.fajr },
+      { name: friday ? 'Jumat' : 'Zhuhur', ar: friday ? 'الجمعة' : 'الظهر', m: pt.dhuhr },
+      { name: 'Ashar', ar: 'العصر', m: pt.asr },
+      { name: 'Maghrib', ar: 'المغرب', m: pt.maghrib },
+      { name: 'Isya', ar: 'العشاء', m: pt.isha }
+    ];
+    prayers.forEach(function (x) {
+      x.time = fmt(x.m);
+      x.top = pct(x.m);
+      if (weekday && nowMin >= x.m && nowMin < x.m + 15) {
+        cur = { name: x.name === 'Jumat' ? 'Shalat Jumat' : 'Shalat ' + x.name + ' berjamaah', detail: 'Shalat berjamaah di masjid ma’had.', a: x.m, b: x.m + 15 };
+      }
+    });
+    var events = [];
+    raw.forEach(function (b) { if (!b.ph) events.push({ name: b.name, m: b.a }); });
+    prayers.forEach(function (x) { events.push({ name: x.name === 'Jumat' ? 'Shalat Jumat' : 'Shalat ' + x.name, m: x.m }); });
+    events.sort(function (a, b) { return a.m - b.m; });
+    var next = null;
+    if (weekday) {
+      for (var i = 0; i < events.length; i++) {
+        if (events[i].m > nowMin) { next = events[i]; break; }
+      }
+    }
+    var curTitle, curDetail = '', nextText;
+    if (!weekday) {
+      curTitle = wd === 6 ? 'Sabtu: tasmi’ dan kajian pagi' : '[Kegiatan hari Ahad]';
+      curDetail = wd === 6 ? 'Hafalan diperdengarkan sebelum kajian Sabtu pagi, lalu tadabbur Al-Qur’an di halaqah.' : '';
+      nextText = 'Jadwal harian berlaku Senin sampai Jumat.';
+    } else {
+      if (cur) {
+        curTitle = cur.name;
+        curDetail = (cur.detail ? cur.detail + ' ' : '') + fmt(cur.a) + '–' + fmt(cur.b) + '.';
+      } else if (nowMin < 210 || nowMin >= 1290) {
+        curTitle = 'Waktu istirahat malam';
+      } else {
+        curTitle = 'Jeda di antara kegiatan';
+      }
+      nextText = next ? 'Berikutnya: ' + next.name + ', pukul ' + fmt(next.m) : 'Kegiatan dimulai lagi besok sebelum Subuh.';
+    }
+    var blocks = raw.map(function (b) {
+      var isCur = weekday && cur === b;
+      return {
+        name: b.name,
+        time: fmt(b.a) + '–' + fmt(b.b),
+        top: pct(b.a),
+        h: len(b.a, b.b),
+        ph: !!b.ph,
+        real: !b.ph,
+        bg: isCur ? '#F2A33A' : '#C6D2EE',
+        ring: isCur ? '0 0 0 2px #FFFFFF' : 'none'
+      };
+    });
+    var edges = [START, pt.fajr, pt.sunrise, 540, pt.asr, pt.maghrib, pt.isha, END];
+    var keys = ['night1', 'dawn', 'morning', 'day', 'afternoon', 'dusk', 'night2'];
+    var band = {};
+    keys.forEach(function (key, idx) { band[key] = { top: pct(edges[idx]), h: len(edges[idx], edges[idx + 1]) }; });
+
+    return {
+      cells: cells,
+      chip: chip,
+      readout: readouts[sel],
+      showArabic: pv.showArabic ?? true,
+      dayName: dayNames[wd],
+      nowLabel: fmt(nowMin),
+      curTitle: curTitle,
+      curDetail: curDetail,
+      hasDetail: curDetail.length > 0,
+      nextText: nextText,
+      scheduleNote: weekday ? dayNames[wd] + ', waktu shalat hari ini' : 'Contoh hari Senin sampai Kamis',
+      blocks: blocks,
+      prayers: prayers,
+      band: band,
+      showNow: nowMin >= START && nowMin <= END,
+      nowTop: pct(nowMin)
+    };
+  }
+}
+</script>
+</body>
+</html>

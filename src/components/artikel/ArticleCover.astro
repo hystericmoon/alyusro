@@ -1,0 +1,44 @@
+---
+// Cover image, or a designed typographic cover when there is none (no image
+// yet, or the photo shows faces). In lists the image is decorative (the
+// title sits next to it); on the article page it carries its alt text.
+import type { Article } from '@/lib/articles';
+import { kicker, titleHtml } from '@/lib/articles';
+
+interface Props {
+  article: Article;
+  ratio?: string;
+  decorative?: boolean;
+  eager?: boolean;
+  /** Show a real cover at its own shape (article page: flyers must not be cropped). */
+  natural?: boolean;
+  class?: string;
+}
+const { article, ratio = '16/10', decorative = true, eager = false, natural = false, class: className } = Astro.props;
+const { cover, coverAlt, title, part } = article.data;
+---
+{
+  cover ? (
+    <img
+      src={cover}
+      alt={decorative ? '' : coverAlt}
+      loading={eager ? 'eager' : 'lazy'}
+      decoding="async"
+      class:list={[natural ? 'mx-auto block h-auto max-h-[720px] w-auto max-w-full' : 'block w-full bg-juz-off object-cover', className]}
+      style={natural ? undefined : `aspect-ratio:${ratio}`}
+    />
+  ) : (
+    <div
+      aria-hidden="true"
+      class:list={['relative flex w-full flex-col justify-between overflow-hidden bg-lapis p-20 text-white sm:p-24', className]}
+      style={`aspect-ratio:${ratio}`}
+    >
+      <span class="text-14 font-bold text-lapis-1">{kicker(article)}</span>
+      <span
+        class="max-w-[16em] font-display text-[clamp(24px,2.6vw,34px)] font-semibold leading-[1.05] [text-wrap:balance]"
+        set:html={titleHtml(title.replace(/^Pertemuan ke-\d+: /, ''))}
+      />
+      {part && <span class="absolute right-16 top-6 font-display text-[88px] font-semibold leading-none text-lapis-4">{part}</span>}
+    </div>
+  )
+}

@@ -1,0 +1,15 @@
+---
+// /jenjang/pendidikan/{taud,kuttab,mahdon,madrasah,darul-ilmi}
+import LevelPage from '@/components/level/LevelPage.astro';
+import { levels, type Level } from '@/lib/site';
+
+export function getStaticPaths() {
+  const prefix = '/jenjang/pendidikan/';
+  return levels
+    .filter((l) => l.path.startsWith(prefix))
+    .map((level) => ({ params: { slug: level.path.slice(prefix.length) }, props: { level } }));
+}
+
+const { level } = Astro.props as { level: Level };
+---
+<LevelPage level={level} />

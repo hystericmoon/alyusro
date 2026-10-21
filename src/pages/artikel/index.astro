@@ -1,0 +1,167 @@
+---
+// /artikel (design/Artikel.dc.html): kajian rutin, the most-read article, and
+// every article with a series filter. Without JS all articles are listed; the
+// script adds the filter and shows them 12 at a time.
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Landscape from '@/components/home/Landscape.astro';
+import ArticleCover from '@/components/artikel/ArticleCover.astro';
+import { getArticles, filterKey, formatDate, kicker, titleHtml, NEWS } from '@/lib/articles';
+import { site, known } from '@/lib/site';
+
+const all = await getArticles();
+const featured = [...all].sort((a, b) => b.data.views - a.data.views)[0];
+const list = all.filter((a) => a !== featured);
+
+// Filters: everything, standalone news, then each series by its latest article.
+const seriesOrder = [...new Set(all.map((a) => a.data.series).filter((s): s is string => !!s))];
+const filters = ['Semua', NEWS, ...seriesOrder];
+const counts = Object.fromEntries(filters.map((f) => [f, f === 'Semua' ? list.length : list.filter((a) => filterKey(a) === f).length]));
+
+const kajian = site.kajianRutin.map((k) => ({
+  name: k.name,
+  when: known(k.when) ?? 'Jadwal segera diumumkan',
+  audience: known(k.audience),
+}));
+const PAGE = 12;
+const chip =
+  'inline-flex min-h-44 cursor-pointer items-center rounded-sm border border-chip-rule bg-white px-16 font-body text-15 font-bold text-ink transition-[background-color,color,border-color,transform] duration-150 hover:border-ink active:scale-[0.97] aria-pressed:border-ink aria-pressed:bg-ink aria-pressed:text-white';
+---
+<BaseLayout
+  title="Kajian & artikel"
+  description="Kajian rutin yang terbuka untuk umum, serial belajar aqidah, dan kabar dari Ma’had Tahfizh Al Yusro."
+  footerLabelledBy="g-foot-title"
+>
+  <section aria-labelledby="a-title" class="mx-auto box-border flex max-w-page flex-wrap items-end justify-between gap-x-64 gap-y-24 px-20 pb-48 pt-40 sm:px-40 sm:pb-56 sm:pt-48">
+    <h1 id="a-title" class="m-0 font-display text-[clamp(56px,6.6vw,96px)] font-semibold leading-[0.92]">Kajian &amp; artikel</h1>
+    <p class="m-0 max-w-[30em] text-19 text-body">Kajian rutin yang terbuka untuk umum, serial belajar aqidah, dan kabar dari ma’had.</p>
+  </section>
+
+  <section id="kajian" aria-labelledby="a-kajian" class="scroll-mt-16 bg-ink text-on-night">
+    <div class="mx-auto box-border max-w-page px-20 py-48 sm:px-40">
+      <div class="mb-24 flex flex-wrap items-baseline justify-between gap-x-24 gap-y-8">
+        <h2 id="a-kajian" class="m-0 font-display text-[40px] font-semibold leading-none text-white">Kajian rutin</h2>
+        <p class="m-0 text-15 text-on-night-muted">Di masjid ma’had, Tenjolaya</p>
+      </div>
+      <ul class="m-0 grid list-none grid-cols-[repeat(auto-fit,minmax(min(260px,100%),1fr))] gap-12 p-0">
+        {
+          kajian.map((k) => (
+            <li class="flex flex-col gap-6 rounded-md bg-night-panel p-20">
+              <strong class="text-18 text-white">{k.name}</strong>
+              <span class="text-on-night-body">{k.when}</span>
+              {k.audience && <span class="text-14 text-on-night-muted">{k.audience}</span>}
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <section aria-labelledby="a-list" class="mx-auto box-border max-w-page px-20 pb-96 pt-48 sm:px-40 sm:pt-64">
+    <h2 id="a-list" class="sr-only">Daftar artikel</h2>
+
+    {
+      featured && (
+        <a
+          href={`/artikel/${featured.id}/`}
+          class="group mb-40 flex flex-wrap gap-x-48 gap-y-24 border-b-2 border-ink pb-48 text-ink no-underline hover:text-ink"
+        >
+          <div class="min-w-0 flex-[1_1_420px] overflow-hidden">
+            <ArticleCover article={featured} ratio="16/9" eager class="transition-transform duration-300 group-hover:scale-[1.02]" />
+          </div>
+          <div class="flex flex-[1_1_380px] flex-col justify-center gap-12">
+            <span class="text-14 font-bold text-lapis">Paling banyak dibaca</span>
+            <span class="font-display text-[clamp(38px,4vw,52px)] font-semibold leading-none underline decoration-2 underline-offset-[6px] group-hover:text-lapis">
+              <Fragment set:html={titleHtml(featured.data.title)} />
+            </span>
+            {featured.data.excerpt && <span class="text-body">{featured.data.excerpt}</span>}
+            <span class="text-14 text-muted">
+              {featured.data.author} • {formatDate(featured.data.date)}
+            </span>
+          </div>
+        </a>
+      )
+    }
+
+    <div data-articles data-page={PAGE}>
+      <div role="group" aria-label="Saring artikel" class="mb-32 flex flex-wrap gap-8" data-filters hidden>
+        {
+          filters.map((f, i) => (
+            <button type="button" data-filter={f} data-count={counts[f]} aria-pressed={i === 0 ? 'true' : 'false'} class={chip}>
+              <Fragment set:html={titleHtml(f)} />
+            </button>
+          ))
+        }
+      </div>
+
+      <p data-count-text aria-live="polite" class="m-0 mb-16 text-14 text-muted">Semua artikel, {list.length} tulisan</p>
+
+      <ul class="m-0 grid list-none grid-cols-[repeat(auto-fill,minmax(min(340px,100%),1fr))] gap-x-32 gap-y-40 p-0">
+        {
+          list.map((a) => (
+            <li data-item data-key={filterKey(a)} class="group relative flex flex-col gap-10">
+              <div class="overflow-hidden">
+                <ArticleCover article={a} class="transition-transform duration-300 group-hover:scale-[1.03]" />
+              </div>
+              <span class="text-14 font-bold text-lapis">{kicker(a)}</span>
+              <a
+                href={`/artikel/${a.id}/`}
+                class="font-display text-30 font-semibold leading-[1.08] text-ink underline-offset-4 after:absolute after:inset-0 after:content-[''] group-hover:text-lapis group-hover:underline"
+              >
+                <Fragment set:html={titleHtml(a.data.title)} />
+              </a>
+              <span class="text-14 text-muted">
+                {formatDate(a.data.date)} • {a.data.author}
+              </span>
+            </li>
+          ))
+        }
+      </ul>
+
+      <div class="mt-56 flex justify-center">
+        <button type="button" data-more hidden class="btn-secondary min-h-48 cursor-pointer px-28 font-body">Muat artikel lainnya</button>
+      </div>
+    </div>
+  </section>
+
+  <Landscape slot="footer-lead" />
+</BaseLayout>
+
+<script>
+  const root = document.querySelector<HTMLElement>('[data-articles]');
+  if (root) {
+    const page = Number(root.dataset.page) || 12;
+    const items = Array.from(root.querySelectorAll<HTMLElement>('[data-item]'));
+    const buttons = Array.from(root.querySelectorAll<HTMLButtonElement>('[data-filter]'));
+    const more = root.querySelector<HTMLButtonElement>('[data-more]')!;
+    const countText = root.querySelector<HTMLElement>('[data-count-text]')!;
+    let filter = 'Semua';
+    let shown = page;
+
+    const apply = (announce: boolean) => {
+      const matching = items.filter((li) => filter === 'Semua' || li.dataset.key === filter);
+      items.forEach((li) => (li.hidden = true));
+      matching.slice(0, shown).forEach((li) => (li.hidden = false));
+      more.hidden = matching.length <= shown;
+      if (announce) countText.textContent = `${filter === 'Semua' ? 'Semua artikel' : filter}, ${matching.length} tulisan`;
+    };
+
+    buttons.forEach((b) =>
+      b.addEventListener('click', () => {
+        filter = b.dataset.filter ?? 'Semua';
+        shown = page;
+        buttons.forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+        apply(true);
+      }),
+    );
+    more.addEventListener('click', () => {
+      const firstNew = items.filter((li) => filter === 'Semua' || li.dataset.key === filter)[shown];
+      shown += page;
+      apply(false);
+      // Move focus to the first newly shown article, so keyboard users continue from there.
+      firstNew?.querySelector('a')?.focus();
+    });
+
+    root.querySelector<HTMLElement>('[data-filters]')!.hidden = false;
+    apply(false);
+  }
+</script>

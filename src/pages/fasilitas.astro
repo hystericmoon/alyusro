@@ -1,0 +1,113 @@
+---
+// /fasilitas (design/Fasilitas.dc.html): grouped gallery with an area
+// filter. Without JS every group shows; photos with faces are left out.
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Landscape from '@/components/home/Landscape.astro';
+import data from '../../content/fasilitas.json';
+
+type Photo = { src: string; alt: string; caption: string };
+type Group = { name: string; area: 'putra' | 'putri' | 'bersama'; photos: Photo[] };
+const groups = data.groups as Group[];
+const withPhotos = groups.filter((g) => g.photos.length > 0);
+const without = groups.filter((g) => g.photos.length === 0);
+const TAG = {
+  putra: { text: 'Area putra', cls: 'text-lapis' },
+  putri: { text: 'Area putri', cls: 'text-putri' },
+  bersama: { text: 'Dipakai bersama', cls: 'text-muted' },
+};
+const filters = [
+  { key: 'semua', label: 'Semua fasilitas' },
+  { key: 'putra', label: 'Area putra' },
+  { key: 'putri', label: 'Area putri' },
+  { key: 'bersama', label: 'Dipakai bersama' },
+];
+const chip =
+  'inline-flex min-h-44 cursor-pointer items-center rounded-sm border border-chip-rule bg-white px-16 font-body text-15 font-bold text-ink transition-[background-color,color,border-color,transform] duration-150 hover:border-ink active:scale-[0.97] aria-pressed:border-ink aria-pressed:bg-ink aria-pressed:text-white';
+---
+<BaseLayout title="Fasilitas" description="Asrama, kelas, dan gedung terpisah untuk santri putra dan putri di Ma’had Tahfizh Al Yusro." footerLabelledBy="g-foot-title">
+  <section aria-labelledby="f-title" class="mx-auto box-border max-w-page px-20 pb-40 pt-24 sm:px-40 sm:pt-32">
+    <nav aria-label="Breadcrumb" class="mb-32 text-15 sm:mb-40">
+      <ol class="m-0 flex list-none gap-10 p-0 text-muted">
+        <li><a href="/">Beranda</a></li>
+        <li aria-hidden="true">/</li>
+        <li>Profil</li>
+        <li aria-hidden="true">/</li>
+        <li aria-current="page" class="text-ink">Fasilitas</li>
+      </ol>
+    </nav>
+    <div class="flex flex-wrap items-end justify-between gap-x-64 gap-y-24">
+      <h1 id="f-title" class="m-0 font-display text-[clamp(56px,6.6vw,96px)] font-semibold leading-[0.92]">Fasilitas</h1>
+      <p class="m-0 max-w-[32em] text-19 text-body">Asrama, kelas, dan gedung terpisah untuk santri putra dan putri, ditambah fasilitas yang dipakai bersama.</p>
+    </div>
+  </section>
+
+  <div data-fasilitas>
+    <div class="sticky top-0 z-[2] border-y border-rule bg-paper" data-filter-bar hidden>
+      <div role="group" aria-label="Saring fasilitas" class="mx-auto box-border flex max-w-page flex-wrap gap-8 px-20 py-12 sm:px-40">
+        {filters.map((f, i) => <button type="button" data-area={f.key} aria-pressed={i === 0 ? 'true' : 'false'} class={chip}>{f.label}</button>)}
+      </div>
+    </div>
+
+    <section aria-label="Galeri fasilitas" class="mx-auto box-border flex max-w-page flex-col gap-56 px-20 pb-96 pt-48 sm:px-40">
+      {
+        withPhotos.map((g) => (
+          <div data-group={g.area} class="flex flex-col gap-16">
+            <div class="flex flex-wrap items-baseline justify-between gap-x-16 gap-y-4 border-b-2 border-ink pb-10">
+              <h2 class="m-0 font-display text-[38px] font-semibold leading-none">{g.name}</h2>
+              <span class:list={['text-14 font-bold', TAG[g.area].cls]}>{TAG[g.area].text}</span>
+            </div>
+            <ul class="m-0 grid list-none grid-cols-[repeat(auto-fit,minmax(min(280px,100%),1fr))] gap-16 p-0">
+              {g.photos.map((p) => (
+                <li>
+                  <figure class="group m-0 flex flex-col gap-8">
+                    <div class="overflow-hidden bg-juz-off">
+                      <img src={p.src} alt={p.alt} loading="lazy" decoding="async" class="block aspect-[4/3] w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]" />
+                    </div>
+                    <figcaption class="text-15 text-body">{p.caption}</figcaption>
+                  </figure>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))
+      }
+      {
+        without.length > 0 && (
+          <div data-group="bersama" class="flex flex-col gap-16">
+            <div class="flex flex-wrap items-baseline justify-between gap-x-16 gap-y-4 border-b-2 border-ink pb-10">
+              <h2 class="m-0 font-display text-[38px] font-semibold leading-none">Fasilitas lain</h2>
+              <span class="text-14 font-bold text-muted">Dipakai bersama</span>
+            </div>
+            <ul class="m-0 grid list-none grid-cols-[repeat(auto-fit,minmax(min(280px,100%),1fr))] gap-16 p-0">
+              {without.map((g) => (
+                <li class="border border-dashed border-placeholder p-20">
+                  <p class="m-0 font-bold">{g.name}</p>
+                  <p class="m-0 text-15 text-muted">Foto belum tersedia</p>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )
+      }
+    </section>
+  </div>
+
+  <Landscape slot="footer-lead" />
+</BaseLayout>
+
+<script>
+  const root = document.querySelector<HTMLElement>('[data-fasilitas]');
+  if (root) {
+    const bar = root.querySelector<HTMLElement>('[data-filter-bar]')!;
+    const buttons = Array.from(root.querySelectorAll<HTMLButtonElement>('[data-area]'));
+    const groups = Array.from(root.querySelectorAll<HTMLElement>('[data-group]'));
+    buttons.forEach((b) =>
+      b.addEventListener('click', () => {
+        const area = b.dataset.area;
+        buttons.forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+        groups.forEach((g) => (g.hidden = area !== 'semua' && g.dataset.group !== area));
+      }),
+    );
+    bar.hidden = false;
+  }
+</script>

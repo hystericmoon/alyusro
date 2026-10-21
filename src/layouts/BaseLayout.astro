@@ -1,0 +1,67 @@
+---
+import '@/styles/global.css';
+import SiteHeader from '@/components/SiteHeader.astro';
+import SiteFooter from '@/components/SiteFooter.astro';
+import { school } from '@/lib/site';
+
+interface Props {
+  title?: string;
+  description?: string;
+  /** Pages with a GSAP moment opt in; everyone else ships no inline script. */
+  motion?: boolean;
+  footerLabelledBy?: string;
+}
+
+const {
+  title,
+  description = 'Pesantren tahfizh dan bahasa Arab di kaki Gunung Salak, Tenjolaya, Kabupaten Bogor.',
+  motion = false,
+  footerLabelledBy,
+} = Astro.props;
+const fullTitle = title ? `${title} | ${school.name}` : school.name;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+// Preview builds stay out of search engines, so they don't compete with the
+// live site. Set PUBLIC_INDEXABLE=true on the host when this becomes the real site.
+const indexable = import.meta.env.PUBLIC_INDEXABLE === 'true';
+---
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    {!indexable && <meta name="robots" content="noindex, nofollow" />}
+    <meta name="theme-color" content="#1B2235" />
+    <link rel="icon" href="/favicon.png" type="image/png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;500;700&family=Markazi+Text:wght@400;500;600;700&display=swap"
+    />
+    {
+      motion && (
+        <script is:inline>
+          // Pre-animation states apply only when motion is allowed. If a
+          // script never arrives, content is revealed after 4 seconds.
+          if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            var r = document.documentElement;
+            r.classList.add('motion-ok');
+            setTimeout(function () { r.classList.add('motion-fallback'); }, 4000);
+          }
+        </script>
+      )
+    }
+  </head>
+  <body>
+    <SiteHeader currentPath={Astro.url.pathname} />
+    <main id="isi">
+      <slot />
+    </main>
+    <SiteFooter labelledBy={footerLabelledBy}>
+      <slot name="footer-lead" slot="lead" />
+    </SiteFooter>
+  </body>
+</html>

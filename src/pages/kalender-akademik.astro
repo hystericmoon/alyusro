@@ -1,0 +1,82 @@
+---
+// /kalender-akademik: shows the calendar while it is current; once its last
+// date has passed, an empty state with the old calendar as archive.
+import ContentPage from '@/components/content/ContentPage.astro';
+import { site, school, infoGroupUrl } from '@/lib/site';
+
+type Ev = { start: string; end?: string; label: string };
+const cal = site.academicCalendar as { year: string; events: Ev[] };
+const MONTHS = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
+const parts = (s: string) => s.split('-').map(Number) as [number, number, number];
+const fmt = (s: string) => {
+  const [y, m, d] = parts(s);
+  return `${d} ${MONTHS[m - 1]} ${y}`;
+};
+const range = (e: Ev) => {
+  if (!e.end) return fmt(e.start);
+  const [y1, m1, d1] = parts(e.start);
+  const [y2, m2] = parts(e.end);
+  if (y1 === y2 && m1 === m2) return `${d1}–${fmt(e.end)}`;
+  if (y1 === y2) return `${d1} ${MONTHS[m1 - 1]} – ${fmt(e.end)}`;
+  return `${fmt(e.start)} – ${fmt(e.end)}`;
+};
+const last = cal.events.map((e) => e.end ?? e.start).sort().at(-1) ?? '';
+const today = new Date().toISOString().slice(0, 10);
+const current = last >= today;
+---
+<ContentPage
+  title="Kalender akademik"
+  lede="Jadwal kegiatan belajar, ujian, libur, dan kedatangan santri sepanjang tahun ajaran."
+  crumbs={[{ label: 'Kurikulum' }, { label: 'Kalender akademik' }]}
+>
+  {
+    !current && (
+      <div class="mb-32 flex flex-col items-start gap-14 border border-dashed border-placeholder p-20 sm:p-28">
+        <p class="m-0 font-display text-[28px] font-semibold leading-[1.15]" style="margin:0">Kalender tahun ajaran berikutnya belum dipublikasikan</p>
+        <p class="m-0" style="margin:0">Jadwal kedatangan santri dan kegiatan terbaru diumumkan di grup info Al Yusro.</p>
+        <div class="flex flex-wrap gap-12">
+          <a href={infoGroupUrl} class="btn-primary">Masuk grup info</a>
+          <a href={school.whatsapp.url} class="btn-secondary">Tanya lewat WhatsApp</a>
+        </div>
+      </div>
+    )
+  }
+  {
+    current ? (
+      <>
+        <h2 style="margin-top:0">Tahun ajaran {cal.year}</h2>
+        <table>
+          <caption class="sr-only">Kalender akademik {cal.year}</caption>
+          <thead><tr><th scope="col">Tanggal</th><th scope="col">Kegiatan</th></tr></thead>
+          <tbody>
+            {cal.events.map((e) => (
+              <tr class:list={[(e.end ?? e.start) < today && 'text-muted']}>
+                <td class="whitespace-nowrap">{range(e)}</td>
+                <td>{e.label}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </>
+    ) : (
+      <details class="group border-y border-rule">
+        <summary class="flex min-h-56 cursor-pointer items-center justify-between gap-16 font-bold">
+          Arsip: kalender tahun ajaran {cal.year}
+          <span aria-hidden="true" class="text-[24px] font-normal transition-transform duration-150 group-open:rotate-45">+</span>
+        </summary>
+        <table>
+          <caption class="sr-only">Kalender akademik {cal.year}</caption>
+          <thead><tr><th scope="col">Tanggal</th><th scope="col">Kegiatan</th></tr></thead>
+          <tbody>
+            {cal.events.map((e) => (
+              <tr>
+                <td class="whitespace-nowrap">{range(e)}</td>
+                <td>{e.label}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </details>
+    )
+  }
+</ContentPage>

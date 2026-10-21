@@ -1,0 +1,985 @@
+{
+ "_note": "Achievements, without students' names (the school has not consented to publishing them). Imported from mahadalyusro.sch.id/prestasi on 21 October 2026. Add new rows at the top; /prestasi groups and totals them automatically.",
+ "records": [
+  {
+   "rank": "Juara 1",
+   "competition": "Khitobah",
+   "level": "SMP Nasional",
+   "organizer": "AISC BPIBS",
+   "year": 2026
+  },
+  {
+   "rank": "Juara 2",
+   "competition": "Khitobah",
+   "level": "SMP Nasional",
+   "organizer": "AISC BPIBS",
+   "year": 2026
+  },
+  {
+   "rank": "Juara 1",
+   "competition": "Khitobah",
+   "level": "SMA Nasional",
+   "organizer": "AISC BPIBS",
+   "year": 2026
+  },
+  {
+   "rank": "Juara 1",
+   "competition": "MHQ",
+   "level": "SMA Nasional",
+   "organizer": "AISC BPIBS",
+   "year": 2026
+  },
+  {
+   "rank": "Juara Harapan 2",
+   "competition": "MHQ",
+   "level": "SMA Nasional",
+   "organizer": "AISC BPIBS",
+   "year": 2026
+  },
+  {
+   "rank": "Juara 1",
+   "competition": "MHQ",
+   "level": "SMA Nasional",
+   "organizer": "Bintang Pelajar Islamic Boarding school",
+   "year": 2026
+  },
+  {
+   "rank": "Juara 1",
+   "competition": "Khitobah",
+   "level": "SMA Nasional",
+   "organizer": "Bintang Pelajar Islamic Boarding school",
+   "year": 2026
+  },
+  {
+   "rank": "Juara 1",
+   "competition": "Khitobah",
+   "level": "SMP Nasional",
+   "organizer": "Bintang Pelajar Islamic Boarding school",
+   "year": 2026
+  },
+  {
+   "rank": "Juara 2",
+   "competition": "Khitobah",
+   "level": "SMP Nasional",
+   "organizer": "Bintang Pelajar Islamic Boarding",
+   "year": 2026
+  },
+  {
+   "rank": "Harapan 2",
+   "competition": "MHQ",
+   "level": "SMA Nasional",
+   "organizer": "Bintang Pelajar Islamic Boarding",
+   "year": 2026
+  },
+  {
+   "rank": "Harapan 1",
+   "competition": "Amirul Lughoh",
+   "level": "SMA Nasional",
+   "organizer": "STIT Riyadushalihin",
+   "year": 2026
+  },
+  {
+   "rank": "Harapan 2",
+   "competition": "Amirul Lughoh",
+   "level": "SMA Nasional",
+   "organizer": "STIT RIYADUSHALIHIN",
+   "year": 2026
+  },
+  {
+   "rank": "Juara 1",
+   "competition": "LCC Islam",
+   "level": "SMP Nasional",
+   "organizer": "Al wildan Islamic School",
+   "year": 2026
+  },
+  {
+   "rank": "Juara 1",
+   "competition": "LCC Islam",
+   "level": "SMP Nasional",
+   "organizer": "Al Wildan Islamic Boarding school",
+   "year": 2026
+  },
+  {
+   "rank": "Juara 1",
+   "competition": "LCC Islam",
+   "level": "SMP Nasional",
+   "organizer": "Al Wildan Islamic Boarding school",
+   "year": 2026
+  },
+  {
+   "rank": "Juara 2",
+   "competition": "OBA",
+   "level": "SMP Nasional",
+   "organizer": "Al Wildan Islamic Boarding school",
+   "year": 2026
+  },
+  {
+   "rank": "Juara 1",
+   "competition": "OBA",
+   "level": "SMA Nasional",
+   "organizer": "WAFIFEST 6.0",
+   "year": 2026
+  },
+  {
+   "rank": "Juara 3",
+   "competition": "Pidato Bahasa Arab",
+   "level": "SMA Nasional",
+   "organizer": "WAFIFEST 6.0",
+   "year": 2026
+  },
+  {
+   "rank": "Juara 1",
+   "competition": "OBA",
+   "level": "SMA Kabupaten",
+   "organizer": "Forum FGMP Bhs Arab Se Indonesia",
+   "year": 2026
+  },
+  {
+   "rank": "Juara 3",
+   "competition": "OBA",
+   "level": "SMA Kabupaten",
+   "organizer": "Forum FGMP Bhs Arab Se Indonesia",
+   "year": 2026
+  },
+  {
+   "rank": "Harapan 2",
+   "competition": "OBA",
+   "level": "SMA Kabupaten",
+   "organizer": "Forum FGMP Bhs Arab Se Indonesia",
+   "year": 2026
+  },
+  {
+   "rank": "Harapan 3",
+   "competition": "OBA",
+   "level": "SMA Kabupaten",
+   "organizer": "Forum FGMP Bhs Arab Se Indonesia",
+   "year": 2026
+  },
+  {
+   "rank": "Harapan 4",
+   "competition": "OBA",
+   "level": "SMA Kabupaten",
+   "organizer": "Forum FGMP Bhs Arab Se Indonesia",
+   "year": 2026
+  },
+  {
+   "rank": "Juara 1",
+   "competition": "OBA",
+   "level": "SMP Kabupaten",
+   "organizer": "Forum FGMP Bhs Arab Se Indonesia",
+   "year": 2026
+  },
+  {
+   "rank": "Juara 3",
+   "competition": "OBA",
+   "level": "SMP Kabupaten",
+   "organizer": "Forum FGMP Bhs Arab Se Indonesia",
+   "year": 2026
+  },
+  {
+   "rank": "Harapan 1",
+   "competition": "OBA",
+   "level": "SMP Kabupaten",
+   "organizer": "Forum FGMP Bhs Arab Se Indonesia",
+   "year": 2026
+  },
+  {
+   "rank": "Harapan 2",
+   "competition": "OBA",
+   "level": "SMP Kabupaten",
+   "organizer": "Forum FGMP Bhs Arab Se Indonesia",
+   "year": 2026
+  },
+  {
+   "rank": "Harapan 3",
+   "competition": "OBA",
+   "level": "SMP Kabupaten",
+   "organizer": "Forum FGMP Bhs Arab Se Indonesia",
+   "year": 2026
+  },
+  {
+   "rank": "Harapan 1",
+   "competition": "OBA",
+   "level": "SD Kabupaten",
+   "organizer": "Forum FGMP Bhs Arab Se Indonesia",
+   "year": 2026
+  },
+  {
+   "rank": "Juara 2",
+   "competition": "OBA",
+   "level": "Guru Kabupaten",
+   "organizer": "Forum FGMP Bhs Arab Se Indonesia",
+   "year": 2026
+  },
+  {
+   "rank": "Juara 3",
+   "competition": "OBA",
+   "level": "Guru Kabupaten",
+   "organizer": "Forum FGMP Bhs Arab Se Indonesia",
+   "year": 2026
+  },
+  {
+   "rank": "Medali Emas",
+   "competition": "OBA",
+   "level": "SMA Nasional",
+   "organizer": "Olimpiadeku",
+   "year": 2026
+  },
+  {
+   "rank": "Medali Emas",
+   "competition": "OBA",
+   "level": "SMA Nasional",
+   "organizer": "Olimpiadeku",
+   "year": 2026
+  },
+  {
+   "rank": "Juara 1",
+   "competition": "Pidato Bahasa Arab",
+   "level": "SMP Nasional",
+   "organizer": "Shofiyah Youth Festival",
+   "year": 2026
+  },
+  {
+   "rank": "Juara 1",
+   "competition": "OBA",
+   "level": "SMA Provinsi",
+   "organizer": "Forum FGMP Bhs Arab Se Indonesia",
+   "year": 2026
+  },
+  {
+   "rank": "Juara 1",
+   "competition": "OBA",
+   "level": "SMP Provinsi",
+   "organizer": "Forum FGMP Bhs Arab Se Indonesia",
+   "year": 2026
+  },
+  {
+   "rank": "Juara 2",
+   "competition": "OBA",
+   "level": "SMP Provinsi",
+   "organizer": "Forum FGMP Bhs Arab Se Indonesia",
+   "year": 2026
+  },
+  {
+   "rank": "Harapan 1",
+   "competition": "OBA",
+   "level": "SMA Provinsi",
+   "organizer": "Forum FGMP Bhs Arab Se Indonesia",
+   "year": 2026
+  },
+  {
+   "rank": "Harapan 2",
+   "competition": "OBA",
+   "level": "SMA Provinsi",
+   "organizer": "Forum FGMP Bhs Arab Se Indonesia",
+   "year": 2026
+  },
+  {
+   "rank": "Harapan 1",
+   "competition": "OBA",
+   "level": "SMP Provinsi",
+   "organizer": "Forum FGMP Bhs Arab Se Indonesia",
+   "year": 2026
+  },
+  {
+   "rank": "Harapan 2",
+   "competition": "OBA",
+   "level": "SMP Provinsi",
+   "organizer": "Forum FGMP Bhs Arab Se Indonesia",
+   "year": 2026
+  },
+  {
+   "rank": "Juara 3",
+   "competition": "Speech Bahasa Arab",
+   "level": "SMP Nasional",
+   "organizer": "STAI Aisyah Binti Abu Bakar",
+   "year": 2026
+  },
+  {
+   "rank": "Harapan 1",
+   "competition": "OBA",
+   "level": "Guru provinsi",
+   "organizer": "Forum FGMP Bhs Arab Se Indonesia",
+   "year": 2026
+  },
+  {
+   "rank": "Harapan 1",
+   "competition": "OBA",
+   "level": "SMP Nasional",
+   "organizer": "PULDAPI",
+   "year": 2026
+  },
+  {
+   "rank": "Peserta terbaik",
+   "competition": "Dauroh Eksklusive Keterampilan I'rab dan Ihktibar Hamzah",
+   "level": "SMA Nasional",
+   "organizer": "Ma'had Lughoh Ad Dhod (Madinah)",
+   "year": 2026
+  },
+  {
+   "rank": "Peserta terbaik",
+   "competition": "Dauroh Eksklusive Keterampilan I'rab dan Ihktibar Hamzah",
+   "level": "SMA Nasional",
+   "organizer": "Ma'had Lughoh Ad Dhod (Madinah)",
+   "year": 2026
+  },
+  {
+   "rank": "Peserta terbaik",
+   "competition": "Dauroh Eksklusive Keterampilan I'rab dan Ihktibar Hamzah",
+   "level": "SMA Nasional",
+   "organizer": "Ma'had Lughoh Ad Dhod (Madinah)",
+   "year": 2026
+  },
+  {
+   "rank": "Juara 1",
+   "competition": "MHQ",
+   "level": "SMA Nasional",
+   "organizer": "AISC Bintang Pelajar Boarding school",
+   "year": 2025
+  },
+  {
+   "rank": "Juara 3",
+   "competition": "MHQ",
+   "level": "SMP Nasional",
+   "organizer": "AISC Bintang Pelajar Boarding school",
+   "year": 2025
+  },
+  {
+   "rank": "Juara 1",
+   "competition": "MHQ",
+   "level": "SMP Nasional",
+   "organizer": "Mutisfest 2.0 SMPIT Mutiara Islam",
+   "year": 2025
+  },
+  {
+   "rank": "Juara 1",
+   "competition": "Khitobah",
+   "level": "SMA Nasional",
+   "organizer": "Mutisfest 2.0 SMAIT Mutiara Islam",
+   "year": 2025
+  },
+  {
+   "rank": "Juara 2",
+   "competition": "Khitobah",
+   "level": "SMA Nasional",
+   "organizer": "Mutisfest 2.0 SMAIT Mutiara Islam",
+   "year": 2025
+  },
+  {
+   "rank": "Juara 3",
+   "competition": "Khitobah",
+   "level": "SMA Nasional",
+   "organizer": "Mutisfest 2.0 SMAIT Mutiara Islam",
+   "year": 2025
+  },
+  {
+   "rank": "Juara 3",
+   "competition": "MHQ",
+   "level": "SMP Nasional",
+   "organizer": "Abatasa 11 Ponpes Kafila Internasional Islamic School",
+   "year": 2025
+  },
+  {
+   "rank": "Juara 1",
+   "competition": "LCC Islam",
+   "level": "SMP Nasional",
+   "organizer": "Abatasa 11 Ponpes Kafila Internasional Islamic School",
+   "year": 2025
+  },
+  {
+   "rank": "Juara 1",
+   "competition": "LCC Islam",
+   "level": "SMP Nasional",
+   "organizer": "Abatasa 11 Ponpes Kafila Internasional Islamic School",
+   "year": 2025
+  },
+  {
+   "rank": "Juara 1",
+   "competition": "LCC Islam",
+   "level": "SMP Nasional",
+   "organizer": "Abatasa 11 Ponpes Kafila Internasional Islamic School",
+   "year": 2025
+  },
+  {
+   "rank": "Juara 1",
+   "competition": "MHQ",
+   "level": "SMA Nasional",
+   "organizer": "AISC Bintang Pelajar Islamic Boarding school",
+   "year": 2025
+  },
+  {
+   "rank": "Juara 3",
+   "competition": "MHQ",
+   "level": "SMP Nasional",
+   "organizer": "AISC Bintang Pelajar Islamic Boarding school",
+   "year": 2025
+  },
+  {
+   "rank": "Juara 1",
+   "competition": "Khitobah",
+   "level": "SMA Nasional",
+   "organizer": "AISC BPIBS",
+   "year": 2025
+  },
+  {
+   "rank": "Juara 2",
+   "competition": "Khitobah",
+   "level": "SMA Nasional",
+   "organizer": "AISC BPIBS",
+   "year": 2025
+  },
+  {
+   "rank": "Juara 2",
+   "competition": "Khitobah",
+   "level": "SMP Nasional",
+   "organizer": "AISC BPIBS",
+   "year": 2025
+  },
+  {
+   "rank": "Juara 2",
+   "competition": "MHQ 3 Juz",
+   "level": "SMA Nasional",
+   "organizer": "Albina Islamic Boarding school",
+   "year": 2025
+  },
+  {
+   "rank": "Juara 1",
+   "competition": "Hadist",
+   "level": "SMA Nasional",
+   "organizer": "Aifest 2025",
+   "year": 2025
+  },
+  {
+   "rank": "Juara 3",
+   "competition": "MHQ",
+   "level": "SMP Nasional",
+   "organizer": "ALWAFI Islamic Boarding school",
+   "year": 2025
+  },
+  {
+   "rank": "Juara 2",
+   "competition": "Olimpiade Bahasa Arab",
+   "level": "SMA Nasional",
+   "organizer": "Al Wafi Islamic Boarding school",
+   "year": 2025
+  },
+  {
+   "rank": "Juara 2",
+   "competition": "Lomba Futsal",
+   "level": "SMA Nasional",
+   "organizer": "Al Wafi Islamic Boarding school",
+   "year": 2025
+  },
+  {
+   "rank": "Juara 1",
+   "competition": "OBA",
+   "level": "SMA Provinsi",
+   "organizer": "Forum FGMP Bhs Arab Se Indonesia",
+   "year": 2025
+  },
+  {
+   "rank": "Juara 3",
+   "competition": "OBA",
+   "level": "SMA Provinsi",
+   "organizer": "Forum FGMP Bhs Arab Se Indonesia",
+   "year": 2025
+  },
+  {
+   "rank": "Juara 2",
+   "competition": "OBA",
+   "level": "SMP Provinsi",
+   "organizer": "Forum FGMP Bhs Arab Se Indonesia",
+   "year": 2025
+  },
+  {
+   "rank": "Juara Harapan 1",
+   "competition": "OBA",
+   "level": "SMP Provinsi",
+   "organizer": "Forum FGMP Bhs Arab Se Indonesia",
+   "year": 2025
+  },
+  {
+   "rank": "Juara 1",
+   "competition": "OBA",
+   "level": "SMP Nasional",
+   "organizer": "Pekan Olimpiade Nasional",
+   "year": 2025
+  },
+  {
+   "rank": "Medali Emas",
+   "competition": "OBA",
+   "level": "SMA Nasional",
+   "organizer": "IISC",
+   "year": 2025
+  },
+  {
+   "rank": "Medali Perak",
+   "competition": "OBA",
+   "level": "SMA Nasional",
+   "organizer": "IISC",
+   "year": 2025
+  },
+  {
+   "rank": "Medali Emas",
+   "competition": "OBA",
+   "level": "SMP Nasional",
+   "organizer": "IISC",
+   "year": 2025
+  },
+  {
+   "rank": "Medali Perak",
+   "competition": "OBA",
+   "level": "SMP Nasional",
+   "organizer": "IISC",
+   "year": 2025
+  },
+  {
+   "rank": "Juara 3",
+   "competition": "LCC Bhs Arab dan Bhs Inggris",
+   "level": "SMP Nasional",
+   "organizer": "Ibnu Taimiyah (ITLC)",
+   "year": 2025
+  },
+  {
+   "rank": "Juara 3",
+   "competition": "LCC Bhs Arab dan Bhs Inggris",
+   "level": "SMP Nasional",
+   "organizer": "Ibnu Taimiyah (ITLC)",
+   "year": 2025
+  },
+  {
+   "rank": "Juara 3",
+   "competition": "LCC Bhs Arab dan Bhs Inggris",
+   "level": "SMP Nasional",
+   "organizer": "Ibnu",
+   "year": 2025
+  },
+  {
+   "rank": "Juara 3",
+   "competition": "Khitobah",
+   "level": "SMP Nasional",
+   "organizer": "Ibnu Taimiyah (ITLC)",
+   "year": 2025
+  },
+  {
+   "rank": "Juara 1",
+   "competition": "Khitobah",
+   "level": "SMP Nasional",
+   "organizer": "Ibnu Taimiyah (ITLC)",
+   "year": 2025
+  },
+  {
+   "rank": "Juara 3",
+   "competition": "MHQ",
+   "level": "SMA Nasional",
+   "organizer": "Milbos International Bogor",
+   "year": 2025
+  },
+  {
+   "rank": "Juara 3",
+   "competition": "LCC Islam",
+   "level": "SMA Nasional",
+   "organizer": "Milbos International Bogor",
+   "year": 2025
+  },
+  {
+   "rank": "Juara 3",
+   "competition": "LCC Islam",
+   "level": "SMA Nasional",
+   "organizer": "Milbos International Bogor",
+   "year": 2025
+  },
+  {
+   "rank": "Juara 3",
+   "competition": "LCC Islam",
+   "level": "SMA Nasional",
+   "organizer": "Milbos International Bogor",
+   "year": 2025
+  },
+  {
+   "rank": "Juara 3",
+   "competition": "MHQ",
+   "level": "SMP Nasional",
+   "organizer": "Milbos International Bogor",
+   "year": 2025
+  },
+  {
+   "rank": "Juara 1",
+   "competition": "Lomba Speech",
+   "level": "SMP Nasional",
+   "organizer": "Milbos International Bogor",
+   "year": 2025
+  },
+  {
+   "rank": "Juara 2",
+   "competition": "Pidato bahasa arab",
+   "level": "SMP Nasional",
+   "organizer": "Milbos International Bogor",
+   "year": 2025
+  },
+  {
+   "rank": "Juara 1",
+   "competition": "LCC PAI",
+   "level": "SMP Nasional",
+   "organizer": "Milbos International Bogor",
+   "year": 2025
+  },
+  {
+   "rank": "Juara 1",
+   "competition": "LCC PAI",
+   "level": "SMP Nasional",
+   "organizer": "Milbos International Bogor",
+   "year": 2025
+  },
+  {
+   "rank": "Juara 1",
+   "competition": "LCC PAI",
+   "level": "SMP Nasional",
+   "organizer": "Milbos International Bogor",
+   "year": 2025
+  },
+  {
+   "rank": "Medali Emas",
+   "competition": "OBA",
+   "level": "SMA Nasional",
+   "organizer": "Berprestasi.ID",
+   "year": 2025
+  },
+  {
+   "rank": "Juara 2",
+   "competition": "MHQ 3 Juz",
+   "level": "SMP/MTs sederajat",
+   "organizer": "Annual Islamic Student Competition BP IBS Bogor",
+   "year": 2024
+  },
+  {
+   "rank": "Medali Emas",
+   "competition": "FOBN (Festifal Olimpiade Bahasa Nasional)",
+   "level": "SMP Nasional",
+   "organizer": "Prisma Cendikia Foundation",
+   "year": 2024
+  },
+  {
+   "rank": "Medali Emas",
+   "competition": "FOBN (Festifal Olimpiade Bahasa Nasional)",
+   "level": "SMP Nasional",
+   "organizer": "Prisma Cendikia Foundation",
+   "year": 2024
+  },
+  {
+   "rank": "Medali Emas",
+   "competition": "FOBN (Festifal Olimpiade Bahasa Nasional)",
+   "level": "SMP Nasional",
+   "organizer": "Prisma Cendikia Foundation",
+   "year": 2024
+  },
+  {
+   "rank": "Medali Emas",
+   "competition": "FOBN (Festifal Olimpiade Bahasa Nasional)",
+   "level": "SMP Nasional",
+   "organizer": "Prisma Cendikia Foundation",
+   "year": 2024
+  },
+  {
+   "rank": "Medali Emas",
+   "competition": "FOBN (Festifal Olimpiade Bahasa Nasional)",
+   "level": "SMP Nasional",
+   "organizer": "Prisma Cendikia Foundation",
+   "year": 2024
+  },
+  {
+   "rank": "Medali Emas",
+   "competition": "FOBN (Festifal Olimpiade Bahasa Nasional)",
+   "level": "SMP Nasional",
+   "organizer": "Prisma Cendikia Foundation",
+   "year": 2024
+  },
+  {
+   "rank": "Medali Emas",
+   "competition": "FOBN (Festifal Olimpiade Bahasa Nasional)",
+   "level": "SMP Nasional",
+   "organizer": "Prisma Cendikia Foundation",
+   "year": 2024
+  },
+  {
+   "rank": "Juara 2",
+   "competition": "Hadits Arba’in",
+   "level": "Nasional",
+   "organizer": "AIFEST 6.0",
+   "year": 2024
+  },
+  {
+   "rank": "Juara Harapan 1",
+   "competition": "Imla’ (Dikte Tulis Arab)",
+   "level": "Nasional",
+   "organizer": "Primago Imla’ Competition",
+   "year": 2024
+  },
+  {
+   "rank": "Peserta Terbaik Putra",
+   "competition": "Dauroh Bahasa Arab Internasional",
+   "level": "Internasional",
+   "organizer": "Universitas Islam Madinah",
+   "year": 2024
+  },
+  {
+   "rank": "Peserta Terbaik Putri",
+   "competition": "Dauroh Bahasa Arab Internasional",
+   "level": "Internasional",
+   "organizer": "Universitas Islam Madinah",
+   "year": 2024
+  },
+  {
+   "rank": "Juara 3",
+   "competition": "MHQ 5 JUZ",
+   "level": "Nasional",
+   "organizer": "Wafi Fest.04",
+   "year": 2024
+  },
+  {
+   "rank": "Juara 1",
+   "competition": "Lomba Khitobah",
+   "level": "Nasional",
+   "organizer": "Wafi Fest.04",
+   "year": 2024
+  },
+  {
+   "rank": "Juara 2",
+   "competition": "Olimpiade Bahasa Arab Kategori SMA Swasta Boarding School",
+   "level": "Kabupaten Bogor",
+   "organizer": "MGMP Bahasa Arab",
+   "year": 2024
+  },
+  {
+   "rank": "Juara 3",
+   "competition": "Olimpiade Bahasa Arab Kategori MA Swasta Boarding School",
+   "level": "Kabupaten Bogor",
+   "organizer": "MGMP Bahasa Arab",
+   "year": 2024
+  },
+  {
+   "rank": "Juara Harapan 1",
+   "competition": "Olimpiade Bahasa Arab Kategori MA Swasta Boarding School",
+   "level": "Kabupaten Bogor",
+   "organizer": "MGMP Bahasa Arab",
+   "year": 2024
+  },
+  {
+   "rank": "Juara 1",
+   "competition": "Olimpiade Bahasa Arab Kategori MTs Swasta Boarding School",
+   "level": "Kabupaten Bogor",
+   "organizer": "MGMP Bahasa Arab",
+   "year": 2024
+  },
+  {
+   "rank": "Juara 2",
+   "competition": "Olimpiade Bahasa Arab Kategori MTs Swasta Boarding School",
+   "level": "Provinsi Jawa Barat",
+   "organizer": "MGMP Bahasa Arab",
+   "year": 2024
+  },
+  {
+   "rank": "Juara Harapan 1",
+   "competition": "Olimpiade Bahasa Arab Kategori Mts Swasta Boarding School",
+   "level": "Kabupaten Bogor",
+   "organizer": "MGMP Bahasa Arab",
+   "year": 2024
+  },
+  {
+   "rank": "Juara 1",
+   "competition": "Khitobah",
+   "level": "SMP Nasional",
+   "organizer": "ALCHEMIST Minhaj Shahabah",
+   "year": 2024
+  },
+  {
+   "rank": "Juara 1",
+   "competition": "Khitobah",
+   "level": "SMA Nasional",
+   "organizer": "ALCHEMIST Minhaj Shahabah",
+   "year": 2024
+  },
+  {
+   "rank": "Medali Emas",
+   "competition": "OBA",
+   "level": "SMP Nasional",
+   "organizer": "CBT Pusat Prestasi",
+   "year": 2024
+  },
+  {
+   "rank": "Juara 2",
+   "competition": "MHQ 5 Juz",
+   "level": "Nasional",
+   "organizer": "Al Binaa festival",
+   "year": 2023
+  },
+  {
+   "rank": "Juara 3",
+   "competition": "Hafalan Hadits Arba’in",
+   "level": "Nasional",
+   "organizer": "MHQH Al Khulaify II",
+   "year": 2023
+  },
+  {
+   "rank": "Juara 1",
+   "competition": "Lomba Video Kreatif Individu",
+   "level": "Nasional",
+   "organizer": "AIFEST",
+   "year": 2023
+  },
+  {
+   "rank": "Juara 2",
+   "competition": "Video Kreatif Kelompok",
+   "level": "Nasional",
+   "organizer": "AIFEST",
+   "year": 2023
+  },
+  {
+   "rank": "Juara 3",
+   "competition": "MHQ",
+   "level": "SMP",
+   "organizer": "Adzkia Kharisma",
+   "year": 2023
+  },
+  {
+   "rank": "Juara 2",
+   "competition": "MHQ",
+   "level": "SD",
+   "organizer": "Adzkia Kharisma",
+   "year": 2023
+  },
+  {
+   "rank": "Juara 1",
+   "competition": "MHQ",
+   "level": "SMP",
+   "organizer": "Adzkia Kharisma",
+   "year": 2023
+  },
+  {
+   "rank": "Juara 1",
+   "competition": "Lomba Tahfiz Al Qur’an",
+   "level": "",
+   "organizer": "Masjid Jami’ Al Ikhwan Cibinong",
+   "year": 2023
+  },
+  {
+   "rank": "Juara 1",
+   "competition": "Lomba Adzan",
+   "level": "",
+   "organizer": "Masjid Jami’ Al Ikhwan Cibinong",
+   "year": 2023
+  },
+  {
+   "rank": "Juara 2",
+   "competition": "Khitobah",
+   "level": "SMP Nasional",
+   "organizer": "Al Irsyad Event",
+   "year": 2023
+  },
+  {
+   "rank": "Juara 1",
+   "competition": "Lomba Tahfizh Al Qur’an",
+   "level": "SMP",
+   "organizer": "Se- Kec. Sukaraja",
+   "year": 2023
+  },
+  {
+   "rank": "Juara 1",
+   "competition": "Olimpiade Bahasa Arab Kategori SMP Swasta",
+   "level": "Kabupaten Bogor",
+   "organizer": "MGMP Bahasa Arab",
+   "year": 2023
+  },
+  {
+   "rank": "Juara 2",
+   "competition": "Olimpiade Bahasa Arab Kategori SMP Swasta",
+   "level": "Kabupaten Bogor",
+   "organizer": "MGMP Bahasa Arab",
+   "year": 2023
+  },
+  {
+   "rank": "Juara Harapan 2",
+   "competition": "Olimpiade Bahasa Arab Kategori SMP Swasta",
+   "level": "Kabupaten Bogor",
+   "organizer": "MGMP Bahasa Arab",
+   "year": 2023
+  },
+  {
+   "rank": "Juara 1",
+   "competition": "Olimpiade Bahasa Arab Kategori MTs Swasta",
+   "level": "Kabupaten Bogor",
+   "organizer": "MGMP Bahasa Arab",
+   "year": 2023
+  },
+  {
+   "rank": "Juara 2",
+   "competition": "Olimpiade Bahasa Arab Kategori MTs Swasta",
+   "level": "Kabupaten Bogor",
+   "organizer": "MGMP Bahasa Arab",
+   "year": 2023
+  },
+  {
+   "rank": "Juara Harapan 1",
+   "competition": "Olimpiade Bahasa Arab Kategori MTs Swasta",
+   "level": "Kabupaten Bogor",
+   "organizer": "MGMP Bahasa Arab",
+   "year": 2023
+  },
+  {
+   "rank": "Juara 3",
+   "competition": "MHQ Kategori 5 Juz",
+   "level": "Nasional",
+   "organizer": "Wafi Festival",
+   "year": 2023
+  },
+  {
+   "rank": "Juara 1",
+   "competition": "MHQ Kategori 5 Juz",
+   "level": "Nasional",
+   "organizer": "Al Minhaj Chemistry Festival",
+   "year": 2023
+  },
+  {
+   "rank": "Juara 3",
+   "competition": "Olimpiade Bahasa Arab Kategori SMP Negeri-Swasta",
+   "level": "Provinsi Jawa Barat",
+   "organizer": "MGMP Bahasa Arab",
+   "year": 2023
+  },
+  {
+   "rank": "Juara 1",
+   "competition": "Olimpiade Bahasa Arab Kategori SMP Negeri-Swasta",
+   "level": "Provinsi Jawa Barat",
+   "organizer": "MGMP Bahasa Arab",
+   "year": 2023
+  },
+  {
+   "rank": "Juara Harapan 1",
+   "competition": "Olimpiade Bahasa Arab Kategori MTs Swasta",
+   "level": "Provinsi Jawa Barat",
+   "organizer": "MGMP Bahasa Arab",
+   "year": 2023
+  },
+  {
+   "rank": "Juara 1",
+   "competition": "Grand Final Olimpiade Bahasa Arab Kategori SMP Negeri-Swasta",
+   "level": "Nasional",
+   "organizer": "MGMP Bahasa Arab",
+   "year": 2023
+  },
+  {
+   "rank": "Juara 3",
+   "competition": "Lomba Pidato Bahasa Arab",
+   "level": "DKI Jakarta – Bogor",
+   "organizer": "International Islamic Book Fair",
+   "year": 2022
+  },
+  {
+   "rank": "Juara 1",
+   "competition": "MHQ Kategori Juz ‘Amma",
+   "level": "",
+   "organizer": "Masjid Cibadak Darul Matin",
+   "year": 2021
+  }
+ ]
+}

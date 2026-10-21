@@ -1,0 +1,761 @@
+{
+  "_note": "Single source of truth. Every page reads from here. Values in [brackets] are placeholders to confirm with the school.",
+  "school": {
+    "name": "Ma’had Tahfizh Al Yusro",
+    "nameAr": "معهد تحفيظ اليسرى",
+    "nameArVerify": true,
+    "foundation": "Yayasan Al Yusr Mulia Bogor",
+    "url": "https://mahadalyusro.sch.id",
+    "_urlNote": "The school's existing Laravel site. Login, registration, prayer times, name converter and the WhatsApp info group stay there; links to them use this origin.",
+    "legalEntityNote": "National curriculum equivalency runs through PKBM Al Yusro",
+    "address": "Desa Gunung Mulya, Kecamatan Tenjolaya, Kabupaten Bogor, Jawa Barat",
+    "mapsUrl": "https://maps.app.goo.gl/3H8h2iucQwDajhV39",
+    "geo": {
+      "lat": -6.66,
+      "lng": 106.7
+    },
+    "whatsapp": {
+      "display": "0819-3892-6972",
+      "url": "https://wa.me/6281938926972"
+    },
+    "infoGroupUrl": "/konversi/masuk-grup-info",
+    "loginUrl": "/dashboard/login",
+    "social": {
+      "handle": "@mahadtahfizhalyusro",
+      "instagram": true,
+      "facebook": true,
+      "youtube": true
+    },
+    "halaqahRatio": {
+      "ideal": 8,
+      "max": 12
+    },
+    "teachersNote": "Pengajar ma’had lulusan Universitas Islam Madinah, Universitas Internasional Afrika Sudan, Universitas Al-Azhar Mesir, LIPIA Jakarta, STIBA Ar Raayah, universitas di Yaman, STDI Imam Syafi’i, dan lainnya. Muhaffizh diutamakan yang telah menyelesaikan hafalan 30 juz secara mutqin."
+  },
+  "psb": {
+    "academicYear": "[2027/2028]",
+    "note": "Waves whose test date has passed must be hidden automatically. If all waves are past, the level shows 'Belum dibuka'.",
+    "waves": {
+      "madrasah": [
+        {
+          "name": "Pertama",
+          "opens": "[YYYY-MM-DD]",
+          "test": "[YYYY-MM-DD]"
+        },
+        {
+          "name": "Kedua",
+          "opens": "[YYYY-MM-DD]",
+          "test": "[YYYY-MM-DD]"
+        },
+        {
+          "name": "Ketiga",
+          "opens": "[YYYY-MM-DD]",
+          "test": "[YYYY-MM-DD]"
+        }
+      ]
+    },
+    "testLocation": "Offline di Ma’had Tahfizh Al Yusro",
+    "registerUrls": {
+      "default": "/dashboard/register",
+      "mahad-aly": "/psbmahadaly"
+    },
+    "brochures": {
+      "_note": "PDF link per level slug. A level without one shows no brochure button.",
+      "madrasah": null
+    },
+    "documents": {
+      "_note": "Documents to prepare, per level slug. Levels without a list show a WhatsApp prompt.",
+      "mahad-aly": {
+        "items": [
+          "Fotokopi KTP dan Kartu Keluarga",
+          "Fotokopi ijazah SMA atau sederajat; siswa kelas XII boleh menyusul",
+          "Surat keterangan sehat dari dokter",
+          "Surat izin orang tua",
+          "Pas foto 3×4 sebanyak 2 lembar",
+          "Bukti transfer biaya pendaftaran"
+        ],
+        "note": "Syarat: lulusan SMA atau sederajat, usia maksimal 20 tahun, belum menikah dan siap tidak menikah selama masa studi."
+      }
+    },
+    "faq": [
+      {
+        "q": "Di mana tes masuk dilaksanakan?",
+        "a": "Tes masuk dilaksanakan langsung di Ma’had Tahfizh Al Yusro, Desa Gunung Mulya, Tenjolaya, Kabupaten Bogor, sesuai jadwal gelombang."
+      },
+      {
+        "q": "Anak saya sudah punya hafalan. Apakah dihitung?",
+        "a": "Ya. Hafalan santri baru atau pindahan yang urutannya berbeda dikonversi sesuai target ma’had."
+      },
+      {
+        "q": "Bagaimana orang tua memantau hafalan anak?",
+        "a": "Setiap setoran dicatat di buku mutaba’ah, direkap tiap bulan, dan bukunya diserahkan kepada wali santri saat kenaikan kelas sebagai laporan pencapaian hafalan."
+      },
+      {
+        "q": "Berapa santri dalam satu halaqah?",
+        "a": "Idealnya {ideal} santri untuk satu muhaffizh, paling banyak {max}. Muhaffizh juga menjadi musyrif, pengasuh santri di halaqahnya."
+      },
+      {
+        "q": "Apakah ada program untuk santri putri?",
+        "a": "Ada. Ma’had memiliki asrama, kelas, dan gedung terpisah untuk santri putra dan putri, dengan program tahfizh putra dan putri masing-masing."
+      }
+    ]
+  },
+  "levels": [
+    {
+      "slug": "taud",
+      "path": "/jenjang/pendidikan/taud",
+      "name": "TAUD",
+      "nameAr": "",
+      "setara": "Setara TK",
+      "durationLabel": "Usia",
+      "duration": "4–6 tahun",
+      "intro": "Pendidikan anak usia 4–6 tahun agar tumbuh mencintai Al-Qur’an, shalih dan shalihah, berakhlak mulia, cerdas, sehat, dan ceria.",
+      "target": "Juz 30",
+      "targetNote": "Juz 30 menjadi juz pertama yang dihafal, sama seperti di semua jenjang Al Yusro.",
+      "juzMap": [
+        {
+          "label": "Selama TAUD",
+          "juz": [
+            30
+          ]
+        }
+      ],
+      "fees": null,
+      "psbOpen": false,
+      "head": null,
+      "headRole": "Kepala TAUD",
+      "outcomes": [
+        "Memiliki dasar aqidah yang kuat dan benar",
+        "Mampu membaca Al-Qur’an",
+        "Menghafal juz 30",
+        "Terbiasa dengan adab Islami dan menghafal doa sehari-hari",
+        "Mengenal praktik wudhu dan shalat",
+        "Mampu membaca dan menulis huruf Latin serta berhitung dasar"
+      ]
+    },
+    {
+      "slug": "kuttab",
+      "path": "/jenjang/pendidikan/kuttab",
+      "name": "Kuttab",
+      "nameAr": "الكتّاب",
+      "setara": "Setara SD",
+      "durationLabel": "Lama belajar",
+      "duration": "6 tahun",
+      "intro": "Pendidikan dasar setara SD selama enam tahun, dengan prioritas tahfizh Al-Qur’an dan bahasa Arab serta pelajaran umum sesuai ketentuan pemerintah.",
+      "target": "Minimal 6 juz",
+      "targetNote": "Santri Kuttab menyelesaikan minimal 6 juz sebelum lulus.",
+      "juzCount": 6,
+      "juzMap": null,
+      "fees": null,
+      "psbOpen": false,
+      "head": "Elan Susanto, S.Pd.",
+      "headRole": "Kepala Kuttab Al Yusro",
+      "outcomes": [
+        "Hafal Al-Qur’an minimal 6 juz",
+        "Hafal hadits-hadits pilihan",
+        "Memahami ilmu syar’i dasar: aqidah, hadits, fiqh, dan lainnya",
+        "Menguasai bahasa Arab dasar secara lisan, tulisan, dan bacaan",
+        "Menguasai doa harian dan praktik ibadah dengan benar",
+        "Memahami pelajaran umum seperti Bahasa Indonesia, Bahasa Inggris, Matematika, IPA, dan IPS"
+      ]
+    },
+    {
+      "slug": "mahdon",
+      "path": "/jenjang/pendidikan/mahdon",
+      "name": "Mahdhon Tarbawi",
+      "nameAr": "المحضن التربوي",
+      "setara": "Setingkat kelas 5–6 SD",
+      "durationLabel": "Lama program",
+      "duration": "[lama program]",
+      "intro": "Program tahfizh dan bahasa Arab setingkat kelas 5–6 SD, untuk membentengi anak dari pengaruh pergaulan bebas, dengan tahsin, pendidikan diniyyah, praktik ibadah, dan bimbingan belajar sekolah.",
+      "target": "Minimal 3 juz",
+      "targetNote": "Tiga juz secara mutqin, ditambah bacaan shalat, adzan, dzikir pagi dan petang, doa harian, dan hadits pilihan.",
+      "juzMap": [
+        {
+          "label": "Selama program",
+          "juz": [
+            30,
+            29,
+            28
+          ]
+        }
+      ],
+      "fees": [
+        {
+          "item": "Biaya pendaftaran",
+          "amount": 300000
+        },
+        {
+          "item": "Uang pangkal",
+          "amount": 10500000
+        },
+        {
+          "item": "Daftar ulang tahunan",
+          "amount": 2800000
+        }
+      ],
+      "feesYear": "[tahun ajaran]",
+      "psbOpen": false,
+      "head": null,
+      "headRole": "Kepala Mahdhon Tarbawi",
+      "outcomes": [
+        "Aqidah, ibadah, dan karakter sesuai Al-Qur’an dan As-Sunnah",
+        "Membaca Al-Qur’an dengan baik dan benar serta menguasai tajwid",
+        "Berbahasa Arab dasar secara lisan dan tulisan",
+        "Terbiasa dengan akhlak mulia dan adab Islami",
+        "Terbiasa berdoa, berdzikir, dan shalat lima waktu tepat waktu di masjid",
+        "Menghafal hadits-hadits pilihan",
+        "Mandiri, kreatif, berprestasi, dan lulus sekolah formal dengan nilai memuaskan"
+      ]
+    },
+    {
+      "slug": "madrasah",
+      "path": "/jenjang/pendidikan/madrasah",
+      "name": "Madrasah",
+      "nameAr": "المدرسة",
+      "setara": "Setara SMP",
+      "durationLabel": "Lama belajar",
+      "duration": "3 tahun, kelas VII–IX",
+      "intro": "Pendidikan pesantren setara SMP. Dalam tiga tahun santri menghafal 20 juz, berbahasa Arab aktif, dan menempuh kurikulum nasional jenjang kesetaraan.",
+      "target": "20 juz",
+      "targetNote": "Dimulai dari juz 30 ke 26, lalu juz 1 sampai 15. Setiap juz diuji sebelum santri lanjut ke juz berikutnya.",
+      "targetDecision": "20 juz per curriculum page (site's Madrasah page says 30; resolved to 20, confirm with school)",
+      "juzMap": [
+        {
+          "label": "Kelas VII",
+          "juz": [
+            30,
+            29,
+            28,
+            27,
+            26
+          ]
+        },
+        {
+          "label": "Kelas VIII",
+          "juz": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+          ]
+        },
+        {
+          "label": "Kelas IX",
+          "juz": [
+            11,
+            12,
+            13,
+            14,
+            15
+          ]
+        }
+      ],
+      "fees": [
+        {
+          "item": "Biaya pendaftaran",
+          "amount": 400000
+        },
+        {
+          "item": "Daftar ulang",
+          "amount": 19500000
+        },
+        {
+          "item": "Biaya tahunan",
+          "amount": 3750000
+        },
+        {
+          "item": "SPP",
+          "amount": 1650000,
+          "period": "[per bulan?]"
+        }
+      ],
+      "feesYear": "2027/2028",
+      "psbOpen": true,
+      "head": "Dede Iskandar, Lc.",
+      "headRole": "Kepala Madrasah Al Yusro",
+      "outcomes": [
+        "Membaca Al-Qur’an sesuai ilmu tajwid",
+        "Hafal 20 juz secara mutqin, berlanjut ke 30 juz bersanad di Darul ‘Ilmi",
+        "Memahami dan mengamalkan ilmu syar’i sesuai pemahaman salafush shalih",
+        "Berakhlak mulia dan beradab Islami",
+        "Mampu berbahasa Arab secara lisan dan tulisan",
+        "Menguasai dasar-dasar ilmu komputer dan IT",
+        "Memiliki kompetensi kurikulum nasional jenjang kesetaraan"
+      ]
+    },
+    {
+      "slug": "darul-ilmi",
+      "path": "/jenjang/pendidikan/darul-ilmi",
+      "name": "Darul ‘Ilmi",
+      "nameAr": "دار العلم",
+      "setara": "Setara SMA",
+      "durationLabel": "Lama belajar",
+      "duration": "Kelas X–XII",
+      "intro": "Pendidikan pesantren setara SMA. Santri melanjutkan 10 juz hingga hafalan genap 30 juz bersanad, dengan bahasa Arab aktif dan kurikulum nasional jenjang kesetaraan.",
+      "target": "Genap 30 juz",
+      "targetNote": "Melanjutkan 20 juz dari Madrasah. Santri pindahan dengan urutan hafalan berbeda dikonversi sesuai target ma’had.",
+      "juzMapPrior": {
+        "label": "Dari Madrasah",
+        "juz": [
+          30,
+          29,
+          28,
+          27,
+          26,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15
+        ]
+      },
+      "juzMap": [
+        {
+          "label": "Kelas X",
+          "juz": [
+            16,
+            17,
+            18,
+            19,
+            20
+          ]
+        },
+        {
+          "label": "Kelas XI",
+          "juz": [
+            21,
+            22,
+            23,
+            24,
+            25
+          ]
+        }
+      ],
+      "fees": null,
+      "psbOpen": false,
+      "head": "Syaepudin, S.Ud., M.H.",
+      "headRole": "Kepala Darul ‘Ilmi",
+      "outcomes": [
+        "Membaca Al-Qur’an sesuai ilmu tajwid",
+        "Hafal Al-Qur’an 30 juz secara mutqin dan bersanad",
+        "Memahami dan mengamalkan ilmu syar’i sesuai pemahaman salafush shalih",
+        "Berakhlak mulia dan beradab Islami",
+        "Mampu berbahasa Arab secara lisan dan tulisan",
+        "Menguasai dasar-dasar ilmu komputer dan IT",
+        "Memiliki kompetensi kurikulum nasional jenjang kesetaraan"
+      ]
+    },
+    {
+      "slug": "mahad-aly",
+      "path": "/mahad-aly",
+      "name": "Ma’had ‘Aly",
+      "nameAr": "المعهد العالي",
+      "setara": "Setara D2",
+      "durationLabel": "Lama belajar",
+      "duration": "4 semester dan 1 tahun praktik",
+      "intro": "Program kaderisasi guru dan musyrif untuk lulusan pesantren atau SMA/MA sederajat. Empat semester belajar, lalu satu tahun praktik lapangan dan pembekalan life skill.",
+      "target": "Minimal 15 juz",
+      "targetNote": "Minimal 15 juz dengan tahsin dan tajwid yang benar.",
+      "juzCount": 15,
+      "juzMap": null,
+      "fees": [
+        {
+          "item": "Biaya pendaftaran",
+          "amount": 250000
+        },
+        {
+          "item": "Daftar ulang",
+          "amount": 0,
+          "label": "Tidak ada"
+        },
+        {
+          "item": "Biaya tahunan",
+          "amount": 0,
+          "label": "Tidak ada"
+        }
+      ],
+      "feesNote": "Beasiswa penuh, termasuk asrama dan uang makan.",
+      "psbOpen": "[status]",
+      "head": "Mohammad Deni Atmaja Kusuma Putra, Lc.",
+      "headRole": "Kepala Ma’had ‘Aly",
+      "outcomes": [
+        "Beraqidah lurus, berakhlak mulia, dan memahami ilmu syar’i dasar",
+        "Hafal minimal 15 juz dengan tahsin dan tajwid yang benar",
+        "Berbahasa Arab aktif secara lisan dan tulisan",
+        "Mampu mengajarkan Al-Qur’an dan ilmu syar’i di kelas maupun di masyarakat",
+        "Memahami kepengasuhan pesantren",
+        "Hafal hadits dan mutun dasar",
+        "Bersemangat dakwah dan peduli sosial",
+        "Mandiri, siap memimpin dan dipimpin, serta pekerja keras",
+        "Terampil berbicara di depan umum dan berorganisasi",
+        "Siap melanjutkan studi ke perguruan tinggi Timur Tengah"
+      ]
+    }
+  ],
+  "dailySchedule": {
+    "source": "/kurikulum/tahfizh",
+    "prayerTimes": "Use the same Kemenag/myquran API the current /jadwal/shalat page uses, for Kab. Bogor. Client-side calc in design is a stand-in (Fajr 20°, Isha 18°, Asr shadow 1, +2 min ihtiyat).",
+    "prayerApi": {
+      "url": "https://api.myquran.com/v2/sholat/jadwal/{city}/{date}",
+      "city": "1204",
+      "cityName": "KAB. BOGOR"
+    },
+    "timeExpressions": "start/end accept HH:MM, a prayer name (subuh, terbit, zhuhur, ashar, maghrib, isya) plus or minus minutes, and min(a, b).",
+    "weekday": [
+      {
+        "name": "Setoran sabaq",
+        "days": "Senin–Jumat",
+        "start": "05:00",
+        "end": "06:30",
+        "detail": "Santri menyetorkan hafalan baru kepada muhaffizh selepas Subuh.",
+        "note": "hafalan baru",
+        "whenNote": "selepas Subuh",
+        "duration": "75–90 menit"
+      },
+      {
+        "name": "Hifzhul jadid",
+        "days": "Senin–Jumat",
+        "start": "07:00",
+        "end": "10:00",
+        "detail": "Menambah hafalan baru di waktu Dhuha, tiga sesi 60 menit.",
+        "note": "menambah hafalan",
+        "whenNote": "waktu Dhuha",
+        "duration": "3 × 60 menit"
+      },
+      {
+        "name": "[Jadwal pelajaran sekolah dan bahasa Arab]",
+        "days": "Senin–Jumat",
+        "start": "10:00",
+        "end": "ashar-5",
+        "placeholder": true
+      },
+      {
+        "name": "Setoran sabaq atau manzil",
+        "days": "Senin–Kamis",
+        "start": "ashar+15",
+        "end": "min(ashar+75, maghrib-60)",
+        "detail": "Mengulang hafalan di hadapan muhaffizh, selesai paling lambat satu jam sebelum Maghrib.",
+        "whenNote": "selepas Ashar, selesai satu jam sebelum Maghrib",
+        "duration": "60 menit"
+      },
+      {
+        "name": "Khataman tilawah",
+        "days": "Jumat",
+        "start": "ashar+15",
+        "end": "maghrib-10",
+        "detail": "Khataman tilawah Al-Qur’an setiap Jumat, di antara Ashar dan Maghrib.",
+        "whenNote": "antara Ashar dan Maghrib",
+        "duration": ""
+      },
+      {
+        "name": "Isti’dad",
+        "days": "Senin–Jumat",
+        "start": "maghrib+15",
+        "end": "maghrib+60",
+        "detail": "Persiapan hafalan untuk esok hari, 45 menit di antara Maghrib dan Isya.",
+        "note": "persiapan",
+        "whenNote": "antara Maghrib dan Isya",
+        "duration": "45 menit"
+      }
+    ],
+    "saturday": {
+      "title": "Sabtu: tasmi’ dan kajian pagi",
+      "detail": "Hafalan diperdengarkan sebelum kajian Sabtu pagi, lalu tadabbur Al-Qur’an di halaqah."
+    },
+    "sunday": {
+      "title": "[Kegiatan hari Ahad]",
+      "detail": ""
+    },
+    "weekly": [
+      {
+        "name": "Tasmi’ dan tadabbur",
+        "when": "Sabtu pagi, tasmi’ sebelum kajian; tadabbur di halaqah",
+        "duration": "75 menit"
+      },
+      {
+        "name": "Kajian tafsir",
+        "when": "Pekanan di masjid ma’had, terbuka untuk umum",
+        "duration": "45 menit"
+      },
+      {
+        "name": "Kajian adab penghafal",
+        "when": "Pekanan, kitab At-Tibyan karya Imam Nawawi",
+        "duration": "30 menit"
+      },
+      {
+        "name": "Tahsin jama’i",
+        "when": "Minimal sekali sepekan, semua tingkat",
+        "duration": "30 menit"
+      }
+    ],
+    "periodic": [
+      "Haflah Khatmil Qur’an setiap enam bulan.",
+      "Musabaqah Hifzhil Qur’an (MHQ) internal setiap tahun, paling lambat sebulan sebelum evaluasi semester akhir.",
+      "Mukhayyam Qur’an setiap tahun.",
+      "Kompetisi eksternal sesuai jadwal lembaga penyelenggara."
+    ]
+  },
+  "kajianRutin": [
+    {
+      "name": "Kajian tafsir Al-Qur’an",
+      "when": "Pekanan, [hari dan jam]",
+      "audience": "Santri dan masyarakat umum"
+    },
+    {
+      "name": "Kajian Rabu malam",
+      "when": "Rabu, ba’da [waktu]",
+      "audience": "[Tema atau kitab]"
+    },
+    {
+      "name": "Kajian muslimah",
+      "when": "[Hari dan jam]",
+      "audience": "Khusus muslimah"
+    },
+    {
+      "name": "Kajian wali santri",
+      "when": "[Jadwal]",
+      "audience": "Orang tua dan wali santri"
+    }
+  ],
+  "staff": {
+    "_note": "Leaders, from mahadalyusro.sch.id/pendidikan/tenaga/pendidik (21 October 2026). Heads of level also appear on their level pages; keep the two in step.",
+    "people": [
+      {
+        "role": "Mudir",
+        "name": "Andi Hidayat, B.Sh., M.E."
+      },
+      {
+        "role": "Sekretaris",
+        "name": "Syahrir, S.Sos."
+      },
+      {
+        "role": "Bendahara",
+        "name": "Ridwan Firmansyah, S.E."
+      },
+      {
+        "role": "Kepala Bidang Tahfizh",
+        "name": "M. Furqon Supardi, Lc"
+      },
+      {
+        "role": "Kepala Bidang Humas dan Dakwah",
+        "name": "Rizqan Abadi, S.Pd"
+      },
+      {
+        "role": "Kepala Bidang IT dan Multimedia",
+        "name": "Yudi Saepul Rizal, S.E., M.E."
+      },
+      {
+        "role": "Kepala Kuttab Al Yusro",
+        "name": "Elan Susanto, S.Pd"
+      },
+      {
+        "role": "Kepala Madrasah Al Yusro",
+        "name": "Dede Iskandar, Lc"
+      },
+      {
+        "role": "Kepala Bidang Kesantrian",
+        "name": "Adithiya Rosadi, S.Pd"
+      },
+      {
+        "role": "Kepala Darul ‘Ilmi",
+        "name": "Syaepudin, S.Ud., M.H."
+      },
+      {
+        "role": "Kepala Ma’had ‘Aly",
+        "name": "Mohammad Deni Atmaja Kusuma Putra, Lc"
+      },
+      {
+        "role": "Kepala Bidang Kesantrian Putri",
+        "name": "Tantri Aryani Muflihat, S.Pd"
+      },
+      {
+        "role": "Kepala Bidang Tahfizh Putri",
+        "name": "Refa Fitriani, S.Pd"
+      }
+    ]
+  },
+  "academicCalendar": {
+    "_note": "Dates as YYYY-MM-DD; 'end' is optional. The page shows the calendar while its last date is still ahead, otherwise an empty state with this one as archive.",
+    "year": "2025/2026",
+    "events": [
+      {
+        "start": "2025-11-22",
+        "label": "Akhir KBM Ganjil"
+      },
+      {
+        "start": "2025-11-24",
+        "end": "2025-11-25",
+        "label": "Hari Tenang"
+      },
+      {
+        "start": "2025-11-26",
+        "end": "2025-11-29",
+        "label": "Ikhtibar Tahfizh"
+      },
+      {
+        "start": "2025-12-01",
+        "end": "2025-12-06",
+        "label": "Ikhtibar Niha’i Ganjil"
+      },
+      {
+        "start": "2025-12-10",
+        "end": "2025-12-20",
+        "label": "Classmeeting"
+      },
+      {
+        "start": "2025-12-20",
+        "end": "2025-12-21",
+        "label": "Pembagian Raport"
+      },
+      {
+        "start": "2025-12-21",
+        "end": "2026-01-09",
+        "label": "Libur Ganjil"
+      },
+      {
+        "start": "2025-12-29",
+        "end": "2025-12-31",
+        "label": "Karantina Tahfizh"
+      },
+      {
+        "start": "2026-01-09",
+        "label": "Kedatangan Asatidzah"
+      },
+      {
+        "start": "2026-01-10",
+        "end": "2026-01-11",
+        "label": "Kedatangan Santri"
+      },
+      {
+        "start": "2026-01-12",
+        "end": "2026-05-23",
+        "label": "Awal KBM Genap"
+      },
+      {
+        "start": "2026-02-02",
+        "label": "SG Santri Baru"
+      },
+      {
+        "start": "2026-02-09",
+        "end": "2026-02-12",
+        "label": "Mukhoyam Tahfizh"
+      },
+      {
+        "start": "2026-02-18",
+        "label": "Perkiraan Awal Ramadhan"
+      },
+      {
+        "start": "2026-03-02",
+        "end": "2026-03-07",
+        "label": "Ikhtibar Nishfi Genap"
+      },
+      {
+        "start": "2026-03-10",
+        "end": "2026-04-03",
+        "label": "Libur Ramadhan dan Id Fitr"
+      },
+      {
+        "start": "2026-04-03",
+        "label": "Kedatangan Asatidzah"
+      },
+      {
+        "start": "2026-04-04",
+        "end": "2026-04-05",
+        "label": "Kedatangan Santri"
+      },
+      {
+        "start": "2026-04-06",
+        "label": "KBM Pasca Liburan Ramadhan dan Id Fitr"
+      },
+      {
+        "start": "2026-04-20",
+        "end": "2026-04-25",
+        "label": "Ikhtibar Tahfizh Kelas IX dan XII"
+      },
+      {
+        "start": "2026-04-27",
+        "end": "2026-05-02",
+        "label": "Ujian Pondok Kelas IX dan UPK Kelas XII"
+      },
+      {
+        "start": "2026-05-04",
+        "label": "Ujian Pondok Kelas XII dan UPK Kelas IX"
+      },
+      {
+        "start": "2026-05-04",
+        "label": "Penetapan Kelulusan XII"
+      },
+      {
+        "start": "2026-05-23",
+        "label": "Akhir KBM Genap"
+      },
+      {
+        "start": "2026-05-26",
+        "end": "2026-05-27",
+        "label": "Hari Tenang"
+      },
+      {
+        "start": "2026-05-27",
+        "label": "Perkiraan Id Adha"
+      },
+      {
+        "start": "2026-05-31",
+        "label": "Wisuda Madrasah, Darul ‘Ilmi, dan MA"
+      },
+      {
+        "start": "2026-06-01",
+        "label": "Penetapan Kelulusan IX"
+      },
+      {
+        "start": "2026-06-01",
+        "end": "2026-06-06",
+        "label": "Ikhtibar Niha’i Sanah"
+      },
+      {
+        "start": "2026-06-08",
+        "end": "2026-06-13",
+        "label": "Ikhtibar Tahfizh"
+      },
+      {
+        "start": "2026-06-28",
+        "label": "Pembagian Raport"
+      },
+      {
+        "start": "2026-06-29",
+        "end": "2026-07-17",
+        "label": "Libur Genap"
+      },
+      {
+        "start": "2026-07-05",
+        "label": "Kedatangan Asatidzah"
+      },
+      {
+        "start": "2026-07-11",
+        "end": "2026-07-12",
+        "label": "Kedatangan Santri Baru"
+      },
+      {
+        "start": "2026-07-18",
+        "end": "2026-07-19",
+        "label": "Kedatangan Santri Lama"
+      }
+    ]
+  }
+}

@@ -1,0 +1,48 @@
+---
+// /kurikulum/bahasa-arab: built only from what the school already publishes
+// (mission, level outcomes, articles, achievements data).
+import { getHalaman } from '@/lib/halaman';
+import ContentPage from '@/components/content/ContentPage.astro';
+import { levels } from '@/lib/site';
+import { records, family, scope, isWinner } from '@/lib/prestasi';
+
+const page = await getHalaman('bahasa-arab');
+const targets = levels
+  .map((l) => ({ level: l, items: l.outcomes.filter((o) => /arab/i.test(o)) }))
+  .filter((t) => t.items.length > 0);
+const arabic = records.filter((r) => ['Olimpiade Bahasa Arab', 'Bahasa Arab lainnya', 'Pidato dan khitobah'].includes(family(r.competition)));
+const years = arabic.map((r) => Number(r.year)).filter(Number.isFinite);
+const national = arabic.filter((r) => scope(r.level) === 'Nasional').length;
+const firsts = arabic.filter((r) => scope(r.level) === 'Nasional' && isWinner(r)).length;
+const toc = [
+  { id: 'target', text: 'Target per jenjang' },
+  ...page.headings,
+  { id: 'prestasi', text: 'Prestasi' },
+];
+---
+<ContentPage title={page.data.title} lede={page.data.lede} crumbs={[{ label: 'Kurikulum' }, { label: 'Bahasa Arab' }]} toc={toc}>
+  <h2 id="target" style="margin-top:0">Target per jenjang</h2>
+  <table>
+    <caption class="sr-only">Target bahasa Arab per jenjang</caption>
+    <thead><tr><th scope="col">Jenjang</th><th scope="col">Target lulusan</th></tr></thead>
+    <tbody>
+      {
+        targets.map((t) => (
+          <tr>
+            <th scope="row"><a href={t.level.path}>{t.level.name}</a></th>
+            <td>{t.items.join('; ')}</td>
+          </tr>
+        ))
+      }
+    </tbody>
+  </table>
+
+  <Fragment set:html={page.html} />
+
+  <h2 id="prestasi">Prestasi</h2>
+  <p>
+    Sejak {Math.min(...years)}, santri dan asatidz mencatat {arabic.length} prestasi lomba bahasa Arab, {national} di antaranya tingkat nasional
+    {firsts > 0 && `, termasuk ${firsts} juara pertama`}. Sebagian besar dari Olimpiade Bahasa Arab yang diselenggarakan FMGMP Bahasa Arab.
+  </p>
+  <p><a href="/prestasi/">Lihat seluruh prestasi</a> atau baca <a href="/artikel/pkbm-al-yusro-raih-prestasi-nasional-di-oba-2025-siswa-sukses-bawa-pulang-medali-emas/">kabar OBA 2025</a>.</p>
+</ContentPage>

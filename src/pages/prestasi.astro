@@ -1,0 +1,80 @@
+---
+// /prestasi: totals by competition and year from content/prestasi.json.
+// Students' names are not published (no consent from the school yet).
+import ContentPage from '@/components/content/ContentPage.astro';
+import { summary } from '@/lib/prestasi';
+
+const s = summary();
+const span = `${Math.min(...s.years)}–${Math.max(...s.years)}`;
+---
+<ContentPage
+  title="Prestasi"
+  lede={`${s.total} prestasi santri dan asatidz dalam lomba tahfizh, bahasa Arab, dan lainnya, ${span}.`}
+  crumbs={[{ label: 'Profil' }, { label: 'Prestasi' }]}
+  toc={[
+    { id: 'ringkasan', text: 'Ringkasan' },
+    { id: 'per-lomba', text: 'Per jenis lomba' },
+    { id: 'per-tingkat', text: 'Per tingkat' },
+  ]}
+>
+  <h2 id="ringkasan" class="sr-only">Ringkasan</h2>
+  <dl class="not-prose m-0 grid grid-cols-[repeat(auto-fit,minmax(min(200px,100%),1fr))] gap-16">
+    {
+      [
+        [String(s.total), 'prestasi tercatat'],
+        [String(s.nationalFirsts), 'juara pertama tingkat nasional'],
+        [String(s.byFamily[0]?.total ?? 0), s.byFamily[0]?.family ?? ''],
+      ].map(([n, label]) => (
+        <div class="flex flex-col-reverse gap-4 border-t-2 border-ink pt-12">
+          <dt class="text-15 text-body">{label}</dt>
+          <dd class="m-0 font-display text-[56px] font-semibold leading-none text-lapis">{n}</dd>
+        </div>
+      ))
+    }
+  </dl>
+
+  <h2 id="per-lomba">Per jenis lomba</h2>
+  <div class="overflow-x-auto" tabindex="0" role="region" aria-label="Tabel prestasi per jenis lomba, dapat digeser ke samping">
+    <table class="min-w-[560px]">
+      <caption class="sr-only">Jumlah prestasi per jenis lomba dan tahun</caption>
+      <thead>
+        <tr>
+          <th scope="col">Jenis lomba</th>
+          {s.years.map((y) => <th scope="col" class="text-right">{y}</th>)}
+          <th scope="col" class="text-right">Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        {
+          s.byFamily.map((f) => (
+            <tr>
+              <th scope="row">{f.family}</th>
+              {f.perYear.map((n) => <td class:list={['text-right', n === 0 && 'text-muted']}>{n || '–'}</td>)}
+              <td class="text-right font-bold">{f.total}</td>
+            </tr>
+          ))
+        }
+        <tr>
+          <th scope="row">Semua lomba</th>
+          {s.yearTotals.map((n) => <td class="text-right font-bold">{n}</td>)}
+          <td class="text-right font-bold">{s.total}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 id="per-tingkat">Per tingkat</h2>
+  <table>
+    <caption class="sr-only">Jumlah prestasi per tingkat lomba</caption>
+    <thead><tr><th scope="col">Tingkat</th><th scope="col" class="text-right">Prestasi</th></tr></thead>
+    <tbody>
+      {s.scopes.map((x) => (
+        <tr>
+          <th scope="row">{x.scope}</th>
+          <td class="text-right">{x.total}</td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+  <p class="text-15 text-muted">Nama santri tidak ditampilkan. Kabar lomba terbaru ada di <a href="/artikel/">Kajian &amp; artikel</a>.</p>
+</ContentPage>

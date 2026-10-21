@@ -1,0 +1,188 @@
+---
+// Section 2: "Sehari di Al Yusro". The build renders a labelled example
+// Monday; the script below swaps in the live day (WIB) and refreshes every
+// 30 seconds. No aria-live here on purpose: no announcements every update.
+import StarField from '@/components/StarField.astro';
+import { site, school } from '@/lib/site';
+import { buildDay, calcPrayerTimes, evalTime, nowInWib, type DaySchedule } from '@/lib/day-view';
+
+const schedule = site.dailySchedule as unknown as DaySchedule;
+const today = nowInWib();
+const pt = calcPrayerTimes(today.y, today.m, today.d, school.geo.lat, school.geo.lng);
+// Without JS, show an example Monday at the start of the first activity.
+const firstStart = schedule.weekday[0] ? evalTime(schedule.weekday[0].start, pt) : 300;
+const day = buildDay(schedule, pt, 1, firstStart, false);
+
+const config = JSON.stringify({
+  schedule,
+  geo: school.geo,
+  api: site.dailySchedule.prayerApi,
+});
+const hours = ['04.00', '06.00', '08.00', '10.00', '12.00', '14.00', '16.00', '18.00', '20.00'];
+const at = (i: number) => `${(i / (hours.length - 1)) * 100}%`;
+---
+<section data-day-section aria-labelledby="g-day-title" class="relative overflow-hidden bg-ink text-on-night [--stars:0.5]">
+  <StarField count={42} seed={3} class="inset-x-0 top-0 h-[64px] sm:h-[84px]" />
+  <div
+    data-day-view
+    data-motion="pending"
+    data-config={config}
+    class="relative mx-auto box-border flex max-w-page flex-wrap items-start gap-x-64 gap-y-48 px-20 py-72 sm:px-40 sm:py-96"
+  >
+    <div class="flex max-w-[520px] flex-[1_1_380px] flex-col gap-24">
+      <h2
+        id="g-day-title"
+        class="m-0 font-display text-[clamp(44px,5vw,72px)] font-semibold leading-[0.98] text-white [text-wrap:balance]"
+      >
+        Hari santri dimulai sebelum Subuh
+      </h2>
+      <p class="m-0 max-w-[32em] text-18 leading-[1.65] text-on-night-body [text-wrap:pretty]">
+        Setoran selepas Subuh, hafalan baru di waktu Dhuha, sekolah dan bahasa Arab, muraja’ah selepas Ashar, lalu
+        persiapan hafalan esok di antara Maghrib dan Isya.
+      </p>
+      <div class="flex flex-col gap-8 rounded-lg bg-night-panel p-24">
+        <p data-dv="label" class="m-0 text-14 text-on-night-muted">{day.label}</p>
+        <p data-dv="title" class="m-0 font-display text-32 font-semibold leading-[1.1] text-white">{day.title}</p>
+        <p data-dv="detail" class="m-0 text-15 leading-[1.6] text-on-night-soft" hidden={!day.detail}>{day.detail}</p>
+        <p data-dv="next" class="m-0 mt-8 border-t border-night-rule-2 pt-12 text-15 text-amber">{day.next}</p>
+      </div>
+      <a
+        href={site.dailySchedule.source}
+        class="inline-flex min-h-44 items-center self-start text-16 font-bold text-white underline-offset-4 hover:text-on-night-body"
+      >Lihat kurikulum tahfizh</a>
+    </div>
+
+    <div class="box-border min-w-0 flex-[1_1_520px] rounded-lg bg-night-panel px-16 pb-20 pt-24 sm:px-24">
+      <div class="mb-22 flex flex-wrap items-baseline justify-between gap-x-16 gap-y-4">
+        <h3 class="m-0 text-18 font-bold leading-[1.3] text-white">Jadwal harian santri</h3>
+        <p data-dv="note" class="m-0 text-14 text-on-night-muted">{day.note}</p>
+      </div>
+      <div class="flex gap-10 pt-8">
+        <div aria-hidden="true" class="relative h-[544px] flex-[0_0_42px] text-12 leading-none text-on-night-muted tabular-nums">
+          {hours.map((h, i) => <span class="absolute left-0 -translate-y-1/2" style={`top:${at(i)}`}>{h}</span>)}
+        </div>
+        <div aria-hidden="true" data-dv="bands" class="relative h-[544px] flex-[0_0_8px] overflow-hidden rounded-md" set:html={day.bandsHtml} />
+        <div class="relative h-[544px] min-w-0 flex-auto">
+          {hours.map((_, i) => <span aria-hidden="true" class="absolute inset-x-0 border-t border-night-rule" style={`top:${at(i)}`} />)}
+          <div data-dv="track" class="absolute inset-0" set:html={day.trackHtml} />
+          <div
+            data-now-line
+            aria-hidden="true"
+            hidden
+            class="absolute left-[-6px] right-0 z-[2] h-0 border-t-2 border-amber"
+            style={`top:${day.nowTop}`}
+          >
+            <span class="absolute left-0 top-[-6px] size-10 rounded-full bg-amber"></span>
+            <span data-dv="now" class="absolute right-0 top-[-24px] rounded-xs bg-amber px-8 py-1 text-12 font-bold leading-[1.5] text-ink tabular-nums">{day.nowLabel}</span>
+          </div>
+        </div>
+        <ul
+          data-dv="prayers"
+          aria-label="Waktu shalat hari ini"
+          class="relative m-0 h-[544px] flex-[0_0_96px] list-none p-0 text-12 leading-[1.2] sm:flex-[0_0_140px] sm:text-13"
+          set:html={day.prayersHtml}
+        />
+      </div>
+      <p data-dv="source" class="m-0 mt-18 text-13 text-on-night-muted">Waktu shalat untuk wilayah Tenjolaya, Bogor.</p>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { buildDay, nowInWib, START, END, type DaySchedule, type PrayerMinutes } from '@/lib/day-view';
+  import { calcFor, fetchFor, type PrayerConfig } from '@/lib/prayer-times';
+  import { starOpacity } from '@/lib/sky';
+  import { loadGsap, onceInView, prefersReducedMotion } from '@/lib/motion';
+
+  type Config = PrayerConfig & { schedule: DaySchedule };
+
+  const root = document.querySelector<HTMLElement>('[data-day-view]');
+  const section = document.querySelector<HTMLElement>('[data-day-section]');
+  if (root && section) {
+    const cfg = JSON.parse(root.dataset.config ?? '{}') as Config;
+    const $ = (k: string) => root.querySelector<HTMLElement>(`[data-dv="${k}"]`) as HTMLElement;
+    const line = root.querySelector<HTMLElement>('[data-now-line]') as HTMLElement;
+    const motion = !prefersReducedMotion() && document.documentElement.classList.contains('motion-ok');
+    const setStars = (v: number) => section.style.setProperty('--stars', v.toFixed(2));
+
+    let dateKey = '';
+    let pt: PrayerMinutes;
+    let fromApi = false;
+    let intro: { kill(): void } | null = null; // the "now" line's intro tween
+    let introDone = !motion;
+
+    function render() {
+      const now = nowInWib();
+      if (now.iso !== dateKey) {
+        dateKey = now.iso;
+        fromApi = false;
+        pt = calcFor(cfg, now);
+        fetchFor(cfg, now).then((t) => {
+          if (dateKey !== now.iso) return;
+          pt = t;
+          fromApi = true;
+          render();
+        }, () => {}); // keep the calculated times
+      }
+      const day = buildDay(cfg.schedule, pt, now.wd, now.min, true);
+      $('label').textContent = day.label;
+      $('title').textContent = day.title;
+      $('detail').textContent = day.detail;
+      $('detail').hidden = !day.detail;
+      $('next').textContent = day.next;
+      $('note').textContent = day.note;
+      $('bands').innerHTML = day.bandsHtml;
+      $('track').innerHTML = day.trackHtml;
+      $('prayers').innerHTML = day.prayersHtml;
+      $('source').textContent = fromApi
+        ? 'Waktu shalat Kemenag untuk Kabupaten Bogor.'
+        : 'Waktu shalat untuk wilayah Tenjolaya, Bogor (perkiraan).';
+      $('now').textContent = day.nowLabel;
+      line.hidden = !day.showNow;
+      // Until the intro has played, the CSS gate holds the line at 04.00.
+      if (introDone || !intro) line.style.top = day.nowTop;
+      if (introDone) setStars(starOpacity(now.min, pt));
+      return day;
+    }
+
+    render();
+
+    if (!motion) {
+      root.dataset.motion = 'done';
+    } else {
+      setStars(1); // the intro starts at 04.00, before Subuh
+      // Motion moment 3: the "now" line travels from 04.00 to the current time,
+      // and the stars fade as it passes dawn.
+      onceInView($('track'), async () => {
+        const gsap = await loadGsap();
+        const target = render().nowTop;
+        const now = nowInWib().min;
+        const endStars = now >= START && now <= END ? starOpacity(now, pt) : 1;
+        intro = gsap.fromTo(
+          line,
+          { top: '0%' },
+          {
+            top: target,
+            duration: 1.6,
+            ease: 'power3.out',
+            // Dawn is only the first slice of the line's path, so the fade
+            // follows the tween's progress (first 60%) to stay perceptible.
+            onUpdate: function (this: { progress(): number }) {
+              setStars(1 - (1 - endStars) * Math.min(1, this.progress() / 0.6));
+            },
+            onComplete: () => {
+              introDone = true;
+              render();
+            },
+          },
+        );
+        root.dataset.motion = 'done';
+      });
+    }
+
+    setInterval(() => {
+      if (intro && !introDone) return;
+      render();
+    }, 30000);
+  }
+</script>

@@ -1,0 +1,93 @@
+---
+// Section 3: the six levels as rising terraces, all values from site.json.
+import { levels, levelSummary } from '@/lib/site';
+
+// Fill, text and height step up with each level, as in Beranda-gabungan.
+const TONES = [
+  { bg: 'bg-sky-50 text-ink', sub: 'text-body', h: 'md:min-h-[210px]' },
+  { bg: 'bg-sky-100 text-ink', sub: 'text-body', h: 'md:min-h-[246px]' },
+  { bg: 'bg-sky-200 text-ink', sub: 'text-ink', h: 'md:min-h-[282px]' },
+  { bg: 'bg-sky-500 text-white', sub: 'text-white', h: 'md:min-h-[318px]' },
+  { bg: 'bg-sky-600 text-white', sub: 'text-white', h: 'md:min-h-[354px]' },
+  { bg: 'bg-lapis text-white', sub: 'text-white', h: 'md:min-h-[390px]' },
+];
+---
+<section id="jenjang" aria-labelledby="g-jenjang-title" class="scroll-mt-16 bg-white">
+  <div class="mx-auto box-border max-w-page px-20 pt-72 sm:px-40 sm:pt-96">
+    <div class="mb-48 flex flex-wrap items-end justify-between gap-x-48 gap-y-16">
+      <h2 id="g-jenjang-title" class="m-0 max-w-[12em] font-display text-[clamp(40px,4.4vw,64px)] font-semibold leading-none">
+        Dari TK hingga D2, jenjang demi jenjang
+      </h2>
+      <p class="m-0 max-w-[28em] text-muted">Setiap jenjang punya target hafalan sendiri. Pilih yang sesuai usia anak.</p>
+    </div>
+    <ol data-terraces data-motion="pending" class="m-0 flex list-none flex-col items-stretch gap-6 p-0 md:flex-row md:items-end">
+      {
+        levels.map((level, i) => {
+          const t = TONES[Math.min(i, TONES.length - 1)]!;
+          const linkTone = t.sub === 'text-white' ? 'text-white hover:text-sky-50' : 'text-ink hover:text-ink';
+          return (
+            <li
+              data-terrace
+              class:list={[
+                'relative box-border flex min-w-0 flex-[1_1_0] flex-col gap-4 rounded-lg px-18 pb-12 pt-22 md:rounded-b-none',
+                // Micro-interaction: the terrace lifts when hovered or its link is focused.
+                'transition-transform duration-200 ease-out hover:-translate-y-6 focus-within:-translate-y-6',
+                t.bg,
+                t.h,
+              ]}
+            >
+              <h3 class="m-0 font-display text-30 font-semibold leading-[1.05]">{level.name}</h3>
+              {level.nameAr && (
+                <span lang="ar" dir="rtl" class:list={['self-start font-display text-22 leading-[1.2]', t.sub]}>
+                  {level.nameAr}
+                </span>
+              )}
+              <p class:list={['m-0 text-15 leading-[1.45]', t.sub]}>{levelSummary(level)}</p>
+              {level.psbOpen === true && (
+                <span class="mt-6 self-start rounded-sm bg-white px-10 py-3 text-13 font-bold leading-[1.4] text-lapis">
+                  Pendaftaran dibuka
+                </span>
+              )}
+              <p class:list={['m-0 mt-auto pt-12 text-14 leading-[1.4]', t.sub]}>
+                Target hafalan
+                <br />
+                <strong class:list={['text-17', i < 2 ? 'text-ink' : '']}>{level.target}</strong>
+              </p>
+              <a
+                href={level.path}
+                aria-label={`Lihat jenjang ${level.name}`}
+                class:list={['inline-flex min-h-44 items-center text-15 font-bold underline-offset-4 after:absolute after:inset-0 after:content-[\'\']', linkTone]}
+              >
+                Lihat jenjang
+              </a>
+            </li>
+          );
+        })
+      }
+    </ol>
+  </div>
+  <div aria-hidden="true" class="h-6 bg-ink"></div>
+</section>
+
+<script>
+  import { loadGsap, onceInView, prefersReducedMotion } from '@/lib/motion';
+
+  // Motion moment 2: the terraces rise one after another, lowest level first.
+  const list = document.querySelector<HTMLElement>('[data-terraces]');
+  if (list) {
+    if (prefersReducedMotion() || !document.documentElement.classList.contains('motion-ok')) {
+      list.dataset.motion = 'done';
+    } else {
+      onceInView(list, async () => {
+        const gsap = await loadGsap();
+        const steps = list.querySelectorAll('[data-terrace]');
+        gsap.fromTo(
+          steps,
+          { y: 48, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.6, ease: 'power2.out', stagger: 0.09, clearProps: 'transform,opacity' },
+        );
+        list.dataset.motion = 'done';
+      }, 0.2);
+    }
+  }
+</script>

@@ -1,0 +1,44 @@
+---
+// Gunung Salak landscape: lead of the homepage footer, also on level pages.
+// `.sky` tints it by time of day; LivingSky.astro (homepage only) sets
+// data-sky and moves the sun. Without that script it stays the designed day.
+import StarField from '@/components/StarField.astro';
+import { school, registerUrl, numberWord } from '@/lib/site';
+
+const ideal = numberWord(school.halaqahRatio.ideal);
+---
+<div data-landscape data-sky="day" class="sky relative overflow-hidden pb-[300px]">
+  <StarField count={48} seed={11} class="inset-x-0 top-0 h-[62%]" />
+  <div class="relative z-[1] mx-auto box-border max-w-page px-20 pt-72 sm:px-40 sm:pt-96">
+    <div class="flex max-w-[760px] flex-col gap-22">
+      <h2 id="g-foot-title" class="m-0 font-display text-[clamp(44px,5.2vw,76px)] font-semibold leading-[0.98] [text-wrap:balance]">
+        Belajar dan menghafal di kaki Gunung Salak
+      </h2>
+      <p class="m-0 max-w-[33em] text-18 text-[var(--land-body)] [text-wrap:pretty]">
+        Udara sejuk, jauh dari keramaian kota. Santri tinggal di ma’had dan menyetorkan hafalan setiap hari dalam
+        halaqah kecil, idealnya {ideal} santri untuk satu muhaffizh.
+      </p>
+      <div class="flex flex-wrap gap-12">
+        <a
+          href={registerUrl()}
+          class="btn-primary"
+        >Daftar santri baru</a>
+        <a
+          href={school.mapsUrl}
+          class="btn-secondary"
+        >
+          <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"></path><circle cx="12" cy="9.5" r="2.5"></circle></svg>
+          Buka peta lokasi
+        </a>
+      </div>
+    </div>
+  </div>
+  <svg aria-hidden="true" viewBox="0 0 1440 460" preserveAspectRatio="xMidYMax slice" class="absolute bottom-0 left-0 block h-[380px] w-full">
+    <g data-sun style="transform: translate(1150px, 150px)"><circle cx="0" cy="0" r="46" class="fill-amber"></circle></g>
+    <path class="fill-[var(--h1)]" d="M0 300 C 160 282 320 246 470 200 C 580 166 660 126 728 96 C 760 82 784 64 806 60 C 826 57 842 70 860 86 C 878 102 896 112 914 106 C 936 98 952 80 974 76 C 996 72 1018 90 1046 116 C 1104 168 1190 214 1290 244 C 1350 262 1400 272 1440 276 L 1440 460 L 0 460 Z"></path>
+    <path class="fill-[var(--h2)]" d="M0 352 C 110 334 220 318 330 322 C 450 326 540 296 650 288 C 760 280 850 312 960 306 C 1070 300 1170 270 1270 272 C 1350 274 1405 286 1440 292 L 1440 460 L 0 460 Z"></path>
+    <path class="fill-[var(--h3)]" d="M0 394 C 130 368 250 366 370 380 C 500 396 620 354 760 358 C 880 362 970 396 1090 390 C 1210 384 1320 352 1440 358 L 1440 460 L 0 460 Z"></path>
+    <path class="fill-[var(--h4)]" d="M0 428 C 180 404 340 410 500 420 C 690 432 860 398 1050 404 C 1210 409 1340 424 1440 420 L 1440 460 L 0 460 Z"></path>
+    <path class="fill-ink" d="M0 452 C 220 440 420 444 640 450 C 860 456 1080 440 1300 444 C 1370 446 1410 448 1440 448 L 1440 460 L 0 460 Z"></path>
+  </svg>
+</div>
