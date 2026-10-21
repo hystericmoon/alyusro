@@ -30,7 +30,14 @@ const pageTitle = d.series ? `${d.series}, ${d.title}` : d.title;
 const shareBtn =
   'box-border inline-flex min-h-44 items-center rounded-sm border border-ink bg-white px-16 font-body text-15 font-bold text-ink no-underline transition-colors duration-150 hover:bg-ink hover:text-white';
 ---
-<BaseLayout title={pageTitle} description={d.excerpt} footerLabelledBy="g-foot-title">
+<BaseLayout
+  title={pageTitle}
+  description={d.excerpt}
+  footerLabelledBy="g-foot-title"
+  image={d.cover}
+  imageAlt={d.coverAlt}
+  article={{ published: d.date, author: d.author, section: d.series ?? d.category }}
+>
   <article class="mx-auto box-border max-w-page px-20 pb-80 pt-24 sm:px-40 sm:pb-96 sm:pt-32">
     <nav aria-label="Breadcrumb" class="text-15 leading-[1.6]">
       <ol class="m-0 flex list-none flex-wrap gap-10 p-0 text-muted">

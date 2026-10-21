@@ -6,7 +6,7 @@
     "nameArVerify": true,
     "foundation": "Yayasan Al Yusr Mulia Bogor",
     "url": "https://mahadalyusro.sch.id",
-    "_urlNote": "The school's existing Laravel site. Login, registration, prayer times, name converter and the WhatsApp info group stay there; links to them use this origin.",
+    "_urlNote": "The school's existing Laravel site. Login, registration and the WhatsApp info group stay there; links to them use this origin.",
     "legalEntityNote": "National curriculum equivalency runs through PKBM Al Yusro",
     "address": "Desa Gunung Mulya, Kecamatan Tenjolaya, Kabupaten Bogor, Jawa Barat",
     "mapsUrl": "https://maps.app.goo.gl/3H8h2iucQwDajhV39",
@@ -103,7 +103,7 @@
   "levels": [
     {
       "slug": "taud",
-      "path": "/jenjang/pendidikan/taud",
+      "path": "/jenjang/pendidikan/taud/",
       "name": "TAUD",
       "nameAr": "",
       "setara": "Setara TK",
@@ -135,7 +135,7 @@
     },
     {
       "slug": "kuttab",
-      "path": "/jenjang/pendidikan/kuttab",
+      "path": "/jenjang/pendidikan/kuttab/",
       "name": "Kuttab",
       "nameAr": "الكتّاب",
       "setara": "Setara SD",
@@ -161,7 +161,7 @@
     },
     {
       "slug": "mahdon",
-      "path": "/jenjang/pendidikan/mahdon",
+      "path": "/jenjang/pendidikan/mahdon/",
       "name": "Mahdhon Tarbawi",
       "nameAr": "المحضن التربوي",
       "setara": "Setingkat kelas 5–6 SD",
@@ -210,7 +210,7 @@
     },
     {
       "slug": "madrasah",
-      "path": "/jenjang/pendidikan/madrasah",
+      "path": "/jenjang/pendidikan/madrasah/",
       "name": "Madrasah",
       "nameAr": "المدرسة",
       "setara": "Setara SMP",
@@ -292,7 +292,7 @@
     },
     {
       "slug": "darul-ilmi",
-      "path": "/jenjang/pendidikan/darul-ilmi",
+      "path": "/jenjang/pendidikan/darul-ilmi/",
       "name": "Darul ‘Ilmi",
       "nameAr": "دار العلم",
       "setara": "Setara SMA",
@@ -364,7 +364,7 @@
     },
     {
       "slug": "mahad-aly",
-      "path": "/mahad-aly",
+      "path": "/mahad-aly/",
       "name": "Ma’had ‘Aly",
       "nameAr": "المعهد العالي",
       "setara": "Setara D2",
@@ -410,7 +410,7 @@
     }
   ],
   "dailySchedule": {
-    "source": "/kurikulum/tahfizh",
+    "source": "/kurikulum/tahfizh/",
     "prayerTimes": "Use the same Kemenag/myquran API the current /jadwal/shalat page uses, for Kab. Bogor. Client-side calc in design is a stand-in (Fajr 20°, Isha 18°, Asr shadow 1, +2 min ihtiyat).",
     "prayerApi": {
       "url": "https://api.myquran.com/v2/sholat/jadwal/{city}/{date}",

@@ -34,7 +34,7 @@ collections:
       - label: Judul
         name: title
         widget: string
-        hint: Untuk serial, tulis "Pertemuan ke-N: topik", misalnya "Pertemuan ke-3: Bahaya kesyirikan".
+        hint: 'Untuk serial, tulis "Pertemuan ke-N: topik", misalnya "Pertemuan ke-3: Bahaya kesyirikan".'
       - label: Serial
         name: series
         widget: select
@@ -111,3 +111,777 @@ collections:
         name: body
         widget: markdown
         hint: 'Angka dari site.json bisa dikutip, misalnya {{halaqah.ideal}} (rasio halaqah) atau {{sekolah.alamat}}. Setiap judul "##" otomatis masuk daftar "Di halaman ini".'
+
+  # content/site.json: the one source for levels, fees, PSB waves, schedule,
+  # calendar and contact. Every key in the file is declared below (notes for
+  # the IT team as hidden fields), so saving from the CMS never drops data.
+  # scripts/check-site.mjs runs before every build and stops a deploy if a
+  # save ever leaves a required value missing; the live site then stays on the
+  # last good version.
+  - name: data
+    label: Data ma’had
+    description: Biaya, gelombang pendaftaran, tahun ajaran, kalender, FAQ, jadwal, dan kontak. Satu isian di sini mengubah semua halaman yang memakainya. Isian bertanda [kurung siku] belum dipastikan dan tidak tampil di situs.
+    editor:
+      preview: false
+    files:
+    - name: site
+      label: Data ma’had (site.json)
+      file: content/site.json
+      format: json
+      fields:
+      - name: _note
+        widget: hidden
+        required: false
+      - label: Profil dan kontak
+        name: school
+        widget: object
+        collapsed: true
+        fields:
+        - label: Nama
+          name: name
+          widget: string
+        - label: Nama Arab
+          name: nameAr
+          widget: string
+        - label: Ejaan Arab masih perlu diperiksa
+          name: nameArVerify
+          widget: boolean
+          required: false
+          hint: Matikan setelah ejaan nama Arab dipastikan.
+        - label: Yayasan
+          name: foundation
+          widget: string
+        - label: Situs lama (Laravel)
+          name: url
+          widget: string
+          hint: Untuk masuk dan pendaftaran. Jangan diubah tanpa tim IT.
+        - name: _urlNote
+          widget: hidden
+          required: false
+        - label: Catatan badan hukum
+          name: legalEntityNote
+          widget: string
+        - label: Alamat
+          name: address
+          widget: string
+        - label: Tautan Google Maps
+          name: mapsUrl
+          widget: string
+        - label: Koordinat
+          name: geo
+          widget: object
+          collapsed: true
+          fields:
+          - label: Lintang
+            name: lat
+            widget: number
+            value_type: float
+          - label: Bujur
+            name: lng
+            widget: number
+            value_type: float
+        - label: WhatsApp
+          name: whatsapp
+          widget: object
+          fields:
+          - label: Nomor tampil
+            name: display
+            widget: string
+            hint: Misalnya 0819-3892-6972
+          - label: Tautan
+            name: url
+            widget: string
+            hint: https://wa.me/62… tanpa angka 0 di depan
+        - label: Alamat grup info WhatsApp
+          name: infoGroupUrl
+          widget: string
+        - label: Alamat halaman masuk
+          name: loginUrl
+          widget: string
+        - label: Media sosial
+          name: social
+          widget: object
+          collapsed: true
+          fields:
+          - label: Nama akun
+            name: handle
+            widget: string
+          - label: Instagram
+            name: instagram
+            widget: boolean
+            required: false
+          - label: Facebook
+            name: facebook
+            widget: boolean
+            required: false
+          - label: YouTube
+            name: youtube
+            widget: boolean
+            required: false
+        - label: Rasio halaqah
+          name: halaqahRatio
+          widget: object
+          fields:
+          - label: Ideal (santri per muhaffizh)
+            name: ideal
+            widget: number
+            value_type: int
+            min: 1
+          - label: Paling banyak
+            name: max
+            widget: number
+            value_type: int
+            min: 1
+        - label: Catatan pengajar
+          name: teachersNote
+          widget: text
+      - label: Pendaftaran (PSB)
+        name: psb
+        widget: object
+        collapsed: true
+        fields:
+        - label: Tahun ajaran
+          name: academicYear
+          widget: string
+          hint: Misalnya 2027/2028
+        - name: note
+          widget: hidden
+          required: false
+        - label: Gelombang per jenjang
+          name: waves
+          widget: object
+          hint: Tanggal ditulis TTTT-BB-HH, misalnya 2027-01-15. Gelombang yang tanggal tesnya sudah lewat otomatis disembunyikan.
+          fields:
+          - label: Madrasah
+            name: madrasah
+            widget: list
+            required: false
+            summary: '{{fields.name}}: buka {{fields.opens}}, tes {{fields.test}}'
+            fields:
+            - label: Nama gelombang
+              name: name
+              widget: string
+            - label: Dibuka
+              name: opens
+              widget: string
+              required: false
+              pattern:
+              - ^(\d{4}-\d{2}-\d{2}|\[.*\])?$
+              - Tulis tanggal sebagai TTTT-BB-HH
+            - label: Tanggal tes
+              name: test
+              widget: string
+              required: false
+              pattern:
+              - ^(\d{4}-\d{2}-\d{2}|\[.*\])?$
+              - Tulis tanggal sebagai TTTT-BB-HH
+          - label: Darul ‘Ilmi
+            name: darul-ilmi
+            widget: list
+            required: false
+            summary: '{{fields.name}}: buka {{fields.opens}}, tes {{fields.test}}'
+            fields:
+            - label: Nama gelombang
+              name: name
+              widget: string
+            - label: Dibuka
+              name: opens
+              widget: string
+              required: false
+              pattern:
+              - ^(\d{4}-\d{2}-\d{2}|\[.*\])?$
+              - Tulis tanggal sebagai TTTT-BB-HH
+            - label: Tanggal tes
+              name: test
+              widget: string
+              required: false
+              pattern:
+              - ^(\d{4}-\d{2}-\d{2}|\[.*\])?$
+              - Tulis tanggal sebagai TTTT-BB-HH
+          - label: Mahdhon Tarbawi
+            name: mahdon
+            widget: list
+            required: false
+            summary: '{{fields.name}}: buka {{fields.opens}}, tes {{fields.test}}'
+            fields:
+            - label: Nama gelombang
+              name: name
+              widget: string
+            - label: Dibuka
+              name: opens
+              widget: string
+              required: false
+              pattern:
+              - ^(\d{4}-\d{2}-\d{2}|\[.*\])?$
+              - Tulis tanggal sebagai TTTT-BB-HH
+            - label: Tanggal tes
+              name: test
+              widget: string
+              required: false
+              pattern:
+              - ^(\d{4}-\d{2}-\d{2}|\[.*\])?$
+              - Tulis tanggal sebagai TTTT-BB-HH
+          - label: Kuttab
+            name: kuttab
+            widget: list
+            required: false
+            summary: '{{fields.name}}: buka {{fields.opens}}, tes {{fields.test}}'
+            fields:
+            - label: Nama gelombang
+              name: name
+              widget: string
+            - label: Dibuka
+              name: opens
+              widget: string
+              required: false
+              pattern:
+              - ^(\d{4}-\d{2}-\d{2}|\[.*\])?$
+              - Tulis tanggal sebagai TTTT-BB-HH
+            - label: Tanggal tes
+              name: test
+              widget: string
+              required: false
+              pattern:
+              - ^(\d{4}-\d{2}-\d{2}|\[.*\])?$
+              - Tulis tanggal sebagai TTTT-BB-HH
+          - label: TAUD
+            name: taud
+            widget: list
+            required: false
+            summary: '{{fields.name}}: buka {{fields.opens}}, tes {{fields.test}}'
+            fields:
+            - label: Nama gelombang
+              name: name
+              widget: string
+            - label: Dibuka
+              name: opens
+              widget: string
+              required: false
+              pattern:
+              - ^(\d{4}-\d{2}-\d{2}|\[.*\])?$
+              - Tulis tanggal sebagai TTTT-BB-HH
+            - label: Tanggal tes
+              name: test
+              widget: string
+              required: false
+              pattern:
+              - ^(\d{4}-\d{2}-\d{2}|\[.*\])?$
+              - Tulis tanggal sebagai TTTT-BB-HH
+          - label: Ma’had ‘Aly
+            name: mahad-aly
+            widget: list
+            required: false
+            summary: '{{fields.name}}: buka {{fields.opens}}, tes {{fields.test}}'
+            fields:
+            - label: Nama gelombang
+              name: name
+              widget: string
+            - label: Dibuka
+              name: opens
+              widget: string
+              required: false
+              pattern:
+              - ^(\d{4}-\d{2}-\d{2}|\[.*\])?$
+              - Tulis tanggal sebagai TTTT-BB-HH
+            - label: Tanggal tes
+              name: test
+              widget: string
+              required: false
+              pattern:
+              - ^(\d{4}-\d{2}-\d{2}|\[.*\])?$
+              - Tulis tanggal sebagai TTTT-BB-HH
+        - label: Tempat tes
+          name: testLocation
+          widget: string
+        - label: Alamat pendaftaran online
+          name: registerUrls
+          widget: object
+          collapsed: true
+          fields:
+          - label: Semua jenjang
+            name: default
+            widget: string
+          - label: Ma’had ‘Aly
+            name: mahad-aly
+            widget: string
+        - label: Brosur (tautan PDF)
+          name: brochures
+          widget: object
+          collapsed: true
+          hint: Kosongkan bila belum ada; tombol brosur tidak tampil.
+          fields:
+          - name: _note
+            widget: hidden
+            required: false
+          - label: TAUD
+            name: taud
+            widget: string
+            required: false
+          - label: Kuttab
+            name: kuttab
+            widget: string
+            required: false
+          - label: Mahdhon Tarbawi
+            name: mahdon
+            widget: string
+            required: false
+          - label: Madrasah
+            name: madrasah
+            widget: string
+            required: false
+          - label: Darul ‘Ilmi
+            name: darul-ilmi
+            widget: string
+            required: false
+          - label: Ma’had ‘Aly
+            name: mahad-aly
+            widget: string
+            required: false
+        - label: Berkas yang disiapkan
+          name: documents
+          widget: object
+          collapsed: true
+          hint: Jenjang tanpa daftar berkas menampilkan tombol tanya lewat WhatsApp.
+          fields:
+          - name: _note
+            widget: hidden
+            required: false
+          - label: Ma’had ‘Aly
+            name: mahad-aly
+            widget: object
+            required: false
+            collapsed: true
+            fields:
+            - label: Daftar berkas
+              name: items
+              widget: list
+              required: false
+              field:
+                label: Berkas
+                name: item
+                widget: string
+            - label: Syarat atau catatan
+              name: note
+              widget: text
+              required: false
+          - label: Madrasah
+            name: madrasah
+            widget: object
+            required: false
+            collapsed: true
+            fields:
+            - label: Daftar berkas
+              name: items
+              widget: list
+              required: false
+              field:
+                label: Berkas
+                name: item
+                widget: string
+            - label: Syarat atau catatan
+              name: note
+              widget: text
+              required: false
+          - label: Darul ‘Ilmi
+            name: darul-ilmi
+            widget: object
+            required: false
+            collapsed: true
+            fields:
+            - label: Daftar berkas
+              name: items
+              widget: list
+              required: false
+              field:
+                label: Berkas
+                name: item
+                widget: string
+            - label: Syarat atau catatan
+              name: note
+              widget: text
+              required: false
+          - label: Mahdhon Tarbawi
+            name: mahdon
+            widget: object
+            required: false
+            collapsed: true
+            fields:
+            - label: Daftar berkas
+              name: items
+              widget: list
+              required: false
+              field:
+                label: Berkas
+                name: item
+                widget: string
+            - label: Syarat atau catatan
+              name: note
+              widget: text
+              required: false
+          - label: Kuttab
+            name: kuttab
+            widget: object
+            required: false
+            collapsed: true
+            fields:
+            - label: Daftar berkas
+              name: items
+              widget: list
+              required: false
+              field:
+                label: Berkas
+                name: item
+                widget: string
+            - label: Syarat atau catatan
+              name: note
+              widget: text
+              required: false
+          - label: TAUD
+            name: taud
+            widget: object
+            required: false
+            collapsed: true
+            fields:
+            - label: Daftar berkas
+              name: items
+              widget: list
+              required: false
+              field:
+                label: Berkas
+                name: item
+                widget: string
+            - label: Syarat atau catatan
+              name: note
+              widget: text
+              required: false
+        - label: Pertanyaan yang sering diajukan
+          name: faq
+          widget: list
+          summary: '{{fields.q}}'
+          hint: Tulis {ideal} atau {max} untuk mengutip rasio halaqah.
+          fields:
+          - label: Pertanyaan
+            name: q
+            widget: string
+          - label: Jawaban
+            name: a
+            widget: text
+      - label: Jenjang pendidikan
+        name: levels
+        widget: list
+        allow_add: false
+        allow_remove: false
+        allow_reorder: true
+        summary: '{{fields.name}}'
+        hint: Urutan di sini adalah urutan tampil di situs. Jenjang baru ditambahkan oleh tim IT.
+        fields:
+        - label: Kode (jangan diubah)
+          name: slug
+          widget: string
+        - label: Alamat halaman (jangan diubah)
+          name: path
+          widget: string
+        - label: Nama
+          name: name
+          widget: string
+        - label: Nama Arab
+          name: nameAr
+          widget: string
+          required: false
+        - label: Setara
+          name: setara
+          widget: string
+        - label: Label lama/usia
+          name: durationLabel
+          widget: string
+          hint: '"Usia" atau "Lama program"'
+        - label: Lama program atau usia
+          name: duration
+          widget: string
+        - label: Pengantar
+          name: intro
+          widget: text
+        - label: Target hafalan
+          name: target
+          widget: string
+        - label: Penjelasan target
+          name: targetNote
+          widget: text
+        - label: Catatan keputusan target
+          name: targetDecision
+          widget: text
+          required: false
+        - label: Jumlah juz target
+          name: juzCount
+          widget: number
+          value_type: int
+          required: false
+        - label: Peta hafalan per tahap
+          name: juzMap
+          widget: list
+          required: false
+          summary: '{{fields.label}}'
+          fields:
+          - label: Tahap atau kelas
+            name: label
+            widget: string
+          - label: Juz
+            name: juz
+            widget: list
+            field:
+              label: Juz
+              name: juz
+              widget: number
+              value_type: int
+              min: 1
+              max: 30
+        - label: Hafalan dari jenjang sebelumnya
+          name: juzMapPrior
+          widget: object
+          required: false
+          collapsed: true
+          fields:
+          - label: Keterangan
+            name: label
+            widget: string
+            required: false
+          - label: Juz
+            name: juz
+            widget: list
+            required: false
+            field:
+              label: Juz
+              name: juz
+              widget: number
+              value_type: int
+              min: 1
+              max: 30
+        - label: Biaya
+          name: fees
+          widget: list
+          required: false
+          summary: '{{fields.item}}: {{fields.amount}}'
+          hint: Kosongkan bila belum dipublikasikan; halaman menampilkan tombol tanya lewat WhatsApp.
+          fields:
+          - label: Jenis biaya
+            name: item
+            widget: string
+          - label: Label singkat
+            name: label
+            widget: string
+            required: false
+          - label: Jumlah (rupiah, tanpa titik)
+            name: amount
+            widget: number
+            value_type: int
+            min: 0
+          - label: Periode
+            name: period
+            widget: string
+            required: false
+            hint: Misalnya "per bulan"
+        - label: Catatan biaya
+          name: feesNote
+          widget: string
+          required: false
+        - label: Tahun ajaran biaya
+          name: feesYear
+          widget: string
+          required: false
+        - label: Pendaftaran dibuka
+          name: psbOpen
+          widget: boolean
+          required: false
+        - label: Nama kepala jenjang
+          name: head
+          widget: string
+          required: false
+        - label: Jabatan kepala jenjang
+          name: headRole
+          widget: string
+        - label: Tujuan pembelajaran
+          name: outcomes
+          widget: list
+          field:
+            label: Tujuan
+            name: outcome
+            widget: string
+      - label: Jadwal harian
+        name: dailySchedule
+        widget: object
+        collapsed: true
+        fields:
+        - label: Halaman sumber
+          name: source
+          widget: string
+        - name: prayerTimes
+          widget: hidden
+          required: false
+        - label: API waktu shalat (jangan diubah)
+          name: prayerApi
+          widget: object
+          collapsed: true
+          fields:
+          - label: Alamat
+            name: url
+            widget: string
+          - label: Kode kota
+            name: city
+            widget: string
+          - label: Nama kota
+            name: cityName
+            widget: string
+        - name: timeExpressions
+          widget: hidden
+          required: false
+        - label: Senin sampai Jumat
+          name: weekday
+          widget: list
+          summary: '{{fields.name}} ({{fields.start}}–{{fields.end}})'
+          hint: Mulai dan selesai boleh jam (05:00) atau nama waktu shalat (subuh, terbit, zhuhur, ashar, maghrib, isya), misalnya "ashar+10".
+          fields:
+          - label: Kegiatan
+            name: name
+            widget: string
+          - label: Hari
+            name: days
+            widget: string
+          - label: Mulai
+            name: start
+            widget: string
+          - label: Selesai
+            name: end
+            widget: string
+          - label: Penjelasan
+            name: detail
+            widget: text
+            required: false
+          - label: Keterangan singkat
+            name: note
+            widget: string
+            required: false
+          - label: Keterangan waktu
+            name: whenNote
+            widget: string
+            required: false
+          - label: Durasi
+            name: duration
+            widget: string
+            required: false
+          - label: Belum dipastikan (tampil sebagai kotak garis putus)
+            name: placeholder
+            widget: boolean
+            required: false
+        - label: Sabtu
+          name: saturday
+          widget: object
+          fields:
+          - label: Judul
+            name: title
+            widget: string
+          - label: Penjelasan
+            name: detail
+            widget: text
+            required: false
+        - label: Ahad
+          name: sunday
+          widget: object
+          fields:
+          - label: Judul
+            name: title
+            widget: string
+          - label: Penjelasan
+            name: detail
+            widget: text
+            required: false
+        - label: Kegiatan pekanan
+          name: weekly
+          widget: list
+          summary: '{{fields.name}}'
+          fields:
+          - label: Kegiatan
+            name: name
+            widget: string
+          - label: Waktu
+            name: when
+            widget: string
+          - label: Durasi
+            name: duration
+            widget: string
+            required: false
+        - label: Kegiatan berkala
+          name: periodic
+          widget: list
+          field:
+            label: Kegiatan
+            name: item
+            widget: string
+      - label: Kajian rutin
+        name: kajianRutin
+        widget: list
+        collapsed: true
+        summary: '{{fields.name}}'
+        fields:
+        - label: Nama kajian
+          name: name
+          widget: string
+        - label: Waktu
+          name: when
+          widget: string
+          hint: Misalnya "Pekanan, Ahad 08.00"
+        - label: Peserta
+          name: audience
+          widget: string
+          required: false
+      - label: Pengajar dan pengurus
+        name: staff
+        widget: object
+        collapsed: true
+        fields:
+        - name: _note
+          widget: hidden
+          required: false
+        - label: Daftar
+          name: people
+          widget: list
+          summary: '{{fields.role}}: {{fields.name}}'
+          fields:
+          - label: Jabatan
+            name: role
+            widget: string
+          - label: Nama
+            name: name
+            widget: string
+      - label: Kalender akademik
+        name: academicCalendar
+        widget: object
+        collapsed: true
+        fields:
+        - name: _note
+          widget: hidden
+          required: false
+        - label: Tahun ajaran
+          name: year
+          widget: string
+          hint: Misalnya 2026/2027
+        - label: Agenda
+          name: events
+          widget: list
+          summary: '{{fields.start}} {{fields.label}}'
+          fields:
+          - label: Agenda
+            name: label
+            widget: string
+          - label: Mulai
+            name: start
+            widget: string
+            pattern:
+            - ^\d{4}-\d{2}-\d{2}$
+            - Tulis tanggal sebagai TTTT-BB-HH
+          - label: Selesai
+            name: end
+            widget: string
+            required: false
+            pattern:
+            - ^(\d{4}-\d{2}-\d{2})?$
+            - Tulis tanggal sebagai TTTT-BB-HH

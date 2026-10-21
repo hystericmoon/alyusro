@@ -20,7 +20,7 @@ const range = (e: Ev) => {
   if (y1 === y2) return `${d1} ${MONTHS[m1 - 1]} – ${fmt(e.end)}`;
   return `${fmt(e.start)} – ${fmt(e.end)}`;
 };
-const last = cal.events.map((e) => e.end ?? e.start).sort().at(-1) ?? '';
+const last = cal.events.map((e) => e.end || e.start).sort().at(-1) ?? '';
 const today = new Date().toISOString().slice(0, 10);
 const current = last >= today;
 ---
@@ -50,8 +50,8 @@ const current = last >= today;
           <thead><tr><th scope="col">Tanggal</th><th scope="col">Kegiatan</th></tr></thead>
           <tbody>
             {cal.events.map((e) => (
-              <tr class:list={[(e.end ?? e.start) < today && 'text-muted']}>
-                <td class="whitespace-nowrap">{range(e)}</td>
+              <tr class:list={[(e.end || e.start) < today && 'text-muted']}>
+                <td class="w-[42%] sm:w-auto sm:whitespace-nowrap">{range(e)}</td>
                 <td>{e.label}</td>
               </tr>
             ))}
@@ -70,7 +70,7 @@ const current = last >= today;
           <tbody>
             {cal.events.map((e) => (
               <tr>
-                <td class="whitespace-nowrap">{range(e)}</td>
+                <td class="w-[42%] sm:w-auto sm:whitespace-nowrap">{range(e)}</td>
                 <td>{e.label}</td>
               </tr>
             ))}

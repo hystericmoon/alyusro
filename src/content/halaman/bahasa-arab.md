@@ -17,4 +17,4 @@ Bidang Penelitian Ilmiah dan Perpustakaan (BPIP) mengadakan lomba karya tulis be
 
 ## Alat bantu
 
-[Nama Latin ke Arab](https://mahadalyusro.sch.id/konversi/nama) mengubah nama berhuruf Latin ke tulisan Arab.
+[Nama Latin ke Arab](/konversi/nama/) mengubah nama berhuruf Latin ke tulisan Arab.

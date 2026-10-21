@@ -93,8 +93,10 @@
   --color-night-hill-4: #20294A;
 
   /* Type */
-  --font-display: "Markazi Text", Georgia, serif;
-  --font-body: "Atkinson Hyperlegible Next", "Segoe UI", Arial, sans-serif;
+  /* Size-matched local fallbacks (see the @font-face rules below) keep the
+     layout still while the web fonts load. */
+  --font-display: "Markazi Text", "Markazi Fallback Georgia", "Markazi Fallback Noto", "Markazi Fallback Times", serif;
+  --font-body: "Atkinson Hyperlegible Next", "Atkinson Fallback Roboto", "Atkinson Fallback Arial", sans-serif;
   --default-font-family: var(--font-body);
 
   --font-weight-normal: 400;
@@ -130,6 +132,38 @@
 
   --default-transition-duration: 150ms;
   --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/*
+  Fallback fonts scaled to the width of the web fonts, so text does not
+  reflow (and the page does not jump) when Markazi and Atkinson arrive.
+  Ratios measured against each local font; line heights are explicit in the
+  CSS, so only width needs matching.
+*/
+@font-face {
+  font-family: "Markazi Fallback Georgia";
+  src: local("Georgia");
+  size-adjust: 73%;
+}
+@font-face {
+  font-family: "Markazi Fallback Noto";
+  src: local("Noto Serif"), local("NotoSerif-Regular"), local("Droid Serif");
+  size-adjust: 73%;
+}
+@font-face {
+  font-family: "Markazi Fallback Times";
+  src: local("Times New Roman"), local("Liberation Serif"), local("Tinos");
+  size-adjust: 81%;
+}
+@font-face {
+  font-family: "Atkinson Fallback Roboto";
+  src: local("Roboto"), local("Roboto-Regular");
+  size-adjust: 106%;
+}
+@font-face {
+  font-family: "Atkinson Fallback Arial";
+  src: local("Arial"), local("Helvetica Neue"), local("Helvetica"), local("Liberation Sans");
+  size-adjust: 98%;
 }
 
 @layer base {
@@ -312,6 +346,54 @@ html:has(#menu-hp:popover-open) {
   background: var(--color-white);
   color: var(--color-ink);
 }
+/*
+  Closing call to action on the landscape. A frosted panel over the sky, so
+  the hills show through; solid enough that every text pair keeps AA in all
+  four sky states (checked against the lightest and darkest sky behind it).
+*/
+.sky {
+  --panel-bg: rgb(255 255 255 / 0.82);
+  --panel-edge: rgb(255 255 255 / 0.9);
+  --panel-rule: var(--color-rule);
+  --panel-muted: var(--color-muted);
+  --panel-num: var(--color-lapis);
+  --panel-hover: var(--color-white);
+}
+.sky[data-sky="night"] {
+  --panel-bg: rgb(17 22 42 / 0.72);
+  --panel-edge: var(--color-night-rule-3);
+  --panel-rule: var(--color-night-rule);
+  --panel-muted: var(--color-on-night-muted);
+  --panel-num: var(--color-lapis-2);
+  --panel-hover: var(--color-night-panel);
+}
+.cta-panel {
+  background: var(--panel-bg);
+  border: 1px solid var(--panel-edge);
+  box-shadow: 0 1px 2px rgb(27 34 53 / 0.06), 0 12px 32px -12px rgb(27 34 53 / 0.25);
+  -webkit-backdrop-filter: blur(10px) saturate(1.2);
+  backdrop-filter: blur(10px) saturate(1.2);
+}
+.cta-badge {
+  background: var(--panel-bg);
+  border: 1px solid var(--panel-edge);
+  color: var(--land-ink);
+}
+.cta-step {
+  transition: background-color 150ms;
+}
+.cta-step:hover {
+  background: var(--panel-hover);
+  color: var(--land-ink);
+}
+.cta-arrow {
+  color: var(--panel-num);
+  transition: transform 200ms ease-out;
+}
+.cta-step:hover .cta-arrow,
+.cta-step:focus-visible .cta-arrow {
+  transform: translateX(4px);
+}
 .sky [data-sun] {
   transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.6s;
 }
@@ -349,7 +431,7 @@ html:has(#menu-hp:popover-open) {
   :where(.prose-ad) p { margin: 0 0 18px; }
   :where(.prose-ad) ul, :where(.prose-ad) ol { margin: 0 0 18px; padding-left: 24px; }
   :where(.prose-ad) li { margin-bottom: 8px; }
-  :where(.prose-ad) a { text-underline-offset: 3px; }
+  :where(.prose-ad) a { text-underline-offset: 3px; overflow-wrap: anywhere; }
   :where(.prose-ad) blockquote { margin: 0 0 18px; padding-left: 20px; border-left: 3px solid var(--color-lapis-2); color: var(--color-body); }
   :where(.prose-ad) [lang="ar"] { font-family: var(--font-display); font-size: 1.3em; line-height: 1.9; }
   :where(.prose-ad) p[lang="ar"], :where(.prose-ad) blockquote[lang="ar"] { text-align: right; }
@@ -365,6 +447,7 @@ html:has(#menu-hp:popover-open) {
   :where(.prose-k) h2 { margin: 72px 0 16px; font-family: var(--font-display); font-size: 44px; font-weight: 600; line-height: 1.05; scroll-margin-top: 24px; }
   :where(.prose-k) h3 { margin: 32px 0 8px; font-size: 19px; font-weight: 700; line-height: 1.35; }
   :where(.prose-k) p { margin: 0 0 16px; }
+  :where(.prose-k) a { overflow-wrap: anywhere; }
   :where(.prose-k) ul, :where(.prose-k) ol { margin: 0 0 16px; padding-left: 22px; }
   :where(.prose-k) li { margin-bottom: 8px; }
   :where(.prose-k) table { width: 100%; border-collapse: collapse; margin: 8px 0 24px; font-size: 16px; font-variant-numeric: tabular-nums; }
@@ -373,4 +456,47 @@ html:has(#menu-hp:popover-open) {
   :where(.prose-k) tbody th { font-weight: 700; }
   :where(.prose-k) th:last-child, :where(.prose-k) td:last-child { padding-right: 0; }
   :where(.prose-k) [lang="ar"] { font-family: var(--font-display); font-size: 1.25em; }
+}
+
+@layer components {
+  /* Breadcrumb links and links that stand alone in a table cell are separate
+     targets (not inline in a sentence), so they get the 44px minimum. */
+  nav[aria-label="Breadcrumb"] a,
+  :is(th, td) > a:only-child {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+  /* Keep the taller links on the same line as the "/" and the current page. */
+  nav[aria-label="Breadcrumb"] ol {
+    align-items: center;
+    row-gap: 0;
+  }
+
+  /*
+    Scroll cue for content wider than a phone (fee tables, the in-page menu):
+    soft shadows appear at whichever edge has more to scroll to. Pure CSS
+    (background-attachment: local), so it needs no JS. Set --scroll-bg to
+    the surface colour behind it.
+  */
+  .scroll-cue {
+    --scroll-bg: var(--color-paper);
+    overflow-x: auto;
+    background:
+      linear-gradient(to right, var(--scroll-bg) 30%, transparent) left / 40px 100% no-repeat local,
+      linear-gradient(to left, var(--scroll-bg) 30%, transparent) right / 40px 100% no-repeat local,
+      radial-gradient(farthest-side at 0 50%, rgb(27 34 53 / 0.2), transparent) left / 14px 100% no-repeat scroll,
+      radial-gradient(farthest-side at 100% 50%, rgb(27 34 53 / 0.2), transparent) right / 14px 100% no-repeat scroll;
+    background-color: var(--scroll-bg);
+  }
+  .scroll-cue-white { --scroll-bg: var(--color-white); }
+}
+
+/* "Selanjutnya" link at the end of a content page. */
+.cta-arrow-next {
+  transition: transform 200ms ease-out;
+}
+.cta-next:hover .cta-arrow-next,
+.cta-next:focus-visible .cta-arrow-next {
+  transform: translateX(3px);
 }

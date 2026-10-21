@@ -1,0 +1,195 @@
+---
+// /jadwal/shalat: today's prayer times and the month, for Kabupaten Bogor.
+// The build writes the calculated times, so the page works without
+// JavaScript; the script below swaps in Kemenag's times from the same
+// myquran API the old Laravel page used, and moves "berikutnya" with the clock.
+import ContentPage from '@/components/content/ContentPage.astro';
+import { site, school } from '@/lib/site';
+import { calcPrayerTimes, nowInWib, fmt, DAY_NAMES, type PrayerKey } from '@/lib/day-view';
+
+const MONTHS = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
+const PRAYERS: { key: PrayerKey; label: string; ar: string }[] = [
+  { key: 'subuh', label: 'Subuh', ar: 'الفجر' },
+  { key: 'terbit', label: 'Terbit', ar: 'الشروق' },
+  { key: 'zhuhur', label: 'Zhuhur', ar: 'الظهر' },
+  { key: 'ashar', label: 'Ashar', ar: 'العصر' },
+  { key: 'maghrib', label: 'Maghrib', ar: 'المغرب' },
+  { key: 'isya', label: 'Isya', ar: 'العشاء' },
+];
+
+const today = nowInWib();
+const { lat, lng } = school.geo;
+const pt = calcPrayerTimes(today.y, today.m, today.d, lat, lng);
+const daysInMonth = new Date(Date.UTC(today.y, today.m, 0)).getUTCDate();
+const month = Array.from({ length: daysInMonth }, (_, i) => {
+  const d = i + 1;
+  const t = calcPrayerTimes(today.y, today.m, d, lat, lng);
+  const wd = new Date(Date.UTC(today.y, today.m - 1, d)).getUTCDay();
+  return { d, wd, imsak: t.subuh - 10, ...t };
+});
+const api = site.dailySchedule.prayerApi;
+const config = { geo: school.geo, api };
+const dateLabel = `${DAY_NAMES[today.wd]}, ${today.d} ${MONTHS[today.m - 1]} ${today.y}`;
+const cols = ['imsak', 'subuh', 'terbit', 'zhuhur', 'ashar', 'maghrib', 'isya'] as const;
+---
+<ContentPage
+  title="Jadwal shalat"
+  lede="Waktu shalat hari ini dan sebulan untuk Kabupaten Bogor, termasuk Tenjolaya, mengikuti jadwal Kementerian Agama."
+  crumbs={[{ label: 'Layanan' }, { label: 'Jadwal shalat' }]}
+  description="Jadwal shalat hari ini dan bulan ini untuk Kabupaten Bogor dari Kementerian Agama."
+>
+  <section slot="before" aria-labelledby="js-today" class="bg-ink text-on-night" data-shalat data-config={JSON.stringify(config)}>
+    <div class="mx-auto box-border max-w-page px-20 py-40 sm:px-40 sm:py-56">
+      <div class="mb-24 flex flex-wrap items-baseline justify-between gap-x-24 gap-y-8">
+        <h2 id="js-today" class="m-0 font-display text-[clamp(32px,4vw,44px)] font-semibold leading-[1.05] text-white">
+          Hari ini, <span data-js="date">{dateLabel}</span>
+        </h2>
+        <p class="m-0 text-15 text-on-night-muted" data-js="source">Perkiraan perhitungan untuk {api.cityName === 'KAB. BOGOR' ? 'Kabupaten Bogor' : api.cityName}</p>
+      </div>
+      <ol class="m-0 grid list-none grid-cols-2 gap-8 p-0 min-[480px]:grid-cols-3 lg:grid-cols-6">
+        {
+          PRAYERS.map((p) => (
+            <li data-prayer={p.key} class="relative flex flex-col gap-2 rounded-md border border-night-rule bg-night-panel px-16 pb-16 pt-14 data-[next]:border-amber">
+              <span class="flex items-baseline justify-between gap-8">
+                <span class="text-16 font-bold text-white">{p.label}</span>
+                <span lang="ar" dir="rtl" class="font-display text-18 text-on-night-muted">{p.ar}</span>
+              </span>
+              <span data-time class="font-display text-[40px] font-semibold leading-none tabular-nums text-white">{fmt(pt[p.key])}</span>
+              <span data-next-label hidden class="text-14 font-bold text-amber">Berikutnya</span>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
+
+  <h2 id="bulan">Jadwal <span data-js="month">{MONTHS[today.m - 1]} {today.y}</span></h2>
+  <p class="text-15 text-muted">Imsak sepuluh menit sebelum Subuh. Baris yang ditandai adalah hari ini.</p>
+  <div class="scroll-cue -mx-20 overflow-x-auto px-20 sm:mx-0 sm:px-0">
+    <table class="tabular-nums" data-js="table">
+      <caption class="sr-only">Jadwal shalat {MONTHS[today.m - 1]} {today.y}, Kabupaten Bogor</caption>
+      <thead>
+        <tr>
+          <th scope="col">Tanggal</th>
+          <th scope="col">Imsak</th>
+          <th scope="col">Subuh</th>
+          <th scope="col">Terbit</th>
+          <th scope="col">Zhuhur</th>
+          <th scope="col">Ashar</th>
+          <th scope="col">Maghrib</th>
+          <th scope="col">Isya</th>
+        </tr>
+      </thead>
+      <tbody>
+        {
+          month.map((r) => (
+            <tr data-day={r.d} aria-current={r.d === today.d ? 'date' : undefined} class="aria-[current]:bg-white aria-[current]:font-bold aria-[current]:shadow-[inset_3px_0_0_var(--color-lapis)]">
+              <th scope="row" class="whitespace-nowrap pl-8">{DAY_NAMES[r.wd]}, {r.d}</th>
+              {cols.map((c) => <td>{fmt(r[c])}</td>)}
+            </tr>
+          ))
+        }
+      </tbody>
+    </table>
+  </div>
+  <p class="text-15 text-muted">
+    Sumber: Kementerian Agama melalui api.myquran.com. Bila jadwal Kemenag tidak termuat, halaman menampilkan
+    perhitungan dengan kriteria yang sama dan bisa berbeda satu sampai dua menit.
+  </p>
+</ContentPage>
+
+<script>
+  import { nowInWib, fmt, prayerTimesFromApi, DAY_NAMES, type PrayerKey } from '@/lib/day-view';
+  import { calcFor, fetchFor, type PrayerConfig } from '@/lib/prayer-times';
+
+  const MONTHS = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
+  const ORDER: PrayerKey[] = ['subuh', 'terbit', 'zhuhur', 'ashar', 'maghrib', 'isya'];
+  const root = document.querySelector<HTMLElement>('[data-shalat]');
+  if (root) {
+    const cfg = JSON.parse(root.dataset.config ?? '{}') as PrayerConfig & { api: { cityName: string } };
+    const q = (k: string) => document.querySelector<HTMLElement>(`[data-js="${k}"]`);
+    const cells = ORDER.map((k) => root.querySelector<HTMLElement>(`[data-prayer="${k}"]`) as HTMLElement);
+    let times = calcFor(cfg, nowInWib());
+    let day = '';
+
+    const paintToday = () => {
+      const now = nowInWib();
+      if (now.iso !== day) {
+        day = now.iso;
+        times = calcFor(cfg, now);
+        (q('date') as HTMLElement).textContent = `${DAY_NAMES[now.wd]}, ${now.d} ${MONTHS[now.m - 1]} ${now.y}`;
+        fetchFor(cfg, now)
+          .then((t) => {
+            if (day !== now.iso) return;
+            times = t;
+            (q('source') as HTMLElement).textContent = 'Jadwal Kemenag untuk Kabupaten Bogor';
+            paintToday();
+          })
+          .catch(() => {});
+        loadMonth(now);
+      }
+      // Terbit is not a prayer, so "berikutnya" skips it.
+      const next = ORDER.find((k) => k !== 'terbit' && times[k] > now.min);
+      cells.forEach((el, i) => {
+        const k = ORDER[i] as PrayerKey;
+        (el.querySelector('[data-time]') as HTMLElement).textContent = fmt(times[k]);
+        const isNext = k === next;
+        el.toggleAttribute('data-next', isNext);
+        (el.querySelector('[data-next-label]') as HTMLElement).hidden = !isNext;
+      });
+    };
+
+    let monthKey = '';
+    async function loadMonth(now: ReturnType<typeof nowInWib>) {
+      const key = `${now.y}-${now.m}`;
+      if (key === monthKey) return markToday(now.d);
+      monthKey = key;
+      const table = q('table') as HTMLTableElement;
+      const body = table.tBodies[0] as HTMLTableSectionElement;
+      const sameMonth = body.rows.length > 0 && (q('month') as HTMLElement).textContent === `${MONTHS[now.m - 1]} ${now.y}`;
+      try {
+        const url = cfg.api.url.replace('{city}', cfg.api.city).replace('{date}', `${now.y}/${String(now.m).padStart(2, '0')}`);
+        const res = await fetch(url);
+        if (!res.ok) throw new Error(String(res.status));
+        const rows = ((await res.json())?.data?.jadwal ?? []) as Record<string, string>[];
+        if (!rows.length) throw new Error('empty');
+        body.replaceChildren(
+          ...rows.map((r) => {
+            const d = Number((r.date ?? '').slice(8, 10));
+            const t = prayerTimesFromApi(r);
+            const tr = document.createElement('tr');
+            tr.dataset.day = String(d);
+            tr.className = 'aria-[current]:bg-white aria-[current]:font-bold aria-[current]:shadow-[inset_3px_0_0_var(--color-lapis)]';
+            const wd = new Date(Date.UTC(now.y, now.m - 1, d)).getUTCDay();
+            const th = document.createElement('th');
+            th.scope = 'row';
+            th.className = 'whitespace-nowrap pl-8';
+            th.textContent = `${DAY_NAMES[wd]}, ${d}`;
+            tr.append(th);
+            const vals = t ? [r.imsak ?? '', ...ORDER.map((k) => fmt(t[k]))] : [];
+            for (const v of vals) {
+              const td = document.createElement('td');
+              td.textContent = v.replace(':', '.');
+              tr.append(td);
+            }
+            return tr;
+          }),
+        );
+        (q('month') as HTMLElement).textContent = `${MONTHS[now.m - 1]} ${now.y}`;
+      } catch {
+        // Keep the calculated month from the build when it is still this month.
+        if (!sameMonth) monthKey = '';
+      }
+      markToday(now.d);
+    }
+    function markToday(d: number) {
+      for (const tr of (q('table') as HTMLTableElement).tBodies[0]?.rows ?? []) {
+        if (tr.dataset.day === String(d)) tr.setAttribute('aria-current', 'date');
+        else tr.removeAttribute('aria-current');
+      }
+    }
+
+    paintToday();
+    setInterval(paintToday, 30_000);
+  }
+</script>

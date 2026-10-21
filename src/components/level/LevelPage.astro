@@ -52,7 +52,7 @@ const btnGhostNight = 'btn-ghost-night';
       <div class="flex max-w-[640px] flex-[1_1_420px] flex-col gap-22">
         <div class="flex flex-wrap items-baseline gap-x-20 gap-y-6">
           <h1 id="j-title" class="m-0 font-display text-[clamp(56px,7vw,104px)] font-semibold leading-[0.92]">{lv.name}</h1>
-          {lv.nameAr && <span lang="ar" dir="rtl" class="font-display text-[44px] leading-[1.1] text-lapis">{lv.nameAr}</span>}
+          {lv.nameAr && <span lang="ar" dir="rtl" class="basis-full text-left font-display text-[44px] leading-[1.1] text-lapis sm:basis-auto">{lv.nameAr}</span>}
         </div>
         <p class="m-0 max-w-[34em] text-19 leading-[1.6] text-body [text-wrap:pretty]">{lv.intro}</p>
         <div class="flex flex-wrap gap-12">
@@ -87,7 +87,7 @@ const btnGhostNight = 'btn-ghost-night';
   </section>
 
   <nav aria-label="Isi halaman" class="sticky top-0 z-[3] border-y border-rule bg-paper">
-    <ul class="m-0 mx-auto box-border flex max-w-page list-none gap-x-4 overflow-x-auto p-0 px-10 sm:flex-wrap sm:px-30">
+    <ul class="scroll-cue m-0 mx-auto box-border flex max-w-page list-none gap-x-4 p-0 px-10 sm:flex-wrap sm:px-30">
       {
         sections.map((s) => (
           <li class="flex-none">
@@ -116,7 +116,7 @@ const btnGhostNight = 'btn-ghost-night';
             ))
           }
         </ul>
-        <a href="/kurikulum/tahfizh" class="inline-flex min-h-44 items-center self-start font-bold underline-offset-4">Lihat kurikulum tahfizh</a>
+        <a href="/kurikulum/tahfizh/" class="inline-flex min-h-44 items-center self-start font-bold underline-offset-4">Lihat kurikulum tahfizh</a>
       </div>
       <div class="min-w-0 flex-[1.4_1_520px]">
         {

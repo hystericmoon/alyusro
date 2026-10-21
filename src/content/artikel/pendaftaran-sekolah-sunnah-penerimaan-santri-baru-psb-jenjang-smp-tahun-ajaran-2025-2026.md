@@ -62,8 +62,8 @@ Gelombang Empat: Dibuka mulai 📆 19 Januari 2025
 
 ### Online
 
-1. Peserta membuat akun menggunakan NIK (Nomor induk kependudukan) pada link: [mahadalyusro.sch.id/psbmadrasah](mahadalyusro.sch.id/psbmadrasah)
-2. Login menggunakan akun yang telah dibuat pada link: [mahadalyusro.sch.id/psbmadrasah/login](mahadalyusro.sch.id/psbmadrasah/login)
+1. Peserta membuat akun menggunakan NIK (Nomor induk kependudukan) pada link: [mahadalyusro.sch.id/psbmadrasah](https://mahadalyusro.sch.id/psbmadrasah)
+2. Login menggunakan akun yang telah dibuat pada link: [mahadalyusro.sch.id/psbmadrasah/login](https://mahadalyusro.sch.id/psbmadrasah/login)
 3. Mengisi formulir awal
 4. Mengupload berkas dan bukti pembayaran
 5. Mengisi formulir lengkap

@@ -1,0 +1,48 @@
+---
+// Not found. Netlify serves dist/404.html for any missing URL, including old
+// Laravel links that no redirect covers. It points parents at what they were
+// most likely looking for: a level, registration, or a person to ask.
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Landscape from '@/components/home/Landscape.astro';
+import { levels, levelSummary, school } from '@/lib/site';
+---
+<BaseLayout title="Halaman tidak ditemukan" description="Halaman yang Anda cari tidak ada atau sudah dipindahkan." footerLabelledBy="g-foot-title">
+  <div class="mx-auto box-border max-w-page px-20 pb-72 pt-48 sm:px-40 sm:pb-96 sm:pt-72">
+    <div class="grid gap-x-64 gap-y-48 lg:grid-cols-[minmax(0,1fr)_minmax(0,460px)]">
+      <div class="flex max-w-[640px] flex-col items-start gap-20">
+        <p class="m-0 text-15 font-bold text-muted">Kode 404</p>
+        <h1 class="m-0 font-display text-[clamp(52px,6.6vw,96px)] font-semibold leading-[0.92] [text-wrap:balance]">Halaman ini tidak ditemukan</h1>
+        <p class="m-0 text-[21px] leading-[1.6] text-body [text-wrap:pretty]">
+          Mungkin alamatnya salah ketik, atau halamannya sudah dipindahkan saat situs diperbarui. Coba salah satu tautan
+          di samping, atau tanyakan langsung kepada kami.
+        </p>
+        <div class="flex flex-wrap gap-12">
+          <a href="/" class="btn-primary">Ke beranda</a>
+          <a href="/psb/" class="btn-secondary">Pendaftaran santri baru</a>
+        </div>
+        <p class="m-0 text-16 text-body">
+          Ada pertanyaan? <a href={school.whatsapp.url} class="font-bold">WhatsApp {school.whatsapp.display}</a>
+        </p>
+      </div>
+      <nav aria-labelledby="nf-levels">
+        <h2 id="nf-levels" class="m-0 border-b-2 border-ink pb-10 font-display text-30 font-semibold leading-none">Jenjang pendidikan</h2>
+        <ul class="m-0 list-none p-0">
+          {
+            levels.map((l) => (
+              <li class="border-b border-rule">
+                <a href={l.path} class="cta-next flex min-h-64 items-center justify-between gap-16 py-10 text-ink no-underline hover:text-lapis">
+                  <span class="flex min-w-0 flex-col">
+                    <span class="font-display text-26 font-semibold leading-[1.1]">{l.name}</span>
+                    <span class="text-15 text-muted">{levelSummary(l)}</span>
+                  </span>
+                  <svg aria-hidden="true" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="cta-arrow-next flex-none"><path d="M4 10h12M11 5l5 5-5 5"></path></svg>
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+    </div>
+  </div>
+  <Landscape slot="footer-lead" />
+</BaseLayout>
