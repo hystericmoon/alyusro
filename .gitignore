@@ -4,4 +4,3 @@ dist/
 .netlify/
 .wrangler/
 .DS_Store
-.vercel/

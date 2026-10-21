@@ -1,4 +1,4 @@
-# Read by Netlify and Cloudflare Pages. Vercel uses the same rules from vercel.json.
+# Read by Netlify (and Cloudflare Pages).
 /_astro/*
   Cache-Control: public, max-age=31536000, immutable
 
