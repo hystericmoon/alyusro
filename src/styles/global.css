@@ -93,8 +93,10 @@
   --color-night-hill-4: #20294A;
 
   /* Type */
-  --font-display: "Markazi Text", Georgia, serif;
-  --font-body: "Atkinson Hyperlegible Next", "Segoe UI", Arial, sans-serif;
+  /* Size-matched local fallbacks (see the @font-face rules below) keep the
+     layout still while the web fonts load. */
+  --font-display: "Markazi Text", "Markazi Fallback Georgia", "Markazi Fallback Noto", "Markazi Fallback Times", serif;
+  --font-body: "Atkinson Hyperlegible Next", "Atkinson Fallback Roboto", "Atkinson Fallback Arial", sans-serif;
   --default-font-family: var(--font-body);
 
   --font-weight-normal: 400;
@@ -130,6 +132,38 @@
 
   --default-transition-duration: 150ms;
   --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/*
+  Fallback fonts scaled to the width of the web fonts, so text does not
+  reflow (and the page does not jump) when Markazi and Atkinson arrive.
+  Ratios measured against each local font; line heights are explicit in the
+  CSS, so only width needs matching.
+*/
+@font-face {
+  font-family: "Markazi Fallback Georgia";
+  src: local("Georgia");
+  size-adjust: 73%;
+}
+@font-face {
+  font-family: "Markazi Fallback Noto";
+  src: local("Noto Serif"), local("NotoSerif-Regular"), local("Droid Serif");
+  size-adjust: 73%;
+}
+@font-face {
+  font-family: "Markazi Fallback Times";
+  src: local("Times New Roman"), local("Liberation Serif"), local("Tinos");
+  size-adjust: 81%;
+}
+@font-face {
+  font-family: "Atkinson Fallback Roboto";
+  src: local("Roboto"), local("Roboto-Regular");
+  size-adjust: 106%;
+}
+@font-face {
+  font-family: "Atkinson Fallback Arial";
+  src: local("Arial"), local("Helvetica Neue"), local("Helvetica"), local("Liberation Sans");
+  size-adjust: 98%;
 }
 
 @layer base {
@@ -349,7 +383,7 @@ html:has(#menu-hp:popover-open) {
   :where(.prose-ad) p { margin: 0 0 18px; }
   :where(.prose-ad) ul, :where(.prose-ad) ol { margin: 0 0 18px; padding-left: 24px; }
   :where(.prose-ad) li { margin-bottom: 8px; }
-  :where(.prose-ad) a { text-underline-offset: 3px; }
+  :where(.prose-ad) a { text-underline-offset: 3px; overflow-wrap: anywhere; }
   :where(.prose-ad) blockquote { margin: 0 0 18px; padding-left: 20px; border-left: 3px solid var(--color-lapis-2); color: var(--color-body); }
   :where(.prose-ad) [lang="ar"] { font-family: var(--font-display); font-size: 1.3em; line-height: 1.9; }
   :where(.prose-ad) p[lang="ar"], :where(.prose-ad) blockquote[lang="ar"] { text-align: right; }
@@ -365,6 +399,7 @@ html:has(#menu-hp:popover-open) {
   :where(.prose-k) h2 { margin: 72px 0 16px; font-family: var(--font-display); font-size: 44px; font-weight: 600; line-height: 1.05; scroll-margin-top: 24px; }
   :where(.prose-k) h3 { margin: 32px 0 8px; font-size: 19px; font-weight: 700; line-height: 1.35; }
   :where(.prose-k) p { margin: 0 0 16px; }
+  :where(.prose-k) a { overflow-wrap: anywhere; }
   :where(.prose-k) ul, :where(.prose-k) ol { margin: 0 0 16px; padding-left: 22px; }
   :where(.prose-k) li { margin-bottom: 8px; }
   :where(.prose-k) table { width: 100%; border-collapse: collapse; margin: 8px 0 24px; font-size: 16px; font-variant-numeric: tabular-nums; }
