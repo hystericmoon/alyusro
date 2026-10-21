@@ -20,10 +20,7 @@ const isCurrent = (href: string) => norm(href) === here;
 <header class="border-b border-rule">
   <div class="mx-auto box-border flex max-w-page flex-wrap items-center gap-x-16 gap-y-12 px-16 py-16 sm:gap-x-32 sm:px-40">
     <a href="/" class="mr-auto flex min-h-44 items-center gap-12 text-ink no-underline hover:text-ink" aria-current={here === '/' ? 'page' : undefined}>
-      <span
-        aria-hidden="true"
-        class="box-border flex size-40 flex-none items-center justify-center rounded-full border-[1.5px] border-dashed border-placeholder text-11 leading-none text-muted sm:size-44"
-      >logo</span>
+      <img src="/logo-mark.png" alt="" width="44" height="44" class="size-40 flex-none sm:size-44" />
       <span class="flex flex-col gap-3">
         <span class="font-display text-22 font-semibold leading-none sm:text-27">{school.name}</span>
         <span class="text-12 leading-[1.2] text-muted sm:text-13">Tenjolaya, Kabupaten Bogor</span>

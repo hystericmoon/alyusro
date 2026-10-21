@@ -190,7 +190,8 @@ export function buildDay(schedule: DaySchedule, pt: PrayerMinutes, wd: number, n
   const raw: Block[] = schedule.weekday
     .filter((e) => daysInclude(e.days, blockDay))
     .map((e) => ({
-      name: e.name,
+      // Placeholder labels lose their brackets; the dashed block already says "approximate".
+      name: e.name.replace(/^\[(.*)\]$/, '$1'),
       detail: e.detail ?? '',
       a: evalTime(e.start, pt),
       b: evalTime(e.end, pt),
@@ -234,8 +235,9 @@ export function buildDay(schedule: DaySchedule, pt: PrayerMinutes, wd: number, n
   let nextText: string;
   if (!weekday) {
     const day = wd === 6 ? schedule.saturday : schedule.sunday;
-    title = day.title;
-    detail = day.detail;
+    const unknown = /^\[.*\]$/.test(day.title.trim());
+    title = unknown ? `${DAY_NAMES[wd]}: kegiatan akhir pekan` : day.title;
+    detail = unknown ? '' : day.detail;
     nextText = 'Jadwal harian berlaku Senin sampai Jumat.';
   } else {
     const c = cur as Block | null;

@@ -1,8 +1,8 @@
-import { site, levels, isPlaceholder, registerUrl, numberWord, type Level } from './site';
+import { site, levels, known, registerUrl, numberWord, type Level } from './site';
 
 export type JuzRow = { label: string; value: string; tone: string; juz: number[] };
 export type FeeRow = { item: string; value: string };
-export type WaveRow = { name: string; opens: string; test: string };
+export type WaveRow = { name: string; opens: string | null; test: string | null };
 
 type RawFee = { item: string; amount: number; label?: string; period?: string };
 type RawWave = { name: string; opens: string; test: string };
@@ -14,9 +14,9 @@ const parseDate = (s: string): Date | null => {
   const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(s.trim());
   return m ? new Date(Date.UTC(+m[1]!, +m[2]! - 1, +m[3]!)) : null;
 };
-const longDate = (s: string) => {
+const longDate = (s: string): string | null => {
   const d = parseDate(s);
-  return d ? `${d.getUTCDate()} ${MONTHS[d.getUTCMonth()]} ${d.getUTCFullYear()}` : '[tanggal]';
+  return d ? `${d.getUTCDate()} ${MONTHS[d.getUTCMonth()]} ${d.getUTCFullYear()}` : null;
 };
 
 /** "Juz 30", "Juz 30, 29, dan 28", "Juz 30–26", "Juz 30–26 dan 1–15". */
@@ -45,7 +45,7 @@ const TONE_STEPS: Record<number, string[]> = {
   5: ['lapis-1', 'lapis-2', 'lapis-3', 'lapis-4', 'lapis-5'],
 };
 
-/** Waves from site.json whose test date has not passed. Placeholder dates stay visible. */
+/** Waves from site.json whose test date has not passed. Waves without real dates stay (null dates). */
 export function upcomingWaves(slug: string, today = new Date()): WaveRow[] {
   const all = ((site.psb.waves as Record<string, RawWave[]>)[slug] ?? []) as RawWave[];
   const todayUtc = Date.UTC(today.getFullYear(), today.getMonth(), today.getDate());
@@ -74,10 +74,11 @@ export function buildLevel(level: Level, today = new Date()) {
   juzRows.forEach((r) => r.juz.forEach((n) => toneOf.set(n, r.tone)));
 
   const fees: FeeRow[] = ((level.fees ?? []) as RawFee[]).map((f) => ({
-    item: f.period ? `${f.item} ${f.period}` : f.item,
+    item: known(f.period) ? `${f.item} ${f.period}` : f.item,
     value: f.amount === 0 && f.label ? f.label : rupiah(f.amount),
   }));
-  const feeNote = level.feesNote ?? (level.feesYear ? `Berlaku untuk tahun ajaran ${level.feesYear}.` : '');
+  const feesYear = known((level as Level & { feesYear?: string }).feesYear);
+  const feeNote = level.feesNote ?? (feesYear ? `Berlaku untuk tahun ajaran ${feesYear}.` : '');
 
   const waves = upcomingWaves(level.slug, today);
   const hasWaveData = ((site.psb.waves as Record<string, RawWave[]>)[level.slug] ?? []).length > 0;
@@ -101,11 +102,17 @@ export function buildLevel(level: Level, today = new Date()) {
     regFee: fees[0]?.value ?? 'Belum dipublikasikan',
     open,
     waves,
-    academicYear: site.psb.academicYear,
+    academicYear: known(site.psb.academicYear),
+    // Show the wave table only once at least one real date is published.
+    wavesAnnounced: waves.some((w) => w.opens || w.test),
     registerUrl: registerUrl(level.slug),
     brochureUrl: brochures[level.slug] || null,
-    head: level.head ?? `[Nama ${level.headRole.charAt(0).toLowerCase()}${level.headRole.slice(1)}]`,
-    headIsPlaceholder: !level.head || isPlaceholder(level.head),
+    head: known(level.head),
+    facts: [
+      ['Setara', level.setara],
+      [level.durationLabel, known(level.duration)],
+      ['Target hafalan', level.target],
+    ].filter((f): f is [string, string] => !!f[1]),
     prev: prev ? { name: prev.name, path: prev.path } : null,
     next: next ? { name: next.name, path: next.path } : null,
   };

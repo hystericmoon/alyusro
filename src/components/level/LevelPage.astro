@@ -71,12 +71,7 @@ const btnGhostNight = 'btn-ghost-night';
       </div>
       <dl class="m-0 box-border min-w-0 flex-[1_1_360px] border border-rule bg-white px-20 py-8 sm:px-28">
         {
-          [
-            ['Setara', lv.setara],
-            [lv.durationLabel, lv.duration],
-            ['Target hafalan', lv.target],
-            ['Biaya pendaftaran', v.regFee],
-          ].map(([k, val]) => (
+          [...v.facts, ['Biaya pendaftaran', v.regFee]].map(([k, val]) => (
             <div class="flex flex-wrap justify-between gap-x-16 gap-y-4 border-b border-rule-soft py-16">
               <dt class="text-muted">{k}</dt>
               <dd class="m-0 text-right font-bold">{val}</dd>
@@ -141,7 +136,7 @@ const btnGhostNight = 'btn-ghost-night';
                 ))}
               </div>
               <p class="m-0 text-15 text-body">
-                {v.juzCount} dari 30 juz. Urutan juz untuk jenjang ini: [isi dari bidang tahfizh].
+                {v.juzCount} dari 30 juz, mengikuti urutan hafalan di halaman kurikulum tahfizh.
               </p>
             </div>
           )
@@ -205,7 +200,9 @@ const btnGhostNight = 'btn-ghost-night';
         v.open ? (
           <div class="flex flex-wrap gap-x-64 gap-y-40">
             <div class="flex max-w-[460px] flex-[1_1_340px] flex-col gap-16">
-              <h2 id="j-daftar" class:list={[h2, 'text-white']}>Pendaftaran tahun ajaran {v.academicYear}</h2>
+              <h2 id="j-daftar" class:list={[h2, 'text-white']}>
+                {v.academicYear ? `Pendaftaran tahun ajaran ${v.academicYear}` : `Pendaftaran ${lv.name} dibuka`}
+              </h2>
               <p class="m-0 text-on-night-body">Tes masuk dilaksanakan langsung di {school.name}. Pilih gelombang yang paling dekat.</p>
               <div class="mt-8 flex flex-wrap gap-12">
                 <a href={v.registerUrl} class={btnLight}>Isi formulir pendaftaran</a>
@@ -226,7 +223,7 @@ const btnGhostNight = 'btn-ghost-night';
                   </li>
                 ))}
               </ol>
-              {v.waves.length > 0 && (
+              {v.wavesAnnounced ? (
                 <table class="w-full border-collapse">
                   <caption class="pb-10 text-left font-bold text-white">Jadwal gelombang</caption>
                   <thead>
@@ -240,12 +237,17 @@ const btnGhostNight = 'btn-ghost-night';
                     {v.waves.map((w) => (
                       <tr>
                         <th scope="row" class="border-b border-night-rule py-14 pr-12 text-left font-bold">{w.name}</th>
-                        <td class="border-b border-night-rule py-14 pr-12">{w.opens}</td>
-                        <td class="border-b border-night-rule py-14">{w.test}</td>
+                        <td class="border-b border-night-rule py-14 pr-12">{w.opens ?? 'Segera diumumkan'}</td>
+                        <td class="border-b border-night-rule py-14">{w.test ?? 'Segera diumumkan'}</td>
                       </tr>
                     ))}
                   </tbody>
                 </table>
+              ) : (
+                <p class="m-0 border-t border-night-rule-3 pt-16 text-on-night-body">
+                  Jadwal gelombang dan tes masuk belum diumumkan.{' '}
+                  <a href={school.whatsapp.url} class="font-bold text-white underline-offset-4 hover:text-on-night-body">Tanyakan lewat WhatsApp</a>
+                </p>
               )}
             </div>
           </div>
@@ -269,8 +271,14 @@ const btnGhostNight = 'btn-ghost-night';
     <div class:list={[wrap, 'flex flex-wrap gap-x-64 gap-y-32']}>
       <div class="flex max-w-[420px] flex-[1_1_300px] flex-col gap-6">
         <h2 id="j-pengajar" class:list={[h2, 'mb-10']}>Pengajar</h2>
-        <p class="m-0 text-15 text-muted">{lv.headRole}</p>
-        <p class="m-0 font-display text-30 font-semibold leading-[1.15]">{v.head}</p>
+        {
+          v.head && (
+            <>
+              <p class="m-0 text-15 text-muted">{lv.headRole}</p>
+              <p class="m-0 font-display text-30 font-semibold leading-[1.15]">{v.head}</p>
+            </>
+          )
+        }
       </div>
       <p class="m-0 flex-[1.4_1_480px] text-19 leading-[1.6] text-body [text-wrap:pretty]">{school.teachersNote}</p>
     </div>

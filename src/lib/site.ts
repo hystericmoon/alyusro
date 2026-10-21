@@ -12,6 +12,16 @@ export const levels = data.levels as Level[];
 /** Values written as "[...]" in site.json are placeholders still to confirm with the school. */
 export const isPlaceholder = (v: unknown): boolean => typeof v === 'string' && /^\[.*\]$/.test(v.trim());
 
+/**
+ * The value, or null when it is a placeholder or empty. Pages never show a
+ * bracketed placeholder: unknown values are hidden or get a designed fallback,
+ * and appear automatically once site.json has the real value.
+ */
+export function known<T>(v: T): T | null {
+  if (v === null || v === undefined || v === '' || isPlaceholder(v)) return null;
+  return v;
+}
+
 /** Paths that stay on the school's Laravel site get its origin; full URLs pass through. */
 export const schoolUrl = (path: string): string => (/^https?:\/\//.test(path) ? path : school.url + path);
 
