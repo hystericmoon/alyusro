@@ -19,7 +19,7 @@ Not in scope: the login dashboard and the registration system. Those stay on the
 - Tailwind v4, themed in `src/styles/global.css` with `--*: initial`, so only the tokens below exist (colors, fonts, radius, font sizes named by pixel value, spacing at 1px per step: `p-24` is 24px). Extra fills the designs use are listed there as derived tokens. Buttons are shared classes: `btn-primary`, `btn-secondary`, `btn-light`, `btn-ghost-night`.
 - Motion: GSAP for at most three moments: the juz map fills in class order (VII to XI) when it scrolls into view, the level terraces rise in sequence, and the day-view "now" line animates to the current time. GSAP loads only when motion is allowed. Everything else is CSS: micro-interactions (button press, chip preview, terrace lift), the living sky (sun position and sky tint follow the time in Bogor), and night stars in the day view. With `prefers-reduced-motion`, show the final state with no animation.
 - Articles: Astro content collection in `src/content/artikel/` (Markdown), edited by school staff through Sveltia CMS at `/admin`. Login, registration and PSB forms stay on the school's Laravel system.
-- Deploy target: Cloudflare Pages or Netlify (`netlify.toml`, `wrangler.toml`; build `npm run build`, output `dist`, Node 22 via `.nvmrc`). The preview is `noindex` until the school switches over.
+- Deploy target: Vercel, Netlify or Cloudflare Pages (`vercel.json`, `netlify.toml`, `wrangler.toml`; build `npm run build`, output `dist`, Node 22 via `.nvmrc` and `engines`). Headers and redirects live in `public/_headers` and `public/_redirects` for Netlify/Cloudflare and are mirrored in `vercel.json`; change both together. The preview is `noindex` until the school switches over.
 
 ## Source files
 
@@ -74,4 +74,4 @@ Bracketed values in `site.json` and the designs: PSB year and wave dates, SPP pe
 
 Done: homepage, six level pages, `/psb`, `/artikel` and 78 migrated articles, `/kurikulum/tahfizh`, `/kurikulum/bahasa-arab`, `/tentang`, `/sehari-di-mahad`, `/info/kajian`, `/kalender-akademik`, `/pendidikan/tenaga/pendidik`, `/prestasi`, `/fasilitas`, Sveltia CMS.
 
-Next: connect the repo to Netlify or Cloudflare Pages for a preview link (then set up CMS sign-in and the daily rebuild hook); `/ekstrakurikuler` and a "Lokasi dan kontak" page if the school supplies content; a CMS screen for editing site.json.
+Next: connect the repo to Vercel, Netlify or Cloudflare Pages for a preview link (then set up CMS sign-in and the daily rebuild hook); `/ekstrakurikuler` and a "Lokasi dan kontak" page if the school supplies content; a CMS screen for editing site.json.

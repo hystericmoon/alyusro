@@ -1,3 +1,3 @@
-# Read by both Netlify and Cloudflare Pages.
+# Read by Netlify and Cloudflare Pages. Vercel uses the same rules from vercel.json.
 # Old category pages now live on the article list (filters are by series).
 /artikel/categories/*  /artikel/  301
