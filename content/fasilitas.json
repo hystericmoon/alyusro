@@ -1,0 +1,123 @@
+{
+ "_note": "Facility photos. Imported from mahadalyusro.sch.id/fasilitas on 21 October 2026. Photos showing identifiable faces were left out (CLAUDE.md imagery rule); groups without photos show a text entry. Every photo needs real alt text.",
+ "groups": [
+  {
+   "name": "Masjid putra",
+   "area": "putra",
+   "photos": [
+    {
+     "src": "/uploads/fasilitas/masjid-putra.webp",
+     "alt": "Masjid putra berdinding bata berongga dengan halaman luas",
+     "caption": "Masjid putra"
+    }
+   ]
+  },
+  {
+   "name": "Asrama putra",
+   "area": "putra",
+   "photos": [
+    {
+     "src": "/uploads/fasilitas/asrama-putra-1.webp",
+     "alt": "Kamar asrama putra yang panjang dengan deretan ranjang susun besi",
+     "caption": "Kamar asrama putra"
+    },
+    {
+     "src": "/uploads/fasilitas/asrama-putra-2.webp",
+     "alt": "Lorong kamar asrama putra dengan ranjang susun di kedua sisi",
+     "caption": "Lorong kamar asrama putra"
+    }
+   ]
+  },
+  {
+   "name": "Gedung kelas putra",
+   "area": "putra",
+   "photos": [
+    {
+     "src": "/uploads/fasilitas/gedung-kelas-putra.webp",
+     "alt": "Gedung kelas putra dua lantai berwarna hijau mengelilingi lapangan",
+     "caption": "Gedung kelas putra dan lapangannya"
+    }
+   ]
+  },
+  {
+   "name": "Gedung putri",
+   "area": "putri",
+   "photos": [
+    {
+     "src": "/uploads/fasilitas/gedung-putri.webp",
+     "alt": "Pintu masuk gedung putri dengan atap kanopi dan dinding batu",
+     "caption": "Gedung putri"
+    }
+   ]
+  },
+  {
+   "name": "Asrama putri",
+   "area": "putri",
+   "photos": [
+    {
+     "src": "/uploads/fasilitas/asrama-putri-1.webp",
+     "alt": "Kamar asrama putri dengan ranjang susun kayu dan kasur merah muda",
+     "caption": "Kamar asrama putri"
+    },
+    {
+     "src": "/uploads/fasilitas/asrama-putri-2.webp",
+     "alt": "Deretan ranjang susun kayu di kamar asrama putri",
+     "caption": "Ranjang susun di asrama putri"
+    }
+   ]
+  },
+  {
+   "name": "Musala putri",
+   "area": "putri",
+   "photos": [
+    {
+     "src": "/uploads/fasilitas/musala-putri.webp",
+     "alt": "Musala putri berlantai keramik dengan sajadah hijau dan kipas angin di langit-langit",
+     "caption": "Musala putri"
+    }
+   ]
+  },
+  {
+   "name": "Kelas putri",
+   "area": "putri",
+   "photos": [
+    {
+     "src": "/uploads/fasilitas/kelas-putri-1.webp",
+     "alt": "Santriwati berhijab mengerjakan ujian di kelas putri, terlihat dari belakang",
+     "caption": "Kegiatan belajar di kelas putri"
+    },
+    {
+     "src": "/uploads/fasilitas/kelas-putri-2.webp",
+     "alt": "Kelas putri dengan meja dan kursi berjajar, santriwati terlihat dari belakang",
+     "caption": "Kelas putri"
+    }
+   ]
+  },
+  {
+   "name": "Gedung Kuttab",
+   "area": "bersama",
+   "photos": [
+    {
+     "src": "/uploads/fasilitas/gedung-kuttab.webp",
+     "alt": "Gedung Kuttab Al Yusro dua lantai berwarna hijau dengan halaman depan",
+     "caption": "Gedung Kuttab Al Yusro"
+    }
+   ]
+  },
+  {
+   "name": "Lapangan olahraga",
+   "area": "bersama",
+   "photos": []
+  },
+  {
+   "name": "Ruang IT dan multimedia",
+   "area": "bersama",
+   "photos": []
+  },
+  {
+   "name": "UKS",
+   "area": "bersama",
+   "photos": []
+  }
+ ]
+}

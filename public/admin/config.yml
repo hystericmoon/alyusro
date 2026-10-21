@@ -90,3 +90,24 @@ collections:
         name: sourceUrl
         widget: string
         required: false
+
+  - name: halaman
+    label: Halaman
+    label_singular: Halaman
+    description: Teks halaman profil dan kurikulum. Target hafalan, jadwal, biaya, dan tanggal diambil otomatis dari content/site.json, jadi tidak ditulis di sini.
+    folder: src/content/halaman
+    extension: md
+    format: frontmatter
+    create: false
+    delete: false
+    fields:
+      - label: Judul
+        name: title
+        widget: string
+      - label: Pengantar
+        name: lede
+        widget: text
+      - label: Isi
+        name: body
+        widget: markdown
+        hint: 'Angka dari site.json bisa dikutip, misalnya {{halaqah.ideal}} (rasio halaqah) atau {{sekolah.alamat}}. Setiap judul "##" otomatis masuk daftar "Di halaman ini".'

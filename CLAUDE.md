@@ -25,7 +25,9 @@ Not in scope: the login dashboard and the registration system. Those stay on the
 
 - `design/*.dc.html`: approved designs. They use a template syntax (`{{hole}}`, `<sc-for>`, `<sc-if>`, `<x-dc>`, `<helmet>`, a `DCLogic` class in a script). Treat them as visual and markup specs. Convert holes and loops into Astro props and `.map()`, move logic into small scripts. Keep the markup, spacing, type, colors, and accessibility attributes as designed.
 - `design/Peta-situs.dc.html`: the site map and content inventory. It is the page list for this build.
-- `content/site.json`: single source of truth for levels, fees, PSB waves, schedule, contact. Pages must read from it; never hard-code a fee, date, or target in a page.
+- `content/site.json`: single source of truth for levels, fees, PSB waves, FAQ, schedule, staff, academic calendar, contact. Pages must read from it; never hard-code a fee, date, or target in a page. Values containing `[...]` are placeholders: `known()` in `src/lib/site.ts` hides them, so no bracket ever reaches a page.
+- `content/prestasi.json`: achievements without students' names. `content/fasilitas.json`: facility photos with alt text and captions.
+- `src/content/artikel/*.md`: articles (migrated from the old site, students' names reduced to initials, covers with faces replaced by typographic covers). `src/content/halaman/*.md`: prose for content pages; they can quote site.json with `{{halaqah.ideal}}` etc. (see `src/lib/halaman.ts`). Both are editable in Sveltia CMS at `/admin`.
 
 ## Pages and URLs
 
@@ -68,10 +70,8 @@ Keep the current site’s URLs so links and search rankings survive:
 
 Bracketed values in `site.json` and the designs: PSB year and wave dates, SPP period, Mahdhon program length, TAUD and Mahdhon heads, school hours in the day view, Sunday activities, kajian times, Ma’had ‘Aly registration status, Madrasah target (20 vs 30 juz), Arabic spelling of the school name, logo file, photos.
 
-## First steps
+## Status
 
-1. Scaffold Astro, add fonts and CSS tokens, build header and footer from `Beranda-gabungan`.
-2. Build the homepage to match the design at 1440px and 390px.
-3. Build the level template driven by `site.json`, generate all six level pages.
-4. Then `/psb`, content pages, articles, facilities.
-5. Deploy a preview and share the link.
+Done: homepage, six level pages, `/psb`, `/artikel` and 78 migrated articles, `/kurikulum/tahfizh`, `/kurikulum/bahasa-arab`, `/tentang`, `/sehari-di-mahad`, `/info/kajian`, `/kalender-akademik`, `/pendidikan/tenaga/pendidik`, `/prestasi`, `/fasilitas`, Sveltia CMS.
+
+Next: connect the repo to Netlify or Cloudflare Pages for a preview link (then set up CMS sign-in and the daily rebuild hook); `/ekstrakurikuler` and a "Lokasi dan kontak" page if the school supplies content; a CMS screen for editing site.json.

@@ -57,8 +57,8 @@ Ma'had Tahfizh Al Yusro menyelenggarakan program pendidikan Ma'had 'Aly dengan b
 
 Pendaftaran dilaksanakan secara online dengan mengisi formulir pendaftaran pada website. Tes seleksi dilaksanakan di Ma'had Tahfizh Al Yusro sesuai jadwal tes seleksi. berikut alur pendaftaran Program Ma'had 'Aly Al Yusro:
 
-1. Membuat akun peserta pada link: [https://mahadalyusro.sch.id/psbmahadaly/registrasi](/psbmahadaly/registrasi)
-2. login dengan akun yang dibuat pada link: [https://mahadalyusro.sch.id/psbmahadaly/login](/psbmahadaly/login)
+1. Membuat akun peserta pada link: [https://mahadalyusro.sch.id/psbmahadaly/registrasi](https://mahadalyusro.sch.id/psbmahadaly/registrasi)
+2. login dengan akun yang dibuat pada link: [https://mahadalyusro.sch.id/psbmahadaly/login](https://mahadalyusro.sch.id/psbmahadaly/login)
 3. setelah login lakukan pengisian data yang diperlukan mulai dari mengisi formulir dan upload berkas
 4. tahap terakhir klik konfirmasi dan peserta akan diarahkan ke whatsapp panitia
 5. tunggu sampai panitian melakukan verifikasi jika lengkap peserta akan diverifikasi sebagai calon peserta tes seleksi Ma'had Aly, jika ada berkas yang kurang silahkan lengkapi datanya
@@ -66,7 +66,7 @@ Pendaftaran dilaksanakan secara online dengan mengisi formulir pendaftaran pada 
 
 ## Link Pendaftaran
 
-[https://www.mahadalyusro.sch.id/psbmahadaly](/psbmahadaly)
+[https://www.mahadalyusro.sch.id/psbmahadaly](https://mahadalyusro.sch.id/psbmahadaly)
 
 ## Testimoni Mahasantri
 

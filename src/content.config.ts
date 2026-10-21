@@ -26,4 +26,14 @@ const artikel = defineCollection({
     }),
 });
 
-export const collections = { artikel };
+// Prose for content pages (kurikulum, tentang, ...). Data-driven parts such as
+// juz targets and schedules come from site.json in the page itself.
+const halaman = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/halaman' }),
+  schema: z.object({
+    title: z.string(),
+    lede: z.string(),
+  }),
+});
+
+export const collections = { artikel, halaman };

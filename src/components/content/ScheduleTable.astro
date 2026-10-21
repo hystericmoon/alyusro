@@ -1,0 +1,53 @@
+---
+// Tahfizh timetable from content/site.json (dailySchedule): the weekday
+// blocks the day view uses, plus weekly activities and periodic events.
+import { site } from '@/lib/site';
+
+type Entry = { name: string; days: string; start: string; end: string; note?: string; whenNote?: string; duration?: string; placeholder?: boolean };
+const ds = site.dailySchedule as unknown as {
+  weekday: Entry[];
+  weekly: { name: string; when: string; duration?: string }[];
+  periodic: string[];
+};
+const clock = /^\d{1,2}[.:]\d{2}$/;
+const hhmm = (s: string) => s.replace(':', '.');
+const rows = [
+  ...ds.weekday
+    .filter((e) => !e.placeholder)
+    .map((e) => {
+      const fixed = clock.test(e.start) && clock.test(e.end) ? `${hhmm(e.start)}–${hhmm(e.end)}` : '';
+      return { name: e.name, note: e.note, when: [e.days, [fixed, e.whenNote].filter(Boolean).join(' ')].filter(Boolean).join(', '), duration: e.duration ?? '' };
+    }),
+  ...ds.weekly.map((w) => ({ name: w.name, note: undefined, when: w.when, duration: w.duration ?? '' })),
+];
+---
+<h3>Harian dan pekanan</h3>
+<table>
+  <caption class="sr-only">Jadwal kegiatan tahfizh</caption>
+  <thead>
+    <tr><th scope="col">Kegiatan</th><th scope="col">Waktu</th><th scope="col">Durasi</th></tr>
+  </thead>
+  <tbody>
+    {
+      rows.map((r) => (
+        <tr>
+          <th scope="row">
+            {r.name}
+            {r.note && (
+              <>
+                <br />
+                <span class="text-15 font-normal text-muted">{r.note}</span>
+              </>
+            )}
+          </th>
+          <td>{r.when}</td>
+          <td>{r.duration}</td>
+        </tr>
+      ))
+    }
+  </tbody>
+</table>
+<h3>Berkala</h3>
+<ul>
+  {ds.periodic.map((p) => <li>{p}</li>)}
+</ul>

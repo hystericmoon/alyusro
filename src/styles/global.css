@@ -42,6 +42,7 @@
   /* Derived: light UI */
   --color-placeholder: #8A93A8; /* dashed outline of logo/photo placeholders */
   --color-chip-rule: #C9CDD8;
+  --color-putri: #7A2E5A; /* derived: 'Area putri' tag (Fasilitas) */
   --color-rule-soft: #E3E6EE; /* fact-list dividers, empty count ticks */
   --color-juz-off: #EEF0F4;
   --color-juz-off-ink: #5B6374;
@@ -340,21 +341,36 @@ html:has(#menu-hp:popover-open) {
 }
 
 /* Article body (Artikel-detail .ad). Arabic blocks keep lang/dir from the content. */
-.prose-ad {
-  font-size: 19px;
-  line-height: 1.7;
+@layer components {
+  :where(.prose-ad) { font-size: 19px; line-height: 1.7; }
+  :where(.prose-ad) > :first-child { margin-top: 0; }
+  :where(.prose-ad) h2 { margin: 56px 0 14px; font-family: var(--font-display); font-size: 40px; font-weight: 600; line-height: 1.05; }
+  :where(.prose-ad) h3 { margin: 40px 0 10px; font-family: var(--font-display); font-size: 30px; font-weight: 600; line-height: 1.1; }
+  :where(.prose-ad) p { margin: 0 0 18px; }
+  :where(.prose-ad) ul, :where(.prose-ad) ol { margin: 0 0 18px; padding-left: 24px; }
+  :where(.prose-ad) li { margin-bottom: 8px; }
+  :where(.prose-ad) a { text-underline-offset: 3px; }
+  :where(.prose-ad) blockquote { margin: 0 0 18px; padding-left: 20px; border-left: 3px solid var(--color-lapis-2); color: var(--color-body); }
+  :where(.prose-ad) [lang="ar"] { font-family: var(--font-display); font-size: 1.3em; line-height: 1.9; }
+  :where(.prose-ad) p[lang="ar"], :where(.prose-ad) blockquote[lang="ar"] { text-align: right; }
+  :where(.prose-ad) blockquote[lang="ar"] { border-left: 0; border-right: 3px solid var(--color-lapis-2); padding: 0 20px 0 0; }
+  :where(.prose-ad) span[lang="ar"] { font-size: 1.2em; }
+  /* ﷻ ﷺ in titles, see titleHtml() */
+  .honorific { font-size: 0.55em; line-height: 0; vertical-align: 0.15em; }
 }
-.prose-ad > :first-child { margin-top: 0; }
-.prose-ad h2 { margin: 56px 0 14px; font-family: var(--font-display); font-size: 40px; font-weight: 600; line-height: 1.05; }
-.prose-ad h3 { margin: 40px 0 10px; font-family: var(--font-display); font-size: 30px; font-weight: 600; line-height: 1.1; }
-.prose-ad p { margin: 0 0 18px; }
-.prose-ad ul, .prose-ad ol { margin: 0 0 18px; padding-left: 24px; }
-.prose-ad li { margin-bottom: 8px; }
-.prose-ad a { text-underline-offset: 3px; }
-.prose-ad blockquote { margin: 0 0 18px; padding-left: 20px; border-left: 3px solid var(--color-lapis-2); color: var(--color-body); }
-.prose-ad [lang="ar"] { font-family: var(--font-display); font-size: 1.3em; line-height: 1.9; }
-.prose-ad p[lang="ar"], .prose-ad blockquote[lang="ar"] { text-align: right; }
-.prose-ad blockquote[lang="ar"] { border-left: 0; border-right: 3px solid var(--color-lapis-2); padding: 0 20px 0 0; }
-.prose-ad span[lang="ar"] { font-size: 1.2em; }
-/* ﷻ ﷺ in titles, see titleHtml() */
-.honorific { font-size: 0.55em; line-height: 0; vertical-align: 0.15em; }
+
+/* Content pages (Kurikulum-tahfizh .k-body) */
+@layer components {
+  :where(.prose-k) > :first-child { margin-top: 0; }
+  :where(.prose-k) h2 { margin: 72px 0 16px; font-family: var(--font-display); font-size: 44px; font-weight: 600; line-height: 1.05; scroll-margin-top: 24px; }
+  :where(.prose-k) h3 { margin: 32px 0 8px; font-size: 19px; font-weight: 700; line-height: 1.35; }
+  :where(.prose-k) p { margin: 0 0 16px; }
+  :where(.prose-k) ul, :where(.prose-k) ol { margin: 0 0 16px; padding-left: 22px; }
+  :where(.prose-k) li { margin-bottom: 8px; }
+  :where(.prose-k) table { width: 100%; border-collapse: collapse; margin: 8px 0 24px; font-size: 16px; font-variant-numeric: tabular-nums; }
+  :where(.prose-k) th, :where(.prose-k) td { text-align: left; padding: 12px 16px 12px 0; border-bottom: 1px solid var(--color-rule); vertical-align: top; }
+  :where(.prose-k) thead th { font-size: 14px; font-weight: 500; color: var(--color-muted); border-bottom: 2px solid var(--color-ink); }
+  :where(.prose-k) tbody th { font-weight: 700; }
+  :where(.prose-k) th:last-child, :where(.prose-k) td:last-child { padding-right: 0; }
+  :where(.prose-k) [lang="ar"] { font-family: var(--font-display); font-size: 1.25em; }
+}

@@ -1,0 +1,58 @@
+---
+// /kurikulum/tahfizh: targets and timetable from site.json, the rest from
+// src/content/halaman/kurikulum-tahfizh.md (editable in the CMS).
+import { getHalaman } from '@/lib/halaman';
+import ContentPage from '@/components/content/ContentPage.astro';
+import ScheduleTable from '@/components/content/ScheduleTable.astro';
+import { buildJuzMap } from '@/lib/juz-map';
+import { juzLabel } from '@/lib/level';
+import { levelBySlug } from '@/lib/site';
+
+const page = await getHalaman('kurikulum-tahfizh');
+const map = buildJuzMap();
+const levels = ['madrasah', 'darul-ilmi'].map(levelBySlug);
+const totals = levels.map((l) => ({ name: l.name, juz: (l.juzMap ?? []).reduce((n, r) => n + r.juz.length, 0) }));
+const toc = [
+  { id: 'urutan', text: 'Urutan dan target' },
+  { id: 'jadwal', text: 'Jadwal kegiatan' },
+  ...page.headings.map((h) => ({ ...h, text: h.text.replace(/:.*$/, '') })),
+];
+---
+<ContentPage
+  title={page.data.title}
+  lede={page.data.lede}
+  crumbs={[{ label: 'Kurikulum' }, { label: 'Tahfizh' }]}
+  toc={toc}
+  cta={{ text: 'Lihat target hafalan tiap jenjang', label: 'Pilih jenjang', href: '/#jenjang' }}
+>
+  <h2 id="urutan" style="margin-top:0">Urutan dan target hafalan</h2>
+  <p>{map.description}</p>
+  <table>
+    <caption class="sr-only">Target hafalan per kelas</caption>
+    <thead>
+      <tr><th scope="col">Kelas</th><th scope="col">Juz yang dihafal</th><th scope="col" class="text-right">Jumlah</th></tr>
+    </thead>
+    <tbody>
+      {
+        map.classes.map((c) => (
+          <tr>
+            <th scope="row">{c.label}</th>
+            <td>{juzLabel(c.juz)}</td>
+            <td class="text-right">{c.juz.length} juz</td>
+          </tr>
+        ))
+      }
+    </tbody>
+  </table>
+  <p>
+    Untuk lulus marhalah dan mengambil syahadah ma’had, {totals.map((t, i) => `${i === 0 ? 'santri' : 'dan santri'} ${t.name} menyelesaikan ${t.juz} juz${i > 0 ? ' berikutnya' : ''}`).join(' ')}. Santri
+    baru atau pindahan dengan urutan hafalan berbeda dikonversi sesuai target ma’had.
+  </p>
+  <p class="text-15 text-muted">Target jenjang lain: <a href="/jenjang/pendidikan/kuttab/">Kuttab</a>, <a href="/jenjang/pendidikan/mahdon/">Mahdhon Tarbawi</a>, <a href="/jenjang/pendidikan/taud/">TAUD</a>, dan <a href="/mahad-aly/">Ma’had ‘Aly</a>.</p>
+
+  <h2 id="jadwal">Jadwal kegiatan</h2>
+  <ScheduleTable />
+  <p class="text-15 text-muted">Lihat juga <a href="/sehari-di-mahad/">sehari di ma’had</a>, dengan jadwal shalat hari ini.</p>
+
+  <Fragment set:html={page.html} />
+</ContentPage>

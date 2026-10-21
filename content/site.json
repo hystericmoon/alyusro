@@ -62,7 +62,43 @@
     "brochures": {
       "_note": "PDF link per level slug. A level without one shows no brochure button.",
       "madrasah": null
-    }
+    },
+    "documents": {
+      "_note": "Documents to prepare, per level slug. Levels without a list show a WhatsApp prompt.",
+      "mahad-aly": {
+        "items": [
+          "Fotokopi KTP dan Kartu Keluarga",
+          "Fotokopi ijazah SMA atau sederajat; siswa kelas XII boleh menyusul",
+          "Surat keterangan sehat dari dokter",
+          "Surat izin orang tua",
+          "Pas foto 3×4 sebanyak 2 lembar",
+          "Bukti transfer biaya pendaftaran"
+        ],
+        "note": "Syarat: lulusan SMA atau sederajat, usia maksimal 20 tahun, belum menikah dan siap tidak menikah selama masa studi."
+      }
+    },
+    "faq": [
+      {
+        "q": "Di mana tes masuk dilaksanakan?",
+        "a": "Tes masuk dilaksanakan langsung di Ma’had Tahfizh Al Yusro, Desa Gunung Mulya, Tenjolaya, Kabupaten Bogor, sesuai jadwal gelombang."
+      },
+      {
+        "q": "Anak saya sudah punya hafalan. Apakah dihitung?",
+        "a": "Ya. Hafalan santri baru atau pindahan yang urutannya berbeda dikonversi sesuai target ma’had."
+      },
+      {
+        "q": "Bagaimana orang tua memantau hafalan anak?",
+        "a": "Setiap setoran dicatat di buku mutaba’ah, direkap tiap bulan, dan bukunya diserahkan kepada wali santri saat kenaikan kelas sebagai laporan pencapaian hafalan."
+      },
+      {
+        "q": "Berapa santri dalam satu halaqah?",
+        "a": "Idealnya {ideal} santri untuk satu muhaffizh, paling banyak {max}. Muhaffizh juga menjadi musyrif, pengasuh santri di halaqahnya."
+      },
+      {
+        "q": "Apakah ada program untuk santri putri?",
+        "a": "Ada. Ma’had memiliki asrama, kelas, dan gedung terpisah untuk santri putra dan putri, dengan program tahfizh putra dan putri masing-masing."
+      }
+    ]
   },
   "levels": [
     {
@@ -388,14 +424,20 @@
         "days": "Senin–Jumat",
         "start": "05:00",
         "end": "06:30",
-        "detail": "Santri menyetorkan hafalan baru kepada muhaffizh selepas Subuh."
+        "detail": "Santri menyetorkan hafalan baru kepada muhaffizh selepas Subuh.",
+        "note": "hafalan baru",
+        "whenNote": "selepas Subuh",
+        "duration": "75–90 menit"
       },
       {
         "name": "Hifzhul jadid",
         "days": "Senin–Jumat",
         "start": "07:00",
         "end": "10:00",
-        "detail": "Menambah hafalan baru di waktu Dhuha, tiga sesi 60 menit."
+        "detail": "Menambah hafalan baru di waktu Dhuha, tiga sesi 60 menit.",
+        "note": "menambah hafalan",
+        "whenNote": "waktu Dhuha",
+        "duration": "3 × 60 menit"
       },
       {
         "name": "[Jadwal pelajaran sekolah dan bahasa Arab]",
@@ -409,21 +451,28 @@
         "days": "Senin–Kamis",
         "start": "ashar+15",
         "end": "min(ashar+75, maghrib-60)",
-        "detail": "Mengulang hafalan di hadapan muhaffizh, selesai paling lambat satu jam sebelum Maghrib."
+        "detail": "Mengulang hafalan di hadapan muhaffizh, selesai paling lambat satu jam sebelum Maghrib.",
+        "whenNote": "selepas Ashar, selesai satu jam sebelum Maghrib",
+        "duration": "60 menit"
       },
       {
         "name": "Khataman tilawah",
         "days": "Jumat",
         "start": "ashar+15",
         "end": "maghrib-10",
-        "detail": "Khataman tilawah Al-Qur’an setiap Jumat, di antara Ashar dan Maghrib."
+        "detail": "Khataman tilawah Al-Qur’an setiap Jumat, di antara Ashar dan Maghrib.",
+        "whenNote": "antara Ashar dan Maghrib",
+        "duration": ""
       },
       {
         "name": "Isti’dad",
         "days": "Senin–Jumat",
         "start": "maghrib+15",
         "end": "maghrib+60",
-        "detail": "Persiapan hafalan untuk esok hari, 45 menit di antara Maghrib dan Isya."
+        "detail": "Persiapan hafalan untuk esok hari, 45 menit di antara Maghrib dan Isya.",
+        "note": "persiapan",
+        "whenNote": "antara Maghrib dan Isya",
+        "duration": "45 menit"
       }
     ],
     "saturday": {
@@ -433,7 +482,35 @@
     "sunday": {
       "title": "[Kegiatan hari Ahad]",
       "detail": ""
-    }
+    },
+    "weekly": [
+      {
+        "name": "Tasmi’ dan tadabbur",
+        "when": "Sabtu pagi, tasmi’ sebelum kajian; tadabbur di halaqah",
+        "duration": "75 menit"
+      },
+      {
+        "name": "Kajian tafsir",
+        "when": "Pekanan di masjid ma’had, terbuka untuk umum",
+        "duration": "45 menit"
+      },
+      {
+        "name": "Kajian adab penghafal",
+        "when": "Pekanan, kitab At-Tibyan karya Imam Nawawi",
+        "duration": "30 menit"
+      },
+      {
+        "name": "Tahsin jama’i",
+        "when": "Minimal sekali sepekan, semua tingkat",
+        "duration": "30 menit"
+      }
+    ],
+    "periodic": [
+      "Haflah Khatmil Qur’an setiap enam bulan.",
+      "Musabaqah Hifzhil Qur’an (MHQ) internal setiap tahun, paling lambat sebulan sebelum evaluasi semester akhir.",
+      "Mukhayyam Qur’an setiap tahun.",
+      "Kompetisi eksternal sesuai jadwal lembaga penyelenggara."
+    ]
   },
   "kajianRutin": [
     {
@@ -456,5 +533,229 @@
       "when": "[Jadwal]",
       "audience": "Orang tua dan wali santri"
     }
-  ]
+  ],
+  "staff": {
+    "_note": "Leaders, from mahadalyusro.sch.id/pendidikan/tenaga/pendidik (21 October 2026). Heads of level also appear on their level pages; keep the two in step.",
+    "people": [
+      {
+        "role": "Mudir",
+        "name": "Andi Hidayat, B.Sh., M.E."
+      },
+      {
+        "role": "Sekretaris",
+        "name": "Syahrir, S.Sos."
+      },
+      {
+        "role": "Bendahara",
+        "name": "Ridwan Firmansyah, S.E."
+      },
+      {
+        "role": "Kepala Bidang Tahfizh",
+        "name": "M. Furqon Supardi, Lc"
+      },
+      {
+        "role": "Kepala Bidang Humas dan Dakwah",
+        "name": "Rizqan Abadi, S.Pd"
+      },
+      {
+        "role": "Kepala Bidang IT dan Multimedia",
+        "name": "Yudi Saepul Rizal, S.E., M.E."
+      },
+      {
+        "role": "Kepala Kuttab Al Yusro",
+        "name": "Elan Susanto, S.Pd"
+      },
+      {
+        "role": "Kepala Madrasah Al Yusro",
+        "name": "Dede Iskandar, Lc"
+      },
+      {
+        "role": "Kepala Bidang Kesantrian",
+        "name": "Adithiya Rosadi, S.Pd"
+      },
+      {
+        "role": "Kepala Darul ‘Ilmi",
+        "name": "Syaepudin, S.Ud., M.H."
+      },
+      {
+        "role": "Kepala Ma’had ‘Aly",
+        "name": "Mohammad Deni Atmaja Kusuma Putra, Lc"
+      },
+      {
+        "role": "Kepala Bidang Kesantrian Putri",
+        "name": "Tantri Aryani Muflihat, S.Pd"
+      },
+      {
+        "role": "Kepala Bidang Tahfizh Putri",
+        "name": "Refa Fitriani, S.Pd"
+      }
+    ]
+  },
+  "academicCalendar": {
+    "_note": "Dates as YYYY-MM-DD; 'end' is optional. The page shows the calendar while its last date is still ahead, otherwise an empty state with this one as archive.",
+    "year": "2025/2026",
+    "events": [
+      {
+        "start": "2025-11-22",
+        "label": "Akhir KBM Ganjil"
+      },
+      {
+        "start": "2025-11-24",
+        "end": "2025-11-25",
+        "label": "Hari Tenang"
+      },
+      {
+        "start": "2025-11-26",
+        "end": "2025-11-29",
+        "label": "Ikhtibar Tahfizh"
+      },
+      {
+        "start": "2025-12-01",
+        "end": "2025-12-06",
+        "label": "Ikhtibar Niha’i Ganjil"
+      },
+      {
+        "start": "2025-12-10",
+        "end": "2025-12-20",
+        "label": "Classmeeting"
+      },
+      {
+        "start": "2025-12-20",
+        "end": "2025-12-21",
+        "label": "Pembagian Raport"
+      },
+      {
+        "start": "2025-12-21",
+        "end": "2026-01-09",
+        "label": "Libur Ganjil"
+      },
+      {
+        "start": "2025-12-29",
+        "end": "2025-12-31",
+        "label": "Karantina Tahfizh"
+      },
+      {
+        "start": "2026-01-09",
+        "label": "Kedatangan Asatidzah"
+      },
+      {
+        "start": "2026-01-10",
+        "end": "2026-01-11",
+        "label": "Kedatangan Santri"
+      },
+      {
+        "start": "2026-01-12",
+        "end": "2026-05-23",
+        "label": "Awal KBM Genap"
+      },
+      {
+        "start": "2026-02-02",
+        "label": "SG Santri Baru"
+      },
+      {
+        "start": "2026-02-09",
+        "end": "2026-02-12",
+        "label": "Mukhoyam Tahfizh"
+      },
+      {
+        "start": "2026-02-18",
+        "label": "Perkiraan Awal Ramadhan"
+      },
+      {
+        "start": "2026-03-02",
+        "end": "2026-03-07",
+        "label": "Ikhtibar Nishfi Genap"
+      },
+      {
+        "start": "2026-03-10",
+        "end": "2026-04-03",
+        "label": "Libur Ramadhan dan Id Fitr"
+      },
+      {
+        "start": "2026-04-03",
+        "label": "Kedatangan Asatidzah"
+      },
+      {
+        "start": "2026-04-04",
+        "end": "2026-04-05",
+        "label": "Kedatangan Santri"
+      },
+      {
+        "start": "2026-04-06",
+        "label": "KBM Pasca Liburan Ramadhan dan Id Fitr"
+      },
+      {
+        "start": "2026-04-20",
+        "end": "2026-04-25",
+        "label": "Ikhtibar Tahfizh Kelas IX dan XII"
+      },
+      {
+        "start": "2026-04-27",
+        "end": "2026-05-02",
+        "label": "Ujian Pondok Kelas IX dan UPK Kelas XII"
+      },
+      {
+        "start": "2026-05-04",
+        "label": "Ujian Pondok Kelas XII dan UPK Kelas IX"
+      },
+      {
+        "start": "2026-05-04",
+        "label": "Penetapan Kelulusan XII"
+      },
+      {
+        "start": "2026-05-23",
+        "label": "Akhir KBM Genap"
+      },
+      {
+        "start": "2026-05-26",
+        "end": "2026-05-27",
+        "label": "Hari Tenang"
+      },
+      {
+        "start": "2026-05-27",
+        "label": "Perkiraan Id Adha"
+      },
+      {
+        "start": "2026-05-31",
+        "label": "Wisuda Madrasah, Darul ‘Ilmi, dan MA"
+      },
+      {
+        "start": "2026-06-01",
+        "label": "Penetapan Kelulusan IX"
+      },
+      {
+        "start": "2026-06-01",
+        "end": "2026-06-06",
+        "label": "Ikhtibar Niha’i Sanah"
+      },
+      {
+        "start": "2026-06-08",
+        "end": "2026-06-13",
+        "label": "Ikhtibar Tahfizh"
+      },
+      {
+        "start": "2026-06-28",
+        "label": "Pembagian Raport"
+      },
+      {
+        "start": "2026-06-29",
+        "end": "2026-07-17",
+        "label": "Libur Genap"
+      },
+      {
+        "start": "2026-07-05",
+        "label": "Kedatangan Asatidzah"
+      },
+      {
+        "start": "2026-07-11",
+        "end": "2026-07-12",
+        "label": "Kedatangan Santri Baru"
+      },
+      {
+        "start": "2026-07-18",
+        "end": "2026-07-19",
+        "label": "Kedatangan Santri Lama"
+      }
+    ]
+  }
 }
