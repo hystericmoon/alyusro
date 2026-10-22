@@ -1,7 +1,8 @@
 {
- "_note": "Achievements, without students' names (the school has not consented to publishing them). Imported from mahadalyusro.sch.id/prestasi on 21 October 2026. Add new rows at the top; /prestasi groups and totals them automatically.",
+ "_note": "Achievements with students' names (the school consented to publishing them, October 2026). Imported from mahadalyusro.sch.id/prestasi on 21 October 2026. Add new rows at the top; /prestasi groups and totals them automatically and lists every name.",
  "records": [
   {
+   "name": "Abiell Zahranaya Putri",
    "rank": "Juara 1",
    "competition": "Khitobah",
    "level": "SMP Nasional",
@@ -9,6 +10,7 @@
    "year": 2026
   },
   {
+   "name": "Ghaida Faiza Washilah",
    "rank": "Juara 2",
    "competition": "Khitobah",
    "level": "SMP Nasional",
@@ -16,6 +18,7 @@
    "year": 2026
   },
   {
+   "name": "Inez Izela Putri Islami",
    "rank": "Juara 1",
    "competition": "Khitobah",
    "level": "SMA Nasional",
@@ -23,6 +26,7 @@
    "year": 2026
   },
   {
+   "name": "Reishila Yumna Basyair",
    "rank": "Juara 1",
    "competition": "MHQ",
    "level": "SMA Nasional",
@@ -30,6 +34,7 @@
    "year": 2026
   },
   {
+   "name": "Sami Yusuf Ahmad",
    "rank": "Juara Harapan 2",
    "competition": "MHQ",
    "level": "SMA Nasional",
@@ -37,6 +42,7 @@
    "year": 2026
   },
   {
+   "name": "Raishila Yumna Basyair",
    "rank": "Juara 1",
    "competition": "MHQ",
    "level": "SMA Nasional",
@@ -44,6 +50,7 @@
    "year": 2026
   },
   {
+   "name": "Inez Izela Putri Islami",
    "rank": "Juara 1",
    "competition": "Khitobah",
    "level": "SMA Nasional",
@@ -51,6 +58,7 @@
    "year": 2026
   },
   {
+   "name": "Abiell Zahranaya Putri",
    "rank": "Juara 1",
    "competition": "Khitobah",
    "level": "SMP Nasional",
@@ -58,6 +66,7 @@
    "year": 2026
   },
   {
+   "name": "Ghaida Faiza Washilah",
    "rank": "Juara 2",
    "competition": "Khitobah",
    "level": "SMP Nasional",
@@ -65,6 +74,7 @@
    "year": 2026
   },
   {
+   "name": "Sami Yusuf Ahmad",
    "rank": "Harapan 2",
    "competition": "MHQ",
    "level": "SMA Nasional",
@@ -72,6 +82,7 @@
    "year": 2026
   },
   {
+   "name": "Sami Yusuf Ahmad",
    "rank": "Harapan 1",
    "competition": "Amirul Lughoh",
    "level": "SMA Nasional",
@@ -79,6 +90,7 @@
    "year": 2026
   },
   {
+   "name": "Zidan Rakhazlan Fikri",
    "rank": "Harapan 2",
    "competition": "Amirul Lughoh",
    "level": "SMA Nasional",
@@ -86,6 +98,7 @@
    "year": 2026
   },
   {
+   "name": "Zulfy Kholidil Alam",
    "rank": "Juara 1",
    "competition": "LCC Islam",
    "level": "SMP Nasional",
@@ -93,6 +106,7 @@
    "year": 2026
   },
   {
+   "name": "Muhammad Imtiyaz Zaka Benzema",
    "rank": "Juara 1",
    "competition": "LCC Islam",
    "level": "SMP Nasional",
@@ -100,6 +114,7 @@
    "year": 2026
   },
   {
+   "name": "Muhammad Afif Hilmi",
    "rank": "Juara 1",
    "competition": "LCC Islam",
    "level": "SMP Nasional",
@@ -107,6 +122,7 @@
    "year": 2026
   },
   {
+   "name": "Muhammad Ali Chaniago",
    "rank": "Juara 2",
    "competition": "OBA",
    "level": "SMP Nasional",
@@ -114,6 +130,7 @@
    "year": 2026
   },
   {
+   "name": "Ghaida Zalfa Alfatunnisa",
    "rank": "Juara 1",
    "competition": "OBA",
    "level": "SMA Nasional",
@@ -121,6 +138,7 @@
    "year": 2026
   },
   {
+   "name": "Ade Andhini Bahirah",
    "rank": "Juara 3",
    "competition": "Pidato Bahasa Arab",
    "level": "SMA Nasional",
@@ -128,6 +146,7 @@
    "year": 2026
   },
   {
+   "name": "Sami Yusuf Ahmad",
    "rank": "Juara 1",
    "competition": "OBA",
    "level": "SMA Kabupaten",
@@ -135,6 +154,7 @@
    "year": 2026
   },
   {
+   "name": "Hafidz Abdullah",
    "rank": "Juara 3",
    "competition": "OBA",
    "level": "SMA Kabupaten",
@@ -142,6 +162,7 @@
    "year": 2026
   },
   {
+   "name": "Don Enriko Nugroho",
    "rank": "Harapan 2",
    "competition": "OBA",
    "level": "SMA Kabupaten",
@@ -149,6 +170,7 @@
    "year": 2026
   },
   {
+   "name": "Fuzy Raflesa Pamungkas",
    "rank": "Harapan 3",
    "competition": "OBA",
    "level": "SMA Kabupaten",
@@ -156,6 +178,7 @@
    "year": 2026
   },
   {
+   "name": "Zidan Rakhazlan Fikri",
    "rank": "Harapan 4",
    "competition": "OBA",
    "level": "SMA Kabupaten",
@@ -163,6 +186,7 @@
    "year": 2026
   },
   {
+   "name": "Tanhana",
    "rank": "Juara 1",
    "competition": "OBA",
    "level": "SMP Kabupaten",
@@ -170,6 +194,7 @@
    "year": 2026
   },
   {
+   "name": "Hafidz Fakhri",
    "rank": "Juara 3",
    "competition": "OBA",
    "level": "SMP Kabupaten",
@@ -177,6 +202,7 @@
    "year": 2026
   },
   {
+   "name": "Fahdan Abiyyu",
    "rank": "Harapan 1",
    "competition": "OBA",
    "level": "SMP Kabupaten",
@@ -184,6 +210,7 @@
    "year": 2026
   },
   {
+   "name": "Afif Hilmi",
    "rank": "Harapan 2",
    "competition": "OBA",
    "level": "SMP Kabupaten",
@@ -191,6 +218,7 @@
    "year": 2026
   },
   {
+   "name": "Syamillabib",
    "rank": "Harapan 3",
    "competition": "OBA",
    "level": "SMP Kabupaten",
@@ -198,6 +226,7 @@
    "year": 2026
   },
   {
+   "name": "Kholid",
    "rank": "Harapan 1",
    "competition": "OBA",
    "level": "SD Kabupaten",
@@ -205,6 +234,7 @@
    "year": 2026
   },
   {
+   "name": "Ustadz Tegar Khoirul Azmi M.Pd.",
    "rank": "Juara 2",
    "competition": "OBA",
    "level": "Guru Kabupaten",
@@ -212,6 +242,7 @@
    "year": 2026
   },
   {
+   "name": "Ustadz Eja Ardiansyah S.Pd.",
    "rank": "Juara 3",
    "competition": "OBA",
    "level": "Guru Kabupaten",
@@ -219,6 +250,7 @@
    "year": 2026
   },
   {
+   "name": "Muhammad Ihsan Rabbani",
    "rank": "Medali Emas",
    "competition": "OBA",
    "level": "SMA Nasional",
@@ -226,6 +258,7 @@
    "year": 2026
   },
   {
+   "name": "Muhammad Arsyad Al Faqih",
    "rank": "Medali Emas",
    "competition": "OBA",
    "level": "SMA Nasional",
@@ -233,6 +266,7 @@
    "year": 2026
   },
   {
+   "name": "Ghaida Faiza Washilah",
    "rank": "Juara 1",
    "competition": "Pidato Bahasa Arab",
    "level": "SMP Nasional",
@@ -240,6 +274,7 @@
    "year": 2026
   },
   {
+   "name": "Hafidz Abdullah",
    "rank": "Juara 1",
    "competition": "OBA",
    "level": "SMA Provinsi",
@@ -247,6 +282,7 @@
    "year": 2026
   },
   {
+   "name": "Fahdan Abiyyu",
    "rank": "Juara 1",
    "competition": "OBA",
    "level": "SMP Provinsi",
@@ -254,6 +290,7 @@
    "year": 2026
   },
   {
+   "name": "Haafidz Fakhri",
    "rank": "Juara 2",
    "competition": "OBA",
    "level": "SMP Provinsi",
@@ -261,6 +298,7 @@
    "year": 2026
   },
   {
+   "name": "Fuzy Raflesa Pamungkas",
    "rank": "Harapan 1",
    "competition": "OBA",
    "level": "SMA Provinsi",
@@ -268,6 +306,7 @@
    "year": 2026
   },
   {
+   "name": "Don Enriko",
    "rank": "Harapan 2",
    "competition": "OBA",
    "level": "SMA Provinsi",
@@ -275,6 +314,7 @@
    "year": 2026
   },
   {
+   "name": "Tanhana",
    "rank": "Harapan 1",
    "competition": "OBA",
    "level": "SMP Provinsi",
@@ -282,6 +322,7 @@
    "year": 2026
   },
   {
+   "name": "Muhammad Afif Hilmi",
    "rank": "Harapan 2",
    "competition": "OBA",
    "level": "SMP Provinsi",
@@ -289,6 +330,7 @@
    "year": 2026
   },
   {
+   "name": "Kayle Adreena",
    "rank": "Juara 3",
    "competition": "Speech Bahasa Arab",
    "level": "SMP Nasional",
@@ -296,6 +338,7 @@
    "year": 2026
   },
   {
+   "name": "Ustadz Tegar Khoirul Azmi, M.Pd",
    "rank": "Harapan 1",
    "competition": "OBA",
    "level": "Guru provinsi",
@@ -303,6 +346,7 @@
    "year": 2026
   },
   {
+   "name": "Muhammad Rizieq Ibrahim",
    "rank": "Harapan 1",
    "competition": "OBA",
    "level": "SMP Nasional",
@@ -310,6 +354,7 @@
    "year": 2026
   },
   {
+   "name": "Hafidz Abdullah",
    "rank": "Peserta terbaik",
    "competition": "Dauroh Eksklusive Keterampilan I'rab dan Ihktibar Hamzah",
    "level": "SMA Nasional",
@@ -317,6 +362,7 @@
    "year": 2026
   },
   {
+   "name": "Muhammad Bintang Tarigan",
    "rank": "Peserta terbaik",
    "competition": "Dauroh Eksklusive Keterampilan I'rab dan Ihktibar Hamzah",
    "level": "SMA Nasional",
@@ -324,6 +370,7 @@
    "year": 2026
   },
   {
+   "name": "Muhammad Zaidan Khoirul Anam",
    "rank": "Peserta terbaik",
    "competition": "Dauroh Eksklusive Keterampilan I'rab dan Ihktibar Hamzah",
    "level": "SMA Nasional",
@@ -331,6 +378,7 @@
    "year": 2026
   },
   {
+   "name": "Sami Yusuf Ahmad",
    "rank": "Juara 1",
    "competition": "MHQ",
    "level": "SMA Nasional",
@@ -338,6 +386,7 @@
    "year": 2025
   },
   {
+   "name": "Muhammad Ali Chaniago",
    "rank": "Juara 3",
    "competition": "MHQ",
    "level": "SMP Nasional",
@@ -345,6 +394,7 @@
    "year": 2025
   },
   {
+   "name": "Muhammad Ali Chaniago",
    "rank": "Juara 1",
    "competition": "MHQ",
    "level": "SMP Nasional",
@@ -352,6 +402,7 @@
    "year": 2025
   },
   {
+   "name": "Inez Izela Putri",
    "rank": "Juara 1",
    "competition": "Khitobah",
    "level": "SMA Nasional",
@@ -359,6 +410,7 @@
    "year": 2025
   },
   {
+   "name": "Ade Andini Bahirah",
    "rank": "Juara 2",
    "competition": "Khitobah",
    "level": "SMA Nasional",
@@ -366,6 +418,7 @@
    "year": 2025
   },
   {
+   "name": "Aqeela Humayra",
    "rank": "Juara 3",
    "competition": "Khitobah",
    "level": "SMA Nasional",
@@ -373,6 +426,7 @@
    "year": 2025
   },
   {
+   "name": "Muhammad Ali Chaniago",
    "rank": "Juara 3",
    "competition": "MHQ",
    "level": "SMP Nasional",
@@ -380,6 +434,7 @@
    "year": 2025
   },
   {
+   "name": "Zidan Rakhazlan Fikri",
    "rank": "Juara 1",
    "competition": "LCC Islam",
    "level": "SMP Nasional",
@@ -387,6 +442,7 @@
    "year": 2025
   },
   {
+   "name": "Habib Yusuf Hilmi Fauzan",
    "rank": "Juara 1",
    "competition": "LCC Islam",
    "level": "SMP Nasional",
@@ -394,6 +450,7 @@
    "year": 2025
   },
   {
+   "name": "Ubaidullah",
    "rank": "Juara 1",
    "competition": "LCC Islam",
    "level": "SMP Nasional",
@@ -401,6 +458,7 @@
    "year": 2025
   },
   {
+   "name": "Sami Yusuf Ahmad",
    "rank": "Juara 1",
    "competition": "MHQ",
    "level": "SMA Nasional",
@@ -408,6 +466,7 @@
    "year": 2025
   },
   {
+   "name": "Muhammad Ali Chaniago",
    "rank": "Juara 3",
    "competition": "MHQ",
    "level": "SMP Nasional",
@@ -415,6 +474,7 @@
    "year": 2025
   },
   {
+   "name": "Ginda Fildzah Saputri",
    "rank": "Juara 1",
    "competition": "Khitobah",
    "level": "SMA Nasional",
@@ -422,6 +482,7 @@
    "year": 2025
   },
   {
+   "name": "Ghaida Zalfa Alfatunnisa",
    "rank": "Juara 2",
    "competition": "Khitobah",
    "level": "SMA Nasional",
@@ -429,6 +490,7 @@
    "year": 2025
   },
   {
+   "name": "Inez Izela Putri Islami",
    "rank": "Juara 2",
    "competition": "Khitobah",
    "level": "SMP Nasional",
@@ -436,6 +498,7 @@
    "year": 2025
   },
   {
+   "name": "Sami Yusuf Ahmad",
    "rank": "Juara 2",
    "competition": "MHQ 3 Juz",
    "level": "SMA Nasional",
@@ -443,6 +506,7 @@
    "year": 2025
   },
   {
+   "name": "Ghaida Zalfa Alfatunnisa",
    "rank": "Juara 1",
    "competition": "Hadist",
    "level": "SMA Nasional",
@@ -450,6 +514,7 @@
    "year": 2025
   },
   {
+   "name": "Muhammad Ali Chaniago",
    "rank": "Juara 3",
    "competition": "MHQ",
    "level": "SMP Nasional",
@@ -457,6 +522,7 @@
    "year": 2025
   },
   {
+   "name": "Ghaida Zalfa Alfatunnisa",
    "rank": "Juara 2",
    "competition": "Olimpiade Bahasa Arab",
    "level": "SMA Nasional",
@@ -464,6 +530,7 @@
    "year": 2025
   },
   {
+   "name": "Tim Futsal Al Yusro",
    "rank": "Juara 2",
    "competition": "Lomba Futsal",
    "level": "SMA Nasional",
@@ -471,6 +538,7 @@
    "year": 2025
   },
   {
+   "name": "Fuzy Raflesa Pamungkas",
    "rank": "Juara 1",
    "competition": "OBA",
    "level": "SMA Provinsi",
@@ -478,6 +546,7 @@
    "year": 2025
   },
   {
+   "name": "Hafidz Abdullah",
    "rank": "Juara 3",
    "competition": "OBA",
    "level": "SMA Provinsi",
@@ -485,6 +554,7 @@
    "year": 2025
   },
   {
+   "name": "Muhammad Ali Chaniago",
    "rank": "Juara 2",
    "competition": "OBA",
    "level": "SMP Provinsi",
@@ -492,6 +562,7 @@
    "year": 2025
   },
   {
+   "name": "Habib Yusuf Hilmi Fauzan",
    "rank": "Juara Harapan 1",
    "competition": "OBA",
    "level": "SMP Provinsi",
@@ -499,6 +570,7 @@
    "year": 2025
   },
   {
+   "name": "Muhammad Arsyad Al Faqih",
    "rank": "Juara 1",
    "competition": "OBA",
    "level": "SMP Nasional",
@@ -506,6 +578,7 @@
    "year": 2025
   },
   {
+   "name": "Ghaida Zalfa Alfatunnisa",
    "rank": "Medali Emas",
    "competition": "OBA",
    "level": "SMA Nasional",
@@ -513,6 +586,7 @@
    "year": 2025
   },
   {
+   "name": "Aisyah Azzahra Rangkuti",
    "rank": "Medali Perak",
    "competition": "OBA",
    "level": "SMA Nasional",
@@ -520,6 +594,7 @@
    "year": 2025
   },
   {
+   "name": "Alesha Arva Syahada",
    "rank": "Medali Emas",
    "competition": "OBA",
    "level": "SMP Nasional",
@@ -527,6 +602,7 @@
    "year": 2025
   },
   {
+   "name": "Siti Atikah Aliyah",
    "rank": "Medali Perak",
    "competition": "OBA",
    "level": "SMP Nasional",
@@ -534,6 +610,7 @@
    "year": 2025
   },
   {
+   "name": "Muhammad Ali Chaniago",
    "rank": "Juara 3",
    "competition": "LCC Bhs Arab dan Bhs Inggris",
    "level": "SMP Nasional",
@@ -541,6 +618,7 @@
    "year": 2025
   },
   {
+   "name": "Zulfy Kholidil Alam",
    "rank": "Juara 3",
    "competition": "LCC Bhs Arab dan Bhs Inggris",
    "level": "SMP Nasional",
@@ -548,6 +626,7 @@
    "year": 2025
   },
   {
+   "name": "Muhammad Djenar Ash Shakwah",
    "rank": "Juara 3",
    "competition": "LCC Bhs Arab dan Bhs Inggris",
    "level": "SMP Nasional",
@@ -555,6 +634,7 @@
    "year": 2025
   },
   {
+   "name": "Habib Yusuf Hilmi Fauzan",
    "rank": "Juara 3",
    "competition": "Khitobah",
    "level": "SMP Nasional",
@@ -562,6 +642,7 @@
    "year": 2025
   },
   {
+   "name": "Ghaida Zalfa Alfatunnisa",
    "rank": "Juara 1",
    "competition": "Khitobah",
    "level": "SMP Nasional",
@@ -569,6 +650,7 @@
    "year": 2025
   },
   {
+   "name": "Muhammad Ramzy Adilusta",
    "rank": "Juara 3",
    "competition": "MHQ",
    "level": "SMA Nasional",
@@ -576,6 +658,7 @@
    "year": 2025
   },
   {
+   "name": "Sahya Arka Syuhada",
    "rank": "Juara 3",
    "competition": "LCC Islam",
    "level": "SMA Nasional",
@@ -583,6 +666,7 @@
    "year": 2025
   },
   {
+   "name": "Nur Ihsan Najmi",
    "rank": "Juara 3",
    "competition": "LCC Islam",
    "level": "SMA Nasional",
@@ -590,6 +674,7 @@
    "year": 2025
   },
   {
+   "name": "Zidan Rakhazlan Fikri",
    "rank": "Juara 3",
    "competition": "LCC Islam",
    "level": "SMA Nasional",
@@ -597,6 +682,7 @@
    "year": 2025
   },
   {
+   "name": "Muhammad Ali Chaniago",
    "rank": "Juara 3",
    "competition": "MHQ",
    "level": "SMP Nasional",
@@ -604,6 +690,7 @@
    "year": 2025
   },
   {
+   "name": "Kayla Adreen Nayyara Suseno",
    "rank": "Juara 1",
    "competition": "Lomba Speech",
    "level": "SMP Nasional",
@@ -611,6 +698,7 @@
    "year": 2025
   },
   {
+   "name": "Abiell Zahranaya Putri",
    "rank": "Juara 2",
    "competition": "Pidato bahasa arab",
    "level": "SMP Nasional",
@@ -618,6 +706,7 @@
    "year": 2025
   },
   {
+   "name": "Asya Khalisa Nashwa",
    "rank": "Juara 1",
    "competition": "LCC PAI",
    "level": "SMP Nasional",
@@ -625,6 +714,7 @@
    "year": 2025
   },
   {
+   "name": "Alesha Arva Syahada",
    "rank": "Juara 1",
    "competition": "LCC PAI",
    "level": "SMP Nasional",
@@ -632,6 +722,7 @@
    "year": 2025
   },
   {
+   "name": "Siti Atikah Aliyah",
    "rank": "Juara 1",
    "competition": "LCC PAI",
    "level": "SMP Nasional",
@@ -639,6 +730,7 @@
    "year": 2025
   },
   {
+   "name": "Muhammad Arsyad Al Faqih",
    "rank": "Medali Emas",
    "competition": "OBA",
    "level": "SMA Nasional",
@@ -646,6 +738,7 @@
    "year": 2025
   },
   {
+   "name": "Caid Cadifa Syahdad",
    "rank": "Juara 2",
    "competition": "MHQ 3 Juz",
    "level": "SMP/MTs sederajat",
@@ -653,6 +746,7 @@
    "year": 2024
   },
   {
+   "name": "Zidan Rakhazlan Fikri",
    "rank": "Medali Emas",
    "competition": "FOBN (Festifal Olimpiade Bahasa Nasional)",
    "level": "SMP Nasional",
@@ -660,6 +754,7 @@
    "year": 2024
   },
   {
+   "name": "Sami Yusuf Ahmad",
    "rank": "Medali Emas",
    "competition": "FOBN (Festifal Olimpiade Bahasa Nasional)",
    "level": "SMP Nasional",
@@ -667,6 +762,7 @@
    "year": 2024
   },
   {
+   "name": "Muhammad Zaidan Khoirul Anam",
    "rank": "Medali Emas",
    "competition": "FOBN (Festifal Olimpiade Bahasa Nasional)",
    "level": "SMP Nasional",
@@ -674,6 +770,7 @@
    "year": 2024
   },
   {
+   "name": "Fuzi Raflesa Pamungkas",
    "rank": "Medali Emas",
    "competition": "FOBN (Festifal Olimpiade Bahasa Nasional)",
    "level": "SMP Nasional",
@@ -681,6 +778,7 @@
    "year": 2024
   },
   {
+   "name": "Haafizh Abdullah",
    "rank": "Medali Emas",
    "competition": "FOBN (Festifal Olimpiade Bahasa Nasional)",
    "level": "SMP Nasional",
@@ -688,6 +786,7 @@
    "year": 2024
   },
   {
+   "name": "Ibnu Rusydi Addemar",
    "rank": "Medali Emas",
    "competition": "FOBN (Festifal Olimpiade Bahasa Nasional)",
    "level": "SMP Nasional",
@@ -695,6 +794,7 @@
    "year": 2024
   },
   {
+   "name": "M Bintang Tarigan",
    "rank": "Medali Emas",
    "competition": "FOBN (Festifal Olimpiade Bahasa Nasional)",
    "level": "SMP Nasional",
@@ -702,6 +802,7 @@
    "year": 2024
   },
   {
+   "name": "Ramla Kilbarin",
    "rank": "Juara 2",
    "competition": "Hadits Arba’in",
    "level": "Nasional",
@@ -709,6 +810,7 @@
    "year": 2024
   },
   {
+   "name": "Zidan Rakhazlan Fikri",
    "rank": "Juara Harapan 1",
    "competition": "Imla’ (Dikte Tulis Arab)",
    "level": "Nasional",
@@ -716,6 +818,7 @@
    "year": 2024
   },
   {
+   "name": "Muhammad Lindu Al Bantani Sulaiman",
    "rank": "Peserta Terbaik Putra",
    "competition": "Dauroh Bahasa Arab Internasional",
    "level": "Internasional",
@@ -723,6 +826,7 @@
    "year": 2024
   },
   {
+   "name": "Tazkiya Salsabila Sulaiman",
    "rank": "Peserta Terbaik Putri",
    "competition": "Dauroh Bahasa Arab Internasional",
    "level": "Internasional",
@@ -730,6 +834,7 @@
    "year": 2024
   },
   {
+   "name": "Ghania Rafia Azwa",
    "rank": "Juara 3",
    "competition": "MHQ 5 JUZ",
    "level": "Nasional",
@@ -737,6 +842,7 @@
    "year": 2024
   },
   {
+   "name": "Raisya Amira Haniyyah Jaida",
    "rank": "Juara 1",
    "competition": "Lomba Khitobah",
    "level": "Nasional",
@@ -744,6 +850,7 @@
    "year": 2024
   },
   {
+   "name": "Fuzi Raflesa Pamungkas",
    "rank": "Juara 2",
    "competition": "Olimpiade Bahasa Arab Kategori SMA Swasta Boarding School",
    "level": "Kabupaten Bogor",
@@ -751,6 +858,7 @@
    "year": 2024
   },
   {
+   "name": "Haafizh Abdullah",
    "rank": "Juara 3",
    "competition": "Olimpiade Bahasa Arab Kategori MA Swasta Boarding School",
    "level": "Kabupaten Bogor",
@@ -758,6 +866,7 @@
    "year": 2024
   },
   {
+   "name": "Sami Yusuf Ahmad",
    "rank": "Juara Harapan 1",
    "competition": "Olimpiade Bahasa Arab Kategori MA Swasta Boarding School",
    "level": "Kabupaten Bogor",
@@ -765,6 +874,7 @@
    "year": 2024
   },
   {
+   "name": "Zidan Rakhazlan Fikri",
    "rank": "Juara 1",
    "competition": "Olimpiade Bahasa Arab Kategori MTs Swasta Boarding School",
    "level": "Kabupaten Bogor",
@@ -772,6 +882,7 @@
    "year": 2024
   },
   {
+   "name": "Don Enriko Nugraha",
    "rank": "Juara 2",
    "competition": "Olimpiade Bahasa Arab Kategori MTs Swasta Boarding School",
    "level": "Provinsi Jawa Barat",
@@ -779,6 +890,7 @@
    "year": 2024
   },
   {
+   "name": "Imtiyaz Jaka Benzema",
    "rank": "Juara Harapan 1",
    "competition": "Olimpiade Bahasa Arab Kategori Mts Swasta Boarding School",
    "level": "Kabupaten Bogor",
@@ -786,6 +898,7 @@
    "year": 2024
   },
   {
+   "name": "Zidan Rakhazlan Fikri",
    "rank": "Juara 1",
    "competition": "Khitobah",
    "level": "SMP Nasional",
@@ -793,6 +906,7 @@
    "year": 2024
   },
   {
+   "name": "Fathurrahman Hidayat",
    "rank": "Juara 1",
    "competition": "Khitobah",
    "level": "SMA Nasional",
@@ -800,6 +914,7 @@
    "year": 2024
   },
   {
+   "name": "Muhammad Arsyad Al Faqih",
    "rank": "Medali Emas",
    "competition": "OBA",
    "level": "SMP Nasional",
@@ -807,6 +922,7 @@
    "year": 2024
   },
   {
+   "name": "Tegar Herdiansyah",
    "rank": "Juara 2",
    "competition": "MHQ 5 Juz",
    "level": "Nasional",
@@ -814,6 +930,7 @@
    "year": 2023
   },
   {
+   "name": "Sami Yusuf Ahmad",
    "rank": "Juara 3",
    "competition": "Hafalan Hadits Arba’in",
    "level": "Nasional",
@@ -821,6 +938,7 @@
    "year": 2023
   },
   {
+   "name": "Avrilia Sarah F.O",
    "rank": "Juara 1",
    "competition": "Lomba Video Kreatif Individu",
    "level": "Nasional",
@@ -828,6 +946,7 @@
    "year": 2023
   },
   {
+   "name": "Ashila, Kayla, Nadya",
    "rank": "Juara 2",
    "competition": "Video Kreatif Kelompok",
    "level": "Nasional",
@@ -835,6 +954,7 @@
    "year": 2023
   },
   {
+   "name": "Hasna Nur Syifa",
    "rank": "Juara 3",
    "competition": "MHQ",
    "level": "SMP",
@@ -842,6 +962,7 @@
    "year": 2023
   },
   {
+   "name": "Maryam",
    "rank": "Juara 2",
    "competition": "MHQ",
    "level": "SD",
@@ -849,6 +970,7 @@
    "year": 2023
   },
   {
+   "name": "Sami Yusuf Ahmad",
    "rank": "Juara 1",
    "competition": "MHQ",
    "level": "SMP",
@@ -856,6 +978,7 @@
    "year": 2023
   },
   {
+   "name": "Zaidan Khoirul Anam",
    "rank": "Juara 1",
    "competition": "Lomba Tahfiz Al Qur’an",
    "level": "",
@@ -863,6 +986,7 @@
    "year": 2023
   },
   {
+   "name": "Zaidan Khoirul Anam",
    "rank": "Juara 1",
    "competition": "Lomba Adzan",
    "level": "",
@@ -870,6 +994,7 @@
    "year": 2023
   },
   {
+   "name": "Bilal Ashfa Sya’bani",
    "rank": "Juara 2",
    "competition": "Khitobah",
    "level": "SMP Nasional",
@@ -877,6 +1002,7 @@
    "year": 2023
   },
   {
+   "name": "Ibnu Rusdi Addemar",
    "rank": "Juara 1",
    "competition": "Lomba Tahfizh Al Qur’an",
    "level": "SMP",
@@ -884,6 +1010,7 @@
    "year": 2023
   },
   {
+   "name": "Fuzi Raflesa Pamungkas",
    "rank": "Juara 1",
    "competition": "Olimpiade Bahasa Arab Kategori SMP Swasta",
    "level": "Kabupaten Bogor",
@@ -891,6 +1018,7 @@
    "year": 2023
   },
   {
+   "name": "Sami Yusuf Ahmad",
    "rank": "Juara 2",
    "competition": "Olimpiade Bahasa Arab Kategori SMP Swasta",
    "level": "Kabupaten Bogor",
@@ -898,6 +1026,7 @@
    "year": 2023
   },
   {
+   "name": "Sahya Arka Syuhada",
    "rank": "Juara Harapan 2",
    "competition": "Olimpiade Bahasa Arab Kategori SMP Swasta",
    "level": "Kabupaten Bogor",
@@ -905,6 +1034,7 @@
    "year": 2023
   },
   {
+   "name": "Zidan Rakhazlan Fikri",
    "rank": "Juara 1",
    "competition": "Olimpiade Bahasa Arab Kategori MTs Swasta",
    "level": "Kabupaten Bogor",
@@ -912,6 +1042,7 @@
    "year": 2023
   },
   {
+   "name": "Dzakwan Al Thof Al Ghifari",
    "rank": "Juara 2",
    "competition": "Olimpiade Bahasa Arab Kategori MTs Swasta",
    "level": "Kabupaten Bogor",
@@ -919,6 +1050,7 @@
    "year": 2023
   },
   {
+   "name": "Ibnu Rusdi Addemar",
    "rank": "Juara Harapan 1",
    "competition": "Olimpiade Bahasa Arab Kategori MTs Swasta",
    "level": "Kabupaten Bogor",
@@ -926,6 +1058,7 @@
    "year": 2023
   },
   {
+   "name": "Reshila Yumna Basyair",
    "rank": "Juara 3",
    "competition": "MHQ Kategori 5 Juz",
    "level": "Nasional",
@@ -933,6 +1066,7 @@
    "year": 2023
   },
   {
+   "name": "Fathurrahman Hidayat",
    "rank": "Juara 1",
    "competition": "MHQ Kategori 5 Juz",
    "level": "Nasional",
@@ -940,6 +1074,7 @@
    "year": 2023
   },
   {
+   "name": "Fuzi Raflesa Pamungkas",
    "rank": "Juara 3",
    "competition": "Olimpiade Bahasa Arab Kategori SMP Negeri-Swasta",
    "level": "Provinsi Jawa Barat",
@@ -947,6 +1082,7 @@
    "year": 2023
   },
   {
+   "name": "Sami Yusuf Ahmad",
    "rank": "Juara 1",
    "competition": "Olimpiade Bahasa Arab Kategori SMP Negeri-Swasta",
    "level": "Provinsi Jawa Barat",
@@ -954,6 +1090,7 @@
    "year": 2023
   },
   {
+   "name": "Zidan Rakhazlan Fikri",
    "rank": "Juara Harapan 1",
    "competition": "Olimpiade Bahasa Arab Kategori MTs Swasta",
    "level": "Provinsi Jawa Barat",
@@ -961,6 +1098,7 @@
    "year": 2023
   },
   {
+   "name": "Sami Yusuf Ahmad",
    "rank": "Juara 1",
    "competition": "Grand Final Olimpiade Bahasa Arab Kategori SMP Negeri-Swasta",
    "level": "Nasional",
@@ -968,6 +1106,7 @@
    "year": 2023
   },
   {
+   "name": "Fathurrahaman Hidayat",
    "rank": "Juara 3",
    "competition": "Lomba Pidato Bahasa Arab",
    "level": "DKI Jakarta – Bogor",
@@ -975,6 +1114,7 @@
    "year": 2022
   },
   {
+   "name": "Zulfy Kholidil Alam",
    "rank": "Juara 1",
    "competition": "MHQ Kategori Juz ‘Amma",
    "level": "",

@@ -26,8 +26,8 @@ Not in scope: the login dashboard and the registration system. Those stay on the
 - `design/*.dc.html`: approved designs. They use a template syntax (`{{hole}}`, `<sc-for>`, `<sc-if>`, `<x-dc>`, `<helmet>`, a `DCLogic` class in a script). Treat them as visual and markup specs. Convert holes and loops into Astro props and `.map()`, move logic into small scripts. Keep the markup, spacing, type, colors, and accessibility attributes as designed.
 - `design/Peta-situs.dc.html`: the site map and content inventory. It is the page list for this build.
 - `content/site.json`: single source of truth for levels, fees, PSB waves, FAQ, schedule, staff, academic calendar, contact. Pages must read from it; never hard-code a fee, date, or target in a page. Values containing `[...]` are placeholders: `known()` in `src/lib/site.ts` hides them, so no bracket ever reaches a page.
-- `content/prestasi.json`: achievements without students' names. `content/fasilitas.json`: facility photos with alt text and captions.
-- `src/content/artikel/*.md`: articles (migrated from the old site, students' names reduced to initials, covers with faces replaced by typographic covers). `src/content/halaman/*.md`: prose for content pages; they can quote site.json with `{{halaqah.ideal}}` etc. (see `src/lib/halaman.ts`). Both are editable in Sveltia CMS at `/admin`.
+- `content/prestasi.json`: achievements with students' full names (the school consented in October 2026). `content/fasilitas.json`: facility photos with alt text and captions.
+- `src/content/artikel/*.md`: articles (migrated from the old site with students' full names and the original cover photos; articles without a cover image get a typographic cover). `src/content/halaman/*.md`: prose for content pages; they can quote site.json with `{{halaqah.ideal}}` etc. (see `src/lib/halaman.ts`). Both are editable in Sveltia CMS at `/admin`.
 
 ## Pages and URLs
 
@@ -39,7 +39,7 @@ Keep the current site’s URLs so links and search rankings survive:
 - `/kurikulum/tahfizh`: `Kurikulum-tahfizh` content page. Same template for `/kurikulum/bahasa-arab`, `/tentang` (new), `/sehari-di-mahad` (new); use clearly marked placeholder content where the school has none.
 - `/artikel` and an article detail route: `Artikel`, `Artikel-detail`.
 - `/fasilitas`: `Fasilitas`.
-- `/prestasi`, `/kalender-akademik`, `/info/kajian`, `/pendidikan/tenaga/pendidik`: build with the content-page or list templates. Prestasi shows totals by competition and year; do not publish students’ full names without the school’s consent.
+- `/prestasi`, `/kalender-akademik`, `/info/kajian`, `/pendidikan/tenaga/pendidik`: build with the content-page or list templates. Prestasi shows totals by competition and year, then the full list by name and year.
 - `/jadwal/shalat` (today and the month, Kemenag times via myquran with the build-time calculation as fallback) and `/konversi/nama` (Latin-to-Arabic names in the browser, `src/lib/nama-arab.ts`: dictionary first, then by sound). Both replace the Laravel pages.
 - `/404`: designed not-found page (levels, `/psb`, WhatsApp).
 - The closing call to action on every page is the Gunung Salak landscape (`Landscape.astro`): headline, "Daftar santri baru", and a "Mulai dari sini" panel (WhatsApp, `/psb`, map). Content pages end with a "Selanjutnya" link above it, not a second dark band.
@@ -60,7 +60,7 @@ Keep the current site’s URLs so links and search rankings survive:
 - Shape: pill buttons and filter chips; 10px cells and small blocks, 16px cards, 22–28px panels and photos (tokens in `global.css`).
 - No thin rules or 1px outlined boxes. Separate with space, a tone step (`.card` is white on paper; paper on white sections) or striped table rows (`--stripe`). The only lines left are the day-view timeline's hour and prayer gridlines (a chart).
 - Frosted glass (`.glass`, `.glass-paper`, `.glass-night`, the CTA panel) only where something sits behind it: the sky and campus photo, the night sections, sticky bars and menus. Each fill is opaque enough for AA over whatever is behind, with a solid fallback.
-- Photos: the school's own, from its Instagram (@mahadtahfizhalyusro), in `public/photos`. No photos showing students' faces until the school confirms its imagery policy; the campus aerials are used now.
+- Photos: the school's own, from its Instagram (@mahadtahfizhalyusro), in `public/photos` as 800 and 1600 px WebP. The school consented (October 2026) to student photos from its Instagram and to students' full names. Every photo needs real Indonesian alt text; level pages take an optional `photo` in `site.json`.
 
 ## Accessibility (must keep)
 

@@ -33,7 +33,8 @@ export function starOpacity(min: number, pt: PrayerMinutes): number {
 export function sunAt(min: number, pt: PrayerMinutes): { x: number; y: number } | null {
   const t = (min - pt.terbit) / (pt.maghrib - pt.terbit);
   if (t < -0.04 || t > 1.04) return null;
-  return { x: Math.round(140 + clamp01(t) * 300), y: Math.round(310 - 178 * Math.sin(Math.PI * clamp01(t))) };
+  // A low arc over the left hill, under the text and clear of the photo on the right.
+  return { x: Math.round(120 + clamp01(t) * 360), y: Math.round(300 - 60 * Math.sin(Math.PI * clamp01(t))) };
 }
 
 /** Deterministic star field, so the build and the browser agree. */

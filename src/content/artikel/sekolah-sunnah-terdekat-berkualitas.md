@@ -1,4 +1,6 @@
 ---
+cover: "/uploads/artikel/sekolah-sunnah-terdekat-berkualitas.webp"
+coverAlt: "Santri mengerjakan tes di ruang kelas, diawasi seorang ustadz"
 title: "Sekolah Sunnah Terdekat Berkualitas"
 date: "2024-11-15T22:02:54+07:00"
 author: "Yudi Saeful Rizal, S.E., M.E."

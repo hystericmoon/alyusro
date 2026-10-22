@@ -1,10 +1,13 @@
 ---
-// /prestasi: totals by competition and year from content/prestasi.json.
-// Students' names are not published (no consent from the school yet).
+// /prestasi: totals by competition and year from content/prestasi.json,
+// then every achievement by name (the school consented to publishing names).
 import ContentPage from '@/components/content/ContentPage.astro';
-import { summary } from '@/lib/prestasi';
+import { summary, records } from '@/lib/prestasi';
 
 const s = summary();
+const byYear = [...new Set(records.map((r) => String(r.year)))]
+  .sort((a, b) => Number(b) - Number(a))
+  .map((year) => ({ year, rows: records.filter((r) => String(r.year) === year) }));
 const span = `${Math.min(...s.years)}–${Math.max(...s.years)}`;
 ---
 <ContentPage
@@ -15,6 +18,7 @@ const span = `${Math.min(...s.years)}–${Math.max(...s.years)}`;
     { id: 'ringkasan', text: 'Ringkasan' },
     { id: 'per-lomba', text: 'Per jenis lomba' },
     { id: 'per-tingkat', text: 'Per tingkat' },
+    { id: 'daftar', text: 'Daftar lengkap' },
   ]}
 >
   <h2 id="ringkasan" class="sr-only">Ringkasan</h2>
@@ -76,5 +80,39 @@ const span = `${Math.min(...s.years)}–${Math.max(...s.years)}`;
       ))}
     </tbody>
   </table>
-  <p class="text-15 text-muted">Nama santri tidak ditampilkan. Kabar lomba terbaru ada di <a href="/artikel/">Kajian &amp; artikel</a>.</p>
+
+  <h2 id="daftar">Daftar lengkap</h2>
+  <p>Kabar lomba terbaru ada di <a href="/artikel/">Kajian &amp; artikel</a>.</p>
+  {
+    byYear.map((y) => (
+      <>
+        <h3 id={`tahun-${y.year}`}>{y.year} <span class="font-normal text-muted">· {y.rows.length} prestasi</span></h3>
+        <div class="scroll-cue" tabindex="0" role="region" aria-label={`Daftar prestasi ${y.year}, dapat digeser ke samping`}>
+          <table class="min-w-[720px]">
+            <caption class="sr-only">Daftar prestasi tahun {y.year}</caption>
+            <thead>
+              <tr>
+                <th scope="col">Nama</th>
+                <th scope="col">Peringkat</th>
+                <th scope="col">Lomba</th>
+                <th scope="col">Tingkat</th>
+                <th scope="col">Penyelenggara</th>
+              </tr>
+            </thead>
+            <tbody>
+              {y.rows.map((r) => (
+                <tr>
+                  <th scope="row">{r.name}</th>
+                  <td class="whitespace-nowrap">{r.rank}</td>
+                  <td>{r.competition}</td>
+                  <td>{r.level || '–'}</td>
+                  <td>{r.organizer || '–'}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </>
+    ))
+  }
 </ContentPage>

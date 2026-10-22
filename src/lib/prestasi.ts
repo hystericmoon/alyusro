@@ -1,6 +1,6 @@
 import data from '../../content/prestasi.json';
 
-export type Record = { rank: string; competition: string; level: string; organizer: string; year: number | string };
+export type Record = { name: string; rank: string; competition: string; level: string; organizer: string; year: number | string };
 export const records = data.records as Record[];
 
 /** Competition family, by keywords. Anything unmatched counts as "Lomba lainnya". */

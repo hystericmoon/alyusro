@@ -1,4 +1,6 @@
 ---
+cover: "/uploads/artikel/penyuluhan-dan-pemeriksaan-kesehatan-santri-mahad-tahfizh-al-yusro-bekerjasama-dengan-puskesmas-tenjolaya.webp"
+coverAlt: "Kolase penyuluhan kesehatan: santri duduk di masjid mendengarkan sosialisasi penyakit TBC dari tim Puskesmas Tenjolaya"
 title: "Penyuluhan dan pemeriksaan kesehatan santri Ma'had Tahfizh Al Yusro bekerjasama dengan puskesmas tenjolaya"
 date: "2024-11-01T07:26:55+07:00"
 author: "Yudi Saeful Rizal, S.E., M.E."

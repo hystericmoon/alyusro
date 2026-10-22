@@ -1,3 +1,5 @@
 # Read by Netlify (and Cloudflare Pages).
 # Old category pages now live on the article list (filters are by series).
 /artikel/categories/*  /artikel/  301
+# The IMFEST article had its student name removed from the URL in an earlier preview.
+/artikel/santri-mahad-tahfizh-al-yusro-raih-juara-3-mhq-smp-di-imfest-2024/  /artikel/santri-mahad-tahfizh-al-yusro-muhammad-ali-chaniago-raih-juara-3-mhq-smp-di-imfest-2024/  301

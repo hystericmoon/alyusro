@@ -7,6 +7,13 @@ import { site, known } from '@/lib/site';
 
 const ds = site.dailySchedule as unknown as { saturday: { title: string; detail: string }; sunday: { title: string; detail: string } };
 const sunday = known(ds.sunday.title);
+// The school's own photos (from its Instagram, October 2026).
+const gallery = [
+  { name: 'santri-membaca-quran', alt: 'Santri putra berpeci hitam membaca mushaf di meja kelas saat kegiatan belajar', caption: 'Kegiatan belajar mengajar, Oktober 2026', w: 1600, h: 587 },
+  { name: 'santri-pergantian-kelas', alt: 'Santri berjalan di selasar antara gedung kelas saat pergantian pelajaran', caption: 'Pergantian kelas di gedung putra', w: 1600, h: 618 },
+  { name: 'santri-datang-ke-kelas', alt: 'Dua santri berseragam batik biru berjalan masuk melewati gerbang menuju kelas', caption: 'Pagi hari ujian tengah semester', w: 1562, h: 1454 },
+  { name: 'santri-putri-ujian', alt: 'Santri putri bercadar mengerjakan soal ujian di meja kelas', caption: 'Ujian tengah semester di kelas putri', w: 1600, h: 1068 },
+];
 ---
 <ContentPage
   title="Sehari di ma’had"
@@ -15,6 +22,7 @@ const sunday = known(ds.sunday.title);
   toc={[
     { id: 'jadwal', text: 'Jadwal tahfizh' },
     { id: 'akhir-pekan', text: 'Akhir pekan' },
+    { id: 'suasana', text: 'Suasana di ma’had' },
   ]}
   motion
   cta={{ text: 'Cara santri menghafal dan diuji', label: 'Kurikulum tahfizh', href: '/kurikulum/tahfizh/' }}
@@ -26,4 +34,21 @@ const sunday = known(ds.sunday.title);
   <p><strong>Sabtu.</strong> {ds.saturday.detail}</p>
   {sunday && <p><strong>Ahad.</strong> {ds.sunday.detail || sunday}</p>}
   <p class="text-15 text-muted">Jam pelajaran sekolah dan bahasa Arab mengisi waktu antara Dhuha dan Ashar; rinciannya mengikuti jadwal tiap jenjang.</p>
+
+  <h2 id="suasana">Suasana di ma’had</h2>
+  <ul class="m-0 grid list-none gap-16 p-0 sm:grid-cols-2">
+    {
+      gallery.map((g, i) => (
+        <li class:list={['m-0', i < 2 && 'sm:col-span-2']}>
+          <figure class="m-0 flex flex-col gap-8">
+            <picture>
+              <source type="image/webp" srcset={`/photos/${g.name}-800.webp 800w, /photos/${g.name}-1600.webp 1600w`} sizes="(min-width: 1024px) 760px, 100vw" />
+              <img src={`/photos/${g.name}-1600.webp`} width={g.w} height={g.h} alt={g.alt} loading="lazy" decoding="async" class:list={['block w-full rounded-lg object-cover', i < 2 ? 'aspect-[21/9]' : 'aspect-[4/3]']} />
+            </picture>
+            <figcaption class="text-15 text-muted">{g.caption}</figcaption>
+          </figure>
+        </li>
+      ))
+    }
+  </ul>
 </ContentPage>

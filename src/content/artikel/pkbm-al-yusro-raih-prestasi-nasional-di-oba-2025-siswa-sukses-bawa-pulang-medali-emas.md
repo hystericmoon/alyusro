@@ -1,4 +1,6 @@
 ---
+cover: "/uploads/artikel/pkbm-al-yusro-raih-prestasi-nasional-di-oba-2025-siswa-sukses-bawa-pulang-medali-emas.webp"
+coverAlt: "Peserta didik peraih medali OBA 2025 bersama ustadz pendamping, berfoto dengan medali dan piala di aula lomba"
 title: "PKBM Al Yusro Raih Prestasi Nasional di OBA 2025: Siswa Sukses Bawa Pulang Medali Emas"
 date: "2025-11-15T12:41:19+07:00"
 author: "Yudi Saeful Rizal, S.E., M.E."
@@ -16,12 +18,12 @@ Prestasi ini melanjutkan tren keberhasilan PKBM Al Yusro dalam tiga tahun terakh
 
 ### **Kategori 8 SMP Negeri/Swasta Boarding School Tingkat Nasional**
 
-1. **M. A. C.** – *Medali Emas (Juara 1)*
+1. **Muhammad Ali Chaniago** – *Medali Emas (Juara 1)*
 
 ### **Kategori 3 SMA Negeri/Swasta Boarding School Tingkat Nasional**
 
-1. **H. A.** – *Medali Perak*
-2. **F. R. P.** – *Medali Perak*
+1. **Haafizh Abdullah** – *Medali Perak*
+2. **Fuji Raflesa Pamungkas** – *Medali Perak*
 
 ### **Kategori Guru Bahasa Arab Tingkat Nasional**
 

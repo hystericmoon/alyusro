@@ -1,4 +1,6 @@
 ---
+cover: "/uploads/artikel/pkbm-al-yusro-gelar-kegiatan-halal-bihalal-idul-fitri-1447-h.webp"
+coverAlt: "Santri dan asatidz bersalaman dalam halal bihalal Idul Fitri 1447 H di halaman Al Yusro"
 title: "PKBM Al Yusro Gelar Kegiatan Halal Bihalal Idul Fitri 1447 H"
 date: "2026-04-06T14:02:26+07:00"
 author: "Yudi Saeful Rizal, S.E., M.E."
