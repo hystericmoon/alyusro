@@ -6,7 +6,7 @@ const escapeHtml = (s: string) => s.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '
 
 /**
  * Title as HTML with the honorifics ﷻ and ﷺ wrapped: as single ligature
- * glyphs they render far larger than the text around them in Markazi.
+ * glyphs they render far larger than the text around them.
  */
 export const titleHtml = (t: string) => escapeHtml(t).replace(/[\uFDFA\uFDFB]/g, (m) => `<span class="honorific" lang="ar">${m}</span>`);
 

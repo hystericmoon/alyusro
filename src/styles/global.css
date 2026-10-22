@@ -95,8 +95,10 @@
   /* Type */
   /* Size-matched local fallbacks (see the @font-face rules below) keep the
      layout still while the web fonts load. */
-  --font-display: "Markazi Text", "Markazi Fallback Georgia", "Markazi Fallback Noto", "Markazi Fallback Times", serif;
-  --font-body: "Atkinson Hyperlegible Next", "Atkinson Fallback Roboto", "Atkinson Fallback Arial", sans-serif;
+  --font-display: "Manrope Display", "Manrope Display Fallback Roboto", "Manrope Display Fallback Arial", sans-serif;
+  --font-arabic: "Almarai", "Noto Sans Arabic", "Segoe UI", Tahoma, sans-serif;
+  --font-naskh: "Noto Naskh Arabic", "Amiri", "Traditional Arabic", serif;
+  --font-body: "Manrope", "Manrope Fallback Roboto", "Manrope Fallback Arial", sans-serif;
   --default-font-family: var(--font-body);
 
   --font-weight-normal: 400;
@@ -135,35 +137,103 @@
 }
 
 /*
-  Fallback fonts scaled to the width of the web fonts, so text does not
-  reflow (and the page does not jump) when Markazi and Atkinson arrive.
-  Ratios measured against each local font; line heights are explicit in the
-  CSS, so only width needs matching.
+  Manrope, self-hosted (public/fonts, SIL OFL; one variable file per subset,
+  400–800) under two names:
+  - "Manrope": body and UI, at its natural size.
+  - "Manrope Display": headings, with size-adjust: 74%. The heading scale was
+    drawn for Markazi Text, which is about 30% narrower, so this keeps every
+    heading at its designed width instead of rewriting each size. Glyphs are
+    about 0.74 of the font size, so one leading (0.86, about 1.15 of the
+    visible size) replaces the Markazi-tuned ones.
+  Each has local fallbacks matched to its width, so text does not rewrap (and
+  the page does not jump) when Manrope arrives.
 */
 @font-face {
-  font-family: "Markazi Fallback Georgia";
-  src: local("Georgia");
-  size-adjust: 73%;
+  font-family: "Manrope";
+  src: url("/fonts/manrope-latin.woff2") format("woff2");
+  font-weight: 400 800;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 @font-face {
-  font-family: "Markazi Fallback Noto";
-  src: local("Noto Serif"), local("NotoSerif-Regular"), local("Droid Serif");
-  size-adjust: 73%;
+  font-family: "Manrope";
+  src: url("/fonts/manrope-latin-ext.woff2") format("woff2");
+  font-weight: 400 800;
+  font-display: swap;
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 @font-face {
-  font-family: "Markazi Fallback Times";
-  src: local("Times New Roman"), local("Liberation Serif"), local("Tinos");
-  size-adjust: 81%;
-}
-@font-face {
-  font-family: "Atkinson Fallback Roboto";
+  font-family: "Manrope Fallback Roboto";
   src: local("Roboto"), local("Roboto-Regular");
-  size-adjust: 106%;
+  size-adjust: 102.3%;
 }
 @font-face {
-  font-family: "Atkinson Fallback Arial";
+  font-family: "Manrope Fallback Arial";
   src: local("Arial"), local("Helvetica Neue"), local("Helvetica"), local("Liberation Sans");
-  size-adjust: 98%;
+  size-adjust: 101.9%;
+}
+@font-face {
+  font-family: "Manrope Display";
+  src: url("/fonts/manrope-latin.woff2") format("woff2");
+  font-weight: 400 800;
+  font-display: swap;
+  size-adjust: 74%;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Manrope Display";
+  src: url("/fonts/manrope-latin-ext.woff2") format("woff2");
+  font-weight: 400 800;
+  font-display: swap;
+  size-adjust: 74%;
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Manrope Display Fallback Roboto";
+  src: local("Roboto Bold"), local("Roboto-Bold");
+  font-weight: 500 800;
+  size-adjust: 76.4%;
+}
+@font-face {
+  font-family: "Manrope Display Fallback Arial";
+  src: local("Arial Bold"), local("Arial-BoldMT"), local("Helvetica Neue Bold"), local("Liberation Sans Bold"), local("LiberationSans-Bold");
+  font-weight: 500 800;
+  size-adjust: 72.7%;
+}
+.font-display,
+:where(.prose-ad, .prose-k) :is(h2, h3) {
+  letter-spacing: -0.02em;
+  line-height: 0.86;
+}
+/* A sentence set in the display font (the juz-map readout) reads at ~1.5. */
+.font-display.display-text {
+  line-height: 1.1;
+}
+
+/*
+  Arabic: Almarai Bold for names, labels and headings. Unlayered, so it wins
+  over the display and prose font utilities. Article bodies (ayat, hadith,
+  du'a) and the honorifics ﷺ ﷻ use Noto Naskh Arabic below: a Naskh is the
+  convention for Qur'an text, and it has every Qur'anic mark the articles use.
+*/
+:lang(ar) {
+  font-family: var(--font-arabic);
+  font-weight: 700;
+  font-size-adjust: none;
+  letter-spacing: 0;
+}
+/* Arabic set as a heading: ExtraBold, with room for the tall letters. */
+.font-display:lang(ar) {
+  font-weight: 800;
+  line-height: 1.4;
+}
+.prose-ad :lang(ar),
+.honorific {
+  font-family: var(--font-naskh);
+  font-weight: 500;
+}
+.honorific {
+  font-weight: 400;
 }
 
 @layer base {
@@ -433,7 +503,7 @@ html:has(#menu-hp:popover-open) {
   :where(.prose-ad) li { margin-bottom: 8px; }
   :where(.prose-ad) a { text-underline-offset: 3px; overflow-wrap: anywhere; }
   :where(.prose-ad) blockquote { margin: 0 0 18px; padding-left: 20px; border-left: 3px solid var(--color-lapis-2); color: var(--color-body); }
-  :where(.prose-ad) [lang="ar"] { font-family: var(--font-display); font-size: 1.3em; line-height: 1.9; }
+  :where(.prose-ad) [lang="ar"] { font-family: var(--font-naskh); font-size: 1.3em; line-height: 1.9; }
   :where(.prose-ad) p[lang="ar"], :where(.prose-ad) blockquote[lang="ar"] { text-align: right; }
   :where(.prose-ad) blockquote[lang="ar"] { border-left: 0; border-right: 3px solid var(--color-lapis-2); padding: 0 20px 0 0; }
   :where(.prose-ad) span[lang="ar"] { font-size: 1.2em; }
@@ -455,7 +525,7 @@ html:has(#menu-hp:popover-open) {
   :where(.prose-k) thead th { font-size: 14px; font-weight: 500; color: var(--color-muted); border-bottom: 2px solid var(--color-ink); }
   :where(.prose-k) tbody th { font-weight: 700; }
   :where(.prose-k) th:last-child, :where(.prose-k) td:last-child { padding-right: 0; }
-  :where(.prose-k) [lang="ar"] { font-family: var(--font-display); font-size: 1.25em; }
+  :where(.prose-k) [lang="ar"] { font-family: var(--font-arabic); font-size: 1.25em; }
 }
 
 @layer components {

@@ -55,7 +55,7 @@ Keep the current site’s URLs so links and search rankings survive:
 
 ## Design system
 
-- Type: Markazi Text (headings, Arabic) + Atkinson Hyperlegible Next (body, UI), Google Fonts.
+- Type: Manrope for body, UI and headings, self-hosted in `public/fonts` (headings use the "Manrope Display" face with `size-adjust: 74%`, because the heading scale was drawn for the narrower Markazi Text; both faces have width-matched fallbacks). Arabic: Almarai Bold for names, labels and headings (`:lang(ar)`, ExtraBold when set as a heading); Noto Naskh Arabic for Arabic in article bodies (ayat, hadith, du'a) and the honorifics ﷺ ﷻ. Almarai and Noto Naskh load from Google Fonts.
 - Colors: paper `#F7F7F4`, white `#FFFFFF`, ink `#1B2235`, body text `#2C3448`, muted `#4A5368`, rule `#D9DCE4`, lapis `#26418F`. Lapis scale for the juz map: `#DCE3F3 #B7C6E9 #8DA3D9 #4F6DB8 #26418F`. Amber `#F2A33A` is used only for time (the “now” line, the sun).
 - Radius 2px on buttons and cells, 4–6px on panels. No photos of faces; photo slots are placeholders until the school supplies images and confirms its imagery policy.
 
