@@ -69,16 +69,16 @@ const btnGhostNight = 'btn-ghost-night';
           </a>
         </div>
       </div>
-      <dl class="m-0 box-border min-w-0 flex-[1_1_360px] border border-rule bg-white px-20 py-8 sm:px-28">
+      <dl class="card m-0 box-border min-w-0 flex-[1_1_360px] px-20 py-10 sm:px-28">
         {
           [...v.facts, ['Biaya pendaftaran', v.regFee]].map(([k, val]) => (
-            <div class="flex flex-wrap justify-between gap-x-16 gap-y-4 border-b border-rule-soft py-16">
+            <div class="flex flex-wrap justify-between gap-x-16 gap-y-4 py-14">
               <dt class="text-muted">{k}</dt>
               <dd class="m-0 text-right font-bold">{val}</dd>
             </div>
           ))
         }
-        <div class="flex flex-wrap items-center justify-between gap-x-16 gap-y-4 py-16">
+        <div class="flex flex-wrap items-center justify-between gap-x-16 gap-y-4 py-14">
           <dt class="text-muted">Pendaftaran</dt>
           <dd class:list={['m-0 text-right font-bold', v.open ? 'text-lapis' : 'text-muted']}>{v.open ? 'Dibuka' : 'Belum dibuka'}</dd>
         </div>
@@ -86,12 +86,12 @@ const btnGhostNight = 'btn-ghost-night';
     </div>
   </section>
 
-  <nav aria-label="Isi halaman" class="sticky top-0 z-[3] border-y border-rule bg-paper">
-    <ul class="scroll-cue m-0 mx-auto box-border flex max-w-page list-none gap-x-4 p-0 px-10 sm:flex-wrap sm:px-30">
+  <nav aria-label="Isi halaman" class="glass-paper sticky top-0 z-[3]">
+    <ul class="scroll-cue m-0 mx-auto box-border flex max-w-page list-none gap-x-4 p-0 px-10 py-6 sm:flex-wrap sm:px-30">
       {
         sections.map((s) => (
           <li class="flex-none">
-            <a href={`#${s.id}`} class="link-slide inline-flex min-h-48 items-center whitespace-nowrap px-10 text-15 font-bold text-ink [background-origin:content-box]">
+            <a href={`#${s.id}`} class="inline-flex min-h-44 items-center whitespace-nowrap rounded-full px-14 text-15 font-bold text-ink no-underline transition-colors duration-150 hover:bg-white hover:text-lapis">
               {s.label}
             </a>
           </li>
@@ -105,11 +105,11 @@ const btnGhostNight = 'btn-ghost-night';
       <div class="flex max-w-[420px] flex-[1_1_320px] flex-col gap-16">
         <h2 id="j-hafalan" class={h2}>Target hafalan: {lv.target}</h2>
         <p class="m-0 text-body">{lv.targetNote}</p>
-        <ul class="m-0 mt-8 list-none border-t border-rule p-0">
+        <ul class="m-0 mt-8 flex list-none flex-col gap-4 p-0">
           {
             v.juzRows.map((r) => (
-              <li class="flex items-center gap-12 border-b border-rule py-12">
-                <span aria-hidden="true" class:list={['size-14 flex-none shadow-[inset_0_0_0_1px_rgb(27_34_53/0.3)]', SWATCH[r.tone]]} />
+              <li class="flex items-center gap-12 rounded-sm bg-paper px-14 py-12">
+                <span aria-hidden="true" class:list={['size-14 flex-none rounded-[4px] shadow-[inset_0_0_0_1px_rgb(27_34_53/0.3)]', SWATCH[r.tone]]} />
                 <span class="flex-auto font-bold">{r.label}</span>
                 <span class="text-right text-body">{r.value}</span>
               </li>
@@ -129,10 +129,10 @@ const btnGhostNight = 'btn-ghost-night';
               ))}
             </div>
           ) : (
-            <div class="box-border flex flex-col gap-14 border border-rule p-20 sm:p-28">
+            <div class="box-border flex flex-col gap-14 rounded-xl bg-paper p-20 sm:p-28">
               <div aria-hidden="true" class="flex h-56 gap-4">
                 {Array.from({ length: 30 }, (_, i) => (
-                  <span class:list={['flex-[1_1_0]', i < v.juzCount ? 'bg-lapis' : 'bg-rule-soft']} />
+                  <span class:list={['flex-[1_1_0] rounded-full', i < v.juzCount ? 'bg-lapis' : 'bg-rule-soft']} />
                 ))}
               </div>
               <p class="m-0 text-15 text-body">
@@ -148,8 +148,8 @@ const btnGhostNight = 'btn-ghost-night';
   <section id="lulusan" aria-labelledby="j-lulusan" class="scroll-mt-48">
     <div class={wrap}>
       <h2 id="j-lulusan" class:list={[h2, 'mb-32']}>Lulusan {lv.name} diharapkan</h2>
-      <ul class="m-0 grid list-none grid-cols-[repeat(auto-fit,minmax(min(340px,100%),1fr))] gap-x-48 border-t-2 border-ink p-0">
-        {lv.outcomes.map((o) => <li class="border-b border-rule py-16 text-ink [text-wrap:pretty]">{o}</li>)}
+      <ul class="m-0 grid list-none grid-cols-[repeat(auto-fit,minmax(min(340px,100%),1fr))] gap-12 p-0">
+        {lv.outcomes.map((o) => <li class="card px-20 py-18 text-ink [text-wrap:pretty]">{o}</li>)}
       </ul>
     </div>
   </section>
@@ -163,25 +163,25 @@ const btnGhostNight = 'btn-ghost-night';
       <div class="min-w-0 flex-[1.4_1_480px]">
         {
           v.fees.length > 0 ? (
-            <table class="w-full border-collapse text-17">
+            <table class="w-full text-17 [--stripe:var(--color-paper)]">
               <caption class="sr-only">Rincian biaya {lv.name}</caption>
               <thead>
                 <tr>
-                  <th scope="col" class="border-b-2 border-ink pb-10 text-left text-14 font-medium text-muted">Komponen</th>
-                  <th scope="col" class="border-b-2 border-ink pb-10 text-right text-14 font-medium text-muted">Jumlah</th>
+                  <th scope="col" class="px-16 pb-10 text-left text-14 font-medium text-muted">Komponen</th>
+                  <th scope="col" class="px-16 pb-10 text-right text-14 font-medium text-muted">Jumlah</th>
                 </tr>
               </thead>
               <tbody>
                 {v.fees.map((f) => (
-                  <tr class="transition-colors duration-150 hover:bg-paper">
-                    <th scope="row" class="border-b border-rule py-16 pr-16 text-left font-medium">{f.item}</th>
-                    <td class="border-b border-rule py-16 text-right font-bold tabular-nums">{f.value}</td>
+                  <tr>
+                    <th scope="row" class="px-16 py-16 text-left font-medium">{f.item}</th>
+                    <td class="px-16 py-16 text-right font-bold tabular-nums">{f.value}</td>
                   </tr>
                 ))}
               </tbody>
             </table>
           ) : (
-            <div class="flex flex-col items-start gap-14 border border-dashed border-placeholder p-20 sm:p-28">
+            <div class="flex flex-col items-start gap-14 rounded-xl bg-paper p-20 sm:p-28">
               <p class="m-0 font-display text-[28px] font-semibold leading-[1.15]">Rincian biaya {lv.name} belum dipublikasikan</p>
               <p class="m-0 text-body">Tim pendaftaran bisa menjelaskan biaya pendaftaran, daftar ulang, dan biaya tahunan lewat WhatsApp.</p>
               <a href={school.whatsapp.url} class="btn-primary">
@@ -217,34 +217,34 @@ const btnGhostNight = 'btn-ghost-night';
                   'Ikuti tes masuk di ma’had sesuai gelombang',
                   'Daftar ulang setelah diterima',
                 ].map((step, i) => (
-                  <li class="flex flex-col gap-6 border-t-2 border-on-night pt-14">
+                  <li class="glass-night flex flex-col gap-6 rounded-lg p-20">
                     <span aria-hidden="true" class="font-display text-32 leading-none text-on-night-muted">{i + 1}</span>
                     <span>{step}</span>
                   </li>
                 ))}
               </ol>
               {v.wavesAnnounced ? (
-                <table class="w-full border-collapse">
+                <table class="w-full [--stripe:rgb(255_255_255/0.07)]">
                   <caption class="pb-10 text-left font-bold text-white">Jadwal gelombang</caption>
                   <thead>
                     <tr>
                       {['Gelombang', 'Pendaftaran dibuka', 'Tes masuk'].map((h) => (
-                        <th scope="col" class="border-b border-night-rule-3 pb-10 pr-12 text-left text-14 font-medium text-on-night-muted">{h}</th>
+                        <th scope="col" class="px-12 pb-10 text-left text-14 font-medium text-on-night-muted">{h}</th>
                       ))}
                     </tr>
                   </thead>
                   <tbody>
                     {v.waves.map((w) => (
                       <tr>
-                        <th scope="row" class="border-b border-night-rule py-14 pr-12 text-left font-bold">{w.name}</th>
-                        <td class="border-b border-night-rule py-14 pr-12">{w.opens ?? 'Segera diumumkan'}</td>
-                        <td class="border-b border-night-rule py-14">{w.test ?? 'Segera diumumkan'}</td>
+                        <th scope="row" class="px-12 py-14 text-left font-bold">{w.name}</th>
+                        <td class="px-12 py-14">{w.opens ?? 'Segera diumumkan'}</td>
+                        <td class="px-12 py-14">{w.test ?? 'Segera diumumkan'}</td>
                       </tr>
                     ))}
                   </tbody>
                 </table>
               ) : (
-                <p class="m-0 border-t border-night-rule-3 pt-16 text-on-night-body">
+                <p class="glass-night m-0 rounded-lg px-20 py-16 text-on-night-body">
                   Jadwal gelombang dan tes masuk belum diumumkan.{' '}
                   <a href={school.whatsapp.url} class="font-bold text-white underline-offset-4 hover:text-on-night-body">Tanyakan lewat WhatsApp</a>
                 </p>
@@ -284,7 +284,7 @@ const btnGhostNight = 'btn-ghost-night';
     </div>
   </section>
 
-  <nav aria-label="Jenjang lain" class="border-t border-rule">
+  <nav aria-label="Jenjang lain">
     <div class="mx-auto box-border flex max-w-page flex-wrap justify-between gap-16 px-20 pb-56 pt-32 sm:px-40">
       {
         v.prev && (

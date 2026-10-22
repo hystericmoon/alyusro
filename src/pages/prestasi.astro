@@ -25,7 +25,7 @@ const span = `${Math.min(...s.years)}–${Math.max(...s.years)}`;
         [String(s.nationalFirsts), 'juara pertama tingkat nasional'],
         [String(s.byFamily[0]?.total ?? 0), s.byFamily[0]?.family ?? ''],
       ].map(([n, label]) => (
-        <div class="flex flex-col-reverse gap-4 border-t-2 border-ink pt-12">
+        <div class="card flex flex-col-reverse gap-4 p-20 sm:p-24">
           <dt class="text-15 text-body">{label}</dt>
           <dd class="m-0 font-display text-[56px] font-semibold leading-none text-lapis">{n}</dd>
         </div>

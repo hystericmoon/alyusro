@@ -24,7 +24,7 @@ const kajian = site.kajianRutin.map((k) => ({
 }));
 const PAGE = 12;
 const chip =
-  'inline-flex min-h-44 cursor-pointer items-center rounded-sm border border-chip-rule bg-white px-16 font-body text-15 font-bold text-ink transition-[background-color,color,border-color,transform] duration-150 hover:border-ink active:scale-[0.97] aria-pressed:border-ink aria-pressed:bg-ink aria-pressed:text-white';
+  'inline-flex min-h-44 cursor-pointer items-center rounded-full border-0 bg-white px-18 font-body text-15 font-bold text-ink transition-[background-color,color,transform] duration-150 hover:bg-lapis-1 active:scale-[0.97] aria-pressed:bg-ink aria-pressed:text-white';
 ---
 <BaseLayout
   title="Kajian & artikel"
@@ -45,7 +45,7 @@ const chip =
       <ul class="m-0 grid list-none grid-cols-[repeat(auto-fit,minmax(min(260px,100%),1fr))] gap-12 p-0">
         {
           kajian.map((k) => (
-            <li class="flex flex-col gap-6 rounded-md bg-night-panel p-20">
+            <li class="glass-night flex flex-col gap-6 rounded-lg p-20 sm:p-24">
               <strong class="text-18 text-white">{k.name}</strong>
               <span class="text-on-night-body">{k.when}</span>
               {k.audience && <span class="text-14 text-on-night-muted">{k.audience}</span>}
@@ -63,12 +63,12 @@ const chip =
       featured && (
         <a
           href={`/artikel/${featured.id}/`}
-          class="group mb-40 flex flex-wrap gap-x-48 gap-y-24 border-b-2 border-ink pb-48 text-ink no-underline hover:text-ink"
+          class="card group mb-56 flex flex-wrap gap-x-48 gap-y-24 p-16 text-ink no-underline hover:text-ink sm:p-20"
         >
-          <div class="min-w-0 flex-[1_1_420px] overflow-hidden">
+          <div class="min-w-0 flex-[1_1_420px] overflow-hidden rounded-md">
             <ArticleCover article={featured} ratio="16/9" eager class="transition-transform duration-300 group-hover:scale-[1.02]" />
           </div>
-          <div class="flex flex-[1_1_380px] flex-col justify-center gap-12">
+          <div class="flex flex-[1_1_380px] flex-col justify-center gap-12 px-8 pb-12 sm:pb-0 sm:pr-24">
             <span class="text-14 font-bold text-lapis">Paling banyak dibaca</span>
             <span class="font-display text-[clamp(38px,4vw,52px)] font-semibold leading-none underline decoration-2 underline-offset-[6px] group-hover:text-lapis">
               <Fragment set:html={titleHtml(featured.data.title)} />
@@ -99,7 +99,7 @@ const chip =
         {
           list.map((a) => (
             <li data-item data-key={filterKey(a)} class="group relative flex flex-col gap-10">
-              <div class="overflow-hidden">
+              <div class="overflow-hidden rounded-lg">
                 <ArticleCover article={a} class="transition-transform duration-300 group-hover:scale-[1.03]" />
               </div>
               <span class="text-14 font-bold text-lapis">{kicker(a)}</span>

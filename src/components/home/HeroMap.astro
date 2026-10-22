@@ -42,12 +42,12 @@ const yearText = year ? ` tahun ajaran ${year}` : '';
     </div>
     {
       primaryOpen ? (
-        <p class="m-0 border-t border-rule pt-20 text-15 text-muted">
+        <p class="m-0 rounded-md bg-lapis-1 px-18 py-14 text-15 text-body">
           Pendaftaran {openNames}{yearText} sedang dibuka.{' '}
           <a href={primaryOpen.path} class="font-bold underline-offset-[3px]">Lihat jadwal dan biaya</a>
         </p>
       ) : (
-        <p class="m-0 border-t border-rule pt-20 text-15 text-muted">
+        <p class="m-0 rounded-md bg-white px-18 py-14 text-15 text-body">
           Pendaftaran santri baru{yearText} belum dibuka.{' '}
           <a href={infoGroupUrl} class="font-bold underline-offset-[3px]">Gabung grup info WhatsApp</a>
         </p>
@@ -55,8 +55,8 @@ const yearText = year ? ` tahun ajaran ${year}` : '';
     }
   </div>
 
-  <div class="box-border min-w-0 flex-[1.35_1_560px] border border-rule bg-white p-10 max-sm:basis-full">
-    <div class="flex flex-col gap-20 border border-lapis-2 p-16 sm:p-32">
+  <div class="card box-border min-w-0 flex-[1.35_1_560px] max-sm:basis-full">
+    <div class="flex flex-col gap-20 p-20 sm:p-36">
       <div class="flex flex-col gap-6">
         <h2 class="m-0 font-display text-32 font-semibold leading-[1.1]">{map.title}</h2>
         <p class="m-0 max-w-[46em] text-15 text-muted">{map.description}</p>

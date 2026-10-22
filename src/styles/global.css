@@ -124,12 +124,14 @@
   --text-32: 32px;
   --text-34: 34px;
 
-  /* Radius: 2px buttons and cells, 4–6px panels */
+  /* Radius: pill buttons and chips (full), 10px cells and small blocks,
+     16px cards, 22–28px large panels and photos */
   --radius-none: 0;
-  --radius-sm: 2px;
-  --radius-xs: 3px;
-  --radius-md: 4px;
-  --radius-lg: 6px;
+  --radius-xs: 6px;
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 22px;
+  --radius-xl: 28px;
   --radius-full: 9999px;
 
   --default-transition-duration: 150ms;
@@ -318,18 +320,18 @@ html:has(#menu-hp:popover-open) {
     gap: 10px;
     box-sizing: border-box;
     min-height: 48px;
-    padding: 0 20px;
-    border-radius: var(--radius-sm);
+    padding: 0 24px;
+    border: 0;
+    border-radius: var(--radius-full);
     font-size: 16px;
     font-weight: 700;
     text-decoration: none;
-    transition: background-color 150ms, color 150ms, border-color 150ms, transform 120ms;
+    transition: background-color 150ms, color 150ms, transform 120ms;
   }
   :is(.btn-primary, .btn-secondary, .btn-light, .btn-ghost-night):active {
-    transform: translateY(1px);
+    transform: scale(0.97);
   }
   .btn-primary {
-    padding: 0 22px;
     background: var(--color-lapis);
     color: var(--color-white);
   }
@@ -337,19 +339,17 @@ html:has(#menu-hp:popover-open) {
     background: var(--color-lapis-deep);
     color: var(--color-white);
   }
-  /* Outline on light backgrounds */
+  /* Secondary on light backgrounds: a tinted fill, one step from the page */
   .btn-secondary {
-    border: 1px solid var(--color-ink);
-    background: var(--color-white);
+    background: var(--color-lapis-1);
     color: var(--color-ink);
   }
   .btn-secondary:hover {
-    background: var(--color-ink);
-    color: var(--color-white);
+    background: var(--color-lapis-2);
+    color: var(--color-ink);
   }
   /* Solid white on night backgrounds */
   .btn-light {
-    padding: 0 22px;
     background: var(--color-white);
     color: var(--color-ink);
   }
@@ -357,14 +357,52 @@ html:has(#menu-hp:popover-open) {
     background: var(--color-sky-50);
     color: var(--color-ink);
   }
-  /* Outline on night backgrounds */
+  /* Frosted on night backgrounds */
   .btn-ghost-night {
-    border: 1px solid var(--color-on-night-body);
+    background: rgb(255 255 255 / 0.14);
     color: var(--color-white);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
   }
   .btn-ghost-night:hover {
     background: var(--color-white);
     color: var(--color-ink);
+  }
+
+  /*
+    Surfaces. No hairlines: a card is a fill one tone step from its ground.
+    Glass is for things with something behind them (the sky, a photo, the
+    night sections, sticky bars that content scrolls under). Every glass
+    fill is opaque enough that its text keeps AA over the darkest or
+    lightest thing that can sit behind it, and it falls back to a solid
+    fill where backdrop-filter is not supported.
+  */
+  .card {
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+  }
+  .glass {
+    background: rgb(255 255 255 / 0.8);
+    -webkit-backdrop-filter: blur(18px) saturate(1.4);
+    backdrop-filter: blur(18px) saturate(1.4);
+    box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.6), 0 12px 32px -16px rgb(27 34 53 / 0.28);
+  }
+  .glass-paper {
+    background: rgb(247 247 244 / 0.82);
+    -webkit-backdrop-filter: blur(16px) saturate(1.3);
+    backdrop-filter: blur(16px) saturate(1.3);
+  }
+  .glass-night {
+    background: rgb(36 45 71 / 0.72);
+    -webkit-backdrop-filter: blur(18px) saturate(1.3);
+    backdrop-filter: blur(18px) saturate(1.3);
+    box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.08);
+  }
+  @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    .glass { background: var(--color-white); }
+    .glass-paper { background: var(--color-paper); }
+    .glass-night { background: var(--color-night-panel); }
+    .btn-ghost-night { background: var(--color-night-panel); }
   }
 }
 
@@ -408,8 +446,7 @@ html:has(#menu-hp:popover-open) {
   --stars: 1;
 }
 .sky[data-sky="night"] .btn-secondary {
-  border-color: var(--color-on-night-body);
-  background: transparent;
+  background: rgb(255 255 255 / 0.14);
   color: var(--color-white);
 }
 .sky[data-sky="night"] .btn-secondary:hover {
@@ -417,30 +454,38 @@ html:has(#menu-hp:popover-open) {
   color: var(--color-ink);
 }
 /*
-  Closing call to action on the landscape. A solid panel, one tone step
-  from the sky (white by day, the night panel at night), with no blur or
-  shadow, so the sun and hills never show through the text.
+  Closing call to action on the landscape: a frosted panel over the campus
+  photo. Opaque enough (82% by day, 88% at night) that every text pair keeps
+  AA over the brightest sky and the darkest trees in the photo.
 */
 .sky {
-  --panel-bg: var(--color-white);
-  --panel-rule: var(--color-rule);
+  --panel-bg: rgb(255 255 255 / 0.82);
   --panel-muted: var(--color-muted);
   --panel-num: var(--color-lapis);
-  --panel-hover: var(--color-paper);
+  --panel-chip: var(--color-lapis-1);
+  --panel-hover: rgb(255 255 255 / 0.9);
 }
 .sky[data-sky="night"] {
-  --panel-bg: var(--color-night-panel);
-  --panel-rule: var(--color-night-rule);
+  --panel-bg: rgb(36 45 71 / 0.88);
   --panel-muted: var(--color-on-night-muted);
-  --panel-num: var(--color-lapis-2);
-  --panel-hover: var(--color-night-rule);
+  --panel-num: var(--color-white);
+  --panel-chip: rgb(255 255 255 / 0.14);
+  --panel-hover: rgb(255 255 255 / 0.1);
 }
-.cta-panel {
-  background: var(--panel-bg);
-}
+.cta-panel,
 .cta-badge {
   background: var(--panel-bg);
+  -webkit-backdrop-filter: blur(18px) saturate(1.4);
+  backdrop-filter: blur(18px) saturate(1.4);
+  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.35), 0 16px 40px -20px rgb(27 34 53 / 0.45);
+}
+.cta-badge {
+  box-shadow: none;
   color: var(--land-ink);
+}
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .sky { --panel-bg: var(--color-white); }
+  .sky[data-sky="night"] { --panel-bg: var(--color-night-panel); }
 }
 .cta-step {
   transition: background-color 150ms;
@@ -495,10 +540,10 @@ html:has(#menu-hp:popover-open) {
   :where(.prose-ad) ul, :where(.prose-ad) ol { margin: 0 0 18px; padding-left: 24px; }
   :where(.prose-ad) li { margin-bottom: 8px; }
   :where(.prose-ad) a { text-underline-offset: 3px; overflow-wrap: anywhere; }
-  :where(.prose-ad) blockquote { margin: 0 0 18px; padding-left: 20px; border-left: 3px solid var(--color-lapis-2); color: var(--color-body); }
+  :where(.prose-ad) blockquote { margin: 0 0 18px; padding: 16px 20px; border-radius: var(--radius-md); background: var(--color-white); color: var(--color-body); }
   :where(.prose-ad) [lang="ar"] { font-family: var(--font-naskh); font-size: 1.3em; line-height: 1.9; }
   :where(.prose-ad) p[lang="ar"], :where(.prose-ad) blockquote[lang="ar"] { text-align: right; }
-  :where(.prose-ad) blockquote[lang="ar"] { border-left: 0; border-right: 3px solid var(--color-lapis-2); padding: 0 20px 0 0; }
+  :where(.prose-ad) blockquote[lang="ar"] { padding: 16px 20px; }
   :where(.prose-ad) span[lang="ar"] { font-size: 1.2em; }
   /* ﷻ ﷺ in titles, see titleHtml() */
   .honorific { font-size: 0.55em; line-height: 0; vertical-align: 0.15em; }
@@ -514,11 +559,21 @@ html:has(#menu-hp:popover-open) {
   :where(.prose-k) ul, :where(.prose-k) ol { margin: 0 0 16px; padding-left: 22px; }
   :where(.prose-k) li { margin-bottom: 8px; }
   :where(.prose-k) table { width: 100%; border-collapse: collapse; margin: 8px 0 24px; font-size: 16px; font-variant-numeric: tabular-nums; }
-  :where(.prose-k) th, :where(.prose-k) td { text-align: left; padding: 12px 16px 12px 0; border-bottom: 1px solid var(--color-rule); vertical-align: top; }
-  :where(.prose-k) thead th { font-size: 14px; font-weight: 500; color: var(--color-muted); border-bottom: 2px solid var(--color-ink); }
+  :where(.prose-k) th, :where(.prose-k) td { text-align: left; padding: 12px 16px; vertical-align: top; }
+  :where(.prose-k) thead th { font-size: 14px; font-weight: 500; color: var(--color-muted); }
   :where(.prose-k) tbody th { font-weight: 700; }
-  :where(.prose-k) th:last-child, :where(.prose-k) td:last-child { padding-right: 0; }
   :where(.prose-k) [lang="ar"] { font-family: var(--font-arabic); font-size: 1.25em; }
+}
+
+/*
+  Tables: rows are separated by a stripe (one tone step), never by a rule.
+  A table on a white surface sets --stripe to the paper colour.
+*/
+@layer components {
+  :where(table) { border-collapse: separate; border-spacing: 0; }
+  :where(table) tbody tr:nth-child(odd) > :is(td, th) { background: var(--stripe, var(--color-white)); }
+  :where(table) tbody tr > :first-child { border-radius: var(--radius-sm) 0 0 var(--radius-sm); }
+  :where(table) tbody tr > :last-child { border-radius: 0 var(--radius-sm) var(--radius-sm) 0; }
 }
 
 @layer components {

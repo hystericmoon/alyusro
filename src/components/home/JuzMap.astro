@@ -21,7 +21,7 @@ const TONES = [
 const classOf = new Map<number, number>();
 classes.forEach((c, i) => c.juz.forEach((n) => classOf.set(n, i)));
 const chip =
-  'inline-flex cursor-pointer items-center gap-8 rounded-sm border border-chip-rule bg-white px-14 min-h-44 font-body text-15 font-bold leading-[1.2] text-ink transition-[background-color,color,border-color,transform] duration-150 hover:border-ink active:scale-[0.97] aria-pressed:border-ink aria-pressed:bg-ink aria-pressed:text-white';
+  'inline-flex cursor-pointer items-center gap-8 rounded-full border-0 bg-paper px-16 min-h-44 font-body text-15 font-bold leading-[1.2] text-ink transition-[background-color,color,transform] duration-150 hover:bg-lapis-1 active:scale-[0.97] aria-pressed:bg-ink aria-pressed:text-white';
 ---
 <div data-juz-map data-readouts={JSON.stringify(readouts)} class="flex flex-col gap-20">
   <div data-juz-grid data-motion="pending" role="img" aria-label={ariaLabel} class="grid grid-cols-5 gap-6 sm:grid-cols-10">

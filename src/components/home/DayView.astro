@@ -40,11 +40,11 @@ const at = (i: number) => `${(i / (hours.length - 1)) * 100}%`;
         Setoran selepas Subuh, hafalan baru di waktu Dhuha, sekolah dan bahasa Arab, muraja’ah selepas Ashar, lalu
         persiapan hafalan esok di antara Maghrib dan Isya.
       </p>
-      <div class="flex flex-col gap-8 rounded-lg bg-night-panel p-24">
+      <div class="glass-night flex flex-col gap-8 rounded-xl p-24 sm:p-28">
         <p data-dv="label" class="m-0 text-14 text-on-night-muted">{day.label}</p>
         <p data-dv="title" class="m-0 font-display text-32 font-semibold leading-[1.1] text-white">{day.title}</p>
         <p data-dv="detail" class="m-0 text-15 leading-[1.6] text-on-night-soft" hidden={!day.detail}>{day.detail}</p>
-        <p data-dv="next" class="m-0 mt-8 border-t border-night-rule-2 pt-12 text-15 text-amber">{day.next}</p>
+        <p data-dv="next" class="m-0 mt-12 text-15 text-amber">{day.next}</p>
       </div>
       <a
         href={site.dailySchedule.source}
@@ -52,7 +52,7 @@ const at = (i: number) => `${(i / (hours.length - 1)) * 100}%`;
       >Lihat kurikulum tahfizh</a>
     </div>
 
-    <div class="box-border min-w-0 flex-[1_1_520px] rounded-lg bg-night-panel px-16 pb-20 pt-24 sm:px-24">
+    <div data-ui class="glass-night box-border min-w-0 flex-[1_1_520px] rounded-xl px-16 pb-20 pt-24 sm:px-24">
       <div class="mb-22 flex flex-wrap items-baseline justify-between gap-x-16 gap-y-4">
         <h3 class="m-0 text-18 font-bold leading-[1.3] text-white">Jadwal harian santri</h3>
         <p data-dv="note" class="m-0 text-14 text-on-night-muted">{day.note}</p>

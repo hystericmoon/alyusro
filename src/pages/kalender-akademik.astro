@@ -31,7 +31,7 @@ const current = last >= today;
 >
   {
     !current && (
-      <div class="mb-32 flex flex-col items-start gap-14 border border-dashed border-placeholder p-20 sm:p-28">
+      <div class="card mb-32 flex flex-col items-start gap-14 p-20 sm:p-28">
         <p class="m-0 font-display text-[28px] font-semibold leading-[1.15]" style="margin:0">Kalender tahun ajaran berikutnya belum dipublikasikan</p>
         <p class="m-0" style="margin:0">Jadwal kedatangan santri dan kegiatan terbaru diumumkan di grup info Al Yusro.</p>
         <div class="flex flex-wrap gap-12">
@@ -59,7 +59,7 @@ const current = last >= today;
         </table>
       </>
     ) : (
-      <details class="group border-y border-rule">
+      <details class="card group px-20 sm:px-24">
         <summary class="flex min-h-56 cursor-pointer items-center justify-between gap-16 font-bold">
           Arsip: kalender tahun ajaran {cal.year}
           <span aria-hidden="true" class="text-[24px] font-normal transition-transform duration-150 group-open:rotate-45">+</span>
