@@ -1,4 +1,6 @@
 ---
+cover: "/uploads/artikel/al-yusro-meraih-juara-satu-medali-emas-olimpiade-bahasa-arab-nasional-2025-oba-2025.webp"
+coverAlt: "Santri peraih medali OBA 2025 bersama ustadz pendamping, berfoto dengan medali dan piala di aula lomba"
 title: "Al Yusro Meraih juara satu medali emas Olimpiade Bahasa Arab Nasional 2025 - OBA 2025"
 date: "2025-11-15T10:10:20+07:00"
 author: "Yudi Saeful Rizal, S.E., M.E."
@@ -14,12 +16,12 @@ Ma'had Tahfizh Al Yusro Meraih juara satu medali emas | OBA 2025 Pada tahun 2025
 
 Kategori 8 SMP Negeri/Swasta Boarding School Tingkat Nasional
 
-1. M. A. C. (Medali emas juara satu)
+1. Muhammad Ali Chaniago (Medali emas juara satu)
 
 Kategori 3 SMA Negeri/Swasta Boarding School Tingkat Nasional
 
-1. H. A. (Medali Perak)\
-2. F. R. P. (Medali Perak)
+1. Haafizh Abdullah (Medali Perak)\
+2. Fuji Raflesa Pamungkas (Medali Perak)
 
 Kategori guru Bahasa Arab Tingkat Nasional
 

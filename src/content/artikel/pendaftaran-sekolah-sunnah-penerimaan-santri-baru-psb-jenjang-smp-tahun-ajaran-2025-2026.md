@@ -1,4 +1,6 @@
 ---
+cover: "/uploads/artikel/pendaftaran-sekolah-sunnah-penerimaan-santri-baru-psb-jenjang-smp-tahun-ajaran-2025-2026.webp"
+coverAlt: "Brosur penerimaan santri baru Sekolah Sunnah jenjang SMP tahun ajaran 2025/2026: keunggulan, proses pendaftaran, jadwal survei, dan biaya"
 title: "Pendaftaran Sekolah Sunnah - Penerimaan Santri Baru (PSB)  jenjang SMP tahun ajaran 2025-2026."
 date: "2025-01-20T07:47:42+07:00"
 author: "Yudi Saeful Rizal, S.E., M.E."

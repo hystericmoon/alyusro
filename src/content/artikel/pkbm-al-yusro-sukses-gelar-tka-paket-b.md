@@ -1,4 +1,6 @@
 ---
+cover: "/uploads/artikel/pkbm-al-yusro-sukses-gelar-tka-paket-b.webp"
+coverAlt: "Peserta TKA Paket B mengisi lembar jawaban dan mengerjakan tes di ruang komputer"
 title: "PKBM Al Yusro sukses gelar TKA Paket B"
 date: "2026-04-15T09:17:41+07:00"
 author: "Yudi Saeful Rizal, S.E., M.E."

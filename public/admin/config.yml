@@ -61,7 +61,7 @@ collections:
         name: cover
         widget: image
         required: false
-        hint: Hindari foto yang menampakkan wajah santri sampai ada izin dari ma’had. Tanpa gambar, artikel memakai sampul tulisan otomatis.
+        hint: Foto santri boleh dipakai (izin ma’had, Oktober 2026). Tanpa gambar, artikel memakai sampul tulisan otomatis.
       - label: Teks alternatif sampul
         name: coverAlt
         widget: string
@@ -706,6 +706,31 @@ collections:
             label: Tujuan
             name: outcome
             widget: string
+        - label: Foto jenjang
+          name: photo
+          widget: object
+          required: false
+          collapsed: true
+          hint: Foto lebar di bawah judul halaman jenjang. Simpan gambar di public/photos dalam dua ukuran (800 dan 1600 piksel).
+          fields:
+          - label: Gambar 1600 px
+            name: src
+            widget: string
+          - label: Gambar 800 px
+            name: srcSmall
+            widget: string
+          - label: Teks alternatif
+            name: alt
+            widget: string
+            hint: Jelaskan isi foto dalam satu kalimat. Jangan tulis "Deskripsi Gambar".
+          - label: Lebar asli (px)
+            name: width
+            widget: number
+            value_type: int
+          - label: Tinggi asli (px)
+            name: height
+            widget: number
+            value_type: int
       - label: Jadwal harian
         name: dailySchedule
         widget: object

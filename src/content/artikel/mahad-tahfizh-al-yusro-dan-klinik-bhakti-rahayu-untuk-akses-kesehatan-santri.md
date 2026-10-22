@@ -1,4 +1,6 @@
 ---
+cover: "/uploads/artikel/mahad-tahfizh-al-yusro-dan-klinik-bhakti-rahayu-untuk-akses-kesehatan-santri.webp"
+coverAlt: "Penandatanganan MoU kerja sama bidang kesehatan antara Ma’had Tahfizh Al Yusro dan Klinik Bhakti Rahayu, 8 November 2024"
 title: "Ma'had Tahfizh Al Yusro dan Klinik Bhakti Rahayu untuk Akses Kesehatan Santri"
 date: "2024-11-08T23:02:57+07:00"
 author: "Yudi Saeful Rizal, S.E., M.E."

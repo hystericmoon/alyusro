@@ -1,4 +1,6 @@
 ---
+cover: "/uploads/artikel/mahad-tahfizh-al-yusro-dan-stit-al-wafi-bogor-jajaki-kolaborasi-pendidikan.webp"
+coverAlt: "Rombongan Ma’had Tahfizh Al Yusro dan STIT Al Wafi Bogor berfoto bersama di ruang pertemuan"
 title: "Ma'had Tahfizh Al Yusro dan STIT Al Wafi Bogor Jajaki Kolaborasi Pendidikan"
 date: "2026-09-16T09:23:58+07:00"
 author: "Yudi Saeful Rizal, S.E., M.E."

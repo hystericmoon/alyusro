@@ -157,7 +157,14 @@
         "Menguasai bahasa Arab dasar secara lisan, tulisan, dan bacaan",
         "Menguasai doa harian dan praktik ibadah dengan benar",
         "Memahami pelajaran umum seperti Bahasa Indonesia, Bahasa Inggris, Matematika, IPA, dan IPS"
-      ]
+      ],
+      "photo": {
+        "src": "/photos/santri-kuttab-ujian-1600.webp",
+        "srcSmall": "/photos/santri-kuttab-ujian-800.webp",
+        "alt": "Dua santri Kuttab mengerjakan soal ujian tengah semester di meja kelas",
+        "width": 1600,
+        "height": 848
+      }
     },
     {
       "slug": "mahdon",
@@ -288,7 +295,14 @@
         "Mampu berbahasa Arab secara lisan dan tulisan",
         "Menguasai dasar-dasar ilmu komputer dan IT",
         "Memiliki kompetensi kurikulum nasional jenjang kesetaraan"
-      ]
+      ],
+      "photo": {
+        "src": "/photos/santri-madrasah-ujian-1600.webp",
+        "srcSmall": "/photos/santri-madrasah-ujian-800.webp",
+        "alt": "Santri Madrasah berpeci hitam menulis jawaban ujian tengah semester di kelas",
+        "width": 1600,
+        "height": 686
+      }
     },
     {
       "slug": "darul-ilmi",
@@ -360,7 +374,14 @@
         "Mampu berbahasa Arab secara lisan dan tulisan",
         "Menguasai dasar-dasar ilmu komputer dan IT",
         "Memiliki kompetensi kurikulum nasional jenjang kesetaraan"
-      ]
+      ],
+      "photo": {
+        "src": "/photos/santri-menuju-kelas-1600.webp",
+        "srcSmall": "/photos/santri-menuju-kelas-800.webp",
+        "alt": "Santri berseragam batik biru berjalan menuju kelas sambil membaca catatan",
+        "width": 1600,
+        "height": 940
+      }
     },
     {
       "slug": "mahad-aly",

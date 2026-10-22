@@ -11,6 +11,8 @@ interface Props {
 }
 const v = buildLevel(Astro.props.level);
 const lv = v.level;
+// The school's own photo for this level (site.json `photo`), if there is one.
+const photo = (lv as { photo?: { src: string; srcSmall: string; alt: string; width: number; height: number } }).photo;
 
 // Static class names per tone, so Tailwind can see them.
 const CELL: Record<string, string> = {
@@ -84,6 +86,21 @@ const btnGhostNight = 'btn-ghost-night';
         </div>
       </dl>
     </div>
+    {
+      photo && (
+        <picture>
+          <source type="image/webp" srcset={`${photo.srcSmall} 800w, ${photo.src} 1600w`} sizes="(min-width: 1360px) 1280px, 100vw" />
+          <img
+            src={photo.src}
+            width={photo.width}
+            height={photo.height}
+            alt={photo.alt}
+            decoding="async"
+            class="mt-40 block aspect-[4/3] w-full rounded-xl object-cover sm:mt-56 sm:aspect-[21/8]"
+          />
+        </picture>
+      )
+    }
   </section>
 
   <nav aria-label="Isi halaman" class="glass-paper sticky top-0 z-[3]">

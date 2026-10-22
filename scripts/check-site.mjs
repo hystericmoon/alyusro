@@ -34,6 +34,7 @@ for (const l of data.levels ?? []) {
   slugs.add(l.slug);
   need(/^\/.*\/$/.test(l.path ?? ''), `levels "${l.name}": alamat harus diawali dan diakhiri "/"`);
   for (const f of l.fees ?? []) need(str(f.item) && Number.isFinite(f.amount), `levels "${l.name}": biaya tanpa jenis atau jumlah`);
+  if (l.photo) need(str(l.photo.src) && str(l.photo.alt) && !/deskripsi gambar/i.test(l.photo.alt), `levels "${l.name}": foto perlu alamat gambar dan teks alternatif`);
   for (const r of l.juzMap ?? []) need((r.juz ?? []).every((j) => Number.isInteger(j) && j >= 1 && j <= 30), `levels "${l.name}": juz harus 1–30`);
 }
 
