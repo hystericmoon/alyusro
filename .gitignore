@@ -4,3 +4,6 @@ dist/
 .netlify/
 .wrangler/
 .DS_Store
+
+# taste-skill working files (inspector screenshots, draw history)
+.taste-skill/

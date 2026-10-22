@@ -417,36 +417,29 @@ html:has(#menu-hp:popover-open) {
   color: var(--color-ink);
 }
 /*
-  Closing call to action on the landscape. A frosted panel over the sky, so
-  the hills show through; solid enough that every text pair keeps AA in all
-  four sky states (checked against the lightest and darkest sky behind it).
+  Closing call to action on the landscape. A solid panel, one tone step
+  from the sky (white by day, the night panel at night), with no blur or
+  shadow, so the sun and hills never show through the text.
 */
 .sky {
-  --panel-bg: rgb(255 255 255 / 0.82);
-  --panel-edge: rgb(255 255 255 / 0.9);
+  --panel-bg: var(--color-white);
   --panel-rule: var(--color-rule);
   --panel-muted: var(--color-muted);
   --panel-num: var(--color-lapis);
-  --panel-hover: var(--color-white);
+  --panel-hover: var(--color-paper);
 }
 .sky[data-sky="night"] {
-  --panel-bg: rgb(17 22 42 / 0.72);
-  --panel-edge: var(--color-night-rule-3);
+  --panel-bg: var(--color-night-panel);
   --panel-rule: var(--color-night-rule);
   --panel-muted: var(--color-on-night-muted);
   --panel-num: var(--color-lapis-2);
-  --panel-hover: var(--color-night-panel);
+  --panel-hover: var(--color-night-rule);
 }
 .cta-panel {
   background: var(--panel-bg);
-  border: 1px solid var(--panel-edge);
-  box-shadow: 0 1px 2px rgb(27 34 53 / 0.06), 0 12px 32px -12px rgb(27 34 53 / 0.25);
-  -webkit-backdrop-filter: blur(10px) saturate(1.2);
-  backdrop-filter: blur(10px) saturate(1.2);
 }
 .cta-badge {
   background: var(--panel-bg);
-  border: 1px solid var(--panel-edge);
   color: var(--land-ink);
 }
 .cta-step {
@@ -514,7 +507,7 @@ html:has(#menu-hp:popover-open) {
 /* Content pages (Kurikulum-tahfizh .k-body) */
 @layer components {
   :where(.prose-k) > :first-child { margin-top: 0; }
-  :where(.prose-k) h2 { margin: 72px 0 16px; font-family: var(--font-display); font-size: 44px; font-weight: 600; line-height: 1.05; scroll-margin-top: 24px; }
+  :where(.prose-k) h2 { margin: 72px 0 16px; font-family: var(--font-display); font-size: clamp(36px, 3.4vw, 44px); font-weight: 600; line-height: 1.05; scroll-margin-top: 24px; }
   :where(.prose-k) h3 { margin: 32px 0 8px; font-size: 19px; font-weight: 700; line-height: 1.35; }
   :where(.prose-k) p { margin: 0 0 16px; }
   :where(.prose-k) a { overflow-wrap: anywhere; }
