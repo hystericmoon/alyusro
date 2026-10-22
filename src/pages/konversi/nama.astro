@@ -21,7 +21,7 @@ import { school } from '@/lib/site';
       autocomplete="off"
       spellcheck="false"
       aria-describedby="nama-hint"
-      class="box-border min-h-[120px] w-full resize-y rounded-sm border border-chip-rule bg-white px-14 py-12 font-body text-18 leading-[1.5] text-ink"
+      class="box-border min-h-[120px] w-full resize-y rounded-lg border-0 bg-white px-18 py-14 font-body text-18 shadow-[inset_0_0_0_1px_var(--color-chip-rule)] focus-visible:shadow-none leading-[1.5] text-ink"
       placeholder="Contoh: Muhammad Al Fatih"
     ></textarea>
     <p id="nama-hint" class="m-0 text-15 text-muted">Untuk banyak nama, salin satu kolom dari Excel lalu tempel di sini.</p>
@@ -31,16 +31,16 @@ import { school } from '@/lib/site';
   </form>
 
   <noscript>
-    <p class="mt-16 rounded-sm border border-notice-rule bg-notice px-16 py-12 text-notice-ink">Halaman ini memerlukan JavaScript untuk mengubah nama.</p>
+    <p class="mt-16 rounded-lg bg-notice px-18 py-14 text-notice-ink">Halaman ini memerlukan JavaScript untuk mengubah nama.</p>
   </noscript>
 
   <section id="hasil" aria-labelledby="hasil-title" data-result hidden class="mt-48">
-    <div class="flex flex-wrap items-center justify-between gap-12 border-b-2 border-ink pb-10">
+    <div class="flex flex-wrap items-center justify-between gap-12 pb-4">
       <h2 id="hasil-title" class="m-0 text-34">Hasil</h2>
       <button type="button" data-copy-all class="btn-secondary cursor-pointer font-body">Salin semua</button>
     </div>
     <p data-status aria-live="polite" class="mb-0 mt-12 text-15 text-muted"></p>
-    <ol data-list class="m-0 list-none p-0"></ol>
+    <ol data-list class="m-0 mt-12 flex list-none flex-col gap-8 p-0"></ol>
   </section>
 
   <h2 id="cara">Cara penulisan</h2>
@@ -84,7 +84,7 @@ import { school } from '@/lib/site';
       list.replaceChildren(
         ...items.map((it) => {
           const li = document.createElement('li');
-          li.className = 'flex flex-wrap items-center justify-between gap-x-16 gap-y-8 border-b border-rule py-16';
+          li.className = 'card flex flex-wrap items-center justify-between gap-x-16 gap-y-8 px-20 py-16';
           const text = document.createElement('div');
           text.className = 'flex min-w-0 flex-col gap-4';
           const latin = document.createElement('span');

@@ -2,6 +2,17 @@
  "_note": "Facility photos. Imported from mahadalyusro.sch.id/fasilitas on 21 October 2026. Photos showing identifiable faces were left out (CLAUDE.md imagery rule); groups without photos show a text entry. Every photo needs real alt text.",
  "groups": [
   {
+   "name": "Kampus dari udara",
+   "area": "bersama",
+   "photos": [
+    {
+     "src": "/photos/kampus-udara-800.webp",
+     "alt": "Gedung utama Al Yusro dilihat dari udara: bangunan bertingkat beratap abu-abu, aula beratap lengkung, dan jalan masuk berbunga",
+     "caption": "Gedung utama dan aula"
+    }
+   ]
+  },
+  {
    "name": "Masjid putra",
    "area": "putra",
    "photos": [
@@ -107,7 +118,13 @@
   {
    "name": "Lapangan olahraga",
    "area": "bersama",
-   "photos": []
+   "photos": [
+    {
+     "src": "/photos/kampus-gunung-salak-800.webp",
+     "alt": "Lapangan sepak bola berpagar di tengah kampus Al Yusro, dilihat dari udara, dengan Gunung Salak di kejauhan",
+     "caption": "Lapangan olahraga di tengah kampus"
+    }
+   ]
   },
   {
    "name": "Ruang IT dan multimedia",

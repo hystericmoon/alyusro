@@ -25,12 +25,12 @@ import { levels, levelSummary, school } from '@/lib/site';
         </p>
       </div>
       <nav aria-labelledby="nf-levels">
-        <h2 id="nf-levels" class="m-0 border-b-2 border-ink pb-10 font-display text-30 font-semibold leading-none">Jenjang pendidikan</h2>
-        <ul class="m-0 list-none p-0">
+        <h2 id="nf-levels" class="m-0 pb-16 font-display text-30 font-semibold leading-none">Jenjang pendidikan</h2>
+        <ul class="m-0 flex list-none flex-col gap-8 p-0">
           {
             levels.map((l) => (
-              <li class="border-b border-rule">
-                <a href={l.path} class="cta-next flex min-h-64 items-center justify-between gap-16 py-10 text-ink no-underline hover:text-lapis">
+              <li>
+                <a href={l.path} class="cta-next card flex min-h-64 items-center justify-between gap-16 px-20 py-14 text-ink no-underline hover:text-lapis">
                   <span class="flex min-w-0 flex-col">
                     <span class="font-display text-26 font-semibold leading-[1.1]">{l.name}</span>
                     <span class="text-15 text-muted">{levelSummary(l)}</span>

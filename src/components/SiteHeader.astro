@@ -17,7 +17,7 @@ const isCurrent = (href: string) => norm(href) === here;
   href="#isi"
   class="absolute left-16 top-[-100px] z-50 rounded-sm bg-ink px-16 py-10 text-16 font-bold text-white focus:top-16 focus:text-white"
 >Langsung ke isi</a>
-<header class="border-b border-rule">
+<header>
   <div class="mx-auto box-border flex max-w-page flex-nowrap items-center gap-x-16 gap-y-12 px-16 py-16 sm:gap-x-32 sm:px-40 lg:flex-wrap">
     <a href="/" class="mr-auto flex min-h-44 min-w-0 items-center gap-12 text-ink no-underline hover:text-ink" aria-current={here === '/' ? 'page' : undefined}>
       <img src="/logo-mark.png" alt="" width="44" height="44" class="size-40 flex-none sm:size-44" />
@@ -35,20 +35,20 @@ const isCurrent = (href: string) => norm(href) === here;
               <details name="menu-utama" class="group">
                 <summary
                   aria-current={group.links.some((l) => isCurrent(l.href)) ? 'true' : undefined}
-                  class="flex min-h-44 cursor-pointer select-none items-center gap-6 rounded-sm px-10 text-16 font-medium text-ink aria-[current]:border-b-2 aria-[current]:border-lapis aria-[current]:font-bold aria-[current]:text-lapis"
+                  class="flex min-h-44 cursor-pointer select-none items-center gap-6 rounded-full px-14 text-16 font-medium text-ink transition-colors duration-150 hover:bg-white aria-[current]:bg-lapis-1 aria-[current]:font-bold aria-[current]:text-lapis"
                 >
                   {group.label}
                   <svg aria-hidden="true" width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="group-open:rotate-180">
                     <path d="M2.5 4.5 6 8l3.5-3.5" />
                   </svg>
                 </summary>
-                <ul class="absolute left-0 top-full z-40 m-0 mt-6 box-border flex min-w-[320px] list-none flex-col rounded-md border border-rule bg-white p-8">
+                <ul class="absolute left-0 top-full z-40 m-0 mt-6 box-border flex min-w-[320px] list-none flex-col glass rounded-lg p-8">
                   {group.links.map((l) => (
                     <li>
                       <a
                         href={l.href}
                         aria-current={isCurrent(l.href) ? 'page' : undefined}
-                        class="flex min-h-44 items-center justify-between gap-16 rounded-sm px-12 text-16 font-medium text-ink no-underline transition-colors duration-150 hover:bg-paper hover:text-lapis aria-[current=page]:font-bold aria-[current=page]:text-lapis"
+                        class="flex min-h-44 items-center justify-between gap-16 rounded-md px-14 text-16 font-medium text-ink no-underline transition-colors duration-150 hover:bg-lapis-1 hover:text-lapis aria-[current=page]:font-bold aria-[current=page]:text-lapis"
                       >
                         <span>{l.label}</span>
                         {l.note && <span class="whitespace-nowrap text-14 font-normal text-muted">{l.note}</span>}

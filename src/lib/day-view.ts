@@ -265,7 +265,7 @@ export function buildDay(schedule: DaySchedule, pt: PrayerMinutes, wd: number, n
     .map((b) => {
       const pos = `top:${pct(b.a)};height:${len(b.a, b.b)}`;
       if (b.ph) {
-        return `<div class="absolute inset-x-0 box-border overflow-hidden rounded-md border-[1.5px] border-dashed border-night-placeholder px-12 py-8 text-13 leading-[1.35] text-on-night-body" style="${pos}">${esc(b.name)}</div>`;
+        return `<div class="absolute inset-x-0 box-border overflow-hidden rounded-sm bg-white/[0.07] px-12 py-8 text-13 leading-[1.35] text-on-night-body" style="${pos}">${esc(b.name)}</div>`;
       }
       const isCur = live && weekday && cur === b;
       const tone = isCur ? 'bg-amber shadow-[0_0_0_2px_var(--color-white)]' : 'bg-sky-100';
