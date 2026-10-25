@@ -75,7 +75,8 @@ export function levelSummary(level: Level): string {
     else if (classes) parts.push(lowerFirst(classes[0]));
     else parts.push(`ditempuh ${level.duration}`);
   }
-  return parts.join(', ');
+  // Word joiners keep a range ("kelas VII–IX", "4–6 tahun") from breaking at the dash.
+  return parts.join(', ').replace(/(\S)–(\S)/g, '$1\u2060–\u2060$2');
 }
 
 export const currentYear = new Date().getFullYear();

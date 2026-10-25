@@ -16,15 +16,15 @@ Imam Asy-Syafi'i merupakan salah seorang dari empat Imam mazhab fiqih yang terke
 
 Segala puji bagi Allah, Rabb semesta alam. Shalawat serta salam semoga tercurah kepada Nabi dan Rasul yang paling mulia, junjungan kita Nabi Muhammad, beserta Keluarga dan semua Sahabatnya. Amma ba'du:
 
-### ◆ **Nama dan Nasab Beliau**
+## ◆ **Nama dan Nasab Beliau**
 
 Muhammad bin Idris As Syafi’i Al Makki, Abu Abdillah Al-Qurosy , Bertemu nasabnya dengan Nabi ﷺ pada Abdul Manaf bin Qusoy
 
-### ◆ **Kelahiran Beliau**
+## ◆ **Kelahiran Beliau**
 
 Beliau lahir pada tahun 150 hijriyyah di Gaza Palestina, dan ayahnya wafat ketika beliau masih kecil. Ia tumbuh sebagai seorang yatim dalam asuhan ibunya. Kemudian ibunya membawanya pergi ke Makkah, sedangkan ia masih berumur 2 tahun dan besar disana, dan tumbuh padanya kecintaan dalam ilmu fiqih.
 
-### ◆ **Beliau Menuntut Ilmu**
+## ◆ **Beliau Menuntut Ilmu**
 
 Imam Syafi‘i telah hafal Al-Qur’an ketika berusia tujuh tahun. Beliau menghafal kitab Al-Muwaththa’ ketika berusia sepuluh tahun. Beliau mulai memberikan fatwa ketika berusia lima belas tahun.
 
@@ -36,15 +36,15 @@ Dalam sebuah riwayat, Imam Malik juga berkata kepadanya: "Sesungguhnya Allah Ta�
 
 Di antara guru-gurunya yang beliau belajar ilmu dari mereka: Imam Malik, Muhammad bin Hasan asy-Syaibani -murid Abu Hanifah-, Waki‘ bin al-Jarrah al-Kufi, dan guru-guru lainnya.
 
-### ◆ **Kedudukan Beliau dalam Ilmu**
+## ◆ **Kedudukan Beliau dalam Ilmu**
 
 Imam Syafi’i adalah imam ketiga dari empat imam besar di kalangan Ahlussunah wal Jama’ah dan merupakan pelopor mazhab Syafi’i dan juga pelopor ilmu ushul fiqih, dan dan para ulama telah banyak memuji beliau .
 
-### ◆ P**engaruh Beliau dalam Ilmu**
+## ◆ P**engaruh Beliau dalam Ilmu**
 
 Imam Syafi'i memiliki pengaruh besar di kalangan umat Islam. Di antara murid-murid beliau adalah Ahmad bin Hanbal, Ishaq bin Rahawaih, Isma'il bin Yahya al-Muzani, ar-Rabi' bin Sulaiman, dan yang lainnya. Banyak negeri Islam yang memiliki keterkaitan dengan mazhab beliau, seperti Mesir, Syam, Irak, dan lainnya Di antara kitab beliau yang penting adalah Ar-Risalah dan Al-Umm.
 
-### ◆ **Pujian Para Ulama terhadap Beliau**
+## ◆ **Pujian Para Ulama terhadap Beliau**
 
 ● Abdurrahman bin Mahdi berkata: Aku mendengar Imam Malik berkata: "Tidak ada seorang pemuda dari Quraisy yang datang kepadaku seperti pemuda ini" (yang dimaksud adalah Imam Asy Syafi’i)
 
@@ -56,7 +56,7 @@ Imam Syafi'i memiliki pengaruh besar di kalangan umat Islam. Di antara murid-mur
 
 ● Yunus bin Abdul A'la berkata: "Aku tidak pernah melihat seseorang yang lebih cerdas daripada Imam Syafi'i."
 
-### **◆ Kisah Keteladanan Beliau**
+## **◆ Kisah Keteladanan Beliau**
 
 1. Menghormati dan memuliakan gurunya yaitu Imam Malik
 
@@ -100,7 +100,7 @@ Beliau juga berkata:
 
 Abu Bakar An Naisaburi berkata: "Aku mendengar Ar-Rabi' berkata: Imam Syafi'i mengkhatamkan Al-Qur'an setiap bulan sebanyak 30 kali.”
 
-### **◆ Diantara perkataan Imam Syafi'i**
+## **◆ Diantara perkataan Imam Syafi'i**
 
 <blockquote lang="ar" dir="rtl">
 <p>اذا كثرت الحوائج، فابدأ بأهمها.</p>
@@ -152,11 +152,11 @@ Beliau bersyair:
 
 **"**Jika suatu hari kamu sedang sendirian, janganlah berkata, ‘Aku sedang sendirian.’ Tetapi katakanlah, ‘Ada (Allah) yang selalu mengawasiku"
 
-### ◆ **Wafatnya Beliau**
+## ◆ **Wafatnya Beliau**
 
 Imam Syafi'i rahimahullah wafat di Mesir pada tahun 204 hijriah pada umur 54 tahun.
 
-### **◆ Faedah dari Biografi Beliau**
+## **◆ Faedah dari Biografi Beliau**
 
 1. Peran besar orang tua dalam mendidik anak dengan pendidikan yang baik. Imam Syafi'i tumbuh sebagai seorang yatim, dan ibunya sangat memperhatikannya sejak kecil. Hingga akhirnya beliau menjadi sosok yang luar biasa pada zamannya.
 

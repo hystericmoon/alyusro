@@ -12,31 +12,31 @@ sourceUrl: "https://mahadalyusro.sch.id/artikel/biografi-imam-malik"
 
 Sudah semestinya bagi kaum muslimin untuk mengenali para ulama mereka terdahulu yang mereka telah berperan penting dalam menegakkan agama Islam yang mulia ini. Dan dalam kesempatan kali ini, kami akan mengisahkan salah seorang ulama yang punya andil besar dalam Islam, seorang ulama yang gigih menegakkan kalimat tauhid dan menerangkan hukum syariat serta menjauhkan umat dari kesyirikan, kebid'ahan, dan penyimpangan syariat lainnya, seorang ulama yang lahir dan besar di kota Al-Madinah An-Nabawiyyah, beliau ialah Imam Malik.
 
-### Nama dan Nasab Beliau
+## Nama dan Nasab Beliau
 
 Beliau ialah Abu Abdillah Malik bin Anas bin Malik bin Abi Amir Al-Ashbahi, Al-Madani.
 
-### Kelahiran dan Pertumbuhan Beliau
+## Kelahiran dan Pertumbuhan Beliau
 
 Beliau lahir di kota Madinah pada tahun 93 Hijriyah. Beliau tumbuh di sebuah rumah yang disibukkan dengan ilmu Atsar (riwayat-riwayat hadits Nabi ﷺ dan perkataan Sahabat), di lingkungan yang sebagian besar waktu dihabiskan untuk mengkaji hadits Nabi ﷺ. Kakeknya ialah Malik bin Abi Amir merupakan salah seorang dari ulama tabi'in, dan buyutnya Abu Amir merupakan seorang sahabat Nabi ﷺ.
 
 Imam Malik tumbuh di kota Madinah dalam keadaan aman, damai, sejahtera, cinta ilmu, dan gigih dalam menuntut ilmu serta mendalami riwayat hadits.
 
-### Imam Malik dalam Menuntut Ilmu
+## Imam Malik dalam Menuntut Ilmu
 
 Allah Subhanahu wa Ta'ala telah mengkaruniai Imam Malik dengan orang tuanya yang terbaik, dan dari sebab mereka berdualah Imam Malik menuntut ilmu sejak dini, dan ibunya yang shalihah lagi bijak memberinya wewangian dan memakaikannya pakaian ahli ilmu, dan mengantarkannya untuk belajar. Ibunya pernah berkata kepadanya: "Nak, pergilah belajar kepada Rabi'ah dan belajarlah darinya adab sebelum engkau mempelajari darinya ilmu".
 
 Imam Malik berguru kepada lebih dari 900 masyayikh, diantaranya: Nafi' maula bin Umar, Rabi'ah bin Abdur-rahman, Muhammad bin Syihab Az-Zuhriy. Imam Malik telah memenuhi syarat dan kelayakan untuk mengeluarkan fatwa dan duduk dalam majlisnya untuk menyampaikan ilmu pada umurnya yang ke-21.
 
-### Kedudukan Beliau di Bidang Ilmu
+## Kedudukan Beliau di Bidang Ilmu
 
 Imam Malik adalah ahli fiqih dan ahli hadits, julukan beliau ialah Imam Darul Hijrah (Imamnya Kota Al-Madinah An-Nabawiyyah), beliau juga salah satu dari imam 4 mazhab Al-Fiqhiyyah Al-Muttaba'ah (mazhab maliki), dan beliau juga salah seorang Tabi' Tabi'in.
 
-### Jasa-jasa Beliau di Bidang Ilmu
+## Jasa-jasa Beliau di Bidang Ilmu
 
 Imam Malik mempunyai jasa-jasa di bidang ilmu yang sangat besar untuk seluruh umat islam, dan beliau mempunyai murid-murid yang sangat banyak, diantara mereka: Ibnul Qasim, Asyhab, Yahya bin Yahya Al-Laitsi, dan Abdurrahman bin Mahdi. Beliau juga mempunyai karya tulis dalam bidang hadist, yaitu kitab Al-Muwattha'. Selain itu mazhab fiqih beliau tersebar dan dianut di berbagai tempat, salah satunya yang terbanyak ialah di Maghrib (Maroko).
 
-### Pujian Ulama kepada Beliau
+## Pujian Ulama kepada Beliau
 
 - Imam Abu Hanifah berkata tentang imam Malik: *"Demi Allah, aku tidak pernah melihat orang secepat beliau dalam mengeluarkan jawaban yang jujur dan dalam zuhudnya yang sempurna."*
 - Berkata juga Imam Asy-Syafi'i: *"Jika datang kepadamu hadist dari Malik, maka berpeganglah padanya erat-erat".* dan juga: *"Jikalau datang suatu riwayat, maka Malik lah bintangnya"*. dan katanya: *"Jika disebutkan berbagai ulama, Malik lah bintangnya"*, dan belum ada satu pun yang mencapai keilmuannya sebanding dengan apa yang telah dicapai oleh Imam Malik; dikarenakan hafalannya, dan kemutqinannya, dan penjagaannya, dikatakan tentangnya: *"Siapa yang menginginkan hadist shahih, hendaklah ia merujuk kepada Malik",*dan berkata juga Imam Asy-Syafi'i: *"Malik bin Anas adalah guruku"*, dan di riwayat lain: *"Ustadzku", "Dan tidak seorang pun yang dapat dipercaya bagiku selain Malik", "Dan darinya kami menuntut ilmu", "Dan sesungguhnya aku seorang anak dari anak-anak Malik",*dan juga: *"Aku telah menjadikan Malik sebagai hujjah diantaraku dan Allah"*.
@@ -48,7 +48,7 @@ Imam Malik mempunyai jasa-jasa di bidang ilmu yang sangat besar untuk seluruh um
 - Berkata pula Imam Ibnu Al-Mubarak: *"Jikalau saja aku diperintahkan untuk memilih imam untuk suatu umat, maka Malik lah yang akan kupilih"*.
 - Dan pujian imam-imam kepada beliau lebih banyak daripada pujian yang telah dikhususkan ulama-ulama diatas untuknya -rohimahullah-
 
-### Sikap-sikap Beliau selama Hidup
+## Sikap-sikap Beliau selama Hidup
 
 - Pengagungan Imam Malik terhadap hadits Nabi ﷺ dan sunnah-sunnahnya. Berkata Abu Mus'ab: *"Malik tidak pernah berbicara tentang hadist kecuali dalam keadaan suci; sebagai penghormatannya terhadap hadits".*Imam Malik berkata:*"Setiap orang bisa diambil perkataannya dan bisa ditinggal kecuali perkataan si pemilik makam ini (Nabi ﷺ)".*Dan dari Maa'n bin Isa beliau berkata: Imam Malik bin Anas ketika ingin menyampaikan suatu hadits, beliau akan mandi dan memakai bukhur dan memakai wewangian, dan jika ada orang yang mengangkat suara (berisik) di majlisnya, maka beliau akan mengusir orang tersebut, sambil beliau berkata:*"Allah ta'ala berfirman:*
 
@@ -67,7 +67,7 @@ Imam Malik mempunyai jasa-jasa di bidang ilmu yang sangat besar untuk seluruh um
 
 *maka apa saja yang pada hari itu (zaman Nabi) bukan merupakan bagian dari agama, maka pada hari ini pun itu bukan bagian dari agama."*
 
-### Kematian Beliau
+## Kematian Beliau
 
 Ketika ajal beliau telah dekat, beliau membaca syahadat
 
@@ -75,7 +75,7 @@ Ketika ajal beliau telah dekat, beliau membaca syahadat
 
 beliau wafat di kota Madinah tahun 179 Hijriyah pada umur 85, dan dikuburkan di perkuburan Baqi' -rohimahullah-.
 
-### Pesan Moral dari Biografi Beliau
+## Pesan Moral dari Biografi Beliau
 
 1. Pentingnya belajar menuntut ilmu agama sejak kecil serta peran besar orang tua dalam mendukung proses tersebut.
 2. Seorang penuntut ilmu wajib memiliki syaikh (guru) untuk mempelajari adab dan ilmu langsung darinya, sebagaimana yang dilakukan Imam Malik dan menjadi tradisi para ulama.

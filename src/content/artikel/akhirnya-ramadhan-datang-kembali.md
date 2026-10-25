@@ -16,11 +16,11 @@ Penting bagi umat Islam mempelajari dan mengetahui Fiqih Ramadhan agar setiap ib
 
 Pembaca yang budiman, akhirnya Ramadhan datang kembali. Sesungguhnya Ramadhan adalah salah satu bulan yang mulia dan agung di sisi Allah Ta'ala. Pada bulan ini, al-Qur’an diturunkan, yaitu pada malam Lailatul Qodar yang ia lebih baik daripada seribu bulan, pada malam itu para Malaikat turun dengan perintah Allah Ta'ala, pada malam itu penuh dengan keselamatan dan keberkahan serta dilipatgandakan pahala ibadah seperti beribadah seribu bulan, dan hal itu berlangsung sampai terbit fajar. Maka dikenallah Ramadhan sebagai Syahrul Qur'an (Bulan Al-Qur'an). Begitu juga Ramadhan dikenal sebagai Syahrus Shiyam (Bulan Puasa), yang mana pada bulan ini kaum muslimin mengerjakan puasa di siang hari, memperbanyak ibadah, dan mendekatkan diri kepada Allah Ta'ala dengan berbagai ketaatan seperti membaca Al-Qur'an, bersedekah, dan menghidupkan malamnya dengan qiyamullail. Pada bulan ini juga, pintu surga dibuka, pintu neraka ditutup, dan para setan dari kalangan jin dibelenggu. Hari-hari pada bulan ini ialah hari-hari yang penuh rahmat (kasih sayang), maghfiroh (ampunan), dan itqun minan nar (pembebasan dari api neraka).
 
-### **Definisi Puasa Ramadhan**
+## **Definisi Puasa Ramadhan**
 
 Puasa adalah menahan diri dari makan, minum, dan berhubungan suami istri dari terbit fajar hingga terbenamnya matahari.
 
-### **Hukum Puasa Ramadhan**
+## **Hukum Puasa Ramadhan**
 
 Puasa Ramadhan termasuk rukun islam yang keempat dan hukumnya wajib bagi setiap muslim dan muslimah yang baligh, berakal, dan mampu untuk melaksanakannya. Allah Ta'ala berfirman:
 
@@ -28,7 +28,7 @@ Puasa Ramadhan termasuk rukun islam yang keempat dan hukumnya wajib bagi setiap 
 
 > “Wahai orang-orang yang beriman, diwajibkan atas kamu berpuasa sebagaimana diwajibkan atas orang-orang sebelum kamu agar kamu bertakwa.” (QS. Al-Baqarah: 183)
 
-### **Syarat Puasa Ramadhan**
+## **Syarat Puasa Ramadhan**
 
 1. Beragama Islam, maka tidak diwajibkan atas orang kafir sampai ia masuk Islam.\
 2. Berakal, maka tidak diwajibkan atas orang yang mengalami gangguan akal (gila) sampai akalnya kembali normal.\
@@ -38,7 +38,7 @@ Puasa Ramadhan termasuk rukun islam yang keempat dan hukumnya wajib bagi setiap 
 6. Suci dari haid dan nifas, maka tidak diwajibkan atas wanita haid dan nifas, namun ia wajib mengqodho puasa yaitu menggantinya di luar bulan Ramadhan.\
 7. Berniat puasa, diniatkan setiap malam Ramadhan (menurut Jumhur Ulama) atau cukup diniatkan berpuasa satu bulan penuh di awal malam Ramadhan (menurut Maliki). Adapun tempatnya niat ialah hati, sehingga tidak perlu untuk dilafazkan atau diucapkan, karena tidak didapati satupun riwayat shohih yang menerangkan demikian.
 
-### **Hal-Hal yang Disunnahkan ketika Berpuasa**
+## **Hal-Hal yang Disunnahkan ketika Berpuasa**
 
 1. Mengakhirkan sahur.\
 2. Menyegerakan berbuka puasa.\
@@ -47,14 +47,14 @@ Puasa Ramadhan termasuk rukun islam yang keempat dan hukumnya wajib bagi setiap 
 5. Memperbanyak doa menjelang berbuka.\
 6. Mengawali berbuka dengan ruthob (kurma basah), jika tidak ada maka dengan tamr (kurma kering), jika tidak ada maka berbukalah dengan air putih.
 
-### **Kelompok Orang yang Mendapat Keringanan Boleh Tidak Puasa Ramadhan**
+## **Kelompok Orang yang Mendapat Keringanan Boleh Tidak Puasa Ramadhan**
 
 1. Orang sakit yang jika ia berpuasa akan membahayakannya atau memperburuk keadaannya, dan musafir yang safarnya telah mencapai jarak yang diperbolehkan untuk mengqoshor sholat, maka tidak berpuasa lebih utama, tetapi wajib mengqodho puasanya di luar bulan Ramadhan. Namun jika tetap berpuasa, maka tidak apa-apa selama tidak bermudhorat.\
 2. Wanita haid dan nifas, tidak boleh berpuasa sampai suci, tetapi wajib mengqodho. Jika tetap berpuasa, maka puasanya tidak sah.\
 3. Wanita hamil dan menyusui, jika khawatir terhadap kondisi bayinya atau kondisi si ibu serta bayinya, maka boleh tidak berpuasa, tetapi wajib mengqodho dan membayar fidyah. Sedangkan jika hanya khawatir terhadap kondisi si ibu, tidak dengan bayinya, maka boleh tidak berpuasa, tetapi wajib mengqodho tanpa dibebankan membayar fidyah. Namun jika ia tetap berpuasa, maka tidak apa-apa selama tidak bermudhorat.\
 4. Orang yang lemah atau tidak mampu berpuasa sama sekali karena tua renta atau penyakit parah yang kecil peluang sembuhnya menurut medis, maka diperbolehkan untuk tidak berpuasa tetapi wajib membayar fidyah.
 
-### **Keutamaan yang Menjadikan Ramadhan Lebih Utama daripada Bulan-bulan yang Lain**
+## **Keutamaan yang Menjadikan Ramadhan Lebih Utama daripada Bulan-bulan yang Lain**
 
 Allah Ta'ala berfirman:
 
@@ -76,7 +76,7 @@ Allah Ta'ala berfirman:
 
 > Dari Abu Hurairah Rodhiyallahu 'Anhu bahwa Rasulullah ﷺ bersabda: Jika masuk bulan Ramadhan, maka pintu-pintu surga dibuka, pintu-pintu neraka ditutup, dan para setan dari kalangan jin dibelenggu. (HR. An-Nasa'i)
 
-### A**mal Sholeh yang Wajib dan Sunnah Muakkadah pada Bulan Ramadhan**
+## A**mal Sholeh yang Wajib dan Sunnah Muakkadah pada Bulan Ramadhan**
 
 1. Puasa\
 Nabi ﷺ bersabda:
@@ -201,7 +201,7 @@ C. Beristigfar di waktu sahur, Allah Ta'ala berfirman:
 
 D. Mencari waktu mustajab pada hari Jum’at, terutama waktu setelah Ashar.
 
-### Kesalahan dan Kekeliruan yang Harus Dijauhi oleh Orang yang Berpuasa
+## Kesalahan dan Kekeliruan yang Harus Dijauhi oleh Orang yang Berpuasa
 
 1. Menjadikan malam sebagai siang atau sebaliknya.\
 2. Tidur hingga lalai dan meninggalkan sebagian sholat wajib.\
@@ -214,7 +214,7 @@ D. Mencari waktu mustajab pada hari Jum’at, terutama waktu setelah Ashar.
 9. Berkumpul dengan rekan kerja untuk ghibah (menggunjing) dan namimah (mengadu domba).\
 10. Wanita yang sibuk menghabiskan hampir sebagian besar waktunya hanya di dapur.
 
-### Faedah dan Nasehat Seputar Puasa
+## Faedah dan Nasehat Seputar Puasa
 
 1. Diwajibkan bagi orang yang berpuasa untuk berpuasa dengan ikhlas, mengharap keridhoan dan pahala dari Allah Ta'ala, bukan mengharapkan selainnya.\
 2. Dalam beberapa kasus, orang yang berpuasa mungkin terluka, mimisan, muntah, atau menelan air dan sejenisnya dengan tidak sengaja, maka hal-hal ini tidak membatalkan puasa jika terjadi karena ketidaksengajaan.\
@@ -247,7 +247,7 @@ D. Mencari waktu mustajab pada hari Jum’at, terutama waktu setelah Ashar.
 29. Sesungguhnya kaum muslimin telah sepakat bahwa puasa di bulan Ramadhan hukumnya wajib, maka siapa yang mengingkari kewajiban berpuasa di bulan Ramadhan maka telah jatuh kepadanya hukum riddah (murtad) dan wajib baginya untuk segera bertaubat kepada Allah Ta'ala.\
 30. Puasa diwajibkan pada tahun kedua hijriyyah dan Nabi Muhammad ﷺ telah berpuasa di bulan Ramadhan sebanyak sembilan kali dalam hidupnya.
 
-### Zakat Fitrah
+## Zakat Fitrah
 
 1. Zakat Fitrah adalah zakat badan dan jiwa yang diwajibkan karena akan berbuka (menyelesaikan) puasa Ramadhan.\
 2. Hukumnya wajib bagi setiap muslim atas dirinya dan orang-orang yang nafkahnya menjadi tanggung jawabnya.\
@@ -260,7 +260,7 @@ D. Mencari waktu mustajab pada hari Jum’at, terutama waktu setelah Ashar.
 9. Zakat diberikan kepada 8 golongan yang berhak menerima zakat pada umumnya, dan yang paling utama menerimanya adalah orang fakir, orang miskin, dan orang yang terlilit hutang.\
 10. Wajib hukumnya zakat itu telah sampai dan diterima oleh si penerima zakat atau yang mewakilinya pada waktu mengeluarkannya.
 
-### Penutup
+## Penutup
 
 Wahai saudaraku seiman, janganlah sekali-kali meninggalkan puasa pada bulan Ramadhan. Andai sekiranya seseorang sengaja tanpa uzur meninggalkan atau membatalkan satu hari puasa di bulan Ramadhan, maka ia tidak akan bisa menebusnya, walaupun ia berpuasa seumur hidup. Maka istiqomahlah dalam ketaatan kepada Allah Ta'ala di bulan Ramadhan dan bulan-bulan setelah Ramadhan. Jadikan bulan Ramadhan sebagai pijakan awal dari perubahan menjadi lebih baik, dari pribadi yang memiliki kebiasaan buruk berubah menjadi pribadi yang taat beribadah dan mencintai amal sholeh.\
 Semoga Allah Ta'ala menerima semua amalan kita dan menjadikan kita termasuk dari golongan orang-orang yang dirahmati, diampuni, dan dibebaskan dari api neraka, serta dijadikan kita dari penghuni surga-Nya Subhanahu wa Ta'ala. Allahumma Aamiin.

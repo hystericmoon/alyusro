@@ -22,7 +22,7 @@ const isCurrent = (href: string) => norm(href) === here;
     <a href="/" class="mr-auto flex min-h-44 min-w-0 items-center gap-12 text-ink no-underline hover:text-ink" aria-current={here === '/' ? 'page' : undefined}>
       <img src="/logo-mark.png" alt="" width="44" height="44" class="size-40 flex-none sm:size-44" />
       <span class="flex min-w-0 flex-col gap-3">
-        <span class="font-display text-[20px] font-semibold leading-[1.05] min-[400px]:text-22 min-[400px]:leading-none sm:text-27">{school.name}</span>
+        <span class="font-display text-[20px] font-semibold leading-[1.05] min-[400px]:text-22 min-[400px]:leading-none sm:text-27 [text-wrap:balance]">{school.name.replace(/ (?=\S+$)/, '\u00a0')}</span>
         <span class="hidden text-12 leading-[1.2] text-muted min-[400px]:block sm:text-13">Tenjolaya, Kabupaten Bogor</span>
       </span>
     </a>

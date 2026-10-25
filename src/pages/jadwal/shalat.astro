@@ -65,7 +65,7 @@ const cols = ['imsak', 'subuh', 'terbit', 'zhuhur', 'ashar', 'maghrib', 'isya'] 
 
   <h2 id="bulan">Jadwal <span data-js="month">{MONTHS[today.m - 1]} {today.y}</span></h2>
   <p class="text-15 text-muted">Imsak sepuluh menit sebelum Subuh. Baris yang ditandai adalah hari ini.</p>
-  <div class="scroll-cue -mx-20 overflow-x-auto px-20 sm:mx-0 sm:px-0">
+  <div class="scroll-cue -mx-20 overflow-x-auto px-20 sm:mx-0 sm:px-0" tabindex="0" role="region" aria-label="Jadwal shalat sebulan, dapat digeser ke samping">
     <table class="tabular-nums" data-js="table">
       <caption class="sr-only">Jadwal shalat {MONTHS[today.m - 1]} {today.y}, Kabupaten Bogor</caption>
       <thead>

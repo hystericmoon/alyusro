@@ -117,8 +117,8 @@ const shareBtn =
       <ul class="m-0 grid list-none grid-cols-[repeat(auto-fit,minmax(min(300px,100%),1fr))] gap-32 p-0">
         {
           more.map((a) => (
-            <li class="flex flex-col gap-8 rounded-lg bg-paper p-20 sm:p-24">
-              <a href={`/artikel/${a.id}/`} class="font-display text-[28px] font-semibold leading-[1.1] text-ink underline-offset-4 hover:text-lapis">
+            <li class="relative flex flex-col gap-8 rounded-lg bg-paper p-20 sm:p-24">
+              <a href={`/artikel/${a.id}/`} class="font-display text-[28px] font-semibold leading-[1.1] text-ink underline-offset-4 after:absolute after:inset-0 after:rounded-lg after:content-[''] hover:text-lapis">
                 <Fragment set:html={titleHtml(a.data.title)} />
               </a>
               <span class="text-14 text-muted">

@@ -16,7 +16,8 @@ const yearText = year ? ` tahun ajaran ${year}` : '';
   class="mx-auto box-border flex max-w-page flex-wrap items-start gap-x-64 gap-y-56 px-20 pb-96 pt-48 sm:px-40 sm:pt-72"
 >
   <div class="flex max-w-[540px] flex-[1_1_380px] flex-col gap-24 pt-8">
-    <p lang="ar" dir="rtl" class="m-0 self-start font-display text-34 leading-[1.2] text-lapis">{school.nameAr}</p>
+    {/* One line at every width: the wider fallback font would wrap it on small phones until Almarai loads, shifting the hero (CLS). */}
+    <p lang="ar" dir="rtl" class="m-0 self-start whitespace-nowrap font-display text-[clamp(28px,8.4vw,34px)] leading-[1.2] text-lapis">{school.nameAr}</p>
     <h1
       id="g-hero-title"
       class="m-0 font-display text-[clamp(52px,6.4vw,92px)] font-semibold leading-[0.95] tracking-[-0.01em] [text-wrap:balance]"

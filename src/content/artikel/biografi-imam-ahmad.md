@@ -16,25 +16,25 @@ Imam Ahmad bin Hambal adalah salah seorang dari Imam empat mazhab fiqih yang ter
 
 Segala puji bagi Allah, Rabb semesta alam. Shalawat dan salam semoga tercurah kepada pimpinan para nabi dan rasul, junjungan dan pelindung kami, Nabi Muhammad, serta kepada Keluarga dan seluruh Sahabatnya. Amma ba'du.
 
-### ◆ **Nama dan Nasab Beliau**
+## ◆ **Nama dan Nasab Beliau**
 
 Ahmad bin Muhammad bin Hanbal bin Asad, Asy-Syaibani, kemudian Al-Marwazi, kemudian Al-Baghdadi. Beliau dikenal dengan sebutan Abu ‘Abdillah.
 
-### ◆ Kelahiran**dan Tumbuhnya Beliau**
+## ◆ Kelahiran **dan Tumbuhnya Beliau**
 
 Imam Ahmad bin Hambal rahimahullah lahir di kota Baghdad tahun 164 Hijriah, dan beliau tumbuh dan besar di kota Baghdad, dan ayah beliau wafat kala beliau masih kecil dan ibunya merawatnya dan mengasuhnya.
 
-### ◆ Kisah Beliau Menuntut Ilmu
+## ◆ Kisah Beliau Menuntut Ilmu
 
 Imam Ahmad bin Hambal rahimahullah telah menyelesaikan hafalan Al-Quran sejak kecil, lalu di lanjutkan dengan mempelajari Hadist Rasulullah ﷺ dan beliau menyusun sebuah buku dengan hadist-hadist Rasulullah ﷺ yang telah beliau pelajari. Dan beliau terus menuntut ilmu sepanjang hidupnya, serta berkelana dan bepergian demi hal tersebut. Maka para sahabat-sahabat beliau terheran-heran terhadap ilmu yang beliau pelajari tanpa ada rasa jenuh dalam dirinya, lalu mereka bertanya kepadanya: “Wahai Ahmad! Sampai kapan engkau menuntut ilmu, dan engkau telah berada di posisi kedudukan yang sangat tinggi ini, dan telah menjadi imam kaum Muslimin?” maka beliau menjawab: “Bersama tempat tinta (pena) hingga ke liang kubur”.
 
 Dan beliau selalu bertalaqqi (mengambil ilmu langsung) dari guru-guru terbaiknya, diantaranya: Imam Asy syafi’I, Abu Yusuf (sahabat Abu Hanifah), Sufyan bin ‘Uyainah, Abdurrazzaq bin Hamma, Abdurrahman bin Mahdi, dan lain-lain.
 
-### ◆ **Kedudukan Keilmuan Beliau**
+## ◆ **Kedudukan Keilmuan Beliau**
 
 Beliau adalah Imam Ahlussunnah wal Jamaah yang telah disepakati keluasan dan kedalaman ilmunya. Beliau adalah penutup dari empat Imam besar dalam pandangan Ahlussunnah wal Jamaah, dan kepada beliaulah mazhab Hambali dinistbatkan.
 
-### ◆ **Pengaruh Keilmuan Beliau**
+## ◆ **Pengaruh Keilmuan Beliau**
 
 Beliau membawa pengaruh besar terhadap umat Islam terutama karya ilmiahnya yang paling terkenal adalah *Al-Musnad*. Imam Ahmad telah mengumpulkan dan menulis hadis di dalam *Al-Musnad* sepanjang hidupnya, dan jumlah hadist yang terdapat pada kitabnya mencapai 30.000 hadist dan telah diterbitkan dalam 50 jilid.
 
@@ -42,7 +42,7 @@ Banyak dari murid-muridnya telah menimba ilmu dari beliau, di antara mereka adal
 
 Beliau selalu berada di masjid untuk mengajarkan ilmu agama di Baghdad kala itu sehingga orang-orang pun berkumpul di majelisnya. Dan jumlah orang yang menimba ilmu dari beliau di majelisnya mencapai 5.000 orang atau lebih dari itu, dan mereka mempelajari ilmu dan adab dari beliau. Madzhab beliau tersebar dan meluas di Irak, Syam (sekarang di Suriah, Yordania, Lebanon, dan Palestina), Najd (sekarang di Arab Saudi) hingga saat ini.
 
-### ◆ **Pujian Para Ulama kepada Beliau**
+## ◆ **Pujian Para Ulama kepada Beliau**
 
 Berkata Imam Asy-Syafi’i: “Aku meninggalkan kota Baghdad, dan aku tidak meninggalkan seorang pun di sana yang lebih utama, lebih berilmu, lebih faqih, dan lebih bertakwa daripada Ahmad bin Hanbal.”
 
@@ -64,7 +64,7 @@ Berkata Imam Nawawi: “Beliau adalah seorang imam yang sangat unggul dan memili
 
 Para ulama banyak memberikan pujian kepadanya, bahkan pujian tersebut terlalu banyak untuk dicantumkan dalam ringkasan singkat ini. Semoga Allah Ta‘ala merahmatinya.
 
-### ◆ Kisah dari Kehidupan Beliau
+## ◆ Kisah dari Kehidupan Beliau
 
 Berkata Abu Dawud: “Majelis Imam Ahmad lebih banyak membahas tentang akhirat dan agama. Di majelis Imam Ahmad, orang-orang tidak membicarakan urusan dunia. Aku tidak pernah melihat beliau membicarakan dunia sama sekali. Beliau tidak mengambil hadiah dari pemimpin manapun sekalipun betapa fakirnya beliau. Beliau memilih sabar. Semoga Allah merahmati beliau. Salah satu karya beliau kitab Az Zuhd, sebaik-baik kitab dalam bab Zuhud."
 
@@ -74,11 +74,11 @@ Diceritakan dari Ishaq bin Musa al-Anshari, beliau berkata: “Khalifah al-Ma'mu
 
 Kisah berikutnya dari Abu Bakar al-Marwazi, beliau berkata bahwa Imam Ahmad pernah berkata: "Aku tidak menganggap ada sesuatu yang lebih baik daripada hidup sederhana dan tidak banyak harta. Aku senang ketika tidak memiliki apa-apa.”
 
-### ◆ **Kisah Doa Beliau**
+## ◆ **Kisah Doa Beliau**
 
 Diriwayatkan oleh Ibnu al-Jauzi dari Ali bin Abi Haroroh, ia berkata: “Ibuku pernah mengalami sakit yang berlangsung selama dua puluh tahun. Suatu hari ia berkata kepadaku: "Jumpailah Ahmad bin Hanbal dan mintalah beliau untuk mendoakanku." Aku pun pergi menemui Imam Ahmad dan mengetuk pintu rumah beliau, beliau bertanya: “Siapa?”. Aku menjawab: “Aku laki-laki dari keluarga yang tinggal di daerah ini. Ibuku sudah lama sakit dan ia memintaku untuk menemuimu agar kamu mendoakannya.” Kemudian aku mendengar Imam Ahmad berkata dengan nada marah: “Justru kami lebih butuh didoakan”. Aku pun segera beranjak lalu tiba tiba seorang wanita tua keluar dari rumah Imam Ahmad dan berkata:"kamu yang tadi berbicara dengan Abu Abdillah?. Aku menjawab: "Iya". Lalu wanita tua berkata: "Kamu telah meninggalkannya saat ia mendoakan ibumu". Aku pun bergegas pergi dan ketika sampai di rumah, ibuku membukakan pintu sambil berjalan dan berkata: “Allah telah memberikan kepadaku kesembuhan.”
 
-### ◆ **Keteguhan dan Kesabaran Beliau**
+## ◆ **Keteguhan dan Kesabaran Beliau**
 
 Imam Ahmad pernah mengalami ujian dan tekanan dari penguasa kala itu. Penyebabnya ialah munculnya bid‘ah yang berpendapat bahwa Al-Qur’an adalah makhluk. Beliau dipukul dengan cambukan yang sangat keras, kemudian dipenjarakan. Namun, beliau tetap teguh mempertahankan pendapat bahwa Al-Qur’an bukanlah makhluk. beliau menolak pendapat yang batil tersebut dan mengatakan: “Al-Qur’an adalah Kalamullah (firman Allah Ta ‘ala), bukan makhluk (sesuatu yang diciptakan)”.
 
@@ -94,51 +94,51 @@ Dari Maimun bin al-Ashbagh, ia berkata: Aku berada di Baghdad. Kemudian aku mend
 
 Kemudian beliau dicambuk 29 kali.
 
-### ◆ **Perhatian Beliau kepada Diri Sendiri**
+## ◆ **Perhatian Beliau kepada Diri Sendiri**
 
 Abdul Malik al-Maimuni berkata: “Aku tidak mengetahui pernah melihat seseorang yang lebih memperhatikan kebersihan dan kerapian dirinya daripada Ahmad bin Hanbal.” Beliau melanjutkan: “Aku tidak pernah melihat seseorang yang lebih menjaga kebersihan pakaian dan rambutnya, serta lebih memperhatikan kebersihan tubuhnya, daripada Ahmad bin Hanbal.”
 
-### ◆ **Menjaga Sunnah Nabi ﷺ**
+## ◆ **Menjaga Sunnah Nabi ﷺ**
 
 Abdullah bin Ahmad bin Hanbal berkata: “Aku mendengar Abu Zur'ah berkata**:**Ahmad bin Hanbal telah menghafal satu juta hadits**.”**Kemudian beliau ditanya: “Bagaimana kamu bisa mengetahui hal itu?” Beliau menjawab: “Aku menghitungnya dari catatan-catatan yang beliau miliki.”
 
-### ◆ **Mengamalkan Sunnah Nabi ﷺ**
+## ◆ **Mengamalkan Sunnah Nabi ﷺ**
 
 Al-Marwadzi berkata: “Ahmad pernah berkata kepadaku: Aku tidak pernah menulis satu hadits pun dari Nabi ﷺ kecuali aku telah mengamalkannya.” Kemudian beliau menceritakan: “Aku membaca sebuah hadits yang menyebutkan bahwa Nabi ﷺ pernah berbekam dan memberikan kepada tukang bekam upah berupa satu dinar. Maka ketika aku berbekam, aku juga memberikan kepada tukang bekam satu dinar.”
 
-### ◆ Meninggalkan Pembicaraan Unfaedah
+## ◆ Meninggalkan Pembicaraan Unfaedah
 
 Abu Dawud berkata: “Aku bertemu dengan dua orang ulama besar. Aku tidak pernah melihat seseorang seperti Ahmad bin Hanbal, yang tidak suka mencampuri pembicaraan orang lain. Namun, ketika ilmu disebutkan, beliau langsung berbicara.”
 
-### ◆ **Makna Cinta kepada Allah ﷻ**
+## ◆ **Makna Cinta kepada Allah ﷻ**
 
 Imam Ahmad ditanya tentang cinta kepada Allah. Beliau menjawab: “Cinta kepada Allah adalah tidak mencintai sesuatu karena mengikuti hawa nafsu atau keinginan dunia".
 
-### ◆ Nasehat Beliau kepada Putranya Abdullah
+## ◆ Nasehat Beliau kepada Putranya Abdullah
 
 Imam Ahmad berkata: “Wahai anakku, sebarkanlah kebaikan, karena kamu akan selalu mendapatkan kebaikan selama kamu menyebarkan kebaikan.”
 
-### ◆ **Kerendahan Hati Beliau**
+## ◆ **Kerendahan Hati Beliau**
 
 Ketika Imam Ahmad diberi ucapan: “Semoga Allah membalasmu dengan kebaikan atas jasamu kepada Islam.” Beliau menjawab: “Tidak, justru semoga Allah membalas Islam atas kebaikan yang dilimpahkan kepadaku".Kemudian beliau berkata: “Siapalah aku?! Dan apa jasaku?!
 
 Abu ‘Utsman asy-Syafi‘i berkata: “Orang-orang akan terus mendapatkan manfaat dari ilmu yang kamu miliki". Lalu Imam Ahmad menjawab: “Jangan katakan ini kepadaku, wahai Abu ‘Utsman! Jangan katakan hal seperti ini. Siapakah aku dibandingkan dengan manusia lainnya?!”
 
-### ◆ Beliau dan Perkataan Aku Tidak Tahu
+## ◆ Beliau dan Perkataan Aku Tidak Tahu
 
 Al-Marwadzi berkata: “Aku pernah bertanya kepada Ahmad bin Hanbal tentang banyak hal, tetapi beliau menjawab, ‘Aku tidak tahu.’”
 
-### ◆ **Ibadah Beliau**
+## ◆ **Ibadah Beliau**
 
 Imam Ahmad selalu melaksanakan salat sunnah setiap hari dan malam sebanyak 300 rakaat. Beliau juga mengkhatamkan Al-Qur’an setiap tujuh hari sekali. Abdullah bin Ahmad berkata: **“**Ayahku (Imam Ahmad) melaksanakan ibadah haji sebanyak lima kali: dua kali dengan berjalan kaki dan tiga kali dengan menaiki kendaraan".
 
-### ◆ **Wafatnya Beliau**
+## ◆ **Wafatnya Beliau**
 
 Imam Ahmad bin Hanbal wafat pada hari Jumat di kota Baghdad dan dimakamkan di sana. Beliau wafat pada tahun 241 H, dalam usia 77 tahun. Jenazah beliau diiringi oleh orang yang sangat banyak. Banyak sekali manusia yang menghadiri pemakamannya.
 
 Diriwayatkan dari Abu al-Hasan at-Tamimi, dari ayahnya, dari kakeknya, bahwa ia menghadiri pemakaman Imam Ahmad bin Hanbal. Ia berkata: “Aku menunggu sepanjang pekan dengan harapan bisa sampai ke makam beliau. Namun karena banyaknya orang yang berdesak-desakan di sekitar makamnya, aku belum bisa sampai ke sana. Setelah berlalu satu pekan, barulah aku berhasil sampai ke makam beliau.” Semoga Allah Ta'ala merahmati beliau dengan rahmat yang luas.
 
-### ◆ **Faedah dari Biografi Beliau**
+## ◆ **Faedah dari Biografi Beliau**
 
 **1.**
 

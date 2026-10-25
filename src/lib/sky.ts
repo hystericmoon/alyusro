@@ -25,15 +25,15 @@ export function starOpacity(min: number, pt: PrayerMinutes): number {
 }
 
 /**
- * Sun position in the landscape's 1440×460 viewBox. It stays in the open sky
- * right of Gunung Salak, where the design places it: it rises from behind the
- * right-hand hills at sunrise, peaks near midday, and sinks back at Maghrib.
- * Null at night.
+ * Sun position in the landscape's 1440×460 viewBox, for the full desktop
+ * width: a low arc over the left hill, under the headline and clear of the
+ * photo on the right. It rises at sunrise, peaks near midday and sinks at
+ * Maghrib. Null at night. LivingSky maps it into the visible middle of the
+ * landscape on narrower screens.
  */
 export function sunAt(min: number, pt: PrayerMinutes): { x: number; y: number } | null {
   const t = (min - pt.terbit) / (pt.maghrib - pt.terbit);
   if (t < -0.04 || t > 1.04) return null;
-  // A low arc over the left hill, under the text and clear of the photo on the right.
   return { x: Math.round(120 + clamp01(t) * 360), y: Math.round(300 - 60 * Math.sin(Math.PI * clamp01(t))) };
 }
 

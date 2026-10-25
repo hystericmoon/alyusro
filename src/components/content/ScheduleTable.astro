@@ -1,6 +1,8 @@
 ---
 // Tahfizh timetable from content/site.json (dailySchedule): the weekday
 // blocks the day view uses, plus weekly activities and periodic events.
+// On phones the Durasi column folds into the Waktu cell, so the time text
+// gets the width instead of breaking one word per line.
 import { site } from '@/lib/site';
 
 type Entry = { name: string; days: string; start: string; end: string; note?: string; whenNote?: string; duration?: string; placeholder?: boolean };
@@ -25,7 +27,7 @@ const rows = [
 <table>
   <caption class="sr-only">Jadwal kegiatan tahfizh</caption>
   <thead>
-    <tr><th scope="col">Kegiatan</th><th scope="col">Waktu</th><th scope="col">Durasi</th></tr>
+    <tr><th scope="col" class="w-[38%] sm:w-auto">Kegiatan</th><th scope="col">Waktu</th><th scope="col" class="max-sm:hidden">Durasi</th></tr>
   </thead>
   <tbody>
     {
@@ -40,8 +42,11 @@ const rows = [
               </>
             )}
           </th>
-          <td>{r.when}</td>
-          <td>{r.duration}</td>
+          <td>
+            {r.when}
+            {r.duration && <span class="block text-15 text-muted sm:hidden">{r.duration}</span>}
+          </td>
+          <td class="max-sm:hidden">{r.duration}</td>
         </tr>
       ))
     }
