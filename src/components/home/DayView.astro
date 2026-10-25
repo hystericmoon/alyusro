@@ -6,6 +6,12 @@ import StarField from '@/components/StarField.astro';
 import { site, school } from '@/lib/site';
 import { buildDay, calcPrayerTimes, evalTime, nowInWib, type DaySchedule } from '@/lib/day-view';
 
+interface Props {
+  /** Homepage: a photo under the "now" card fills the left column down to the end of the schedule. */
+  photo?: boolean;
+}
+const { photo = false } = Astro.props;
+
 const schedule = site.dailySchedule as unknown as DaySchedule;
 const today = nowInWib();
 const pt = calcPrayerTimes(today.y, today.m, today.d, school.geo.lat, school.geo.lng);
@@ -29,7 +35,7 @@ const at = (i: number) => `${(i / (hours.length - 1)) * 100}%`;
     data-config={config}
     class="relative mx-auto box-border flex max-w-page flex-wrap items-start gap-x-64 gap-y-48 px-20 py-72 sm:px-40 sm:py-96"
   >
-    <div class="flex max-w-[520px] flex-[1_1_380px] flex-col gap-24">
+    <div class:list={['flex max-w-[520px] flex-[1_1_380px] flex-col gap-24', photo && 'self-stretch']}>
       <h2
         id="g-day-title"
         class="m-0 font-display text-[clamp(44px,5vw,72px)] font-semibold leading-[0.98] text-white [text-wrap:balance]"
@@ -48,8 +54,30 @@ const at = (i: number) => `${(i / (hours.length - 1)) * 100}%`;
       </div>
       <a
         href={site.dailySchedule.source}
-        class="inline-flex min-h-44 items-center self-start text-16 font-bold text-white underline-offset-4 hover:text-on-night-body"
-      >Lihat kurikulum tahfizh</a>
+        class="cta-next -mt-8 inline-flex min-h-44 items-center gap-8 self-start text-16 font-bold text-white no-underline underline-offset-4 hover:text-white hover:underline focus-visible:underline"
+      >
+        Lihat kurikulum tahfizh
+        <svg aria-hidden="true" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="cta-arrow-next flex-none"><path d="M4 10h12M11 5l5 5-5 5"></path></svg>
+      </a>
+      {
+        photo && (
+          <figure class="m-0 flex min-h-0 flex-col gap-10 xl:flex-1">
+            <picture class="relative block aspect-[16/10] min-h-[200px] xl:aspect-auto xl:flex-1">
+              <source type="image/webp" srcset="/photos/santri-menuju-kelas-800.webp 800w, /photos/santri-menuju-kelas-1600.webp 1600w" sizes="(min-width: 1280px) 520px, (min-width: 640px) calc(100vw - 80px), calc(100vw - 40px)" />
+              <img
+                src="/photos/santri-menuju-kelas-1600.jpg"
+                width="1600"
+                height="940"
+                loading="lazy"
+                decoding="async"
+                alt="Santri berseragam batik biru berjalan menuju kelas, salah satunya membaca catatan sambil berjalan"
+                class="absolute inset-0 block size-full rounded-xl object-cover object-[50%_35%]"
+              />
+            </picture>
+            <figcaption class="text-14 leading-[1.5] text-on-night-muted">Menuju kelas, sambil mengulang catatan pelajaran.</figcaption>
+          </figure>
+        )
+      }
     </div>
 
     <div data-ui class="glass-night box-border min-w-0 flex-[1_1_520px] rounded-xl px-16 pb-20 pt-24 sm:px-24">

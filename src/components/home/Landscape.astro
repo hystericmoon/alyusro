@@ -3,8 +3,9 @@
 // call to action. `.sky` tints it by time of day; LivingSky.astro (homepage
 // only) sets data-sky and moves the sun. Without that script it stays the
 // designed day. The campus photo (the school's own, from its Instagram)
-// carries a frosted "Mulai dari sini" panel with the three next steps a
-// parent actually takes: ask, read the details, visit.
+// stays mostly in view: the frosted "Mulai dari sini" panel (the three next
+// steps a parent actually takes: ask, read the details, visit) sits below it
+// on phones and tablets and overlaps only its bottom edge from 1024px.
 import StarField from '@/components/StarField.astro';
 import { school, registerUrl, numberWord, openLevels } from '@/lib/site';
 
@@ -55,7 +56,7 @@ const steps = [
           class="block aspect-[16/11] w-full rounded-xl object-cover"
         />
       </picture>
-      <nav aria-labelledby="g-foot-steps" class="cta-panel relative mx-12 -mt-96 rounded-lg p-8 sm:mx-24 sm:-mt-120">
+      <nav aria-labelledby="g-foot-steps" class="cta-panel relative mt-12 rounded-lg p-8 lg:mx-24 lg:-mt-56">
         <p id="g-foot-steps" class="m-0 px-16 pb-4 pt-12 text-14 font-bold text-[var(--panel-muted)]">Mulai dari sini</p>
         <ol class="m-0 flex list-none flex-col gap-2 p-0">
           {

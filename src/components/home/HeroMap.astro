@@ -1,7 +1,11 @@
 ---
 // Section 1: hafalan map hero. The map itself is the JuzMap island.
+// From 1280px the right column is a campus photo with the juz map card
+// overlapping its lower part; below that the photo comes first (CSS order,
+// so the reading and focus order stay text first), then the text, then the map.
 import JuzMap from '@/components/home/JuzMap.astro';
 import { buildJuzMap } from '@/lib/juz-map';
+import { latestTop } from '@/lib/prestasi';
 import { site, school, openLevels, registerUrl, infoGroupUrl, known } from '@/lib/site';
 
 const map = buildJuzMap();
@@ -10,14 +14,15 @@ const openNames = open.map((l) => `${l.name} (${l.setara.charAt(0).toLowerCase()
 const primaryOpen = open[0];
 const year = known(site.psb.academicYear);
 const yearText = year ? ` tahun ajaran ${year}` : '';
+const proof = latestTop();
 ---
 <section
   aria-labelledby="g-hero-title"
-  class="mx-auto box-border flex max-w-page flex-wrap items-start gap-x-64 gap-y-56 px-20 pb-96 pt-48 sm:px-40 sm:pt-72"
+  class="mx-auto box-border flex max-w-page flex-col gap-40 px-20 pb-96 pt-24 sm:px-40 sm:pt-40 xl:grid xl:grid-cols-[minmax(0,1fr)_minmax(0,560px)] xl:items-start xl:gap-x-80 xl:gap-y-0 xl:pt-72"
 >
-  <div class="flex max-w-[540px] flex-[1_1_380px] flex-col gap-24 pt-8">
-    {/* One line at every width: the wider fallback font would wrap it on small phones until Almarai loads, shifting the hero (CLS). */}
-    <p lang="ar" dir="rtl" class="m-0 self-start whitespace-nowrap font-display text-[clamp(28px,8.4vw,34px)] leading-[1.2] text-lapis">{school.nameAr}</p>
+  <div class="order-2 flex max-w-[640px] flex-col gap-24 xl:order-none xl:col-start-1 xl:row-span-2 xl:row-start-1 xl:pt-8">
+    {/* The brand's display moment, sized between the section headings and the h1. One line at every width: the wider fallback font would wrap it on small phones until Almarai loads, shifting the hero (CLS). */}
+    <p lang="ar" dir="rtl" class="m-0 self-start whitespace-nowrap font-display text-[clamp(28px,9vw,60px)] leading-[1.2] text-lapis xl:text-[58px]">{school.nameAr}</p>
     <h1
       id="g-hero-title"
       class="m-0 font-display text-[clamp(52px,6.4vw,92px)] font-semibold leading-[0.95] tracking-[-0.01em] [text-wrap:balance]"
@@ -54,9 +59,37 @@ const yearText = year ? ` tahun ajaran ${year}` : '';
         </p>
       )
     }
+    {
+      proof && (
+        <a href="/prestasi/" class="cta-next -my-6 block min-h-44 self-start box-border py-10 text-15 leading-[1.5] text-body no-underline hover:text-ink">
+          <strong class="font-bold text-ink">Prestasi terbaru:</strong>{' '}
+          <span class="underline decoration-1 underline-offset-[3px]">{proof}</span>{' '}
+          <svg aria-hidden="true" width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="cta-arrow-next inline-block align-[-3px]"><path d="M4 10h12M11 5l5 5-5 5"></path></svg>
+        </a>
+      )
+    }
   </div>
 
-  <div class="card box-border min-w-0 flex-[1.35_1_560px] max-sm:basis-full">
+  {/* LCP image: eager, high priority. Faces sit in the upper half, clear of the map card. */}
+  <picture class="order-1 block xl:order-none xl:col-start-2 xl:row-start-1">
+    <source
+      type="image/webp"
+      srcset="/photos/santri-datang-ke-kelas-hero-800.webp 800w, /photos/santri-datang-ke-kelas-hero-1600.webp 1562w"
+      sizes="(min-width: 1280px) 560px, (min-width: 640px) calc(100vw - 80px), calc(100vw - 40px)"
+    />
+    <img
+      src="/photos/santri-datang-ke-kelas-hero-1600.jpg"
+      width="1562"
+      height="1428"
+      loading="eager"
+      fetchpriority="high"
+      decoding="async"
+      alt="Dua santri berseragam batik biru dan berpeci berjalan masuk ke area kelas di pagi hari, membawa tas dan buku"
+      class="block aspect-[4/3] max-h-[min(64vh,560px)] w-full rounded-xl object-cover object-top xl:aspect-[4/5] xl:max-h-none"
+    />
+  </picture>
+
+  <div class="card relative z-[1] order-3 box-border min-w-0 xl:order-none xl:col-start-2 xl:row-start-2 xl:ml-[-72px] xl:mt-[-50%]">
     <div class="flex flex-col gap-20 p-20 sm:p-36">
       <div class="flex flex-col gap-6">
         <h2 class="m-0 font-display text-32 font-semibold leading-[1.1]">{map.title}</h2>

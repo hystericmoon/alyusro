@@ -51,3 +51,24 @@ export function summary() {
     nationalFirsts: count((r) => scope(r.level) === 'Nasional' && isWinner(r)),
   };
 }
+
+/**
+ * The most recent top achievement, for the homepage hero: winners only
+ * (Juara 1, Medali Emas), newest year first, then the widest scope, then
+ * file order (new rows go at the top). Null when there is none.
+ */
+export function latestTop(): string | null {
+  const rankOf = ['Internasional', 'Nasional', 'Provinsi', 'Kabupaten/kota', 'Lainnya'];
+  const best = records
+    .map((r, i) => ({ r, i, year: Number(r.year) }))
+    .filter(({ r, year }) => isWinner(r) && Number.isFinite(year) && r.rank && r.competition)
+    .sort((a, b) => b.year - a.year || rankOf.indexOf(scope(a.r.level)) - rankOf.indexOf(scope(b.r.level)) || a.i - b.i)[0];
+  if (!best) return null;
+  const { r, year } = best;
+  // Acronyms ("OBA", "MHQ") read better as their competition family.
+  const name = /^[A-Z]{2,5}$/.test(r.competition.trim()) ? family(r.competition).replace(/\s*\(.*\)$/, '') : r.competition.trim();
+  const sc = scope(r.level);
+  const where = sc === 'Internasional' || sc === 'Nasional' || sc === 'Provinsi' ? ` tingkat ${sc.toLowerCase()}` : '';
+  const stage = /\b(SD|SMP|SMA)\b/.exec(r.level)?.[1];
+  return `${r.rank} ${name}${where}${stage && where ? ` (${stage})` : ''}, ${year}`;
+}

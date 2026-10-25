@@ -99,10 +99,6 @@ const jsonLd = isHome
     <link rel="preload" href="/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Almarai:wght@700;800&family=Noto+Naskh+Arabic:wght@400;500&display=swap"
-    />
     {
       motion && (
         <script is:inline>
@@ -125,5 +121,15 @@ const jsonLd = isHome
     <SiteFooter labelledBy={footerLabelledBy}>
       <slot name="footer-lead" slot="lead" />
     </SiteFooter>
+    {/*
+      Arabic faces (Almarai, Noto Naskh) from Google Fonts. Linked at the end
+      of <body> so the stylesheet does not block the first paint: the page
+      renders with the width-matched fallbacks and the Arabic swaps in
+      (display=swap). No JavaScript needed.
+    */}
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Almarai:wght@700;800&family=Noto+Naskh+Arabic:wght@400;500&display=swap"
+    />
   </body>
 </html>
