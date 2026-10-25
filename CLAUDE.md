@@ -56,7 +56,13 @@ Keep the current site’s URLs so links and search rankings survive:
 ## Design system
 
 - Type: Manrope for body, UI and headings, self-hosted in `public/fonts` (headings use the "Manrope Display" face with `size-adjust: 74%`, because the heading scale was drawn for the narrower Markazi Text; both faces have width-matched fallbacks). Arabic: Almarai Bold for names, labels and headings (`:lang(ar)`, ExtraBold when set as a heading); Noto Naskh Arabic for Arabic in article bodies (ayat, hadith, du'a) and the honorifics ﷺ ﷻ. Almarai and Noto Naskh load from Google Fonts.
-- Colors: paper `#F7F7F4`, white `#FFFFFF`, ink `#1B2235`, body text `#2C3448`, muted `#4A5368`, rule `#D9DCE4`, lapis `#26418F`. Lapis scale for the juz map: `#DCE3F3 #B7C6E9 #8DA3D9 #4F6DB8 #26418F`. Amber `#F2A33A` is used only for time (the “now” line, the sun).
+- Colors (the school's own; token names `lapis`/`amber` kept from the design so markup does not change):
+  - Neutrals: paper `#F7F7F4`, white `#FFFFFF`, ink `#1B2235`, body text `#2C3448`, muted `#4A5368`, rule `#D9DCE4`.
+  - `lapis` = school navy `#073E6B` (from mahadalyusro.sch.id): primary buttons, links, active states, focus ring. `lapis-deep` `#052D4F` (derived: button hover/press).
+  - Juz map scale `lapis-1..5`: `#DEEAF6 #9CC1DF #629DCB #1C71B3 #073E6B`, pale tint to navy through the logo blue `#1C71B3` (step 4, exact). Neighbouring steps differ by at least 1.5:1.
+  - `amber` = logo gold `#E3AF14`, used only for time (the “now” line, the sun, the next prayer). `amber-edge` `#7A5C00` (derived: 1px edge so the gold keeps 3:1 on light fills). No gold anywhere else.
+  - `sky-*` (terraces, day-view blocks and bands) are derived on the navy's hue: `#E3EDF7 #C4D9EE #9EC0E2`, dawn `#2A5E96`, `#1C71B3`, `#125891`.
+  - Logo: `public/logo.svg` (full lockup), `public/logo-mark.svg` (emblem, header mark), `public/favicon.png` rendered from the emblem.
 - Shape: pill buttons and filter chips; 10px cells and small blocks, 16px cards, 22–28px panels and photos (tokens in `global.css`).
 - No thin rules or 1px outlined boxes. Separate with space, a tone step (`.card` is white on paper; paper on white sections) or striped table rows (`--stripe`). The only lines left are the day-view timeline's hour and prayer gridlines (a chart).
 - Frosted glass (`.glass`, `.glass-paper`, `.glass-night`, the CTA panel) only where something sits behind it: the sky and campus photo, the night sections, sticky bars and menus. Each fill is opaque enough for AA over whatever is behind, with a solid fallback.
@@ -73,7 +79,7 @@ Keep the current site’s URLs so links and search rankings survive:
 
 ## Placeholders to confirm with the school
 
-Bracketed values in `site.json` and the designs: PSB year and wave dates, SPP period, Mahdhon program length, TAUD and Mahdhon heads, school hours in the day view, Sunday activities, kajian times, Ma’had ‘Aly registration status, Madrasah target (20 vs 30 juz), Arabic spelling of the school name, logo file, photos.
+Bracketed values in `site.json` and the designs: PSB year and wave dates, SPP period, Mahdhon program length, TAUD and Mahdhon heads, school hours in the day view, Sunday activities, kajian times, Ma’had ‘Aly registration status, Madrasah target (20 vs 30 juz), Arabic spelling of the school name, photos.
 
 ## Status
 

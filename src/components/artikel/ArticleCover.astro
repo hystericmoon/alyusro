@@ -38,7 +38,7 @@ const { cover, coverAlt, title, part } = article.data;
         class="max-w-[16em] font-display text-[clamp(24px,2.6vw,34px)] font-semibold leading-[1.05] [text-wrap:balance]"
         set:html={titleHtml(title.replace(/^Pertemuan ke-\d+: /, ''))}
       />
-      {part && <span class="absolute right-16 top-6 font-display text-[88px] font-semibold leading-none text-lapis-4">{part}</span>}
+      {part && <span class="absolute right-16 top-6 font-display text-[88px] font-semibold leading-none text-lapis-3">{part}</span>}
     </div>
   )
 }

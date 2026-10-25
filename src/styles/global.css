@@ -26,18 +26,22 @@
   --color-body: #2C3448;
   --color-muted: #4A5368;
   --color-rule: #D9DCE4;
-  --color-lapis: #26418F;
-  --color-lapis-deep: #1E3474; /* derived: primary button hover/press */
-  --color-amber: #F2A33A; /* time only: the "now" line and the sun */
+  /* School colors. Token names kept from the design ("lapis", "amber"). */
+  --color-lapis: #073E6B; /* school navy, from mahadalyusro.sch.id */
+  --color-lapis-deep: #052D4F; /* derived: primary button hover/press */
+  --color-amber: #E3AF14; /* logo gold. Time only: the "now" line and the sun */
+  --color-amber-edge: #7A5C00; /* derived: 1px edge so gold keeps 3:1 on light fills (WCAG 1.4.11) */
   --color-transparent: transparent;
   --color-current: currentColor;
 
-  /* Lapis scale for the juz map, one step per class */
-  --color-lapis-1: #DCE3F3;
-  --color-lapis-2: #B7C6E9;
-  --color-lapis-3: #8DA3D9;
-  --color-lapis-4: #4F6DB8;
-  --color-lapis-5: #26418F;
+  /* Blue scale for the juz map, one step per class: pale tint to school
+     navy through the logo blue (step 4, exact). Steps 1-3 are spaced so
+     neighbouring classes differ by at least 1.5:1 in luminance. */
+  --color-lapis-1: #DEEAF6;
+  --color-lapis-2: #9CC1DF;
+  --color-lapis-3: #629DCB;
+  --color-lapis-4: #1C71B3; /* logo blue */
+  --color-lapis-5: #073E6B; /* school navy */
 
   /* Derived: light UI */
   --color-placeholder: #8A93A8; /* dashed outline of logo/photo placeholders */
@@ -61,13 +65,14 @@
   --color-on-night-list: #E4E8F2;
   --color-on-night-muted: #AEB6CF;
 
-  /* Derived: sky bands and level terraces */
-  --color-sky-50: #E3E8F5;
-  --color-sky-100: #C6D2EE;
-  --color-sky-200: #A3B5E2;
-  --color-sky-dawn: #3F5DAA;
-  --color-sky-500: #4A68B5;
-  --color-sky-600: #33509F;
+  /* Derived: sky bands and level terraces, on the school navy's hue so the
+     terraces step from pale blue through the logo blue to navy */
+  --color-sky-50: #E3EDF7;
+  --color-sky-100: #C4D9EE;
+  --color-sky-200: #9EC0E2;
+  --color-sky-dawn: #2A5E96;
+  --color-sky-500: #1C71B3; /* logo blue */
+  --color-sky-600: #125891;
 
   /* Derived: Gunung Salak landscape */
   --color-mist: #E4E9F2;
@@ -256,7 +261,7 @@
   a:hover {
     color: var(--color-ink);
   }
-  /* Two-tone ring: lapis outline plus a white halo, visible on paper and on night */
+  /* Two-tone ring: navy outline plus a white halo, visible on paper and on night */
   a:focus-visible,
   button:focus-visible,
   summary:focus-visible,

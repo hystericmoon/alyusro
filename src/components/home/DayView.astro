@@ -69,11 +69,11 @@ const at = (i: number) => `${(i / (hours.length - 1)) * 100}%`;
             data-now-line
             aria-hidden="true"
             hidden
-            class="absolute left-[-6px] right-0 z-[2] h-0 border-t-2 border-amber"
+            class="absolute left-[-6px] right-0 z-[2] h-0 border-t-2 border-amber shadow-[0_0_0_1px_var(--color-amber-edge)]"
             style={`top:${day.nowTop}`}
           >
-            <span class="absolute left-0 top-[-6px] size-10 rounded-full bg-amber"></span>
-            <span data-dv="now" class="absolute right-0 top-[-24px] rounded-xs bg-amber px-8 py-1 text-12 font-bold leading-[1.5] text-ink tabular-nums">{day.nowLabel}</span>
+            <span class="absolute left-0 top-[-6px] size-10 rounded-full bg-amber shadow-[0_0_0_1px_var(--color-amber-edge)]"></span>
+            <span data-dv="now" class="absolute right-0 top-[-24px] rounded-xs bg-amber px-8 py-1 shadow-[0_0_0_1px_var(--color-amber-edge)] text-12 font-bold leading-[1.5] text-ink tabular-nums">{day.nowLabel}</span>
           </div>
         </div>
         <ul
