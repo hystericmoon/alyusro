@@ -18,7 +18,7 @@ Pembaca yang budiman, bulan Ramadhan telah berlalu dengan hari-harinya dan malam
 
 Duhai sekiranya kita tau bahwa tidak semua beruntung tetapi ada sebagian yang merugi, maka apa arti dan makna hari raya serta bergembira pada hari raya sedangkan ia termasuk golongan yang merugi pada bulan Ramadhan?! Mari kita selami makna sebenarnya hari raya.
 
-### **Makna Hari Raya dan Ubudiyyah di dalamnya**
+## **Makna Hari Raya dan Ubudiyyah di dalamnya**
 
 ◆ Hari raya itu bukanlah seperti yang dipikirkan kebanyakan orang sebagai waktu-waktu yang dihamburkan untuk bermain-main, bergurau, dan berlalai, namun disyariatkannya pada hari raya untuk mengingat Allah, bersyukur kepadaNya, menunjukkan nikmatNya atas hamba-hambaNya, serta memujiNya -subhanahu- dengan nikmat tersebut. Allah Taala telah memerintahkan hamba-hambaNya ketika melengkapi bilangan Ramadhan untuk berhari raya dengan mengucapkan takbir dan rasa syukur terhadapNya, Allah Taala berfirman :
 
@@ -40,7 +40,7 @@ Maka kita sebagai hambaNya patut bersyukur kepadaNya yang telah memberikan nikma
 
 > "Siapa berpuasa Ramadan lalu mengikutinya dengan enam hari di bulan Syawal, maka ia seperti berpuasa sepanjang tahun." (HR. Muslim)
 
-### Hari Raya untuk Siapa?
+## Hari Raya untuk Siapa?
 
 Pembaca yang budiman, hari raya adalah musim kegembiraan. Kegembiraan seorang mukmin di dunia adalah karena Allah semata, manakala mereka berhasil menyempurnakan ketaatan dan meraih ampunanNya. Hal ini sebagaimana firman Allah:
 
@@ -62,25 +62,25 @@ Hari raya bukanlah untuk mereka budak dirham dan dinar, melainkan untuk mereka y
 
 Wahai orang yang bergembira di hari raya dengan memperbagus pakaian lahiriahnya! Tidakkah ia meyakini kematian sementara ia belum mempersiapkan bekal untuk pakaian terakhirnya (kain kafan)?! Ia tertipu oleh dunia, seolah-olah ia merasa aman dari kematian yang mengintainya dengan cepat. Bagaimana mungkin hati orang yang jauh dari kebaikan, dapat merasa tenang di hari raya?! Bagaimana mungkin orang yang merugi lagi kalah, dapat tertawa? Bagaimana mungkin orang yang terus bergelimang maksiat, dapat bergembira?! Bagaimana mungkin orang yang kehilangan keuntungan besar (pahala), tidak menangis?!
 
-### Jauhilah Kelalaian
+## Jauhilah Kelalaian
 
 Kalau diperhatikan kondisi ummat islam pada hari raya, maka didapati sebagian mereka berada dalam kelalaian dan menyibukan diri mereka dengan makanan, minuman, dan pakaian. Sebagian ulama berkata: "Apabila Allah Taala telah memberitahukan bahwa Dia telah menerima puasa dan sholat mereka, maka seharusnya mereka menyibukkan diri mereka dengan rasa syukur. Dan jikalau mereka takut amalan mereka tidak diterima, seharusnya mereka menjadi lebih sibuk dengan amalan mereka."
 
-### Konsumsilah yang Halal
+## Konsumsilah yang Halal
 
 Abu Bakar Al-Marwadzi berkata: "Aku menemui Abu Bakar bin Muslim pada hari raya Idul Fitri, sementara di hadapannya ada sedikit buah kharnub yang sedang ia kunyah. Aku pun bertanya: 'Wahai Abu Bakar! hari ini adalah hari raya dan kamu hanya memakan buah kharnub?!' Maka ia menjawab: 'Janganlah kamu melihat pada hal ini, tetapi lihatlah jika Dia (Allah) bertanya kepadaku: Dari mana kamu mendapatkan ini? Apa yang harus kukatakan?"
 
-### Tundukkanlah Pandangan
+## Tundukkanlah Pandangan
 
 Sebagian sahabat Sufyan Ats-Tsauri berkata: "Kami keluar bersama Sufyan pada hari raya Idul Fitri, lalu beliau berkata: Sesungguhnya hal pertama yang kita lakukan pada hari kita ini (Idul Fitri) adalah menundukkan pandangan!". Dikisahkan bahwa Hassan bin Abi Sinan sekembalinya dari shalat Id ditanya oleh istrinya: "Berapa banyak wanita cantik yang telah kamu lihat?" Beliau menjawab: "Aku tidak melihat apapun kecuali jempol kakiku sejak aku keluar sampai aku kembali!"
 
-### Tunaikanlah Zakat Fitri
+## Tunaikanlah Zakat Fitri
 
 Didalam shahihain dari Ibnu Umar radhiyallahu anhuma berkata: “Rasulullah ﷺ telah mewajibkan zakat fitri di bulan Ramadhan, satu sha’ dari kurma, atau satu sha’ dari gandum, bagi hamba sahaya, dan orang merdeka, dan bagi laki-laki dan perempuan, dan bagi anak kecil dan orang dewasa dari orang-orang muslimin”.
 
 Zakat fitri bertujuan untuk mensucikan mereka yang berpuasa dari kelalaian dan perkataan kotor, dan bantuan untuk orang-orang fakir agar mereka merasakan kebahagian dan kegembiraan pada hari raya. Zakat fitri wajib hukumnya atas orang muslim, merdeka, dan berakal serta bagi siapa saja yang nafkahnya menjadi tanggungannya. Adapun waktu untuk menunaikannya, maka yang paling utama (afdhal) adalah mengeluarkannya pada pagi hari raya sebelum pelaksanaan shalat id. Namun demikian, diperbolehkan pula untuk mengeluarkannya satu atau dua hari sebelum hari raya. Dan tidak diperbolehkan mengakhirkan penunaiannya hingga melampaui waktu shalat Id. Siapa yang mengakhirkannya sampai melampaui waktu shalat Id, maka zakat tersebut tidaklah diterima darinya (sebagai zakat fitrah).
 
-### Hari Raya Islam, Apa Saja?
+## Hari Raya Islam, Apa Saja?
 
 Tatkala Nabi Muhammad ﷺ tiba di kota Madinah, penduduknya memiliki dua hari yang mana mereka biasa bergembira ria padanya. Maka Nabi bersabda:"Sesungguhnya Allah telah menggantikan untuk kalian dua hari yang lebih baik dari keduanya; yaitu Idul Fitri dan Idul Adha." (HR. Ahmad dan An-Nasa'i).
 
@@ -95,7 +95,7 @@ Apabila telah ditetapkan bahwa hari raya kaum muslimin hanyalah tiga hari terseb
 
 Maka diharamkan bagi seorang muslim untuk merayakan hari-hari tersebut, ikut serta memeriahkannya, walaupun memberikan ucapan selamat atasnya. Hal ini dikarenakan hari-hari tersebut merupakan perkara bid'ah yang diada-adakan dalam agama, bahkan sebagiannya merupakan hari raya kekufuran seperti hari raya Yahudi dan Nasrani dan orang-orang kafir selain dari mereka.
 
-### Adab dan Hukum Seputar Hari Raya
+## Adab dan Hukum Seputar Hari Raya
 
 • Diharamkan puasa pada hari ied, karena Nabi Muhammad ﷺ melarang umatnya untuk berpuasa pada dua hari, yaitu Idul Fitri dan Idul Adha.\
 • Pada Idul Fitri disyariatkan bertakbir mulai dari sejak terbenamnya matahari pada malam ied sampai berlangsungnya shalat ied (berbeda dengan Idul Adha, bertakbir disyariatkan mulai dari awal dzulhijjah sampai akhir hari tasyriq). Disunnahkan bagi laki-laki untuk mengeraskan suara takbirnya di masjid, rumah, pasar, dan jalan sebagai bentuk ubudiyyah dan wujud rasa gembira.\
@@ -109,7 +109,7 @@ Maka diharamkan bagi seorang muslim untuk merayakan hari-hari tersebut, ikut ser
 • Tidak disyariatkan pada sholat ied melakukan shalat sunnah (nafilah) qobliyyah (sebelumnya) maupun ba'diyyah (sesudahnya).\
 • Disunnahkan keluar menuju tanah lapang untuk mendirikan shalat ied. Dianjurkan untuk tidak melaksanakannya di dalam masjid berdasarkan perbuatan Nabi ﷺ dan tidak ada mimbar yang digunakan di tempat shalat ied tersebut.
 
-### Kekeliruan pada Hari Raya
+## Kekeliruan pada Hari Raya
 
 • Begadang pada malam hari raya yang mengakibatkan terabaikannya (luputnya) pelaksanaan shalat Shubuh berjamaah.\
 • Ikhtilath (campur baur) antara kaum laki-laki dan wanita di tempat shalat ied maupun tempat lainnya. Termasuk di dalamnya adalah keluarnya kaum wanita menuju tempat shalat dengan menampakkan perhiasan secara berlebihan (tabarruj) serta mengenakan wewangian. Termasuk juga melihat dan menyentuh (seperti berjabat tangan) kepada yang bukan mahram.\
@@ -117,7 +117,7 @@ Maka diharamkan bagi seorang muslim untuk merayakan hari-hari tersebut, ikut ser
 • Mengkhususkan berziarah kubur pada hari raya (secara syariat, ziarah kubur tidak memiliki waktu khusus dan tidak disyariatkan untuk dikhususkan pada hari raya).\
 • Berlebih-lebihan dan menghambur-hamburkan harta dalam perkara-perkara yang mubah (diperbolehkan).
 
-### Nasehat Penutup
+## Nasehat Penutup
 
 Wahai orang yang bertekad melakukan kemaksiatan di bulan Syawwal! Apakah kamu hanya menghormati Rabb bulan Ramadhan saja (namun tidak di bulan lainnya)?! Sungguh malang bagimu! Apakah Rabb bulan Syawwal tidak sama dengan Rabb bulan Ramadhan?! Kamu memperbaiki amalmu di bulan Ramadhan lalu kamu merusaknya di bulan lain?! Sungguh tekadmu untuk melakukan dosa di bulan Syawwal telah merusak keberkahan amalanmu di bulan Ramadhan.
 

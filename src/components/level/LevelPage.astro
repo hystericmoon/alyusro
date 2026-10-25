@@ -39,7 +39,7 @@ const wrap = 'mx-auto box-border max-w-page px-20 py-64 sm:px-40 sm:py-80';
 const btnLight = 'btn-light';
 const btnGhostNight = 'btn-ghost-night';
 ---
-<BaseLayout title={lv.name} description={`${lv.name} (${levelSummary(lv)}). ${lv.intro}`} footerLabelledBy="g-foot-title">
+<BaseLayout title={lv.name} description={`${lv.name} (${levelSummary(lv).replace(/\u2060/g, "")}). ${lv.intro}`} footerLabelledBy="g-foot-title">
   <section aria-labelledby="j-title" class="mx-auto box-border max-w-page px-20 pb-56 pt-24 sm:px-40 sm:pb-72 sm:pt-32">
     <nav aria-label="Breadcrumb" class="mb-32 text-15 sm:mb-40">
       <ol class="m-0 flex list-none flex-wrap gap-x-10 gap-y-4 p-0 text-muted">

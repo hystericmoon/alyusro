@@ -16,7 +16,7 @@ Telah berlalu sebagian besar hari-hari Ramadhan dan tinggal tersisa beberapa har
 
 Pembaca yang budiman, risalah ini berusaha menjelaskan terkait keutamaan sepuluh hari terakhir Ramadhan dan apa yang dianjurkan untuk diamalkan pada bulan ini serta bagaimana amalan Nabi Muhammad ﷺ tatkala di sepuluh hari terakhir Ramadhan. Begitu juga dalam risalah ini terdapat sebuah penjelasan tentang Lailatul Qadr dan keistimewaan amalan pada malam tersebut beserta penjelasan sebab-sebab diampuninya dosa-dosa di bulan Ramadhan.
 
-### **Amalan Nabi Muhammad ﷺ pada Sepuluh Hari Terakhir Ramadhan**
+## **Amalan Nabi Muhammad ﷺ pada Sepuluh Hari Terakhir Ramadhan**
 
 <p lang="ar" dir="rtl">عَنْ عَائِشَةَ رضي الله عنها، قَالَتْ: كَانَ رَسُولُ اللهِ ﷺ إِذَا دَخَلَ العَشْرُ شَدَّ مِئْزَرَهُ، وَأَحْيَا لَيْلَهُ، وَأَيْقَظَ أَهْلَهُ. وَفِي رِوايةٍ: أَحْيَا اللَّيْلَ، وَأَيْقَظَ أَهْلَهُ، وَجَدَّ، وَشَدَّ المِئْزَرَ</p>
 
@@ -84,7 +84,7 @@ Diriwayatkan dalam kitab Shahihain dari Aisyah radhiyallahu 'anha bahwasanya Nab
 
 Oleh karena itu Nabi ﷺ beriktikaf pada sepuluh hari terakhir Ramadhan yang di dalamnya tedapat Lailatul Qadr, bertujuan untuk memutuskan diri dari segala kesibukan duniawi dan memfokuskan diri untuk beribadah, serta menyendiri untuk bermunajat kepada Allah ﷻ, berzikir, dan berdoa kepada-Nya. Maka hakikat orang yang ber i’tikaf ialah yang bersungguh sungguh menahan diri semata mata untuk ketaatan kepada Allah dan berzikir kepada-Nya, dan memutuskan dirinya dari segala urusan yang menyibukan dirinya dan memalingkan dari ketaatan kepada Allah ﷻ. Ia menghadapkan hati dan raga sepenuhnya kepada Rabbnya dan segala hal yang dapat mendekatkan diri kepada-Nya, sehingga tidak ada lagi kegundahan (fokus utama) yang tersisa baginya selain Allah dan apa yang mendatangkan ridha-Nya. Setiap kali bertambah makrifat seseorang kepada Allah, bertambah kuat kecintaan dan rasa tenang bersama-Nya, maka hal itu akan membuat seseorang merasa perlu untuk memfokuskan diri sepenuhnya kepada Allah Ta'ala dalam setiap keadaan.
 
-### **Apa itu Malam Lailatul Qadr?**
+## **Apa itu Malam Lailatul Qadr?**
 
 Allah ﷻ berfirman di dalam Al-Qur’an:
 
@@ -130,7 +130,7 @@ Dirirwayatkan dari Aisyah radhiyallahu 'anha bertanya kepada Nabi ﷺ: "Bagaiman
 
 **Mengapa Meminta Ampunan?** Perintah untuk memohon ampunan pada Lailatul Qadar -setelah bersungguh-sungguh dalam beramal di sepuluh malam terakhir- adalah dikarenakan orang-orang yang arif (mengenal Allah ﷻ) tetap bersungguh-sungguh dalam beramal, namun mereka tidak melihat amal, keadaan, maupun ucapan mereka sebagai sesuatu yang sempurna. Maka mereka kembali memohon ampunan seperti layaknya orang berdosa yang penuh kekurangan.
 
-### **Sebab-Sebab Ampunan di Bulan Ramadhan**
+## **Sebab-Sebab Ampunan di Bulan Ramadhan**
 
 Dari Abu Hurairah radhiyallahu 'anhu, dari Nabi ﷺ, beliau ﷺ bersabda:
 
@@ -175,7 +175,7 @@ Dan diantara sebab-sebab lainnya diampuninya dosa pada bulan Ramadhan adalah:
 
 Doa orang yang berpuasa dikabulkan selama ia berpuasa dan saat ia berbuka. Di antaranya juga adalah permohonan ampunan (istighfar) para malaikat untuk orang-orang yang berpuasa sampai mereka berbuka. Maka, ketika sebab-sebab pengampunan dosa begitu melimpah di bulan Ramadhan, orang yang tidak mendapatkan ampunan di dalamnya adalah orang yang benar-benar merugi dengan kerugian yang sangat besar. Maka, kapankah ampunan akan diberikan kepada orang yang tidak juga diampuni di bulan Ramadhan ini? Kapan lagi seseorang akan menjadi baik jika ia tidak juga menjadi baik di bulan Ramadhan? Kapan pula akan sembuh orang yang jiwanya terjangkit dua penyakit yaitu **kebodohan** dan **kelalaian** di Ramadhan ini? Setiap pohon yang tidak berbuah pada musim berbuah, maka ia pantas untuk ditebang lalu dijadikan kayu bakar. Siapa yang meremehkan (lalai) dalam menanam di masa menebar benih, maka ia tidak akan menuai apa pun di hari panen selain penyesalan dan kerugian.
 
-### **Ramadhan Adalah Bulan Pembebasan dari Api Neraka**
+## **Ramadhan Adalah Bulan Pembebasan dari Api Neraka**
 
 Pada bulan Ramadhan, dibebaskanlah dari api neraka yaitu mereka yang binasa karena dosa-dosa dan mereka yang terancam masuk neraka karena dosa-dosa besar yang mereka lakukan. Maka apabila tiba hari Iedul Fitri, Allah ﷻ akan membebaskan para pelaku dosa besar dari kalangan orang-orang yang berpuasa itu dari api neraka. Sehingga pada hari itu, para pendosa bergabung bersama orang-orang yang berbakti (*al-abrar*). Dikarenakan ampunan dan pembebasan dari api neraka masing-masing bergantung pada shiyam dan qiyamnya pada bulan Ramadhan , maka Allahﷻ memerintahkan untuk bertakbir dan bersyukur kepada-Nya saat puasa telah sempurna (selesai bulan Ramadhan). Allah ﷻ berfirman:
 
@@ -197,7 +197,7 @@ Keempat perkara yang disebutkan dalam hadis ini masing-masing merupakan sebab pe
 
 **Adapun syahadat kalimat Tauhid (Laa ilaha illallah),** maka sesungguhnya ia menghancurkan dosa-dosa dan menghapusnya sebersih-bersihnya. Ia tidak menyisakan dosa sedikit pun, dan tidak ada amal yang dapat mendahului keutamaannya. Kalimat ini juga setara dengan memerdekakan budak yang mana perbuatan tersebut memperoleh pembebasan dari api neraka.
 
-**Adapun kalimat Istighfar, m**aka ia termasuk sebab pengampunan yang paling agung. Karena sesungguhnya istighfar adalah doa memohon ampunan, sedangkan doa orang yang berpuasa itu mustajab (dikabulkan), baik saat ia sedang berpuasa maupun ketika ia berbuka. Istighfar yang paling bermanfaat adalah istighfar yang disertai dengan taubat. Maka siapa yang beristighfar dengan lisannya namun hatinya masih terikat pada kemaksiatan, serta tekadnya masih bulat untuk kembali berbuat maksiat setelah bulan Ramadhan selesai, maka puasanya terancam ditolak dan ditutup pintu diterimanya amal.
+**Adapun kalimat Istighfar,** maka ia termasuk sebab pengampunan yang paling agung. Karena sesungguhnya istighfar adalah doa memohon ampunan, sedangkan doa orang yang berpuasa itu mustajab (dikabulkan), baik saat ia sedang berpuasa maupun ketika ia berbuka. Istighfar yang paling bermanfaat adalah istighfar yang disertai dengan taubat. Maka siapa yang beristighfar dengan lisannya namun hatinya masih terikat pada kemaksiatan, serta tekadnya masih bulat untuk kembali berbuat maksiat setelah bulan Ramadhan selesai, maka puasanya terancam ditolak dan ditutup pintu diterimanya amal.
 
 **Adapun memohon surga dan berlindung dari api neraka,** maka itu termasuk doa yang paling penting. Nabi ﷺ bersabda:
 
@@ -205,7 +205,7 @@ Keempat perkara yang disebutkan dalam hadis ini masing-masing merupakan sebab pe
 
 > "Seputar dua hal (surga dan neraka) kita senantiasa berdoa." (Diriwayatkan oleh Abu Dawud dan Ibnu Majah)
 
-### **Selamat Tinggal Ramadhan**
+## **Selamat Tinggal Ramadhan**
 
 Wahai hamba-hamba Allah ﷻ, sesungguhnya bulan Ramadhan segera pergi, dan tidaklah tersisa darinya kecuali sedikit saja. Maka siapa di antara kalian yang telah berbuat baik di dalamnya, hendaknya ia menyempurnakannya. Dan siapa yang telah lalai (kurang maksimal), maka tutuplah dengan kebaikan, karena sesungguhnya amal itu dinilai dari penutupnya. Maka nikmatilah sisa malam-malam yang sedikit dan hari-hari yang tersisa ini. Titipkanlah pada bulan ini amal shaleh yang kelak akan menjadi saksi bagi kalian di hadapan Allah ﷻ, Dzat Yang Maha Mengetahui. Dan lepaskanlah kepergiannya dengan ucapan salam serta penghormatan yang paling suci.
 

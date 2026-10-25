@@ -503,7 +503,15 @@ html:has(#menu-hp:popover-open) {
   transform: translateX(4px);
 }
 .sky [data-sun] {
+  /* Designed day position. Phones see only the middle of the 1440-wide
+     landscape (preserveAspectRatio slice), so there the sun sits on the
+     mountain's left slope instead, in view at every phone width. */
+  transform: translate(300px, 240px);
   transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.6s;
+}
+
+@media (max-width: 639px) {
+  .sky [data-sun] { transform: translate(520px, 170px); }
 }
 
 /* Night stars: a faint twinkle; static under reduced motion. */
@@ -535,6 +543,8 @@ html:has(#menu-hp:popover-open) {
   :where(.prose-ad) { font-size: 19px; line-height: 1.7; }
   :where(.prose-ad) > :first-child { margin-top: 0; }
   :where(.prose-ad) h2 { margin: 56px 0 14px; font-family: var(--font-display); font-size: 40px; font-weight: 600; line-height: 1.05; }
+  /* Migrated headings bold only part of their text; keep the heading's own weight. */
+  :where(.prose-ad) :is(h2, h3) strong { font-weight: inherit; }
   :where(.prose-ad) h3 { margin: 40px 0 10px; font-family: var(--font-display); font-size: 30px; font-weight: 600; line-height: 1.1; }
   :where(.prose-ad) p { margin: 0 0 18px; }
   :where(.prose-ad) ul, :where(.prose-ad) ol { margin: 0 0 18px; padding-left: 24px; }
@@ -546,7 +556,8 @@ html:has(#menu-hp:popover-open) {
   :where(.prose-ad) blockquote[lang="ar"] { padding: 16px 20px; }
   :where(.prose-ad) span[lang="ar"] { font-size: 1.2em; }
   /* ﷻ ﷺ in titles, see titleHtml() */
-  .honorific { font-size: 0.55em; line-height: 0; vertical-align: 0.15em; }
+  /* Legible in 16px chips, no taller than before in display titles. */
+  .honorific { font-size: clamp(0.55em, 18px, 1.1em); line-height: 0; vertical-align: 0.1em; }
 }
 
 /* Content pages (Kurikulum-tahfizh .k-body) */
@@ -556,6 +567,8 @@ html:has(#menu-hp:popover-open) {
   :where(.prose-k) h3 { margin: 32px 0 8px; font-size: 19px; font-weight: 700; line-height: 1.35; }
   :where(.prose-k) p { margin: 0 0 16px; }
   :where(.prose-k) a { overflow-wrap: anywhere; }
+  /* Links inside running text are underlined: lapis alone is too close to ink and muted (WCAG 1.4.1). */
+  :where(.prose-k, .prose-ad) :is(p, li, td, dd, figcaption) a:not([class*="btn-"]) { text-decoration-line: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
   :where(.prose-k) ul, :where(.prose-k) ol { margin: 0 0 16px; padding-left: 22px; }
   :where(.prose-k) li { margin-bottom: 8px; }
   :where(.prose-k) table { width: 100%; border-collapse: collapse; margin: 8px 0 24px; font-size: 16px; font-variant-numeric: tabular-nums; }

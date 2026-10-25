@@ -15,6 +15,34 @@ const config = JSON.stringify({ geo: school.geo, api: site.dailySchedule.prayerA
   const cfgEl = document.querySelector<HTMLElement>('[data-living-sky]');
   const land = document.querySelector<HTMLElement>('[data-landscape]');
   const sun = land?.querySelector<SVGGElement>('[data-sun]');
+  const hill = land?.querySelector<SVGPathElement>('[data-hill]');
+
+  // Top of the front hill at viewBox x, found by probing the path's fill.
+  const hillTop = (x: number) => {
+    if (!hill?.isPointInFill) return 300;
+    const pt = hill.ownerSVGElement!.createSVGPoint();
+    pt.x = x;
+    for (let y = 0; y <= 460; y += 4) {
+      pt.y = y;
+      if (hill.isPointInFill(pt)) return y;
+    }
+    return 460;
+  };
+
+  // sunAt() places the sun for the full 1440-wide landscape. On narrower
+  // screens the SVG is cropped to its middle (slice), so map x into the
+  // visible part and keep the sun at the same height above the hill.
+  const place = (pos: { x: number; y: number }) => {
+    const svg = hill?.ownerSVGElement;
+    const box = svg?.getBoundingClientRect();
+    if (!svg || !box || !box.width) return pos;
+    const scale = Math.max(box.width / 1440, box.height / 460);
+    const visible = Math.min(1440, box.width / scale);
+    const x = Math.round((1440 - visible) / 2 + (pos.x / 1440) * visible);
+    if (visible >= 1440) return pos;
+    return { x, y: Math.round(hillTop(x) + (pos.y - hillTop(pos.x))) };
+  };
+
   if (cfgEl && land && sun) {
     const cfg = JSON.parse(cfgEl.dataset.config ?? '{}') as PrayerConfig;
     let day = '';
@@ -33,7 +61,8 @@ const config = JSON.stringify({ geo: school.geo, api: site.dailySchedule.prayerA
         }, () => {});
       }
       land.dataset.sky = skyAt(now.min, pt);
-      const pos = sunAt(now.min, pt);
+      const at = sunAt(now.min, pt);
+      const pos = at && place(at);
       if (pos) {
         sun.style.transform = `translate(${pos.x}px, ${pos.y}px)`;
         sun.style.opacity = '1';
@@ -43,5 +72,10 @@ const config = JSON.stringify({ geo: school.geo, api: site.dailySchedule.prayerA
     };
     paint();
     setInterval(paint, 5 * 60 * 1000);
+    let resized = 0;
+    addEventListener('resize', () => {
+      clearTimeout(resized);
+      resized = window.setTimeout(paint, 200);
+    });
   }
 </script>
