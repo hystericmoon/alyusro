@@ -12,8 +12,8 @@ Not in scope: the login dashboard and the registration system. Those stay on the
 
 - Astro, static output, no UI framework and no component library. Interactive parts are native HTML plus a small script beside the component, so each maps cleanly to a Laravel Blade partial (header, footer, juz map, day view, level page, fee table).
   - Filter chips: `<button aria-pressed>` + a few lines of script (juz map, article and facility filters).
-  - FAQ: native `<details>`. Desktop menus: `<details name>` disclosures.
-  - Mobile menu: native Popover API (`popovertarget`), no JS.
+  - FAQ: native `<details>`. Desktop menus (1280px and up): `<details name>` disclosures, plus a few lines of script beside `SiteHeader.astro` so Escape (focus back to the summary) and a click outside close them; without the script they still open and close on click.
+  - Mobile menu (below 1280px, where the header no longer fits one row): native Popover API (`popovertarget`), no JS.
   - Every non-interactive page ships zero client JS.
 - The live day view is a small script (`src/components/home/DayView.astro`) sharing its logic with the build in `src/lib/day-view.ts`.
 - Tailwind v4, themed in `src/styles/global.css` with `--*: initial`, so only the tokens below exist (colors, fonts, radius, font sizes named by pixel value, spacing at 1px per step: `p-24` is 24px). Extra fills the designs use are listed there as derived tokens. Buttons are shared classes: `btn-primary`, `btn-secondary`, `btn-light`, `btn-ghost-night`.
