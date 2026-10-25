@@ -24,7 +24,7 @@ const TONES = [
       {
         levels.map((level, i) => {
           const t = TONES[Math.min(i, TONES.length - 1)]!;
-          const linkTone = t.sub === 'text-white' ? 'text-white hover:text-sky-50' : 'text-ink hover:text-ink';
+          const linkTone = t.sub === 'text-white' ? 'text-white hover:text-white hover:underline' : 'text-ink hover:text-ink hover:underline';
           return (
             <li
               data-terrace
