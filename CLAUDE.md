@@ -55,7 +55,7 @@ Keep the current site’s URLs so links and search rankings survive:
 
 ## Design system
 
-- Type: Manrope for body, UI and headings, self-hosted in `public/fonts` (headings use the "Manrope Display" face with `size-adjust: 74%`, because the heading scale was drawn for the narrower Markazi Text; both faces have width-matched fallbacks). Arabic: Almarai Bold for names, labels and headings (`:lang(ar)`, ExtraBold when set as a heading); Noto Naskh Arabic for Arabic in article bodies (ayat, hadith, du'a) and the honorifics ﷺ ﷻ. Almarai and Noto Naskh load from Google Fonts.
+- Type: Manrope for body, UI and headings, self-hosted in `public/fonts` (headings use the "Manrope Display" face with `size-adjust: 74%`, because the heading scale was drawn for the narrower Markazi Text; both faces have width-matched fallbacks). Arabic: Almarai Bold for names, labels and headings (`:lang(ar)`, ExtraBold when set as a heading); Noto Naskh Arabic for Arabic in article bodies (ayat, hadith, du'a) and the honorifics ﷺ ﷻ. Almarai and Noto Naskh load from Google Fonts, linked at the end of `<body>` so they never block the first paint.
 - Colors (the school's own; token names `lapis`/`amber` kept from the design so markup does not change):
   - Neutrals: paper `#F7F7F4`, white `#FFFFFF`, ink `#1B2235`, body text `#2C3448`, muted `#4A5368`, rule `#D9DCE4`.
   - `lapis` = school navy `#073E6B` (from mahadalyusro.sch.id): primary buttons, links, active states, focus ring. `lapis-deep` `#052D4F` (derived: button hover/press).
