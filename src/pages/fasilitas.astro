@@ -1,28 +1,36 @@
 ---
-// /fasilitas (design/Fasilitas.dc.html): grouped gallery with an area
-// filter. Without JS every group shows and the filter bar is hidden by a
-// scripting media query (no layout shift when the script runs); photos with
-// faces are left out. The first photo is the LCP image on phones.
+// /fasilitas (design/Fasilitas.dc.html): a gallery grouped by area (putra,
+// putri, bersama) with an area filter. Without JS every area shows and the
+// filter bar is hidden by a scripting media query (no layout shift when the
+// script runs). Each photo links to its full-size file; with JS that opens
+// in a <dialog>. Facilities without photos are a plain list at the end, and
+// photos with faces are left out. The first photo is the LCP image on phones.
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Landscape from '@/components/home/Landscape.astro';
 import PageHeader from '@/components/content/PageHeader.astro';
 import data from '../../content/fasilitas.json';
 
+type Area = 'putra' | 'putri' | 'bersama';
 type Photo = { src: string; alt: string; caption: string };
-type Group = { name: string; area: 'putra' | 'putri' | 'bersama'; photos: Photo[] };
+type Group = { name: string; area: Area; photos: Photo[] };
 const groups = data.groups as Group[];
-const withPhotos = groups.filter((g) => g.photos.length > 0);
-const without = groups.filter((g) => g.photos.length === 0);
-const TAG = {
-  putra: { text: 'Area putra', cls: 'text-lapis' },
-  putri: { text: 'Area putri', cls: 'text-putri' },
-  bersama: { text: 'Dipakai bersama', cls: 'text-muted' },
-};
+const AREAS: { key: Area; title: string }[] = [
+  { key: 'putra', title: 'Area putra' },
+  { key: 'putri', title: 'Area putri' },
+  { key: 'bersama', title: 'Dipakai bersama' },
+];
+// Photos in public/photos come in 800 and 1600 px; CMS uploads are one file.
+const full = (src: string) => src.replace(/^(\/photos\/.+)-800\.webp$/, '$1-1600.webp');
+const areas = AREAS.map((a) => ({
+  ...a,
+  photos: groups
+    .filter((g) => g.area === a.key)
+    .flatMap((g) => g.photos.map((p) => ({ ...p, facility: g.name }))),
+})).filter((a) => a.photos.length > 0);
+const others = groups.filter((g) => g.photos.length === 0);
 const filters = [
   { key: 'semua', label: 'Semua fasilitas' },
-  { key: 'putra', label: 'Area putra' },
-  { key: 'putri', label: 'Area putri' },
-  { key: 'bersama', label: 'Dipakai bersama' },
+  ...AREAS.map((a) => ({ key: a.key, label: a.title })),
 ];
 const chip =
   'inline-flex min-h-44 cursor-pointer items-center rounded-full border-0 bg-white px-18 font-body text-15 font-bold text-ink transition-[background-color,color,transform] duration-150 hover:bg-lapis-1 active:scale-[0.97] aria-pressed:bg-ink aria-pressed:text-white';
@@ -42,48 +50,61 @@ const chip =
       </div>
     </div>
 
-    <section aria-label="Galeri fasilitas" class="mx-auto box-border flex max-w-page flex-col gap-56 px-20 pb-96 pt-48 sm:px-40">
+    <div class="mx-auto box-border flex max-w-page flex-col gap-64 px-20 pb-96 pt-40 sm:px-40 sm:pt-48">
       {
-        withPhotos.map((g, gi) => (
-          <div data-group={g.area} class="flex flex-col gap-16">
-            <div class="flex flex-wrap items-baseline justify-between gap-x-16 gap-y-4 pb-4">
-              <h2 class="m-0 font-display text-[38px] font-semibold leading-none">{g.name}</h2>
-              <span class:list={['text-14 font-bold', TAG[g.area].cls]}>{TAG[g.area].text}</span>
-            </div>
-            <ul class="m-0 grid list-none grid-cols-[repeat(auto-fit,minmax(min(280px,100%),1fr))] gap-16 p-0">
-              {g.photos.map((p, pi) => (
-                <li>
-                  <figure class="group m-0 flex flex-col gap-8">
-                    <div class="overflow-hidden rounded-lg bg-juz-off">
-                      <img src={p.src} alt={p.alt} loading={gi === 0 && pi === 0 ? 'eager' : 'lazy'} fetchpriority={gi === 0 && pi === 0 ? 'high' : undefined} decoding="async" class="block aspect-[4/3] w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]" />
-                    </div>
-                    <figcaption class="text-15 text-body">{p.caption}</figcaption>
-                  </figure>
-                </li>
-              ))}
+        areas.map((a, ai) => (
+          <section data-group={a.key} aria-labelledby={`area-${a.key}`} class="flex flex-col gap-20">
+            <h2 id={`area-${a.key}`} class="m-0 flex flex-wrap items-baseline gap-x-16 gap-y-4 font-display text-[clamp(34px,3.4vw,44px)] font-semibold leading-none">
+              {a.title}
+              <span class="font-body text-15 font-bold text-muted">{a.photos.length} foto</span>
+            </h2>
+            <ul class="m-0 grid list-none grid-cols-1 gap-x-16 gap-y-28 p-0 sm:grid-cols-2 lg:grid-cols-3">
+              {a.photos.map((p, pi) => {
+                const first = ai === 0 && pi === 0;
+                return (
+                  <li>
+                    <figure class="m-0 flex flex-col gap-10">
+                      <a href={full(p.src)} data-full class="group block overflow-hidden rounded-lg bg-juz-off">
+                        <img src={p.src} alt={p.alt} loading={first ? 'eager' : 'lazy'} fetchpriority={first ? 'high' : undefined} decoding="async" class="block aspect-[3/2] w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]" />
+                        <span class="sr-only">(buka foto ukuran penuh)</span>
+                      </a>
+                      <figcaption class="flex flex-col gap-2 text-15 leading-[1.45]">
+                        <span class="font-bold text-ink">{p.facility}</span>
+                        {p.caption.trim().toLowerCase() !== p.facility.toLowerCase() && <span class="text-body">{p.caption}</span>}
+                      </figcaption>
+                    </figure>
+                  </li>
+                );
+              })}
             </ul>
-          </div>
+          </section>
         ))
       }
       {
-        without.length > 0 && (
-          <div data-group="bersama" class="flex flex-col gap-16">
-            <div class="flex flex-wrap items-baseline justify-between gap-x-16 gap-y-4 pb-4">
-              <h2 class="m-0 font-display text-[38px] font-semibold leading-none">Fasilitas lain</h2>
-              <span class="text-14 font-bold text-muted">Dipakai bersama</span>
-            </div>
-            <ul class="m-0 grid list-none grid-cols-[repeat(auto-fit,minmax(min(280px,100%),1fr))] gap-16 p-0">
-              {without.map((g) => (
-                <li class="card p-20 sm:p-24">
-                  <p class="m-0 font-bold">{g.name}</p>
-                  <p class="m-0 text-15 text-muted">Foto belum tersedia</p>
+        others.length > 0 && (
+          <section aria-labelledby="f-lainnya" data-others class="flex flex-col gap-12">
+            <h2 id="f-lainnya" class="m-0 font-display text-[clamp(28px,2.6vw,34px)] font-semibold leading-none">Fasilitas lainnya</h2>
+            <ul class="m-0 flex list-disc flex-col gap-6 pl-24 text-17 marker:text-muted">
+              {others.map((g) => (
+                <li data-group={g.area}>
+                  {g.name} <span class="text-15 text-muted">· {AREAS.find((a) => a.key === g.area)?.title.toLowerCase()}</span>
                 </li>
               ))}
             </ul>
-          </div>
+          </section>
         )
       }
-    </section>
+    </div>
+
+    <dialog data-lightbox aria-labelledby="lb-caption" class="m-auto box-border max-h-[calc(100dvh-32px)] w-[min(1200px,calc(100vw-32px))] rounded-lg border-0 bg-ink p-0 text-on-night backdrop:bg-ink/85">
+      <div class="flex flex-col">
+        <img src="" alt="" class="block max-h-[calc(100dvh-140px)] w-full object-contain" />
+        <div class="flex items-center justify-between gap-16 px-20 py-12">
+          <p id="lb-caption" class="m-0 text-15"></p>
+          <form method="dialog"><button class="btn-ghost-night flex-none">Tutup</button></form>
+        </div>
+      </div>
+    </dialog>
   </div>
 
   <Landscape slot="footer-lead" />
@@ -94,12 +115,31 @@ const chip =
   if (root) {
     const buttons = Array.from(root.querySelectorAll<HTMLButtonElement>('[data-area]'));
     const groups = Array.from(root.querySelectorAll<HTMLElement>('[data-group]'));
+    const others = root.querySelector<HTMLElement>('[data-others]');
     buttons.forEach((b) =>
       b.addEventListener('click', () => {
         const area = b.dataset.area;
         buttons.forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
         groups.forEach((g) => (g.hidden = area !== 'semua' && g.dataset.group !== area));
+        if (others) others.hidden = !others.querySelector('li:not([hidden])');
       }),
     );
+
+    // Lightbox: the link still opens the file where <dialog> is missing.
+    const dlg = root.querySelector<HTMLDialogElement>('[data-lightbox]');
+    const big = dlg?.querySelector('img');
+    const cap = dlg?.querySelector('#lb-caption');
+    root.querySelectorAll<HTMLAnchorElement>('a[data-full]').forEach((a) =>
+      a.addEventListener('click', (e) => {
+        if (!dlg || !big || !cap || typeof dlg.showModal !== 'function') return;
+        e.preventDefault();
+        const img = a.querySelector('img')!;
+        big.src = a.href;
+        big.alt = img.alt;
+        cap.textContent = Array.from(a.closest('figure')!.querySelectorAll('figcaption > span'), (s) => s.textContent).join(' · ');
+        dlg.showModal();
+      }),
+    );
+    dlg?.addEventListener('click', (e) => e.target === dlg && dlg.close());
   }
 </script>

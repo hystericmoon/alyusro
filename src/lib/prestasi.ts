@@ -72,3 +72,63 @@ export function latestTop(): string | null {
   const stage = /\b(SD|SMP|SMA)\b/.exec(r.level)?.[1];
   return `${r.rank} ${name}${where}${stage && where ? ` (${stage})` : ''}, ${year}`;
 }
+
+export type Article = { id: string; title: string; year: number; body: string };
+export type Highlight = {
+  competition: string;
+  scope: string;
+  organizer: string;
+  year: number;
+  entries: { name: string; rank: string; stage?: string }[];
+  article?: { href: string; title: string };
+};
+
+const norm = (s: string) => s.toLowerCase().replace(/\s+/g, ' ').trim();
+
+/**
+ * "Sorotan" on /prestasi: international results first, then national
+ * winners (Juara 1, Medali Emas), newest year first, then file order. Rows
+ * from the same competition, organizer and year form one highlight; at most
+ * one highlight per competition family, so the row shows range. An article
+ * is linked only when it is a Prestasi article from the same year, about the
+ * same competition family, and names one of the students exactly.
+ */
+export function highlights(articles: Article[], max = 4): Highlight[] {
+  const groups = new Map<string, { i: number; rows: Record[] }>();
+  records.forEach((r, i) => {
+    const sc = scope(r.level);
+    if (!(sc === 'Internasional' || (sc === 'Nasional' && isWinner(r)))) return;
+    if (!Number.isFinite(Number(r.year))) return;
+    const key = [r.year, norm(r.competition), norm(r.organizer)].join('|');
+    const g = groups.get(key) ?? groups.set(key, { i, rows: [] }).get(key)!;
+    g.rows.push(r);
+  });
+  const intl = (g: { rows: Record[] }) => (scope(g.rows[0].level) === 'Internasional' ? 0 : 1);
+  const sorted = [...groups.values()].sort(
+    (a, b) => intl(a) - intl(b) || Number(b.rows[0].year) - Number(a.rows[0].year) || a.i - b.i,
+  );
+  const seen = new Set<string>();
+  const out: Highlight[] = [];
+  for (const { rows } of sorted) {
+    const r = rows[0];
+    const fam = family(r.competition);
+    if (seen.has(fam)) continue;
+    seen.add(fam);
+    const year = Number(r.year);
+    const names = rows.map((x) => norm(x.name));
+    const match = articles.find(
+      (a) => a.year === year && family(a.title) === fam && names.some((n) => norm(a.body).includes(n)),
+    );
+    out.push({
+      // Acronyms ("OBA", "MHQ") read better as their competition family.
+      competition: /^[A-Z]{2,5}$/.test(r.competition.trim()) ? fam.replace(/\s*\(.*\)$/, '') : r.competition.trim(),
+      scope: scope(r.level),
+      organizer: r.organizer.trim(),
+      year,
+      entries: rows.map((x) => ({ name: x.name, rank: x.rank, stage: /\b(SD|SMP|SMA)\b/.exec(x.level)?.[1] })),
+      article: match && { href: `/artikel/${match.id}/`, title: match.title },
+    });
+    if (out.length === max) break;
+  }
+  return out;
+}

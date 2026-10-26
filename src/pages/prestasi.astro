@@ -1,11 +1,20 @@
 ---
-// /prestasi: totals by competition and year from content/prestasi.json,
-// then every achievement by name (the school consented to publishing names).
+// /prestasi: totals and a few highlights from content/prestasi.json, the
+// totals by competition and level, then every achievement by name and year
+// (the school consented to publishing names). Older years are collapsed.
+import { getCollection } from 'astro:content';
 import TableScroll from '@/components/content/TableScroll.astro';
 import ContentPage from '@/components/content/ContentPage.astro';
-import { summary, records } from '@/lib/prestasi';
+import { summary, records, highlights } from '@/lib/prestasi';
 
 const s = summary();
+const articles = (await getCollection('artikel', (a) => !a.data.draft && a.data.category === 'Prestasi')).map((a) => ({
+  id: a.id,
+  title: a.data.title,
+  year: a.data.date.getFullYear(),
+  body: a.body ?? '',
+}));
+const top = highlights(articles);
 const byYear = [...new Set(records.map((r) => String(r.year)))]
   .sort((a, b) => Number(b) - Number(a))
   .map((year) => ({ year, rows: records.filter((r) => String(r.year) === year) }));
@@ -17,6 +26,7 @@ const span = `${Math.min(...s.years)}–${Math.max(...s.years)}`;
   crumbs={[{ label: 'Profil' }, { label: 'Prestasi' }]}
   toc={[
     { id: 'ringkasan', text: 'Ringkasan' },
+    ...(top.length ? [{ id: 'sorotan', text: 'Sorotan' }] : []),
     { id: 'per-lomba', text: 'Per jenis lomba' },
     { id: 'per-tingkat', text: 'Per tingkat' },
     { id: 'daftar', text: 'Daftar lengkap' },
@@ -37,6 +47,39 @@ const span = `${Math.min(...s.years)}–${Math.max(...s.years)}`;
       ))
     }
   </dl>
+
+  {
+    top.length > 0 && (
+      <>
+        <h2 id="sorotan">Sorotan</h2>
+        <ul class="not-prose m-0 grid list-none grid-cols-[repeat(auto-fit,minmax(min(300px,100%),1fr))] gap-16 p-0">
+          {top.map((h) => (
+            <li class="card flex flex-col gap-14 p-20 sm:p-24">
+              <p class="m-0 flex flex-wrap gap-x-12 text-14 font-bold">
+                <span class="text-lapis">{h.scope === 'Internasional' ? 'Internasional' : 'Nasional'}</span>
+                <span class="text-muted">{h.year}</span>
+              </p>
+              <h3 class="m-0 font-display text-[30px] font-semibold leading-[1.05] [text-wrap:balance]">{h.competition}</h3>
+              <ul class="m-0 flex list-none flex-col gap-8 p-0 text-16 leading-[1.4]">
+                {h.entries.map((e) => (
+                  <li>
+                    <span class="block font-bold text-ink">{e.name}</span>
+                    <span class="text-15 text-body">{e.rank}{e.stage && ` · ${e.stage}`}</span>
+                  </li>
+                ))}
+              </ul>
+              <p class="m-0 mt-auto text-15 text-muted">{h.organizer}</p>
+              {h.article && (
+                <a href={h.article.href} class="-my-8 inline-flex min-h-44 items-center self-start text-15 font-bold">
+                  Baca kabarnya<span class="sr-only">: {h.article.title}</span>
+                </a>
+              )}
+            </li>
+          ))}
+        </ul>
+      </>
+    )
+  }
 
   <h2 id="per-lomba">Per jenis lomba</h2>
   <TableScroll labelledby="cap-per-lomba" sticky>
@@ -87,10 +130,9 @@ const span = `${Math.min(...s.years)}–${Math.max(...s.years)}`;
   <h2 id="daftar">Daftar lengkap</h2>
   <p>Kabar lomba terbaru ada di <a href="/artikel/">Kajian &amp; artikel</a>.</p>
   {
-    byYear.map((y) => (
-      <>
-        <h3 id={`tahun-${y.year}`}>{y.year} <span class="font-normal text-muted">· {y.rows.length} prestasi</span></h3>
-        <TableScroll labelledby={`cap-tahun-${y.year}`} sticky>
+    byYear.map((y, i) => {
+      const table = (
+        <TableScroll labelledby={`cap-tahun-${y.year}`} sticky surface={i === 0 ? 'paper' : 'white'} class={i === 0 ? undefined : 'mb-20 [--stripe:var(--color-paper)]'}>
           <table class="min-w-[720px]">
             <caption id={`cap-tahun-${y.year}`} class="sr-only">Daftar prestasi tahun {y.year}</caption>
             <thead>
@@ -115,7 +157,21 @@ const span = `${Math.min(...s.years)}–${Math.max(...s.years)}`;
             </tbody>
           </table>
         </TableScroll>
-      </>
-    ))
+      );
+      return i === 0 ? (
+        <>
+          <h3 id={`tahun-${y.year}`}>{y.year} <span class="font-normal text-muted">· {y.rows.length} prestasi</span></h3>
+          {table}
+        </>
+      ) : (
+        <details id={`tahun-${y.year}`} class="card group mb-12 px-20 sm:px-24">
+          <summary class="flex min-h-56 cursor-pointer items-center justify-between gap-16 text-18 font-bold">
+            <span>{y.year} <span class="font-normal text-muted">· {y.rows.length} prestasi</span></span>
+            <span aria-hidden="true" class="text-[24px] font-normal transition-transform duration-150 group-open:rotate-45">+</span>
+          </summary>
+          {table}
+        </details>
+      );
+    })
   }
 </ContentPage>
