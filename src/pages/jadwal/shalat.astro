@@ -3,6 +3,7 @@
 // The build writes the calculated times, so the page works without
 // JavaScript; the script below swaps in Kemenag's times from the same
 // myquran API the old Laravel page used, and moves "berikutnya" with the clock.
+import TableScroll from '@/components/content/TableScroll.astro';
 import ContentPage from '@/components/content/ContentPage.astro';
 import { site, school } from '@/lib/site';
 import { calcPrayerTimes, nowInWib, fmt, DAY_NAMES, type PrayerKey } from '@/lib/day-view';
@@ -33,6 +34,7 @@ const dateLabel = `${DAY_NAMES[today.wd]}, ${today.d} ${MONTHS[today.m - 1]} ${t
 const cols = ['imsak', 'subuh', 'terbit', 'zhuhur', 'ashar', 'maghrib', 'isya'] as const;
 ---
 <ContentPage
+  closing="compact"
   title="Jadwal shalat"
   lede="Waktu shalat hari ini dan sebulan untuk Kabupaten Bogor, termasuk Tenjolaya, mengikuti jadwal Kementerian Agama."
   crumbs={[{ label: 'Layanan' }, { label: 'Jadwal shalat' }]}
@@ -65,9 +67,9 @@ const cols = ['imsak', 'subuh', 'terbit', 'zhuhur', 'ashar', 'maghrib', 'isya'] 
 
   <h2 id="bulan">Jadwal <span data-js="month">{MONTHS[today.m - 1]} {today.y}</span></h2>
   <p class="text-15 text-muted">Imsak sepuluh menit sebelum Subuh. Baris yang ditandai adalah hari ini.</p>
-  <div class="scroll-cue -mx-20 overflow-x-auto px-20 sm:mx-0 sm:px-0" tabindex="0" role="region" aria-label="Jadwal shalat sebulan, dapat digeser ke samping">
+  <TableScroll labelledby="cap-bulan" sticky>
     <table class="tabular-nums" data-js="table">
-      <caption class="sr-only">Jadwal shalat {MONTHS[today.m - 1]} {today.y}, Kabupaten Bogor</caption>
+      <caption id="cap-bulan" class="sr-only">Jadwal shalat {MONTHS[today.m - 1]} {today.y}, Kabupaten Bogor</caption>
       <thead>
         <tr>
           <th scope="col">Tanggal</th>
@@ -91,7 +93,7 @@ const cols = ['imsak', 'subuh', 'terbit', 'zhuhur', 'ashar', 'maghrib', 'isya'] 
         }
       </tbody>
     </table>
-  </div>
+  </TableScroll>
   <p class="text-15 text-muted">
     Sumber: Kementerian Agama melalui api.myquran.com. Bila jadwal Kemenag tidak termuat, halaman menampilkan
     perhitungan dengan kriteria yang sama dan bisa berbeda satu sampai dua menit.

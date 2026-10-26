@@ -1,6 +1,7 @@
 ---
 // /tentang (new): profile, vision and mission from the live homepage, plus
 // the programmes and leaders from site.json.
+import TableScroll from '@/components/content/TableScroll.astro';
 import { getHalaman } from '@/lib/halaman';
 import ContentPage from '@/components/content/ContentPage.astro';
 import { levels, levelSummary, school } from '@/lib/site';
@@ -8,7 +9,13 @@ import { levels, levelSummary, school } from '@/lib/site';
 const page = await getHalaman('tentang');
 const toc = [...page.headings, { id: 'program', text: 'Program pendidikan' }];
 ---
-<ContentPage title={page.data.title} lede={page.data.lede} crumbs={[{ label: 'Profil' }, { label: 'Tentang kami' }]} toc={toc} cta={{ text: 'Datang dan lihat langsung', label: 'Buka peta lokasi', href: school.mapsUrl }}>
+<ContentPage
+  title={page.data.title}
+  lede={page.data.lede}
+  crumbs={[{ label: 'Profil' }, { label: 'Tentang kami' }]}
+  toc={toc}
+  photo={{ name: 'kampus-udara', width: 1600, height: 960, alt: 'Gedung utama Al Yusro dilihat dari udara: bangunan bertingkat beratap abu-abu, aula, dan jalan masuk yang ditanami bunga' }}
+  cta={{ text: 'Datang dan lihat langsung', label: 'Buka peta lokasi', href: school.mapsUrl }}>
   <Fragment set:html={page.html} />
   <p>
     <a href={school.mapsUrl}>Buka peta lokasi</a> • <a href={school.whatsapp.url}>WhatsApp {school.whatsapp.display}</a>
@@ -16,8 +23,9 @@ const toc = [...page.headings, { id: 'program', text: 'Program pendidikan' }];
   <p class="text-15 text-muted">Penyelenggara: {school.foundation}. {school.legalEntityNote.replace('National curriculum equivalency runs through', 'Ijazah kesetaraan kurikulum nasional melalui')}.</p>
 
   <h2 id="program">Program pendidikan</h2>
+  <TableScroll labelledby="cap-program">
   <table>
-    <caption class="sr-only">Program pendidikan</caption>
+    <caption id="cap-program" class="sr-only">Program pendidikan</caption>
     <thead><tr><th scope="col">Jenjang</th><th scope="col">Setara</th><th scope="col">Target hafalan</th></tr></thead>
     <tbody>
       {
@@ -31,5 +39,6 @@ const toc = [...page.headings, { id: 'program', text: 'Program pendidikan' }];
       }
     </tbody>
   </table>
+  </TableScroll>
   <p>Kenali para pimpinan di halaman <a href="/pendidikan/tenaga/pendidik/">pengajar dan pengurus</a>.</p>
 </ContentPage>

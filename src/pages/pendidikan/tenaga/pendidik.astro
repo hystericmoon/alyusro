@@ -1,6 +1,7 @@
 ---
 // /pendidikan/tenaga/pendidik: leaders from site.json (no photos until the
 // school supplies them and confirms its imagery policy).
+import TableScroll from '@/components/content/TableScroll.astro';
 import ContentPage from '@/components/content/ContentPage.astro';
 import { site, school, levels } from '@/lib/site';
 
@@ -22,8 +23,9 @@ const groups = [
     groups.map((g, i) => (
       <>
         <h2 id={g.id} style={i === 0 ? 'margin-top:0' : undefined}>{g.title}</h2>
+        <TableScroll labelledby={`cap-${g.id}`}>
         <table>
-          <caption class="sr-only">{g.title}</caption>
+          <caption id={`cap-${g.id}`} class="sr-only">{g.title}</caption>
           <thead><tr><th scope="col">Jabatan</th><th scope="col">Nama</th></tr></thead>
           <tbody>
             {g.items.map((p) => (
@@ -34,6 +36,7 @@ const groups = [
             ))}
           </tbody>
         </table>
+        </TableScroll>
       </>
     ))
   }

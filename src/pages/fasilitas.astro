@@ -3,6 +3,7 @@
 // filter. Without JS every group shows; photos with faces are left out.
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Landscape from '@/components/home/Landscape.astro';
+import PageHeader from '@/components/content/PageHeader.astro';
 import data from '../../content/fasilitas.json';
 
 type Photo = { src: string; alt: string; caption: string };
@@ -25,21 +26,12 @@ const chip =
   'inline-flex min-h-44 cursor-pointer items-center rounded-full border-0 bg-white px-18 font-body text-15 font-bold text-ink transition-[background-color,color,transform] duration-150 hover:bg-lapis-1 active:scale-[0.97] aria-pressed:bg-ink aria-pressed:text-white';
 ---
 <BaseLayout title="Fasilitas" description="Asrama, kelas, dan gedung terpisah untuk santri putra dan putri di Ma’had Tahfizh Al Yusro." footerLabelledBy="g-foot-title">
-  <section aria-labelledby="f-title" class="mx-auto box-border max-w-page px-20 pb-40 pt-24 sm:px-40 sm:pt-32">
-    <nav aria-label="Breadcrumb" class="mb-32 text-15 sm:mb-40">
-      <ol class="m-0 flex list-none gap-10 p-0 text-muted">
-        <li><a href="/">Beranda</a></li>
-        <li aria-hidden="true">/</li>
-        <li>Profil</li>
-        <li aria-hidden="true">/</li>
-        <li aria-current="page" class="text-ink">Fasilitas</li>
-      </ol>
-    </nav>
-    <div class="flex flex-wrap items-end justify-between gap-x-64 gap-y-24">
-      <h1 id="f-title" class="m-0 font-display text-[clamp(56px,6.6vw,96px)] font-semibold leading-[0.92]">Fasilitas</h1>
-      <p class="m-0 max-w-[32em] text-19 text-body">Asrama, kelas, dan gedung terpisah untuk santri putra dan putri, ditambah fasilitas yang dipakai bersama.</p>
-    </div>
-  </section>
+  <PageHeader
+    id="f-title"
+    title="Fasilitas"
+    lede="Asrama, kelas, dan gedung terpisah untuk santri putra dan putri, ditambah fasilitas yang dipakai bersama."
+    crumbs={[{ label: 'Profil' }, { label: 'Fasilitas' }]}
+  />
 
   <div data-fasilitas>
     <div class="glass-paper sticky top-0 z-[2]" data-filter-bar hidden>

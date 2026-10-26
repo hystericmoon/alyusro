@@ -1,0 +1,31 @@
+---
+// The site's photo pattern (as in Landscape.astro): 800 and 1600 px WebP with
+// a 1600 px JPG fallback, intrinsic width and height (no layout shift), real
+// alt text, and lazy loading unless the photo is the page's LCP image.
+// `name` is the file stem in public/photos, e.g. "kampus-udara".
+interface Props {
+  name: string;
+  alt: string;
+  width: number;
+  height: number;
+  sizes: string;
+  /** The page's largest image above the fold: eager, high priority. */
+  priority?: boolean;
+  class?: string;
+  pictureClass?: string;
+}
+const { name, alt, width, height, sizes, priority = false, class: className, pictureClass } = Astro.props;
+---
+<picture class={pictureClass}>
+  <source type="image/webp" srcset={`/photos/${name}-800.webp 800w, /photos/${name}-1600.webp ${width}w`} sizes={sizes} />
+  <img
+    src={`/photos/${name}-1600.jpg`}
+    width={width}
+    height={height}
+    alt={alt}
+    loading={priority ? 'eager' : 'lazy'}
+    fetchpriority={priority ? 'high' : undefined}
+    decoding="async"
+    class={className}
+  />
+</picture>

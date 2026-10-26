@@ -208,7 +208,7 @@
   size-adjust: 72.7%;
 }
 .font-display,
-:where(.prose-ad, .prose-k) :is(h2, h3) {
+:where(.prose) :is(h2, h3) {
   letter-spacing: -0.02em;
   line-height: 0.86;
 }
@@ -234,7 +234,8 @@
   font-weight: 800;
   line-height: 1.4;
 }
-.prose-ad :lang(ar),
+:where(.prose) :is(p, blockquote, span, figcaption)[lang="ar"]:not([class]),
+:where(.prose) :is(p, blockquote)[lang="ar"] :lang(ar),
 .honorific {
   font-family: var(--font-naskh);
   font-weight: 500;
@@ -543,44 +544,61 @@ html:has(#menu-hp:popover-open) {
   background-size: 100% 1px;
 }
 
-/* Article body (Artikel-detail .ad). Arabic blocks keep lang/dir from the content. */
+/*
+  Long-form prose: articles, content pages (tentang, kurikulum, ...). One
+  class for all of them. Text blocks keep a comfortable measure; tables,
+  figures and the ayat block use the full column.
+*/
 @layer components {
-  :where(.prose-ad) { font-size: 19px; line-height: 1.7; }
-  :where(.prose-ad) > :first-child { margin-top: 0; }
-  :where(.prose-ad) h2 { margin: 56px 0 14px; font-family: var(--font-display); font-size: 40px; font-weight: 600; line-height: 1.05; }
+  :where(.prose) { font-size: 18px; line-height: 1.7; }
+  :where(.prose) > :first-child { margin-top: 0; }
+  :where(.prose) > :is(p, ul, ol, h2, h3, h4, dl) { max-width: 68ch; }
+  :where(.prose) h2 { margin: 64px 0 16px; font-family: var(--font-display); font-size: clamp(34px, 3.4vw, 44px); font-weight: 600; line-height: 1.05; scroll-margin-top: 24px; text-wrap: balance; }
+  :where(.prose) h3 { margin: 40px 0 10px; font-family: var(--font-display); font-size: clamp(24px, 2.4vw, 30px); font-weight: 600; line-height: 1.1; scroll-margin-top: 24px; }
+  :where(.prose) h4 { margin: 28px 0 8px; font-size: 18px; font-weight: 700; line-height: 1.4; }
   /* Migrated headings bold only part of their text; keep the heading's own weight. */
-  :where(.prose-ad) :is(h2, h3) strong { font-weight: inherit; }
-  :where(.prose-ad) h3 { margin: 40px 0 10px; font-family: var(--font-display); font-size: 30px; font-weight: 600; line-height: 1.1; }
-  :where(.prose-ad) p { margin: 0 0 18px; }
-  :where(.prose-ad) ul, :where(.prose-ad) ol { margin: 0 0 18px; padding-left: 24px; }
-  :where(.prose-ad) li { margin-bottom: 8px; }
-  :where(.prose-ad) a { text-underline-offset: 3px; overflow-wrap: anywhere; }
-  :where(.prose-ad) blockquote { margin: 0 0 18px; padding: 16px 20px; border-radius: var(--radius-md); background: var(--color-white); color: var(--color-body); }
-  :where(.prose-ad) [lang="ar"] { font-family: var(--font-naskh); font-size: 1.3em; line-height: 1.9; }
-  :where(.prose-ad) p[lang="ar"], :where(.prose-ad) blockquote[lang="ar"] { text-align: right; }
-  :where(.prose-ad) blockquote[lang="ar"] { padding: 16px 20px; }
-  :where(.prose-ad) span[lang="ar"] { font-size: 1.2em; }
-  /* ﷻ ﷺ in titles, see titleHtml() */
-  /* Legible in 16px chips, no taller than before in display titles. */
-  .honorific { font-size: clamp(0.55em, 18px, 1.1em); line-height: 0; vertical-align: 0.1em; }
-}
-
-/* Content pages (Kurikulum-tahfizh .k-body) */
-@layer components {
-  :where(.prose-k) > :first-child { margin-top: 0; }
-  :where(.prose-k) h2 { margin: 72px 0 16px; font-family: var(--font-display); font-size: clamp(36px, 3.4vw, 44px); font-weight: 600; line-height: 1.05; scroll-margin-top: 24px; }
-  :where(.prose-k) h3 { margin: 32px 0 8px; font-size: 19px; font-weight: 700; line-height: 1.35; }
-  :where(.prose-k) p { margin: 0 0 16px; }
-  :where(.prose-k) a { overflow-wrap: anywhere; }
+  :where(.prose) :is(h2, h3) strong { font-weight: inherit; }
+  :where(.prose) p { margin: 0 0 18px; }
+  :where(.prose) ul, :where(.prose) ol { margin: 0 0 18px; padding-left: 24px; }
+  :where(.prose) li { margin-bottom: 8px; }
+  :where(.prose) ul { list-style: disc; }
+  :where(.prose) ol { list-style: decimal; }
+  :where(.prose) li::marker { color: var(--color-muted); }
+  :where(.prose) a { text-underline-offset: 3px; overflow-wrap: anywhere; }
   /* Links inside running text are underlined: lapis alone is too close to ink and muted (WCAG 1.4.1). */
-  :where(.prose-k, .prose-ad) :is(p, li, td, dd, figcaption) a:not([class*="btn-"]) { text-decoration-line: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
-  :where(.prose-k) ul, :where(.prose-k) ol { margin: 0 0 16px; padding-left: 22px; }
-  :where(.prose-k) li { margin-bottom: 8px; }
-  :where(.prose-k) table { width: 100%; border-collapse: collapse; margin: 8px 0 24px; font-size: 16px; font-variant-numeric: tabular-nums; }
-  :where(.prose-k) th, :where(.prose-k) td { text-align: left; padding: 12px 16px; vertical-align: top; }
-  :where(.prose-k) thead th { font-size: 14px; font-weight: 500; color: var(--color-muted); }
-  :where(.prose-k) tbody th { font-weight: 700; }
-  :where(.prose-k) [lang="ar"] { font-family: var(--font-arabic); font-size: 1.25em; }
+  :where(.prose) :is(p, li, td, dd, figcaption, blockquote) a:not([class*="btn-"]) { text-decoration-line: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+  :where(.prose) blockquote { margin: 0 0 18px; padding: 18px 22px; border-radius: var(--radius-md); background: var(--color-white); color: var(--color-body); }
+  :where(.prose) blockquote > :last-child { margin-bottom: 0; }
+
+  /*
+    Ayat, hadith and du'a: the Arabic is a block of its own (Noto Naskh,
+    generous line height, right-aligned), and the translation with its
+    citation, (QS. ...) or (HR. ...), that follows it as a blockquote joins
+    it as one panel.
+  */
+  :where(.prose) :is(p, blockquote)[lang="ar"] { margin: 32px 0 18px; padding: 22px 24px; border-radius: var(--radius-md); background: var(--color-sky-50); color: var(--color-ink); font-size: 1.45em; line-height: 2.1; text-align: right; }
+  :where(.prose) blockquote[lang="ar"] > p { margin: 0; }
+  :where(.prose) p[lang="ar"]:has(+ blockquote:not([lang])) { margin-bottom: 0; border-bottom-left-radius: 0; border-bottom-right-radius: 0; padding-bottom: 12px; }
+  :where(.prose) p[lang="ar"] + blockquote:not([lang]) { margin-top: 0; margin-bottom: 32px; border-top-left-radius: 0; border-top-right-radius: 0; background: var(--color-sky-50); padding-top: 4px; font-size: 16px; line-height: 1.65; }
+  /* Consecutive Arabic paragraphs form one block. */
+  :where(.prose) p[lang="ar"] + p[lang="ar"] { margin-top: -18px; border-top-left-radius: 0; border-top-right-radius: 0; padding-top: 0; }
+  :where(.prose) p[lang="ar"]:has(+ p[lang="ar"]) { border-bottom-left-radius: 0; border-bottom-right-radius: 0; padding-bottom: 8px; }
+  :where(.prose) span[lang="ar"]:not([class]) { font-size: 1.2em; }
+
+  /* Figures: full column width, caption below. */
+  :where(.prose) figure { margin: 32px 0; }
+  :where(.prose) :is(figure, p) > img, :where(.prose) figure picture img { display: block; width: 100%; height: auto; border-radius: var(--radius-lg); }
+  :where(.prose) figcaption { margin-top: 10px; font-size: 14px; line-height: 1.5; color: var(--color-muted); }
+
+  /* Tables inside prose. */
+  :where(.prose) table { width: 100%; margin: 0; font-size: 16px; font-variant-numeric: tabular-nums; line-height: 1.5; }
+  :where(.prose) th, :where(.prose) td { text-align: left; padding: 12px 16px; vertical-align: top; }
+  :where(.prose) thead th { font-size: 14px; font-weight: 500; color: var(--color-muted); }
+  :where(.prose) tbody th { font-weight: 700; }
+  :where(.prose) .table-scroll { margin: 8px 0 28px; }
+
+  /* ﷻ ﷺ in titles, see titleHtml(). Legible in 16px chips, no taller than before in display titles. */
+  .honorific { font-size: clamp(0.55em, 18px, 1.1em); line-height: 0; vertical-align: 0.1em; }
 }
 
 /*
@@ -626,6 +644,21 @@ html:has(#menu-hp:popover-open) {
     background-color: var(--scroll-bg);
   }
   .scroll-cue-white { --scroll-bg: var(--color-white); }
+
+  /* Data tables (TableScroll.astro): a focusable scrolling region. */
+  .table-scroll { max-width: 100%; border-radius: var(--radius-sm); }
+  .table-scroll > table { min-width: 100%; }
+  /* Wide tables keep their first column in view while the rest scrolls. */
+  @media (max-width: 767px) {
+    .table-scroll[data-sticky] :is(th, td):first-child {
+      position: sticky;
+      left: 0;
+      z-index: 1;
+      background-color: var(--scroll-bg);
+      box-shadow: 8px 0 8px -8px rgb(27 34 53 / 0.25);
+    }
+    .table-scroll[data-sticky] tbody tr:nth-child(odd) > :first-child { background-color: var(--stripe, var(--color-white)); }
+  }
 }
 
 /* "Selanjutnya" link at the end of a content page. */

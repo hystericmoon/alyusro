@@ -1,5 +1,6 @@
 ---
 // /info/kajian: routine kajian (site.json) and past recordings.
+import TableScroll from '@/components/content/TableScroll.astro';
 import ContentPage from '@/components/content/ContentPage.astro';
 import { kajianRutin } from '@/lib/kajian';
 import { school } from '@/lib/site';
@@ -11,6 +12,7 @@ const recordings = [
 ];
 ---
 <ContentPage
+  closing="compact"
   title="Info kajian"
   lede="Kajian rutin di masjid ma’had, sebagian terbuka untuk masyarakat umum. Waktu dan tema diumumkan lewat grup info WhatsApp."
   crumbs={[{ label: 'Kajian & artikel', href: '/artikel/' }, { label: 'Info kajian' }]}
@@ -20,8 +22,9 @@ const recordings = [
   ]}
 >
   <h2 id="rutin" style="margin-top:0">Kajian rutin</h2>
+  <TableScroll labelledby="cap-kajian">
   <table>
-    <caption class="sr-only">Jadwal kajian rutin</caption>
+    <caption id="cap-kajian" class="sr-only">Jadwal kajian rutin</caption>
     <thead><tr><th scope="col">Kajian</th><th scope="col">Waktu</th><th scope="col">Untuk</th></tr></thead>
     <tbody>
       {items.map((k) => (
@@ -33,6 +36,7 @@ const recordings = [
       ))}
     </tbody>
   </table>
+  </TableScroll>
   <p>Ingin kabar kajian berikutnya? <a href={school.whatsapp.url}>Tanya lewat WhatsApp</a> atau ikuti {school.social.handle} di Instagram dan YouTube.</p>
 
   <h2 id="rekaman">Rekaman kajian</h2>
