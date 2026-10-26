@@ -8,7 +8,7 @@ import PageHeader from '@/components/content/PageHeader.astro';
 import ArticleCover from '@/components/artikel/ArticleCover.astro';
 import ArticleCard from '@/components/artikel/ArticleCard.astro';
 import { getArticles, filterKey, formatDate, kicker, titleHtml, NEWS } from '@/lib/articles';
-import { site, known } from '@/lib/site';
+import { kajianRutin } from '@/lib/kajian';
 
 const all = await getArticles();
 const featured = [...all].sort((a, b) => b.data.views - a.data.views)[0];
@@ -19,11 +19,7 @@ const seriesOrder = [...new Set(all.map((a) => a.data.series).filter((s): s is s
 const filters = ['Semua', NEWS, ...seriesOrder];
 const counts = Object.fromEntries(filters.map((f) => [f, f === 'Semua' ? list.length : list.filter((a) => filterKey(a) === f).length]));
 
-const kajian = site.kajianRutin.map((k) => ({
-  name: k.name,
-  when: known(k.when) ?? 'Jadwal segera diumumkan',
-  audience: known(k.audience),
-}));
+const kajian = kajianRutin();
 const PAGE = 12;
 const chip =
   'inline-flex min-h-44 cursor-pointer items-center rounded-full border-0 bg-white px-18 font-body text-15 font-bold text-ink transition-[background-color,color,transform] duration-150 hover:bg-lapis-1 active:scale-[0.97] aria-pressed:bg-ink aria-pressed:text-white';
@@ -51,7 +47,7 @@ const chip =
           kajian.map((k) => (
             <li class="glass-night flex flex-col gap-6 rounded-lg p-20 sm:p-24">
               <strong class="text-18 text-white">{k.name}</strong>
-              <span class="text-on-night-body">{k.when}</span>
+              {k.when && <span class="text-on-night-body">{k.when}</span>}
               {k.audience && <span class="text-14 text-on-night-muted">{k.audience}</span>}
             </li>
           ))

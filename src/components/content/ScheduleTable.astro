@@ -6,7 +6,7 @@
 import TableScroll from '@/components/content/TableScroll.astro';
 import { site } from '@/lib/site';
 
-type Entry = { name: string; days: string; start: string; end: string; note?: string; whenNote?: string; duration?: string; placeholder?: boolean };
+type Entry = { name: string; days: string; start: string; end: string; note?: string; whenNote?: string; duration?: string };
 const ds = site.dailySchedule as unknown as {
   weekday: Entry[];
   weekly: { name: string; when: string; duration?: string }[];
@@ -15,12 +15,10 @@ const ds = site.dailySchedule as unknown as {
 const clock = /^\d{1,2}[.:]\d{2}$/;
 const hhmm = (s: string) => s.replace(':', '.');
 const rows = [
-  ...ds.weekday
-    .filter((e) => !e.placeholder)
-    .map((e) => {
-      const fixed = clock.test(e.start) && clock.test(e.end) ? `${hhmm(e.start)}–${hhmm(e.end)}` : '';
-      return { name: e.name, note: e.note, when: [e.days, [fixed, e.whenNote].filter(Boolean).join(' ')].filter(Boolean).join(', '), duration: e.duration ?? '' };
-    }),
+  ...ds.weekday.map((e) => {
+    const fixed = clock.test(e.start) && clock.test(e.end) ? `${hhmm(e.start)}–${hhmm(e.end)}` : '';
+    return { name: e.name, note: e.note, when: [e.days, [fixed, e.whenNote].filter(Boolean).join(' ')].filter(Boolean).join(', '), duration: e.duration ?? '' };
+  }),
   ...ds.weekly.map((w) => ({ name: w.name, note: undefined, when: w.when, duration: w.duration ?? '' })),
 ];
 ---

@@ -9,13 +9,13 @@ export type Level = (typeof data.levels)[number] & {
 export const school = data.school;
 export const levels = data.levels as Level[];
 
-/** Values containing "[...]" in site.json are placeholders (or part-placeholders) still to confirm. */
+/** A value containing "[...]" is a placeholder; site.json should not have any, this is a safety net for CMS edits. */
 export const isPlaceholder = (v: unknown): boolean => typeof v === 'string' && /\[[^\]]*\]/.test(v);
 
 /**
- * The value, or null when it is a placeholder or empty. Pages never show a
- * bracketed placeholder: unknown values are hidden or get a designed fallback,
- * and appear automatically once site.json has the real value.
+ * The value, or null when it is missing, empty or a placeholder. Pages leave
+ * unknown values out (no "belum dipublikasikan" stand-in), and show them as
+ * soon as site.json has the real value.
  */
 export function known<T>(v: T): T | null {
   if (v === null || v === undefined || v === '' || isPlaceholder(v)) return null;
@@ -39,7 +39,7 @@ export const registerUrl = (slug?: string): string => {
 export const loginUrl = schoolUrl(school.loginUrl);
 export const infoGroupUrl = schoolUrl(school.infoGroupUrl);
 
-/** Only an explicit `true` means open; "[status]" and other placeholders read as not open. */
+/** Only an explicit `true` means open; a missing status reads as not open. */
 export const openLevels = (): Level[] => levels.filter((l) => l.psbOpen === true);
 
 const ONES = ['', 'satu', 'dua', 'tiga', 'empat', 'lima', 'enam', 'tujuh', 'delapan', 'sembilan'];
@@ -63,17 +63,18 @@ const lowerFirst = (s: string): string => s.charAt(0).toLowerCase() + s.slice(1)
 
 /**
  * One-line summary under a level name (terraces, menus). Built from setara,
- * duration and feesNote so it follows site.json; placeholder durations are left out.
+ * duration and feesNote so it follows site.json; a missing duration is left out.
  */
 export function levelSummary(level: Level): string {
   const parts = [level.setara];
   if (level.feesNote) {
     parts.push(lowerFirst(level.feesNote.replace(/\.$/, '')));
-  } else if (!isPlaceholder(level.duration)) {
-    const classes = /kelas\s+[^,]+$/i.exec(level.duration);
-    if (level.durationLabel === 'Usia') parts.push(`usia ${level.duration}`);
+  } else if (known(level.duration)) {
+    const duration = level.duration as string;
+    const classes = /kelas\s+[^,]+$/i.exec(duration);
+    if (level.durationLabel === 'Usia') parts.push(`usia ${duration}`);
     else if (classes) parts.push(lowerFirst(classes[0]));
-    else parts.push(`ditempuh ${level.duration}`);
+    else parts.push(`ditempuh ${duration}`);
   }
   // Word joiners keep a range ("kelas VII–IX", "4–6 tahun") from breaking at the dash.
   return parts.join(', ').replace(/(\S)–(\S)/g, '$1\u2060–\u2060$2');

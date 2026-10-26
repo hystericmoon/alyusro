@@ -7,18 +7,23 @@
 // steps a parent actually takes: ask, read the details, visit) sits below it
 // on phones and tablets and overlaps only its bottom edge from 1024px.
 import StarField from '@/components/StarField.astro';
-import { school, registerUrl, numberWord, openLevels } from '@/lib/site';
+import { school, levels, registerUrl, numberWord, openLevels } from '@/lib/site';
+import { upcomingWaves } from '@/lib/level';
 
 const ideal = numberWord(school.halaqahRatio.ideal);
 const open = openLevels().map((l) => l.name);
 const openText =
   open.length === 0 ? null : open.length === 1 ? open[0] : `${open.slice(0, -1).join(', ')} dan ${open[open.length - 1]}`;
+// "Jadwal" only while /psb has a wave table to show.
+const hasWaves = levels.some((l) => upcomingWaves(l.slug).some((w) => w.opens || w.test));
 const onPsb = Astro.url.pathname.replace(/\/$/, '') === '/psb';
 const steps = [
   { title: 'Tanya tim pendaftaran', note: 'WhatsApp', number: school.whatsapp.display, href: school.whatsapp.url },
   onPsb
     ? { title: 'Bandingkan jenjang', note: 'Usia, target hafalan, dan program', href: '/#jenjang' }
-    : { title: 'Lihat biaya dan jadwal', note: 'Alur, gelombang, dan berkas', href: '/psb/' },
+    : hasWaves
+      ? { title: 'Lihat biaya dan jadwal', note: 'Alur, gelombang, dan berkas', href: '/psb/' }
+      : { title: 'Lihat biaya dan alur', note: 'Alur pendaftaran, biaya, dan berkas', href: '/psb/' },
   { title: 'Datang ke Tenjolaya', note: 'Buka peta lokasi', href: school.mapsUrl },
 ];
 ---

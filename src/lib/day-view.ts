@@ -10,7 +10,6 @@ export type ScheduleEntry = {
   start: string;
   end: string;
   detail?: string;
-  placeholder?: boolean;
 };
 export type DaySchedule = {
   weekday: ScheduleEntry[];
@@ -160,7 +159,7 @@ export function daysInclude(days: string, wd: number): boolean {
   });
 }
 
-type Block = { name: string; detail: string; a: number; b: number; ph: boolean };
+type Block = { name: string; detail: string; a: number; b: number };
 
 export type DayModel = {
   label: string;
@@ -190,12 +189,10 @@ export function buildDay(schedule: DaySchedule, pt: PrayerMinutes, wd: number, n
   const raw: Block[] = schedule.weekday
     .filter((e) => daysInclude(e.days, blockDay))
     .map((e) => ({
-      // Placeholder labels lose their brackets; the dashed block already says "approximate".
-      name: e.name.replace(/^\[(.*)\]$/, '$1'),
+      name: e.name,
       detail: e.detail ?? '',
       a: evalTime(e.start, pt),
       b: evalTime(e.end, pt),
-      ph: !!e.placeholder,
     }));
 
   const prayers = [
@@ -218,14 +215,13 @@ export function buildDay(schedule: DaySchedule, pt: PrayerMinutes, wd: number, n
           detail: 'Shalat berjamaah di masjid ma’had.',
           a: x.m,
           b: x.m + 15,
-          ph: false,
         };
       }
     });
   }
 
   const events = [
-    ...raw.filter((b) => !b.ph).map((b) => ({ name: b.name, m: b.a })),
+    ...raw.map((b) => ({ name: b.name, m: b.a })),
     ...prayers.map((x) => ({ name: x.name === 'Jumat' ? 'Shalat Jumat' : `Shalat ${x.name}`, m: x.m })),
   ].sort((a, b) => a.m - b.m);
   const next = weekday ? events.find((e) => e.m > nowMin) : undefined;
@@ -235,7 +231,8 @@ export function buildDay(schedule: DaySchedule, pt: PrayerMinutes, wd: number, n
   let nextText: string;
   if (!weekday) {
     const day = wd === 6 ? schedule.saturday : schedule.sunday;
-    const unknown = /^\[.*\]$/.test(day.title.trim());
+    // A weekend day without a title in site.json gets a neutral one.
+    const unknown = !day.title.trim() || /^\[.*\]$/.test(day.title.trim());
     title = unknown ? `${DAY_NAMES[wd]}: kegiatan akhir pekan` : day.title;
     detail = unknown ? '' : day.detail;
     nextText = 'Jadwal harian berlaku Senin sampai Jumat.';
@@ -247,7 +244,7 @@ export function buildDay(schedule: DaySchedule, pt: PrayerMinutes, wd: number, n
     } else if (nowMin < 210 || nowMin >= 1290) {
       title = 'Waktu istirahat malam';
     } else {
-      title = 'Jeda di antara kegiatan';
+      title = 'Di luar jadwal tahfizh';
     }
     nextText = next ? `Berikutnya: ${next.name}, pukul ${fmt(next.m)}` : 'Kegiatan dimulai lagi besok sebelum Subuh.';
   }
@@ -264,9 +261,6 @@ export function buildDay(schedule: DaySchedule, pt: PrayerMinutes, wd: number, n
   const blocksHtml = raw
     .map((b) => {
       const pos = `top:${pct(b.a)};height:${len(b.a, b.b)}`;
-      if (b.ph) {
-        return `<div class="absolute inset-x-0 box-border overflow-hidden rounded-sm bg-white/[0.07] px-12 py-8 text-13 leading-[1.35] text-on-night-body" style="${pos}">${esc(b.name)}</div>`;
-      }
       const isCur = live && weekday && cur === b;
       const tone = isCur ? 'bg-amber shadow-[0_0_0_2px_var(--color-white)]' : 'bg-sky-100';
       // An hour is about 34px tall: tighten the type so a long name fits on
