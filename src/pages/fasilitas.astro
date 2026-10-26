@@ -1,6 +1,8 @@
 ---
 // /fasilitas (design/Fasilitas.dc.html): grouped gallery with an area
-// filter. Without JS every group shows; photos with faces are left out.
+// filter. Without JS every group shows and the filter bar is hidden by a
+// scripting media query (no layout shift when the script runs); photos with
+// faces are left out. The first photo is the LCP image on phones.
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Landscape from '@/components/home/Landscape.astro';
 import PageHeader from '@/components/content/PageHeader.astro';
@@ -34,7 +36,7 @@ const chip =
   />
 
   <div data-fasilitas>
-    <div class="glass-paper sticky top-0 z-[2]" data-filter-bar hidden>
+    <div class="glass-paper sticky top-0 z-[2] [@media(scripting:none)]:hidden" data-filter-bar>
       <div role="group" aria-label="Saring fasilitas" class="mx-auto box-border flex max-w-page flex-wrap gap-8 px-20 py-12 sm:px-40">
         {filters.map((f, i) => <button type="button" data-area={f.key} aria-pressed={i === 0 ? 'true' : 'false'} class={chip}>{f.label}</button>)}
       </div>
@@ -42,18 +44,18 @@ const chip =
 
     <section aria-label="Galeri fasilitas" class="mx-auto box-border flex max-w-page flex-col gap-56 px-20 pb-96 pt-48 sm:px-40">
       {
-        withPhotos.map((g) => (
+        withPhotos.map((g, gi) => (
           <div data-group={g.area} class="flex flex-col gap-16">
             <div class="flex flex-wrap items-baseline justify-between gap-x-16 gap-y-4 pb-4">
               <h2 class="m-0 font-display text-[38px] font-semibold leading-none">{g.name}</h2>
               <span class:list={['text-14 font-bold', TAG[g.area].cls]}>{TAG[g.area].text}</span>
             </div>
             <ul class="m-0 grid list-none grid-cols-[repeat(auto-fit,minmax(min(280px,100%),1fr))] gap-16 p-0">
-              {g.photos.map((p) => (
+              {g.photos.map((p, pi) => (
                 <li>
                   <figure class="group m-0 flex flex-col gap-8">
                     <div class="overflow-hidden rounded-lg bg-juz-off">
-                      <img src={p.src} alt={p.alt} loading="lazy" decoding="async" class="block aspect-[4/3] w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]" />
+                      <img src={p.src} alt={p.alt} loading={gi === 0 && pi === 0 ? 'eager' : 'lazy'} fetchpriority={gi === 0 && pi === 0 ? 'high' : undefined} decoding="async" class="block aspect-[4/3] w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]" />
                     </div>
                     <figcaption class="text-15 text-body">{p.caption}</figcaption>
                   </figure>
@@ -90,7 +92,6 @@ const chip =
 <script>
   const root = document.querySelector<HTMLElement>('[data-fasilitas]');
   if (root) {
-    const bar = root.querySelector<HTMLElement>('[data-filter-bar]')!;
     const buttons = Array.from(root.querySelectorAll<HTMLButtonElement>('[data-area]'));
     const groups = Array.from(root.querySelectorAll<HTMLElement>('[data-group]'));
     buttons.forEach((b) =>
@@ -100,6 +101,5 @@ const chip =
         groups.forEach((g) => (g.hidden = area !== 'semua' && g.dataset.group !== area));
       }),
     );
-    bar.hidden = false;
   }
 </script>
