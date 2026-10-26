@@ -5,6 +5,22 @@
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import ClosingBand from '@/components/content/ClosingBand.astro';
 import { levels, levelSummary, school } from '@/lib/site';
+
+// The main destinations besides the levels (listed beside them).
+const destinations = [
+  {
+    href: '/psb/',
+    title: 'Pendaftaran santri baru',
+    text: 'Status pendaftaran, alur, biaya, dan berkas yang disiapkan',
+    icon: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3.5h7l4.5 4.5v11a1.5 1.5 0 0 1-1.5 1.5H7A1.5 1.5 0 0 1 5.5 19V5A1.5 1.5 0 0 1 7 3.5z"/><path d="M14 3.5V8h4.5M9 13h6M9 16.5h4"/></svg>',
+  },
+  {
+    href: '/artikel/',
+    title: 'Kajian & artikel',
+    text: 'Kajian rutin, serial belajar aqidah, dan kabar dari ma’had',
+    icon: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6.5C10.2 5 7.6 4.5 4 4.5v13c3.6 0 6.2.5 8 2 1.8-1.5 4.4-2 8-2v-13c-3.6 0-6.2.5-8 2z"/><path d="M12 6.5v13"/></svg>',
+  },
+];
 ---
 <BaseLayout title="Halaman tidak ditemukan" description="Halaman yang Anda cari tidak ada atau sudah dipindahkan." footerLabelledBy="g-foot-title">
   <div class="mx-auto box-border max-w-page px-20 pb-72 pt-48 sm:px-40 sm:pb-96 sm:pt-72">
@@ -13,13 +29,32 @@ import { levels, levelSummary, school } from '@/lib/site';
         <p class="m-0 text-15 font-bold text-muted">Kode 404</p>
         <h1 class="m-0 font-display text-[clamp(52px,6.6vw,96px)] font-semibold leading-[0.92] [text-wrap:balance]">Halaman ini tidak ditemukan</h1>
         <p class="m-0 text-[21px] leading-[1.6] text-body [text-wrap:pretty]">
-          Mungkin alamatnya salah ketik, atau halamannya sudah dipindahkan saat situs diperbarui. Coba salah satu tautan
-          di samping, atau tanyakan langsung kepada kami.
+          Mungkin alamatnya salah ketik, atau halamannya sudah dipindahkan saat situs diperbarui. Kembali ke beranda, pilih
+          salah satu tujuan di bawah, atau tanyakan langsung kepada kami.
         </p>
-        <div class="flex flex-wrap gap-12">
-          <a href="/" class="btn-primary">Ke beranda</a>
-          <a href="/psb/" class="btn-secondary">Pendaftaran santri baru</a>
-        </div>
+        <a href="/" class="btn-primary">
+          <svg aria-hidden="true" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 10H4M9 5l-5 5 5 5"></path></svg>
+          Kembali ke beranda
+        </a>
+        <nav aria-labelledby="nf-main" class="mt-20 w-full">
+          <h2 id="nf-main" class="m-0 pb-16 font-display text-30 font-semibold leading-none">Tujuan utama</h2>
+          <ul class="m-0 flex list-none flex-col gap-8 p-0">
+            {
+              destinations.map((d) => (
+                <li>
+                  <a href={d.href} class="cta-next card flex min-h-64 items-center gap-16 px-20 py-16 text-ink no-underline hover:text-lapis">
+                    <span aria-hidden="true" class="inline-flex size-44 flex-none items-center justify-center rounded-sm bg-lapis-1 text-lapis" set:html={d.icon} />
+                    <span class="flex min-w-0 flex-1 flex-col gap-2">
+                      <span class="font-display text-26 font-semibold leading-[1.1]">{d.title}</span>
+                      <span class="text-15 leading-[1.5] text-muted">{d.text}</span>
+                    </span>
+                    <svg aria-hidden="true" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="cta-arrow-next flex-none"><path d="M4 10h12M11 5l5 5-5 5"></path></svg>
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </nav>
         <p class="m-0 text-16 text-body">
           Ada pertanyaan? <a href={school.whatsapp.url} class="font-bold">WhatsApp {school.whatsapp.display}</a>
         </p>

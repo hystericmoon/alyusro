@@ -5,5 +5,6 @@ export const kajianRutin = () =>
   site.kajianRutin.map((k) => ({
     name: k.name,
     when: known(k.when) ?? 'Jadwal segera diumumkan',
+    scheduled: known(k.when) !== null,
     audience: known(k.audience),
   }));

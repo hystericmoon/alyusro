@@ -3,7 +3,8 @@
 // date has passed, an empty state with the old calendar as archive.
 import TableScroll from '@/components/content/TableScroll.astro';
 import ContentPage from '@/components/content/ContentPage.astro';
-import { site, school, infoGroupUrl } from '@/lib/site';
+import EmptyState from '@/components/content/EmptyState.astro';
+import { site } from '@/lib/site';
 
 type Ev = { start: string; end?: string; label: string };
 const cal = site.academicCalendar as { year: string; events: Ev[] };
@@ -33,14 +34,9 @@ const current = last >= today;
 >
   {
     !current && (
-      <div class="card mb-32 flex flex-col items-start gap-14 p-20 sm:p-28">
-        <p class="m-0 font-display text-[28px] font-semibold leading-[1.15]" style="margin:0">Kalender tahun ajaran berikutnya belum dipublikasikan</p>
-        <p class="m-0" style="margin:0">Jadwal kedatangan santri dan kegiatan terbaru diumumkan di grup info Al Yusro.</p>
-        <div class="flex flex-wrap gap-12">
-          <a href={infoGroupUrl} class="btn-primary">Masuk grup info</a>
-          <a href={school.whatsapp.url} class="btn-secondary">Tanya lewat WhatsApp</a>
-        </div>
-      </div>
+      <EmptyState title="Kalender tahun ajaran berikutnya belum dipublikasikan" class="mb-32">
+        <p>Jadwal kedatangan santri dan kegiatan terbaru diumumkan di grup info Al Yusro.</p>
+      </EmptyState>
     )
   }
   {

@@ -2,10 +2,13 @@
 // /info/kajian: routine kajian (site.json) and past recordings.
 import TableScroll from '@/components/content/TableScroll.astro';
 import ContentPage from '@/components/content/ContentPage.astro';
+import EmptyState from '@/components/content/EmptyState.astro';
 import { kajianRutin } from '@/lib/kajian';
 import { school } from '@/lib/site';
 
 const items = kajianRutin();
+// No routine kajian has a published time yet: lead with the empty state.
+const unscheduled = !items.some((k) => k.scheduled);
 // The one session listed on the old page, kept as the start of an archive.
 const recordings = [
   { speaker: 'Ustadz Tegar Khoirul Azmi, M.Pd', theme: 'Fiqh ibadah bab thaharah dari kitab Minhajul Muslim', date: '2 November 2024', url: 'https://youtube.com/live/etMlX1jmJGw' },
@@ -22,6 +25,13 @@ const recordings = [
   ]}
 >
   <h2 id="rutin" style="margin-top:0">Kajian rutin</h2>
+  {
+    unscheduled && (
+      <EmptyState title="Jadwal kajian rutin belum dipublikasikan" icon="kajian" class="mb-32">
+        <p>Hari, jam, dan tema tiap kajian diumumkan di grup info Al Yusro. Ikuti juga {school.social.handle} di Instagram dan YouTube.</p>
+      </EmptyState>
+    )
+  }
   <TableScroll labelledby="cap-kajian">
   <table>
     <caption id="cap-kajian" class="sr-only">Jadwal kajian rutin</caption>
@@ -30,14 +40,14 @@ const recordings = [
       {items.map((k) => (
         <tr>
           <th scope="row">{k.name}</th>
-          <td>{k.when}</td>
+          <td class:list={[!k.scheduled && 'text-muted']}>{k.when}</td>
           <td>{k.audience ?? '–'}</td>
         </tr>
       ))}
     </tbody>
   </table>
   </TableScroll>
-  <p>Ingin kabar kajian berikutnya? <a href={school.whatsapp.url}>Tanya lewat WhatsApp</a> atau ikuti {school.social.handle} di Instagram dan YouTube.</p>
+  {!unscheduled && <p>Ingin kabar kajian berikutnya? <a href={school.whatsapp.url}>Tanya lewat WhatsApp</a> atau ikuti {school.social.handle} di Instagram dan YouTube.</p>}
 
   <h2 id="rekaman">Rekaman kajian</h2>
   <ul>

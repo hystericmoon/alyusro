@@ -659,6 +659,38 @@ html:has(#menu-hp:popover-open) {
     }
     .table-scroll[data-sticky] tbody tr:nth-child(odd) > :first-child { background-color: var(--stripe, var(--color-white)); }
   }
+  /*
+    Today's row in a dated table (jadwal shalat): a tint one step up, bold
+    text, a bar at the start and a "Hari ini" label under the date, so it
+    never relies on colour alone. Written to beat the stripe and sticky fills.
+  */
+  .table-scroll tbody tr[aria-current="date"]:nth-child(n) > :is(td, th) {
+    background-color: var(--color-lapis-1);
+    color: var(--color-ink);
+    font-weight: 700;
+  }
+  /* "Langsung ke hari ini" lands with a few earlier days still in view. */
+  .table-scroll tbody tr[aria-current="date"] { scroll-margin-top: 120px; }
+  .table-scroll tbody tr[aria-current="date"] > :first-child {
+    box-shadow: inset 4px 0 0 var(--color-lapis);
+  }
+  .table-scroll tbody tr[aria-current="date"] > th:first-child::after {
+    content: "Hari ini";
+    display: block;
+    width: fit-content;
+    margin-top: 4px;
+    padding: 1px 8px;
+    border-radius: var(--radius-full);
+    background: var(--color-lapis);
+    color: var(--color-white);
+    font-size: 12px;
+    line-height: 1.5;
+  }
+  @media (max-width: 767px) {
+    .table-scroll[data-sticky] tbody tr[aria-current="date"] > :first-child {
+      box-shadow: inset 4px 0 0 var(--color-lapis), 8px 0 8px -8px rgb(27 34 53 / 0.25);
+    }
+  }
 }
 
 /* "Selanjutnya" link at the end of a content page. */
