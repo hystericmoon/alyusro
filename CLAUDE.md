@@ -25,7 +25,7 @@ Not in scope: the login dashboard and the registration system. Those stay on the
 
 - `design/*.dc.html`: approved designs. They use a template syntax (`{{hole}}`, `<sc-for>`, `<sc-if>`, `<x-dc>`, `<helmet>`, a `DCLogic` class in a script). Treat them as visual and markup specs. Convert holes and loops into Astro props and `.map()`, move logic into small scripts. Keep the markup, spacing, type, colors, and accessibility attributes as designed.
 - `design/Peta-situs.dc.html`: the site map and content inventory. It is the page list for this build.
-- `content/site.json`: single source of truth for levels, fees, PSB waves, FAQ, schedule, staff, academic calendar, contact. Pages must read from it; never hard-code a fee, date, or target in a page. Values containing `[...]` are placeholders: `known()` in `src/lib/site.ts` hides them, so no bracket ever reaches a page.
+- `content/site.json`: single source of truth for levels, fees, PSB waves, FAQ, schedule, staff, academic calendar, contact. Pages must read from it; never hard-code a fee, date, or target in a page. It holds only known values: anything unknown is left out, not filled with a placeholder. `known()` in `src/lib/site.ts` treats a missing, empty or `[bracketed]` value as unknown, so no bracket ever reaches a page.
 - `content/prestasi.json`: achievements with students' full names (the school consented in October 2026). `content/fasilitas.json`: facility photos with alt text and captions.
 - `src/content/artikel/*.md`: articles (migrated from the old site with students' full names and the original cover photos; articles without a cover image, and on cards those whose cover is a poster or flyer (`poster: true`), get a designed cover: series or category, part number, khatam star, one tone per series). `src/content/halaman/*.md`: prose for content pages; they can quote site.json with `{{halaqah.ideal}}` etc. (see `src/lib/halaman.ts`). Both are editable in Sveltia CMS at `/admin`.
 
@@ -36,7 +36,7 @@ Keep the current site’s URLs so links and search rankings survive:
 - `/` homepage: `Beranda-gabungan` (hafalan map hero, “Sehari di Al Yusro” day view, levels as terraces, Gunung Salak landscape footer). Exactly four sections.
 - `/jenjang/pendidikan/{taud,kuttab,mahdon,madrasah,darul-ilmi}` and `/mahad-aly`: one template, `Jenjang-template`.
 - `/psb`: `Pendaftaran` hub.
-- `/kurikulum/tahfizh`: `Kurikulum-tahfizh` content page. Same template for `/kurikulum/bahasa-arab`, `/tentang` (new), `/sehari-di-mahad` (new); use clearly marked placeholder content where the school has none.
+- `/kurikulum/tahfizh`: `Kurikulum-tahfizh` content page. Same template for `/kurikulum/bahasa-arab`, `/tentang` (new), `/sehari-di-mahad` (new); leave out anything the school has not published.
 - `/artikel` and an article detail route: `Artikel`, `Artikel-detail`.
 - `/fasilitas`: `Fasilitas`.
 - `/prestasi`, `/kalender-akademik`, `/info/kajian`, `/pendidikan/tenaga/pendidik`: build with the content-page or list templates. Prestasi shows totals by competition and year, then the full list by name and year.
@@ -50,7 +50,7 @@ Keep the current site’s URLs so links and search rankings survive:
 
 - One source for anything dated or priced: `site.json`.
 - Time-sensitive blocks hide themselves when stale: past PSB waves disappear; a level with no future wave shows “Pendaftaran belum dibuka” and links to the WhatsApp info group.
-- Missing data gets a designed empty state (e.g. “Rincian biaya belum dipublikasikan” + WhatsApp button), never a blank label.
+- Missing data is left out of the layout: no placeholder, no “belum dipublikasikan” or “segera diumumkan” state, no empty box, no blank label. A level without fees has no Biaya section; a level without wave dates has no wave table; a column with no values is dropped.
 - Articles older than 12 months show the notice from `Artikel-detail`.
 - Prayer times come from the same Kemenag/myquran API the current `/jadwal/shalat` uses (Kab. Bogor). The client-side calculation in the design is a fallback only.
 
@@ -78,12 +78,12 @@ Keep the current site’s URLs so links and search rankings survive:
 - Real `<table>` elements for fees, waves, and schedules. Breadcrumbs with `aria-current="page"`.
 - Every image needs real alt text. The current site ships “Deskripsi Gambar” and empty alts; do not repeat that.
 
-## Placeholders to confirm with the school
+## No new content from the school
 
-Bracketed values in `site.json` and the designs: PSB year and wave dates, SPP period, Mahdhon program length, TAUD and Mahdhon heads, school hours in the day view, Sunday activities, kajian times, Ma’had ‘Aly registration status, Madrasah target (20 vs 30 juz), Arabic spelling of the school name, photos.
+This is an independent preview, built without the school's involvement, so no further content will come from it. Build only from what is already published (the old site, its Instagram, `content/*.json`, the migrated articles). Never invent facts, dates, fees or names, and don't add placeholders or "content needed" states waiting for the school. Known gaps that stay out of the site: PSB year and wave dates, Madrasah SPP period, Mahdhon program length and fee year, TAUD and Mahdhon heads, school-lesson hours in the day view, Sunday activities, kajian times and themes, Ma’had ‘Aly registration status, next year's academic calendar.
 
 ## Status
 
 Done: homepage, six level pages, `/psb`, `/artikel` and 78 migrated articles, `/kurikulum/tahfizh`, `/kurikulum/bahasa-arab`, `/tentang`, `/sehari-di-mahad`, `/info/kajian`, `/kalender-akademik`, `/pendidikan/tenaga/pendidik`, `/prestasi`, `/fasilitas`, `/jadwal/shalat`, `/konversi/nama`, 404, Sveltia CMS for articles, page prose and `site.json` (every key declared in `public/admin/config.yml`; `scripts/check-site.mjs` runs as `prebuild` and stops a deploy if a save leaves a required value missing).
 
-Next: CMS sign-in and the daily rebuild hook (`DEPLOY_HOOK_URL` secret); turn off Netlify's "Powered by Netlify" badge; `/ekstrakurikuler` and a "Lokasi dan kontak" page if the school supplies content.
+Next (dashboard settings, not code): CMS sign-in and the daily rebuild hook (`DEPLOY_HOOK_URL` secret); turn off Netlify's "Powered by Netlify" badge.

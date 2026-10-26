@@ -6,14 +6,12 @@
 import JuzMap from '@/components/home/JuzMap.astro';
 import { buildJuzMap } from '@/lib/juz-map';
 import { latestTop } from '@/lib/prestasi';
-import { site, school, openLevels, registerUrl, infoGroupUrl, known } from '@/lib/site';
+import { school, openLevels, registerUrl, infoGroupUrl } from '@/lib/site';
 
 const map = buildJuzMap();
 const open = openLevels();
 const openNames = open.map((l) => `${l.name} (${l.setara.charAt(0).toLowerCase()}${l.setara.slice(1)})`).join(', ');
 const primaryOpen = open[0];
-const year = known(site.psb.academicYear);
-const yearText = year ? ` tahun ajaran ${year}` : '';
 const proof = latestTop();
 ---
 <section
@@ -49,12 +47,12 @@ const proof = latestTop();
     {
       primaryOpen ? (
         <p class="m-0 rounded-md bg-lapis-1 px-18 py-14 text-15 text-body">
-          Pendaftaran {openNames}{yearText} sedang dibuka.{' '}
-          <a href={primaryOpen.path} class="font-bold underline-offset-[3px]">Lihat jadwal dan biaya</a>
+          Pendaftaran {openNames} sedang dibuka.{' '}
+          <a href={primaryOpen.path} class="font-bold underline-offset-[3px]">Lihat cara mendaftar</a>
         </p>
       ) : (
         <p class="m-0 rounded-md bg-white px-18 py-14 text-15 text-body">
-          Pendaftaran santri baru{yearText} belum dibuka.{' '}
+          Pendaftaran santri baru belum dibuka.{' '}
           <a href={infoGroupUrl} class="font-bold underline-offset-[3px]">Gabung grup info WhatsApp</a>
         </p>
       )

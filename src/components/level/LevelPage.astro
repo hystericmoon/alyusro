@@ -33,10 +33,11 @@ const SWATCH: Record<string, string> = {
   'lapis-1': 'bg-lapis-1', 'lapis-2': 'bg-lapis-2', 'lapis-3': 'bg-lapis-3',
   'lapis-4': 'bg-lapis-4', 'lapis-5': 'bg-lapis-5', 'sky-100': 'bg-sky-100',
 };
+// A level without published fees has no Biaya section, so no link to it either.
 const sections = [
   { id: 'hafalan', label: 'Hafalan' },
   { id: 'lulusan', label: 'Target lulusan' },
-  { id: 'biaya', label: 'Biaya' },
+  ...(v.fees.length > 0 ? [{ id: 'biaya', label: 'Biaya' }] : []),
   { id: 'pendaftaran', label: 'Pendaftaran' },
   { id: 'pengajar', label: 'Pengajar' },
 ];
@@ -189,15 +190,15 @@ const btnGhostNight = 'btn-ghost-night';
     </div>
   </section>
 
-  <section id="biaya" aria-labelledby="j-biaya" class="scroll-mt-48 bg-white">
-    <div class:list={[wrap, 'flex flex-wrap gap-x-64 gap-y-32']}>
-      <div class="flex max-w-[420px] flex-[1_1_300px] flex-col gap-12">
-        <h2 id="j-biaya" class={h2}>Biaya</h2>
-        {v.fees.length > 0 && v.feeNote && <p class="m-0 text-body">{v.feeNote}</p>}
-      </div>
-      <div class="min-w-0 flex-[1.4_1_480px]">
-        {
-          v.fees.length > 0 ? (
+  {
+    v.fees.length > 0 && (
+      <section id="biaya" aria-labelledby="j-biaya" class="scroll-mt-48 bg-white">
+        <div class:list={[wrap, 'flex flex-wrap gap-x-64 gap-y-32']}>
+          <div class="flex max-w-[420px] flex-[1_1_300px] flex-col gap-12">
+            <h2 id="j-biaya" class={h2}>Biaya</h2>
+            {v.feeNote && <p class="m-0 text-body">{v.feeNote}</p>}
+          </div>
+          <div class="min-w-0 flex-[1.4_1_480px]">
             <TableScroll labelledby="cap-biaya" surface="white">
             <table class="w-full text-17 [--stripe:var(--color-paper)]">
               <caption id="cap-biaya" class="sr-only">Rincian biaya {lv.name}</caption>
@@ -217,19 +218,11 @@ const btnGhostNight = 'btn-ghost-night';
               </tbody>
             </table>
             </TableScroll>
-          ) : (
-            <div class="flex flex-col items-start gap-14 rounded-xl bg-paper p-20 sm:p-28">
-              <p class="m-0 font-display text-[28px] font-semibold leading-[1.15]">Rincian biaya {lv.name} belum dipublikasikan</p>
-              <p class="m-0 text-body">Tim pendaftaran bisa menjelaskan biaya pendaftaran, daftar ulang, dan biaya tahunan lewat WhatsApp.</p>
-              <a href={school.whatsapp.url} class="btn-primary">
-                Tanya biaya lewat WhatsApp
-              </a>
-            </div>
-          )
-        }
-      </div>
-    </div>
-  </section>
+          </div>
+        </div>
+      </section>
+    )
+  }
 
   <section id="pendaftaran" aria-labelledby="j-daftar" class="scroll-mt-48 bg-ink text-on-night">
     <div class={wrap}>
@@ -238,9 +231,9 @@ const btnGhostNight = 'btn-ghost-night';
           <div class="flex flex-wrap gap-x-64 gap-y-40">
             <div class="flex max-w-[460px] flex-[1_1_340px] flex-col gap-16">
               <h2 id="j-daftar" class:list={[h2, 'text-white']}>
-                {v.academicYear ? `Pendaftaran tahun ajaran ${v.academicYear}` : `Pendaftaran ${lv.name} dibuka`}
+                Pendaftaran {lv.name} dibuka
               </h2>
-              <p class="m-0 text-on-night-body">Tes masuk dilaksanakan langsung di {school.name}. Pilih gelombang yang paling dekat.</p>
+              <p class="m-0 text-on-night-body">Tes masuk dilaksanakan langsung di {school.name}.{v.wavesAnnounced && ' Pilih gelombang yang paling dekat.'}</p>
               <div class="mt-8 flex flex-wrap gap-12">
                 <a href={v.registerUrl} class={btnLight}>Isi formulir pendaftaran</a>
                 {v.brochureUrl && <a href={v.brochureUrl} class={btnGhostNight}>Unduh brosur (PDF)</a>}
@@ -250,7 +243,7 @@ const btnGhostNight = 'btn-ghost-night';
               <ol class="m-0 grid list-none grid-cols-[repeat(auto-fit,minmax(min(200px,100%),1fr))] gap-16 p-0">
                 {[
                   'Isi formulir pendaftaran online',
-                  `Bayar biaya pendaftaran ${v.regFee}`,
+                  v.regFee ? `Bayar biaya pendaftaran ${v.regFee}` : 'Bayar biaya pendaftaran',
                   'Ikuti tes masuk di ma’had sesuai gelombang',
                   'Daftar ulang setelah diterima',
                 ].map((step, i) => (
@@ -260,7 +253,7 @@ const btnGhostNight = 'btn-ghost-night';
                   </li>
                 ))}
               </ol>
-              {v.wavesAnnounced ? (
+              {v.wavesAnnounced && (
                 <TableScroll labelledby="cap-gelombang" surface="ink">
                 <table class="w-full [--stripe:rgb(255_255_255/0.07)]">
                   <caption id="cap-gelombang" class="pb-10 text-left font-bold text-white">Jadwal gelombang</caption>
@@ -275,18 +268,13 @@ const btnGhostNight = 'btn-ghost-night';
                     {v.waves.map((w) => (
                       <tr>
                         <th scope="row" class="px-12 py-14 text-left font-bold">{w.name}</th>
-                        <td class="px-12 py-14">{w.opens ?? 'Segera diumumkan'}</td>
-                        <td class="px-12 py-14">{w.test ?? 'Segera diumumkan'}</td>
+                        <td class="px-12 py-14">{w.opens ?? '–'}</td>
+                        <td class="px-12 py-14">{w.test ?? '–'}</td>
                       </tr>
                     ))}
                   </tbody>
                 </table>
                 </TableScroll>
-              ) : (
-                <p class="glass-night m-0 rounded-lg px-20 py-16 text-on-night-body">
-                  Jadwal gelombang dan tes masuk belum diumumkan.{' '}
-                  <a href={school.whatsapp.url} class="font-bold text-white underline-offset-4 hover:text-on-night-body">Tanyakan lewat WhatsApp</a>
-                </p>
               )}
             </div>
           </div>

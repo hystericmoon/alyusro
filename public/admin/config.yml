@@ -131,7 +131,7 @@ collections:
   # last good version.
   - name: data
     label: Data ma’had
-    description: Biaya, gelombang pendaftaran, tahun ajaran, kalender, FAQ, jadwal, dan kontak. Satu isian di sini mengubah semua halaman yang memakainya. Isian bertanda [kurung siku] belum dipastikan dan tidak tampil di situs.
+    description: Biaya, gelombang pendaftaran, tahun ajaran, kalender, FAQ, jadwal, dan kontak. Satu isian di sini mengubah semua halaman yang memakainya. Isian yang belum pasti dikosongkan saja: bagian itu otomatis tidak tampil di situs.
     editor:
       preview: false
     files:
@@ -254,7 +254,8 @@ collections:
         - label: Tahun ajaran
           name: academicYear
           widget: string
-          hint: Misalnya 2027/2028
+          required: false
+          hint: Misalnya 2027/2028. Kosongkan bila belum pasti.
         - name: note
           widget: hidden
           required: false
@@ -609,6 +610,7 @@ collections:
         - label: Lama program atau usia
           name: duration
           widget: string
+          required: false
         - label: Pengantar
           name: intro
           widget: text
@@ -804,10 +806,6 @@ collections:
             name: duration
             widget: string
             required: false
-          - label: Belum dipastikan (tampil sebagai kotak garis putus)
-            name: placeholder
-            widget: boolean
-            required: false
         - label: Sabtu
           name: saturday
           widget: object
@@ -826,6 +824,7 @@ collections:
           - label: Judul
             name: title
             widget: string
+            required: false
           - label: Penjelasan
             name: detail
             widget: text
@@ -864,7 +863,8 @@ collections:
         - label: Waktu
           name: when
           widget: string
-          hint: Misalnya "Pekanan, Ahad 08.00"
+          required: false
+          hint: Misalnya "Pekanan, Ahad 08.00". Kosongkan bila belum pasti.
         - label: Peserta
           name: audience
           widget: string

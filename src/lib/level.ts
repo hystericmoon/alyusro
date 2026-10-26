@@ -45,7 +45,7 @@ const TONE_STEPS: Record<number, string[]> = {
   5: ['lapis-1', 'lapis-2', 'lapis-3', 'lapis-4', 'lapis-5'],
 };
 
-/** Waves from site.json whose test date has not passed. Waves without real dates stay (null dates). */
+/** Waves from site.json whose test date has not passed. A wave without a test date stays. */
 export function upcomingWaves(slug: string, today = new Date()): WaveRow[] {
   const all = ((site.psb.waves as Record<string, RawWave[]>)[slug] ?? []) as RawWave[];
   const todayUtc = Date.UTC(today.getFullYear(), today.getMonth(), today.getDate());
@@ -99,11 +99,10 @@ export function buildLevel(level: Level, today = new Date()) {
     juzCountWord: numberWord(juzCount),
     fees,
     feeNote,
-    regFee: fees[0]?.value ?? 'Belum dipublikasikan',
+    regFee: fees[0]?.value ?? null,
     open,
     waves,
-    academicYear: known(site.psb.academicYear),
-    // Show the wave table only once at least one real date is published.
+    // The wave table needs at least one date; without one it is left out.
     wavesAnnounced: waves.some((w) => w.opens || w.test),
     registerUrl: registerUrl(level.slug),
     brochureUrl: brochures[level.slug] || null,

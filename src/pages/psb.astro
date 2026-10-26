@@ -1,7 +1,7 @@
 ---
 // /psb (design/Pendaftaran.dc.html): status per level, flow, waves, a fee
 // comparison table, documents, FAQ (native <details>), contact. All from
-// content/site.json; unknown values are hidden.
+// content/site.json; unknown values are left out.
 import TableScroll from '@/components/content/TableScroll.astro';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Landscape from '@/components/home/Landscape.astro';
@@ -13,7 +13,6 @@ import { site, school, levels, known, numberWord, registerUrl, infoGroupUrl, typ
 type RawFee = { item: string; amount: number; label?: string; period?: string };
 const rupiah = (n: number) => `Rp${n.toLocaleString('id-ID')}`;
 const lower = (s: string) => s.charAt(0).toLowerCase() + s.slice(1);
-const year = known(site.psb.academicYear);
 
 // Status list: open levels first, then the rest from the oldest level down.
 const views = levels.map((l) => buildLevel(l));
@@ -35,7 +34,8 @@ const COLS = [
   { key: 'yearly', label: 'Biaya tahunan', match: /tahunan/i },
   { key: 'spp', label: 'SPP', match: /^spp/i },
 ];
-const feeRows = levels.map((l: Level) => {
+// Only levels with published fees get a row; the rest are left out.
+const feeRows = levels.filter((l: Level) => (l.fees ?? []).length > 0).map((l: Level) => {
   const fees = (l.fees ?? []) as RawFee[];
   const cell = (re: RegExp) => fees.find((f) => re.test(f.item));
   const cells = COLS.map((c) => cell(c.match));
@@ -75,7 +75,7 @@ const td = 'px-16 py-18';
   >
     <section aria-labelledby="p-status" class="mt-8 w-full" data-psb-status>
       <h2 id="p-status" class="m-0 mb-12 text-15 font-bold text-muted">
-        Status pendaftaran per jenjang{year ? `, tahun ajaran ${year}` : ''}
+        Status pendaftaran per jenjang
       </h2>
       <ul class="@container m-0 flex list-none flex-col gap-8 p-0">
         {
@@ -130,45 +130,36 @@ const td = 'px-16 py-18';
 
   {
     views
-      .filter((v) => v.open)
+      .filter((v) => v.open && v.wavesAnnounced)
       .map((v) => (
         <section aria-labelledby={`p-gelombang-${v.level.slug}`}>
           <div class:list={[wrap, 'flex flex-wrap gap-x-64 gap-y-32']}>
             <div class="max-w-[420px] flex-[1_1_300px]">
               <h2 id={`p-gelombang-${v.level.slug}`} class:list={[h2, 'mb-12']}>Gelombang {v.level.name}</h2>
-              <p class="m-0 text-body">
-                {year ? `Tahun ajaran ${year}. ` : ''}Gelombang yang sudah lewat otomatis disembunyikan.
-              </p>
+              <p class="m-0 text-body">Gelombang yang sudah lewat otomatis disembunyikan.</p>
             </div>
             <div class="min-w-0 flex-[1.4_1_480px]">
-              {v.wavesAnnounced ? (
-                <TableScroll labelledby={`cap-gelombang-${v.level.slug}`}>
-                <table class="w-full min-w-[420px]">
-                  <caption id={`cap-gelombang-${v.level.slug}`} class="sr-only">Jadwal gelombang pendaftaran {v.level.name}</caption>
-                  <thead>
-                    <tr>
-                      {['Gelombang', 'Pendaftaran dibuka', 'Tes masuk'].map((h) => (
-                        <th scope="col" class:list={[th, 'text-left']}>{h}</th>
-                      ))}
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {v.waves.map((w) => (
-                      <tr>
-                        <th scope="row" class:list={[td, 'text-left']}>{w.name}</th>
-                        <td class={td}>{w.opens ?? 'Segera diumumkan'}</td>
-                        <td class={td}>{w.test ?? 'Segera diumumkan'}</td>
-                      </tr>
+              <TableScroll labelledby={`cap-gelombang-${v.level.slug}`}>
+              <table class="w-full min-w-[420px]">
+                <caption id={`cap-gelombang-${v.level.slug}`} class="sr-only">Jadwal gelombang pendaftaran {v.level.name}</caption>
+                <thead>
+                  <tr>
+                    {['Gelombang', 'Pendaftaran dibuka', 'Tes masuk'].map((h) => (
+                      <th scope="col" class:list={[th, 'text-left']}>{h}</th>
                     ))}
-                  </tbody>
-                </table>
-                </TableScroll>
-              ) : (
-                <p class="card m-0 px-20 py-16 text-body">
-                  Jadwal gelombang dan tes masuk belum diumumkan.{' '}
-                  <a href={school.whatsapp.url} class="font-bold">Tanyakan lewat WhatsApp</a>
-                </p>
-              )}
+                  </tr>
+                </thead>
+                <tbody>
+                  {v.waves.map((w) => (
+                    <tr>
+                      <th scope="row" class:list={[td, 'text-left']}>{w.name}</th>
+                      <td class={td}>{w.opens ?? '–'}</td>
+                      <td class={td}>{w.test ?? '–'}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+              </TableScroll>
             </div>
           </div>
         </section>
@@ -178,7 +169,7 @@ const td = 'px-16 py-18';
   <section aria-labelledby="p-biaya" class="bg-white">
     <div class={wrap}>
       <h2 id="p-biaya" class:list={[h2, 'mb-12']}>Biaya per jenjang</h2>
-      <p class="m-0 mb-32 max-w-[42em] text-body">Satu tabel untuk membandingkan. Jenjang yang rinciannya belum dipublikasikan bisa ditanyakan lewat WhatsApp.</p>
+      <p class="m-0 mb-32 max-w-[42em] text-body">Satu tabel untuk membandingkan. Biaya jenjang lain bisa ditanyakan lewat <a href={school.whatsapp.url} class="font-bold">WhatsApp</a>.</p>
       <p class="m-0 mb-12 text-14 text-muted lg:hidden" aria-hidden="true">Geser tabel ke samping untuk melihat semua kolom.</p>
       <TableScroll labelledby="cap-biaya" sticky surface="white">
         <table class="w-full min-w-[820px] tabular-nums [--stripe:var(--color-paper)]">
@@ -194,19 +185,15 @@ const td = 'px-16 py-18';
               feeRows.map((r) => (
                 <tr>
                   <th scope="row" class:list={[td, 'pr-16 text-left']}>{r.level.name}</th>
-                  {r.fees.length === 0 ? (
-                    <td colspan={COLS.length} class:list={[td, 'pl-16 text-right text-muted']}>
-                      Belum dipublikasikan. <a href={school.whatsapp.url} class="font-bold">Tanya biaya</a>
-                    </td>
-                  ) : r.free ? (
+                  {r.free ? (
                     <>
                       <td class:list={[td, 'px-16 text-right font-bold']}>{r.cells[0] ? rupiah(r.cells[0].amount) : '–'}</td>
                       <td colspan={COLS.length - 1} class:list={[td, 'pl-16 text-right font-bold text-lapis']}>{r.level.feesNote?.replace(/\.$/, '')}</td>
                     </>
                   ) : (
                     r.cells.map((f, i) => (
-                      <td class:list={[td, 'text-right', i === COLS.length - 1 ? 'pl-16' : 'px-16', f ? 'font-bold' : 'text-muted']}>
-                        {f ? (f.amount === 0 && f.label ? f.label : rupiah(f.amount)) : 'Belum dipublikasikan'}
+                      <td class:list={[td, 'text-right', i === COLS.length - 1 ? 'pl-16' : 'px-16', f ? 'font-bold' : 'relative text-muted']}>
+                        {f ? (f.amount === 0 && f.label ? f.label : rupiah(f.amount)) : <><span aria-hidden="true">–</span><span class="sr-only">Tidak tercantum</span></>}
                         {f && known(f.period) && <span class="font-normal text-muted"> {f.period}</span>}
                       </td>
                     ))
