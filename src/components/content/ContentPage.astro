@@ -1,10 +1,14 @@
 ---
-// Content page template (design/Kurikulum-tahfizh.dc.html): breadcrumb,
-// title and lede, then a sticky "Di halaman ini" list beside the body.
+// Content page template (design/Kurikulum-tahfizh.dc.html): the shared
+// PageHeader (breadcrumb, title, lede, optional photo), then a sticky
+// "Di halaman ini" list beside the prose body. Content and conversion pages
+// close with the Gunung Salak landscape; utility pages with a compact band.
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Landscape from '@/components/home/Landscape.astro';
+import PageHeader, { type Crumb, type HeaderPhoto } from '@/components/content/PageHeader.astro';
+import ClosingBand from '@/components/content/ClosingBand.astro';
 
-export type Crumb = { label: string; href?: string };
+export type { Crumb };
 export type TocItem = { id: string; text: string };
 
 interface Props {
@@ -16,35 +20,14 @@ interface Props {
   /** Closing band, e.g. { text: 'Lihat target hafalan tiap jenjang', label: 'Pilih jenjang', href: '/#jenjang' } */
   cta?: { text: string; label: string; href: string };
   motion?: boolean;
+  photo?: HeaderPhoto;
+  /** 'compact' on utility pages (jadwal shalat, konversi nama, kalender, info kajian). */
+  closing?: 'landscape' | 'compact';
 }
-const { title, lede, crumbs, toc = [], description, cta, motion } = Astro.props;
+const { title, lede, crumbs, toc = [], description, cta, motion, photo, closing = 'landscape' } = Astro.props;
 ---
 <BaseLayout title={title} description={description ?? lede} footerLabelledBy="g-foot-title" motion={motion}>
-  <div class="mx-auto box-border max-w-page px-20 pt-24 sm:px-40 sm:pt-32">
-    <nav aria-label="Breadcrumb" class="text-15">
-      <ol class="m-0 flex list-none flex-wrap gap-10 p-0 text-muted">
-        <li><a href="/">Beranda</a></li>
-        {
-          crumbs.map((c, i) => (
-            <>
-              <li aria-hidden="true">/</li>
-              {i === crumbs.length - 1 ? (
-                <li aria-current="page" class="text-ink">{c.label}</li>
-              ) : c.href ? (
-                <li><a href={c.href}>{c.label}</a></li>
-              ) : (
-                <li>{c.label}</li>
-              )}
-            </>
-          ))
-        }
-      </ol>
-    </nav>
-    <div class="max-w-[860px] pb-48 pt-32 sm:pb-56 sm:pt-40">
-      <h1 class="m-0 mb-20 font-display text-[clamp(52px,6.6vw,96px)] font-semibold leading-[0.92] [text-wrap:balance]">{title}</h1>
-      <p class="m-0 text-[21px] leading-[1.6] text-body [text-wrap:pretty]">{lede}</p>
-    </div>
-  </div>
+  <PageHeader title={title} lede={lede} crumbs={crumbs} photo={photo} />
 
   <slot name="before" />
   <div class="mx-auto box-border flex max-w-page flex-wrap items-start gap-x-80 gap-y-32 px-20 pb-80 sm:px-40 sm:pb-96">
@@ -64,7 +47,7 @@ const { title, lede, crumbs, toc = [], description, cta, motion } = Astro.props;
         </nav>
       )
     }
-    <article class="prose-k min-w-0 max-w-[760px] flex-[1_1_560px] pt-32">
+    <article class="prose min-w-0 max-w-[760px] flex-[1_1_560px] pt-32">
       <slot />
       {
         cta && (
@@ -82,5 +65,5 @@ const { title, lede, crumbs, toc = [], description, cta, motion } = Astro.props;
     </article>
   </div>
   <slot name="after" />
-  <Landscape slot="footer-lead" />
+  {closing === 'compact' ? <ClosingBand slot="footer-lead" /> : <Landscape slot="footer-lead" />}
 </BaseLayout>

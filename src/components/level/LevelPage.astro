@@ -1,6 +1,7 @@
 ---
 // Level page template (design/Jenjang-template.dc.html). Everything comes
 // from the level's entry in content/site.json via buildLevel().
+import TableScroll from '@/components/content/TableScroll.astro';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Landscape from '@/components/home/Landscape.astro';
 import { buildLevel } from '@/lib/level';
@@ -91,10 +92,11 @@ const btnGhostNight = 'btn-ghost-night';
         <picture>
           <source type="image/webp" srcset={`${photo.srcSmall} 800w, ${photo.src} 1600w`} sizes="(min-width: 1360px) 1280px, 100vw" />
           <img
-            src={photo.src}
+            src={photo.src.replace(/\.webp$/, '.jpg')}
             width={photo.width}
             height={photo.height}
             alt={photo.alt}
+            fetchpriority="high"
             decoding="async"
             class="mt-40 block aspect-[4/3] w-full rounded-xl object-cover sm:mt-56 sm:aspect-[21/8]"
           />
@@ -180,8 +182,9 @@ const btnGhostNight = 'btn-ghost-night';
       <div class="min-w-0 flex-[1.4_1_480px]">
         {
           v.fees.length > 0 ? (
+            <TableScroll labelledby="cap-biaya" surface="white">
             <table class="w-full text-17 [--stripe:var(--color-paper)]">
-              <caption class="sr-only">Rincian biaya {lv.name}</caption>
+              <caption id="cap-biaya" class="sr-only">Rincian biaya {lv.name}</caption>
               <thead>
                 <tr>
                   <th scope="col" class="px-16 pb-10 text-left text-14 font-medium text-muted">Komponen</th>
@@ -197,6 +200,7 @@ const btnGhostNight = 'btn-ghost-night';
                 ))}
               </tbody>
             </table>
+            </TableScroll>
           ) : (
             <div class="flex flex-col items-start gap-14 rounded-xl bg-paper p-20 sm:p-28">
               <p class="m-0 font-display text-[28px] font-semibold leading-[1.15]">Rincian biaya {lv.name} belum dipublikasikan</p>
@@ -241,8 +245,9 @@ const btnGhostNight = 'btn-ghost-night';
                 ))}
               </ol>
               {v.wavesAnnounced ? (
+                <TableScroll labelledby="cap-gelombang" surface="ink">
                 <table class="w-full [--stripe:rgb(255_255_255/0.07)]">
-                  <caption class="pb-10 text-left font-bold text-white">Jadwal gelombang</caption>
+                  <caption id="cap-gelombang" class="pb-10 text-left font-bold text-white">Jadwal gelombang</caption>
                   <thead>
                     <tr>
                       {['Gelombang', 'Pendaftaran dibuka', 'Tes masuk'].map((h) => (
@@ -260,6 +265,7 @@ const btnGhostNight = 'btn-ghost-night';
                     ))}
                   </tbody>
                 </table>
+                </TableScroll>
               ) : (
                 <p class="glass-night m-0 rounded-lg px-20 py-16 text-on-night-body">
                   Jadwal gelombang dan tes masuk belum diumumkan.{' '}

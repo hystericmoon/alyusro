@@ -3,7 +3,7 @@
 // Laravel links that no redirect covers. It points parents at what they were
 // most likely looking for: a level, registration, or a person to ask.
 import BaseLayout from '@/layouts/BaseLayout.astro';
-import Landscape from '@/components/home/Landscape.astro';
+import ClosingBand from '@/components/content/ClosingBand.astro';
 import { levels, levelSummary, school } from '@/lib/site';
 ---
 <BaseLayout title="Halaman tidak ditemukan" description="Halaman yang Anda cari tidak ada atau sudah dipindahkan." footerLabelledBy="g-foot-title">
@@ -44,5 +44,5 @@ import { levels, levelSummary, school } from '@/lib/site';
       </nav>
     </div>
   </div>
-  <Landscape slot="footer-lead" />
+  <ClosingBand slot="footer-lead" />
 </BaseLayout>

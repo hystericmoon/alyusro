@@ -3,6 +3,7 @@
 // blocks the day view uses, plus weekly activities and periodic events.
 // On phones the Durasi column folds into the Waktu cell, so the time text
 // gets the width instead of breaking one word per line.
+import TableScroll from '@/components/content/TableScroll.astro';
 import { site } from '@/lib/site';
 
 type Entry = { name: string; days: string; start: string; end: string; note?: string; whenNote?: string; duration?: string; placeholder?: boolean };
@@ -24,8 +25,9 @@ const rows = [
 ];
 ---
 <h3>Harian dan pekanan</h3>
+<TableScroll labelledby="cap-jadwal-tahfizh">
 <table>
-  <caption class="sr-only">Jadwal kegiatan tahfizh</caption>
+  <caption id="cap-jadwal-tahfizh" class="sr-only">Jadwal kegiatan tahfizh</caption>
   <thead>
     <tr><th scope="col" class="w-[38%] sm:w-auto">Kegiatan</th><th scope="col">Waktu</th><th scope="col" class="max-sm:hidden">Durasi</th></tr>
   </thead>
@@ -52,6 +54,7 @@ const rows = [
     }
   </tbody>
 </table>
+</TableScroll>
 <h3>Berkala</h3>
 <ul>
   {ds.periodic.map((p) => <li>{p}</li>)}

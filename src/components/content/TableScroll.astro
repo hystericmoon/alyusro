@@ -1,0 +1,25 @@
+---
+// Every data table sits in this region: it scrolls sideways when the table
+// is wider than the screen (with the scroll-cue shadows), takes keyboard
+// focus so it can be scrolled without a mouse, and is named by the table's
+// <caption> (pass its id). `sticky` keeps the first column in view on phones,
+// for wide tables (jadwal shalat, biaya, prestasi).
+interface Props {
+  /** id of the table's <caption> */
+  labelledby: string;
+  sticky?: boolean;
+  /** Surface behind the table, so the scroll cue and sticky cells match it. */
+  surface?: 'paper' | 'white' | 'ink';
+  class?: string;
+}
+const { labelledby, sticky = false, surface = 'paper', class: className } = Astro.props;
+---
+<div
+  role="region"
+  tabindex="0"
+  aria-labelledby={labelledby}
+  data-sticky={sticky ? '' : undefined}
+  class:list={['table-scroll scroll-cue', surface === 'white' && 'scroll-cue-white', surface === 'ink' && '[--scroll-bg:var(--color-ink)]', className]}
+>
+  <slot />
+</div>

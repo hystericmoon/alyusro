@@ -1,6 +1,7 @@
 ---
 // /kalender-akademik: shows the calendar while it is current; once its last
 // date has passed, an empty state with the old calendar as archive.
+import TableScroll from '@/components/content/TableScroll.astro';
 import ContentPage from '@/components/content/ContentPage.astro';
 import { site, school, infoGroupUrl } from '@/lib/site';
 
@@ -25,6 +26,7 @@ const today = new Date().toISOString().slice(0, 10);
 const current = last >= today;
 ---
 <ContentPage
+  closing="compact"
   title="Kalender akademik"
   lede="Jadwal kegiatan belajar, ujian, libur, dan kedatangan santri sepanjang tahun ajaran."
   crumbs={[{ label: 'Kurikulum' }, { label: 'Kalender akademik' }]}
@@ -45,8 +47,9 @@ const current = last >= today;
     current ? (
       <>
         <h2 style="margin-top:0">Tahun ajaran {cal.year}</h2>
+        <TableScroll labelledby="cap-kalender">
         <table>
-          <caption class="sr-only">Kalender akademik {cal.year}</caption>
+          <caption id="cap-kalender" class="sr-only">Kalender akademik {cal.year}</caption>
           <thead><tr><th scope="col">Tanggal</th><th scope="col">Kegiatan</th></tr></thead>
           <tbody>
             {cal.events.map((e) => (
@@ -57,6 +60,7 @@ const current = last >= today;
             ))}
           </tbody>
         </table>
+        </TableScroll>
       </>
     ) : (
       <details class="card group px-20 sm:px-24">
@@ -64,8 +68,9 @@ const current = last >= today;
           Arsip: kalender tahun ajaran {cal.year}
           <span aria-hidden="true" class="text-[24px] font-normal transition-transform duration-150 group-open:rotate-45">+</span>
         </summary>
+        <TableScroll labelledby="cap-kalender">
         <table>
-          <caption class="sr-only">Kalender akademik {cal.year}</caption>
+          <caption id="cap-kalender" class="sr-only">Kalender akademik {cal.year}</caption>
           <thead><tr><th scope="col">Tanggal</th><th scope="col">Kegiatan</th></tr></thead>
           <tbody>
             {cal.events.map((e) => (
@@ -76,6 +81,7 @@ const current = last >= today;
             ))}
           </tbody>
         </table>
+        </TableScroll>
       </details>
     )
   }

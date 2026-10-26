@@ -2,8 +2,10 @@
 // /psb (design/Pendaftaran.dc.html): status per level, flow, waves, a fee
 // comparison table, documents, FAQ (native <details>), contact. All from
 // content/site.json; unknown values are hidden.
+import TableScroll from '@/components/content/TableScroll.astro';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Landscape from '@/components/home/Landscape.astro';
+import PageHeader from '@/components/content/PageHeader.astro';
 import { buildLevel } from '@/lib/level';
 import { site, school, levels, known, numberWord, registerUrl, infoGroupUrl, type Level } from '@/lib/site';
 
@@ -53,47 +55,41 @@ const th = 'px-16 pb-12 text-14 font-medium text-muted';
 const td = 'px-16 py-18';
 ---
 <BaseLayout title="Pendaftaran santri baru" description="Status pendaftaran, alur, biaya per jenjang, dan berkas yang disiapkan untuk mendaftar di Ma’had Tahfizh Al Yusro." footerLabelledBy="g-foot-title">
-  <section aria-labelledby="p-title" class="mx-auto box-border max-w-page px-20 pb-64 pt-24 sm:px-40 sm:pb-80 sm:pt-32">
-    <nav aria-label="Breadcrumb" class="mb-32 text-15 sm:mb-40">
-      <ol class="m-0 flex list-none gap-10 p-0 text-muted">
-        <li><a href="/">Beranda</a></li>
-        <li aria-hidden="true">/</li>
-        <li aria-current="page" class="text-ink">Pendaftaran</li>
-      </ol>
-    </nav>
-    <div class="flex flex-wrap items-start gap-x-64 gap-y-40">
-      <div class="flex max-w-[520px] flex-[1_1_380px] flex-col gap-20">
-        <h1 id="p-title" class="m-0 font-display text-[clamp(56px,6.6vw,96px)] font-semibold leading-[0.92] [text-wrap:balance]">Pendaftaran santri baru</h1>
-        <p class="m-0 text-19 text-body [text-wrap:pretty]">Pendaftaran dilakukan online, lalu tes masuk langsung di ma’had. Mulai dari jenjang yang sesuai usia anak.</p>
-        <p class="m-0 text-15 text-muted">Ada pertanyaan sebelum mendaftar? <a href={school.whatsapp.url} class="font-bold">Tanya tim pendaftaran lewat WhatsApp</a></p>
-      </div>
-      <div class="min-w-0 flex-[1.4_1_520px]">
-        <h2 class="m-0 mb-12 text-15 font-bold text-muted">Status pendaftaran per jenjang</h2>
-        <ul class="m-0 flex list-none flex-col gap-8 p-0">
-          {
-            ordered.map((v) => (
-              <li class="card flex flex-wrap items-center gap-x-20 gap-y-8 px-20 py-16 sm:px-24">
-                <span class="flex-[1_1_180px] font-display text-[28px] font-semibold leading-[1.1]">
-                  {v.level.name}{' '}
-                  <span class="font-body text-14 font-medium text-muted">{lower(v.level.setara)}</span>
-                </span>
-                {v.open ? (
-                  <>
-                    <span class="flex-[1_1_200px] font-bold text-lapis">Dibuka{year ? `, tahun ajaran ${year}` : ''}</span>
-                    <a href={registerUrl(v.level.slug)} class="btn-primary min-h-44 px-18 text-15">Daftar {v.level.name}</a>
-                  </>
-                ) : (
-                  <>
-                    <span class="flex-[1_1_200px] text-muted">Belum dibuka</span>
-                    <a href={infoGroupUrl} class="inline-flex min-h-44 items-center text-15 font-bold underline-offset-4" aria-label={`Kabari saya saat pendaftaran ${v.level.name} dibuka`}>Kabari saya</a>
-                  </>
-                )}
-              </li>
-            ))
-          }
-        </ul>
-      </div>
-    </div>
+  <PageHeader
+    id="p-title"
+    title="Pendaftaran santri baru"
+    lede="Pendaftaran dilakukan online, lalu tes masuk langsung di ma’had. Mulai dari jenjang yang sesuai usia anak."
+    crumbs={[{ label: 'Pendaftaran' }]}
+    photo={{ name: 'santri-putri-ujian', width: 1600, height: 1068, alt: 'Santri putri bercadar mengerjakan soal ujian di meja kelas' }}
+  >
+    <p class="m-0 text-15 text-muted">Ada pertanyaan sebelum mendaftar? <a href={school.whatsapp.url} class="font-bold">Tanya tim pendaftaran lewat WhatsApp</a></p>
+  </PageHeader>
+
+  <section aria-labelledby="p-status" class="mx-auto box-border max-w-page px-20 pb-64 sm:px-40 sm:pb-80">
+    <h2 id="p-status" class="m-0 mb-12 text-15 font-bold text-muted">Status pendaftaran per jenjang</h2>
+    <ul class="m-0 grid list-none gap-8 p-0 lg:grid-cols-2">
+      {
+        ordered.map((v) => (
+          <li class="card flex flex-wrap items-center gap-x-20 gap-y-8 px-20 py-16 sm:px-24">
+            <span class="flex-[1_1_180px] font-display text-[28px] font-semibold leading-[1.1]">
+              {v.level.name}{' '}
+              <span class="font-body text-14 font-medium text-muted">{lower(v.level.setara)}</span>
+            </span>
+            {v.open ? (
+              <>
+                <span class="flex-[1_1_200px] font-bold text-lapis">Dibuka{year ? `, tahun ajaran ${year}` : ''}</span>
+                <a href={registerUrl(v.level.slug)} class="btn-primary min-h-44 px-18 text-15">Daftar {v.level.name}</a>
+              </>
+            ) : (
+              <>
+                <span class="flex-[1_1_200px] text-muted">Belum dibuka</span>
+                <a href={infoGroupUrl} class="inline-flex min-h-44 items-center text-15 font-bold underline-offset-4" aria-label={`Kabari saya saat pendaftaran ${v.level.name} dibuka`}>Kabari saya</a>
+              </>
+            )}
+          </li>
+        ))
+      }
+    </ul>
   </section>
 
   <section aria-labelledby="p-alur" class="bg-white">
@@ -131,10 +127,11 @@ const td = 'px-16 py-18';
                 {year ? `Tahun ajaran ${year}. ` : ''}Gelombang yang sudah lewat otomatis disembunyikan.
               </p>
             </div>
-            <div class="scroll-cue min-w-0 flex-[1.4_1_480px]">
+            <div class="min-w-0 flex-[1.4_1_480px]">
               {v.wavesAnnounced ? (
+                <TableScroll labelledby={`cap-gelombang-${v.level.slug}`}>
                 <table class="w-full min-w-[420px]">
-                  <caption class="sr-only">Jadwal gelombang pendaftaran {v.level.name}</caption>
+                  <caption id={`cap-gelombang-${v.level.slug}`} class="sr-only">Jadwal gelombang pendaftaran {v.level.name}</caption>
                   <thead>
                     <tr>
                       {['Gelombang', 'Pendaftaran dibuka', 'Tes masuk'].map((h) => (
@@ -152,6 +149,7 @@ const td = 'px-16 py-18';
                     ))}
                   </tbody>
                 </table>
+                </TableScroll>
               ) : (
                 <p class="card m-0 px-20 py-16 text-body">
                   Jadwal gelombang dan tes masuk belum diumumkan.{' '}
@@ -169,9 +167,9 @@ const td = 'px-16 py-18';
       <h2 id="p-biaya" class:list={[h2, 'mb-12']}>Biaya per jenjang</h2>
       <p class="m-0 mb-32 max-w-[42em] text-body">Satu tabel untuk membandingkan. Jenjang yang rinciannya belum dipublikasikan bisa ditanyakan lewat WhatsApp.</p>
       <p class="m-0 mb-12 text-14 text-muted lg:hidden" aria-hidden="true">Geser tabel ke samping untuk melihat semua kolom.</p>
-      <div class="scroll-cue scroll-cue-white" tabindex="0" role="region" aria-label="Tabel biaya, dapat digeser ke samping">
+      <TableScroll labelledby="cap-biaya" sticky surface="white">
         <table class="w-full min-w-[820px] tabular-nums [--stripe:var(--color-paper)]">
-          <caption class="sr-only">Perbandingan biaya per jenjang</caption>
+          <caption id="cap-biaya" class="sr-only">Perbandingan biaya per jenjang</caption>
           <thead>
             <tr>
               <th scope="col" class:list={[th, 'pr-16 text-left']}>Jenjang</th>
@@ -205,7 +203,7 @@ const td = 'px-16 py-18';
             }
           </tbody>
         </table>
-      </div>
+      </TableScroll>
       {
         (feeYears.length > 0 || entryNotes.length > 0) && (
           <p class="m-0 mt-16 text-14 text-muted">

@@ -1,6 +1,7 @@
 ---
 // /kurikulum/tahfizh: targets and timetable from site.json, the rest from
 // src/content/halaman/kurikulum-tahfizh.md (editable in the CMS).
+import TableScroll from '@/components/content/TableScroll.astro';
 import { getHalaman } from '@/lib/halaman';
 import ContentPage from '@/components/content/ContentPage.astro';
 import ScheduleTable from '@/components/content/ScheduleTable.astro';
@@ -23,12 +24,14 @@ const toc = [
   lede={page.data.lede}
   crumbs={[{ label: 'Kurikulum' }, { label: 'Tahfizh' }]}
   toc={toc}
+  photo={{ name: 'santri-membaca-quran-header', width: 1600, height: 535, alt: 'Santri putra berpeci hitam membaca mushaf di meja kelas' }}
   cta={{ text: 'Lihat target hafalan tiap jenjang', label: 'Pilih jenjang', href: '/#jenjang' }}
 >
   <h2 id="urutan" style="margin-top:0">Urutan dan target hafalan</h2>
   <p>{map.description}</p>
+  <TableScroll labelledby="cap-target">
   <table>
-    <caption class="sr-only">Target hafalan per kelas</caption>
+    <caption id="cap-target" class="sr-only">Target hafalan per kelas</caption>
     <thead>
       <tr><th scope="col">Kelas</th><th scope="col">Juz yang dihafal</th><th scope="col" class="text-right">Jumlah</th></tr>
     </thead>
@@ -44,6 +47,7 @@ const toc = [
       }
     </tbody>
   </table>
+  </TableScroll>
   <p>
     Untuk lulus marhalah dan mengambil syahadah ma’had, {totals.map((t, i) => `${i === 0 ? 'santri' : 'dan santri'} ${t.name} menyelesaikan ${t.juz} juz${i > 0 ? ' berikutnya' : ''}`).join(' ')}. Santri
     baru atau pindahan dengan urutan hafalan berbeda dikonversi sesuai target ma’had.

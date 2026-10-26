@@ -4,6 +4,7 @@
 // script adds the filter and shows them 12 at a time.
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Landscape from '@/components/home/Landscape.astro';
+import PageHeader from '@/components/content/PageHeader.astro';
 import ArticleCover from '@/components/artikel/ArticleCover.astro';
 import { getArticles, filterKey, formatDate, kicker, titleHtml, NEWS } from '@/lib/articles';
 import { site, known } from '@/lib/site';
@@ -31,10 +32,12 @@ const chip =
   description="Kajian rutin yang terbuka untuk umum, serial belajar aqidah, dan kabar dari Ma’had Tahfizh Al Yusro."
   footerLabelledBy="g-foot-title"
 >
-  <section aria-labelledby="a-title" class="mx-auto box-border flex max-w-page flex-wrap items-end justify-between gap-x-64 gap-y-24 px-20 pb-48 pt-40 sm:px-40 sm:pb-56 sm:pt-48">
-    <h1 id="a-title" class="m-0 font-display text-[clamp(56px,6.6vw,96px)] font-semibold leading-[0.92]">Kajian &amp; artikel</h1>
-    <p class="m-0 max-w-[30em] text-19 text-body">Kajian rutin yang terbuka untuk umum, serial belajar aqidah, dan kabar dari ma’had.</p>
-  </section>
+  <PageHeader
+    id="a-title"
+    title="Kajian & artikel"
+    lede="Kajian rutin yang terbuka untuk umum, serial belajar aqidah, dan kabar dari ma’had."
+    crumbs={[{ label: 'Kajian & artikel' }]}
+  />
 
   <section id="kajian" aria-labelledby="a-kajian" class="scroll-mt-16 bg-ink text-on-night">
     <div class="mx-auto box-border max-w-page px-20 py-48 sm:px-40">

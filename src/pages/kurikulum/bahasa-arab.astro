@@ -1,6 +1,7 @@
 ---
 // /kurikulum/bahasa-arab: built only from what the school already publishes
 // (mission, level outcomes, articles, achievements data).
+import TableScroll from '@/components/content/TableScroll.astro';
 import { getHalaman } from '@/lib/halaman';
 import ContentPage from '@/components/content/ContentPage.astro';
 import { levels } from '@/lib/site';
@@ -20,10 +21,17 @@ const toc = [
   { id: 'prestasi', text: 'Prestasi' },
 ];
 ---
-<ContentPage title={page.data.title} lede={page.data.lede} crumbs={[{ label: 'Kurikulum' }, { label: 'Bahasa Arab' }]} toc={toc}>
+<ContentPage
+  title={page.data.title}
+  lede={page.data.lede}
+  crumbs={[{ label: 'Kurikulum' }, { label: 'Bahasa Arab' }]}
+  toc={toc}
+  photo={{ name: 'santri-pergantian-kelas', width: 1600, height: 618, alt: 'Santri berjalan di selasar antara gedung kelas saat pergantian pelajaran' }}
+>
   <h2 id="target" style="margin-top:0">Target per jenjang</h2>
+  <TableScroll labelledby="cap-target-arab">
   <table>
-    <caption class="sr-only">Target bahasa Arab per jenjang</caption>
+    <caption id="cap-target-arab" class="sr-only">Target bahasa Arab per jenjang</caption>
     <thead><tr><th scope="col">Jenjang</th><th scope="col">Target lulusan</th></tr></thead>
     <tbody>
       {
@@ -36,6 +44,7 @@ const toc = [
       }
     </tbody>
   </table>
+  </TableScroll>
 
   <Fragment set:html={page.html} />
 

@@ -1,6 +1,7 @@
 ---
 // /prestasi: totals by competition and year from content/prestasi.json,
 // then every achievement by name (the school consented to publishing names).
+import TableScroll from '@/components/content/TableScroll.astro';
 import ContentPage from '@/components/content/ContentPage.astro';
 import { summary, records } from '@/lib/prestasi';
 
@@ -38,9 +39,9 @@ const span = `${Math.min(...s.years)}–${Math.max(...s.years)}`;
   </dl>
 
   <h2 id="per-lomba">Per jenis lomba</h2>
-  <div class="scroll-cue" tabindex="0" role="region" aria-label="Tabel prestasi per jenis lomba, dapat digeser ke samping">
+  <TableScroll labelledby="cap-per-lomba" sticky>
     <table class="min-w-[560px]">
-      <caption class="sr-only">Jumlah prestasi per jenis lomba dan tahun</caption>
+      <caption id="cap-per-lomba" class="sr-only">Jumlah prestasi per jenis lomba dan tahun</caption>
       <thead>
         <tr>
           <th scope="col">Jenis lomba</th>
@@ -65,11 +66,12 @@ const span = `${Math.min(...s.years)}–${Math.max(...s.years)}`;
         </tr>
       </tbody>
     </table>
-  </div>
+  </TableScroll>
 
   <h2 id="per-tingkat">Per tingkat</h2>
+  <TableScroll labelledby="cap-per-tingkat">
   <table>
-    <caption class="sr-only">Jumlah prestasi per tingkat lomba</caption>
+    <caption id="cap-per-tingkat" class="sr-only">Jumlah prestasi per tingkat lomba</caption>
     <thead><tr><th scope="col">Tingkat</th><th scope="col" class="text-right">Prestasi</th></tr></thead>
     <tbody>
       {s.scopes.map((x) => (
@@ -80,6 +82,7 @@ const span = `${Math.min(...s.years)}–${Math.max(...s.years)}`;
       ))}
     </tbody>
   </table>
+  </TableScroll>
 
   <h2 id="daftar">Daftar lengkap</h2>
   <p>Kabar lomba terbaru ada di <a href="/artikel/">Kajian &amp; artikel</a>.</p>
@@ -87,9 +90,9 @@ const span = `${Math.min(...s.years)}–${Math.max(...s.years)}`;
     byYear.map((y) => (
       <>
         <h3 id={`tahun-${y.year}`}>{y.year} <span class="font-normal text-muted">· {y.rows.length} prestasi</span></h3>
-        <div class="scroll-cue" tabindex="0" role="region" aria-label={`Daftar prestasi ${y.year}, dapat digeser ke samping`}>
+        <TableScroll labelledby={`cap-tahun-${y.year}`} sticky>
           <table class="min-w-[720px]">
-            <caption class="sr-only">Daftar prestasi tahun {y.year}</caption>
+            <caption id={`cap-tahun-${y.year}`} class="sr-only">Daftar prestasi tahun {y.year}</caption>
             <thead>
               <tr>
                 <th scope="col">Nama</th>
@@ -111,7 +114,7 @@ const span = `${Math.min(...s.years)}–${Math.max(...s.years)}`;
               ))}
             </tbody>
           </table>
-        </div>
+        </TableScroll>
       </>
     ))
   }

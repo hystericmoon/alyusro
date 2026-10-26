@@ -1,6 +1,7 @@
 ---
 // /sehari-di-mahad (new): the live day view, then the full timetable.
 import ContentPage from '@/components/content/ContentPage.astro';
+import Photo from '@/components/Photo.astro';
 import DayView from '@/components/home/DayView.astro';
 import ScheduleTable from '@/components/content/ScheduleTable.astro';
 import { site, known } from '@/lib/site';
@@ -41,10 +42,14 @@ const gallery = [
       gallery.map((g, i) => (
         <li class:list={['m-0', i < 2 && 'sm:col-span-2']}>
           <figure class="m-0 flex flex-col gap-8">
-            <picture>
-              <source type="image/webp" srcset={`/photos/${g.name}-800.webp 800w, /photos/${g.name}-1600.webp 1600w`} sizes="(min-width: 1024px) 760px, 100vw" />
-              <img src={`/photos/${g.name}-1600.webp`} width={g.w} height={g.h} alt={g.alt} loading="lazy" decoding="async" class:list={['block w-full rounded-lg object-cover', i < 2 ? 'aspect-[21/9]' : 'aspect-[4/3]']} />
-            </picture>
+            <Photo
+              name={g.name}
+              alt={g.alt}
+              width={g.w}
+              height={g.h}
+              sizes="(min-width: 1024px) 760px, (min-width: 640px) calc(50vw - 48px), calc(100vw - 40px)"
+              class:list={['block w-full rounded-lg object-cover', i < 2 ? 'aspect-[21/9]' : 'aspect-[4/3]']}
+            />
             <figcaption class="text-15 text-muted">{g.caption}</figcaption>
           </figure>
         </li>
