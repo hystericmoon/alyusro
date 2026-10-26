@@ -1,13 +1,66 @@
 ---
-// /tentang (new): profile, vision and mission from the live homepage, plus
-// the programmes and leaders from site.json.
+// /tentang (new): profile, vision (as a pull quote) and mission from the live
+// homepage, the programmes from site.json, and a short timeline. The timeline
+// only uses dated facts already in the repo: milestones computed from
+// content/prestasi.json, and articles (their own dates). A missing article
+// drops its line; the founding year is not known yet, so it is not shown.
+import { getCollection } from 'astro:content';
 import TableScroll from '@/components/content/TableScroll.astro';
 import { getHalaman } from '@/lib/halaman';
 import ContentPage from '@/components/content/ContentPage.astro';
 import { levels, levelSummary, school } from '@/lib/site';
+import { records, scope, isWinner } from '@/lib/prestasi';
 
 const page = await getHalaman('tentang');
-const toc = [...page.headings, { id: 'program', text: 'Program pendidikan' }];
+
+type Item = { text: string; href?: string; order: number };
+const timeline = new Map<number, { items: Item[]; count: number }>();
+const add = (year: number, item: Item) => {
+  const y = timeline.get(year) ?? { items: [], count: records.filter((r) => Number(r.year) === year).length };
+  y.items.push(item);
+  timeline.set(year, y);
+};
+const join = (xs: string[]) => [...new Set(xs)].join(' dan ');
+const dated = records.filter((r) => Number.isFinite(Number(r.year)));
+const firstYear = (rows: typeof records) => Math.min(...rows.map((r) => Number(r.year)));
+const firsts = [
+  { rows: dated, text: (rs: typeof records) => `Prestasi pertama yang tercatat: ${join(rs.map((r) => `${r.rank} ${r.competition}`))}` },
+  {
+    rows: dated.filter((r) => scope(r.level) === 'Nasional' && isWinner(r)),
+    text: (rs: typeof records) => `Juara 1 tingkat nasional pertama: ${join(rs.map((r) => r.competition))}`,
+  },
+  {
+    rows: dated.filter((r) => scope(r.level) === 'Internasional'),
+    text: (rs: typeof records) => `Prestasi internasional pertama: ${join(rs.map((r) => r.rank))}, ${join(rs.map((r) => `${r.competition}, ${r.organizer}`))}`,
+  },
+];
+for (const f of firsts) {
+  if (!f.rows.length) continue;
+  const y = firstYear(f.rows);
+  add(y, { text: f.text(f.rows.filter((r) => Number(r.year) === y)), order: 0 });
+}
+// Articles that date a milestone. The text sums up the article; the year comes from its date.
+const MILESTONES: Record<string, string> = {
+  'mahad-tahfizh-al-yusro-raih-medali-emas-di-olimpiade-bahasa-arab-nasional-ke-7': 'Medali emas di Olimpiade Bahasa Arab Nasional ke-7',
+  'mahad-tahfizh-al-yusro-dan-klinik-bhakti-rahayu-untuk-akses-kesehatan-santri': 'Kerja sama dengan Klinik Bhakti Rahayu: tenaga kesehatan berjaga di klinik ma’had',
+  'program-mahad-aly-full-beasiswa': 'Program Ma’had ‘Aly beasiswa penuh untuk kaderisasi guru dan musyrif',
+  'al-yusro-meraih-juara-satu-medali-emas-olimpiade-bahasa-arab-nasional-2025-oba-2025': 'Medali emas juara satu Olimpiade Bahasa Arab Nasional (OBA 2025)',
+  'mahad-tahfizh-al-yusro-dan-stit-al-wafi-bogor-jajaki-kolaborasi-pendidikan': 'STIT Al Wafi Bogor berkunjung untuk menjajaki kerja sama pendidikan',
+};
+for (const a of await getCollection('artikel', (a) => !a.data.draft && a.id in MILESTONES)) {
+  add(a.data.date.getFullYear(), { text: MILESTONES[a.id], href: `/artikel/${a.id}/`, order: a.data.date.getTime() });
+}
+const years = [...timeline.entries()]
+  .sort(([a], [b]) => a - b)
+  .map(([year, y]) => ({ year, count: y.count, items: y.items.sort((a, b) => a.order - b.order) }));
+// The juz-map scale, pale to navy as the years go on.
+const STEP = ['bg-lapis-2', 'bg-lapis-3', 'bg-lapis-4', 'bg-lapis-5'];
+
+const toc = [
+  ...page.headings,
+  { id: 'program', text: 'Program pendidikan' },
+  ...(years.length ? [{ id: 'perjalanan', text: 'Perjalanan' }] : []),
+];
 ---
 <ContentPage
   title={page.data.title}
@@ -41,4 +94,68 @@ const toc = [...page.headings, { id: 'program', text: 'Program pendidikan' }];
   </table>
   </TableScroll>
   <p>Kenali para pimpinan di halaman <a href="/pendidikan/tenaga/pendidik/">pengajar dan pengurus</a>.</p>
+
+  {
+    years.length > 0 && (
+      <>
+        <h2 id="perjalanan">Perjalanan</h2>
+        <p>Beberapa catatan dari <a href="/prestasi/">data prestasi</a> dan kabar di situs ini.</p>
+        <ol class="not-prose m-0 mt-28 flex list-none flex-col gap-32 p-0">
+          {years.map((y, i) => (
+            <li class="grid gap-x-28 gap-y-10 sm:grid-cols-[120px_1fr]">
+              <div class="flex items-center gap-12 sm:flex-col sm:items-start sm:gap-6">
+                <span class="font-display text-[40px] font-semibold leading-none text-lapis">{y.year}</span>
+                {y.count > 0 && <span class="text-14 font-bold text-muted">{y.count} prestasi</span>}
+              </div>
+              <ul class="m-0 flex list-none flex-col gap-10 p-0 text-17 leading-[1.5] sm:pt-6">
+                {y.items.map((it) => (
+                  <li class="flex gap-12">
+                    <span aria-hidden="true" class:list={['mt-[0.45em] size-10 flex-none rounded-[3px]', STEP[Math.min(i, STEP.length - 1)]]}></span>
+                    <span>
+                      {it.text}
+                      {it.href && (
+                        <>
+                          {' '}· <a href={it.href} class="font-bold">Baca kabarnya<span class="sr-only">: {it.text}</span></a>
+                        </>
+                      )}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </li>
+          ))}
+        </ol>
+      </>
+    )
+  }
 </ContentPage>
+
+<style>
+  /* Visi as a pull quote: the one sentence a parent should remember. */
+  :global(.prose #visi + p) {
+    position: relative;
+    max-width: none;
+    margin: 8px 0 32px;
+    padding: 40px 32px 32px;
+    border-radius: var(--radius-xl);
+    background: var(--color-sky-50);
+    color: var(--color-ink);
+    font-family: var(--font-display);
+    font-size: clamp(30px, 3.2vw, 40px);
+    font-weight: 600;
+    line-height: 1.12;
+    text-wrap: balance;
+  }
+  :global(.prose #visi + p)::before {
+    content: '“' / '';
+    display: block;
+    height: 0.5em;
+    margin-bottom: 8px;
+    color: var(--color-lapis-4);
+    font-size: 2.2em;
+    line-height: 1;
+  }
+  @media (min-width: 40rem) {
+    :global(.prose #visi + p) { padding: 48px 48px 40px; }
+  }
+</style>
