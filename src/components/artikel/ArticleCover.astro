@@ -7,7 +7,7 @@
 // the image is decorative (the title sits next to it); on the article page it
 // carries its alt text, and a poster is shown whole.
 import type { Article } from '@/lib/articles';
-import { kicker, titleHtml, coverSize, coverTone, getArticles } from '@/lib/articles';
+import { kicker, titleHtml, coverSize, coverSrcset, coverPhoneSrc, coverTone, getArticles } from '@/lib/articles';
 
 interface Props {
   article: Article;
@@ -16,18 +16,36 @@ interface Props {
   eager?: boolean;
   /** Article page: the real cover at its own shape, never the designed one. */
   natural?: boolean;
+  /** Displayed width, for picking the 480/800/original file. Defaults suit a card. */
+  sizes?: string;
   class?: string;
 }
 const { article, ratio = '16/10', decorative = true, eager = false, natural = false, class: className } = Astro.props;
 const { cover, coverAlt, part, poster } = article.data;
 const useImage = !!cover && (natural || !poster);
 const size = cover ? coverSize(cover) : null;
+const srcset = cover ? coverSrcset(cover, size?.width) : undefined;
+// Phones (below 800px) get at most the 800 px copy, whatever their pixel
+// density: 2x and more for a cover shown at most ~760 CSS px wide.
+const phoneSrc = cover ? coverPhoneSrc(cover) : undefined;
+// Article page: a poster is at most 720px tall, a photo fills the 760px text column.
+const sizes =
+  Astro.props.sizes ??
+  (natural
+    ? poster
+      ? `(min-width: 800px) ${Math.round(Math.min(760, (720 * (size?.width ?? 1)) / (size?.height ?? 1)))}px, calc(100vw - 40px)`
+      : '(min-width: 800px) 760px, calc(100vw - 40px)'
+    : '(min-width: 1280px) 400px, (min-width: 760px) 45vw, calc(100vw - 40px)');
 const tone = useImage ? '' : coverTone(article, await getArticles());
 ---
 {
   useImage ? (
+    <picture class="contents">
+    {phoneSrc && <source media="(max-width: 799px)" srcset={phoneSrc} />}
     <img
       src={cover}
+      srcset={srcset}
+      sizes={srcset ? sizes : undefined}
       alt={decorative ? '' : coverAlt}
       width={size?.width}
       height={size?.height}
@@ -40,6 +58,7 @@ const tone = useImage ? '' : coverTone(article, await getArticles());
       ]}
       style={natural ? undefined : `aspect-ratio:${ratio}`}
     />
+    </picture>
   ) : (
     <div
       aria-hidden="true"

@@ -1,4 +1,4 @@
-import { readFileSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { getCollection, type CollectionEntry } from 'astro:content';
 
@@ -74,6 +74,26 @@ export function coverSize(src: string): { width: number; height: number } | null
     // Missing or unreadable file: render without dimensions.
   }
   return null;
+}
+
+/**
+ * srcset for an uploaded cover: the 480 and 800 px copies that
+ * scripts/cover-variants.mjs wrote before the build (only those that exist),
+ * plus the original at its own width.
+ */
+export function coverSrcset(src: string, width?: number): string | undefined {
+  const m = /^\/uploads\/artikel\/([^/]+\.webp)$/.exec(src);
+  if (!m || !width) return undefined;
+  const parts = [480, 800]
+    .filter((w) => w < width && existsSync(join(process.cwd(), 'public/uploads/artikel/_w', String(w), m[1]!)))
+    .map((w) => `/uploads/artikel/_w/${w}/${m[1]} ${w}w`);
+  return parts.length ? [...parts, `${src} ${width}w`].join(', ') : undefined;
+}
+
+/** The 800 px copy of an uploaded cover, if the prebuild step wrote one. */
+export function coverPhoneSrc(src: string): string | undefined {
+  const m = /^\/uploads\/artikel\/([^/]+\.webp)$/.exec(src);
+  return m && existsSync(join(process.cwd(), 'public/uploads/artikel/_w/800', m[1]!)) ? `/uploads/artikel/_w/800/${m[1]}` : undefined;
 }
 
 /**
