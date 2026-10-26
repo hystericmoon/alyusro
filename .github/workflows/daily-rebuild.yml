@@ -3,7 +3,8 @@
 # are all past switches to "Pendaftaran belum dibuka".
 # Setup: create a build hook in Netlify (Site configuration > Build hooks) or
 # a deploy hook in Cloudflare Pages, and save its URL as the repository
-# secret DEPLOY_HOOK_URL. Without the secret this workflow does nothing.
+# secret DEPLOY_HOOK_URL. Without the secret this workflow does nothing, and
+# says so as a warning on the run so a green check doesn't hide it.
 name: Daily rebuild
 
 on:
@@ -19,5 +20,5 @@ jobs:
         env:
           HOOK: ${{ secrets.DEPLOY_HOOK_URL }}
         run: |
-          if [ -z "$HOOK" ]; then echo "DEPLOY_HOOK_URL not set, skipping."; exit 0; fi
+          if [ -z "$HOOK" ]; then echo "::warning title=Daily rebuild skipped::DEPLOY_HOOK_URL is not set, so the site was not rebuilt. See README, Daily rebuild."; exit 0; fi
           curl -fsS -X POST "$HOOK"
