@@ -6,6 +6,7 @@ import TableScroll from '@/components/content/TableScroll.astro';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Landscape from '@/components/home/Landscape.astro';
 import PageHeader from '@/components/content/PageHeader.astro';
+import StatusBadge from '@/components/StatusBadge.astro';
 import { buildLevel } from '@/lib/level';
 import { site, school, levels, known, numberWord, registerUrl, infoGroupUrl, type Level } from '@/lib/site';
 
@@ -17,6 +18,15 @@ const year = known(site.psb.academicYear);
 // Status list: open levels first, then the rest from the oldest level down.
 const views = levels.map((l) => buildLevel(l));
 const ordered = [...views.filter((v) => v.open), ...views.filter((v) => !v.open).reverse()];
+const openViews = views.filter((v) => v.open);
+// Phone action bar: one open level links straight to its form; several open
+// levels go back to the status list to choose; none shows the info group.
+const barAction =
+  openViews.length === 1
+    ? { href: registerUrl(openViews[0]!.level.slug), label: `Daftar ${openViews[0]!.level.name}` }
+    : openViews.length > 1
+      ? { href: '#p-status', label: 'Pilih jenjang dan daftar' }
+      : { href: infoGroupUrl, label: 'Kabari saya' };
 
 // Fee comparison: map each level's items onto four comparable columns.
 const COLS = [
@@ -61,36 +71,39 @@ const td = 'px-16 py-18';
     lede="Pendaftaran dilakukan online, lalu tes masuk langsung di ma’had. Mulai dari jenjang yang sesuai usia anak."
     crumbs={[{ label: 'Pendaftaran' }]}
     photo={{ name: 'santri-putri-ujian', width: 1600, height: 1068, alt: 'Santri putri bercadar mengerjakan soal ujian di meja kelas' }}
+    photoFirst={false}
   >
-    <p class="m-0 text-15 text-muted">Ada pertanyaan sebelum mendaftar? <a href={school.whatsapp.url} class="font-bold">Tanya tim pendaftaran lewat WhatsApp</a></p>
-  </PageHeader>
-
-  <section aria-labelledby="p-status" class="mx-auto box-border max-w-page px-20 pb-64 sm:px-40 sm:pb-80">
-    <h2 id="p-status" class="m-0 mb-12 text-15 font-bold text-muted">Status pendaftaran per jenjang</h2>
-    <ul class="m-0 grid list-none gap-8 p-0 lg:grid-cols-2">
+    <section aria-labelledby="p-status" class="mt-8 w-full" data-psb-status>
+      <h2 id="p-status" class="m-0 mb-12 text-15 font-bold text-muted">
+        Status pendaftaran per jenjang{year ? `, tahun ajaran ${year}` : ''}
+      </h2>
+      <ul class="@container m-0 flex list-none flex-col gap-8 p-0">
+        {
+          ordered.map((v) => (
+            <li class="card flex flex-wrap items-center gap-x-16 gap-y-10 px-16 py-12 @[520px]:flex-nowrap @[520px]:px-20">
+              <span class="flex min-w-0 flex-[1_1_0] flex-col">
+                <span class="font-display text-[26px] font-semibold leading-[1.1]">{v.level.name}</span>
+                <span class="text-14 text-muted">{v.level.setara}</span>
+              </span>
+              <StatusBadge open={v.open} class="w-[136px] flex-none" />
+              {/* Same width on every row once the list is wide enough, so the badges line up in one column. */}
+              <span class:list={['flex-none basis-full @[520px]:basis-auto @[520px]:w-[176px]', !v.open && 'hidden @[520px]:block']}>
+                {v.open && <a href={registerUrl(v.level.slug)} class="btn-primary min-h-44 w-full px-18 text-15">Daftar {v.level.name}</a>}
+              </span>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+    <ul class="m-0 flex list-none flex-col gap-4 p-0 text-15 text-muted">
       {
-        ordered.map((v) => (
-          <li class="card flex flex-wrap items-center gap-x-20 gap-y-8 px-20 py-16 sm:px-24">
-            <span class="flex-[1_1_180px] font-display text-[28px] font-semibold leading-[1.1]">
-              {v.level.name}{' '}
-              <span class="font-body text-14 font-medium text-muted">{lower(v.level.setara)}</span>
-            </span>
-            {v.open ? (
-              <>
-                <span class="flex-[1_1_200px] font-bold text-lapis">Dibuka{year ? `, tahun ajaran ${year}` : ''}</span>
-                <a href={registerUrl(v.level.slug)} class="btn-primary min-h-44 px-18 text-15">Daftar {v.level.name}</a>
-              </>
-            ) : (
-              <>
-                <span class="flex-[1_1_200px] text-muted">Belum dibuka</span>
-                <a href={infoGroupUrl} class="inline-flex min-h-44 items-center text-15 font-bold underline-offset-4" aria-label={`Kabari saya saat pendaftaran ${v.level.name} dibuka`}>Kabari saya</a>
-              </>
-            )}
-          </li>
-        ))
+        views.some((v) => !v.open) && (
+          <li>Jenjang yang belum dibuka: <a href={infoGroupUrl} class="font-bold">kabari saya lewat grup info saat dibuka</a></li>
+        )
       }
+      <li>Ada pertanyaan sebelum mendaftar? <a href={school.whatsapp.url} class="font-bold">Tanya tim pendaftaran lewat WhatsApp</a></li>
     </ul>
-  </section>
+  </PageHeader>
 
   <section aria-labelledby="p-alur" class="bg-white">
     <div class={wrap}>
@@ -272,5 +285,52 @@ const td = 'px-16 py-18';
     </div>
   </section>
 
+  <nav aria-label="Aksi pendaftaran" data-psb-bar class="psb-bar glass-paper fixed inset-x-0 bottom-0 z-[4] lg:hidden">
+    <div class="mx-auto box-border flex max-w-page gap-8 px-16 py-10 pb-[max(10px,env(safe-area-inset-bottom))]">
+      <a href={barAction.href} class="btn-primary min-h-48 flex-[1_1_0] px-16 text-15">{barAction.label}</a>
+      <a href={school.whatsapp.url} class="btn-secondary min-h-48 flex-none px-18 text-15">
+        <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8.5 8.5 0 0 1-12.6 7.4L3 21l1.6-5.2A8.5 8.5 0 1 1 21 12z"></path></svg>
+        WhatsApp
+      </a>
+    </div>
+  </nav>
+
   <Landscape slot="footer-lead" />
 </BaseLayout>
+
+<style>
+  /* Phone action bar: hidden (and out of the tab order) until the status
+     list has scrolled away; hidden again once the closing landscape, which
+     has the same actions, comes into view. */
+  .psb-bar {
+    visibility: hidden;
+    transform: translateY(100%);
+    transition: transform 200ms ease-out, visibility 0s linear 200ms;
+    box-shadow: 0 -8px 24px -16px rgb(27 34 53 / 0.35);
+  }
+  .psb-bar[data-show] {
+    visibility: visible;
+    transform: none;
+    transition: transform 200ms ease-out;
+  }
+  /* Focused elements scroll clear of the bar. */
+  @media (max-width: 1023px) {
+    :global(html:has(.psb-bar[data-show])) { scroll-padding-bottom: 88px; }
+  }
+</style>
+
+<script>
+  const bar = document.querySelector<HTMLElement>('[data-psb-bar]');
+  const status = document.querySelector('[data-psb-status]');
+  const end = document.querySelector('footer');
+  if (bar && status && 'IntersectionObserver' in window) {
+    let past = false;
+    let atEnd = false;
+    const update = () => bar.toggleAttribute('data-show', past && !atEnd);
+    new IntersectionObserver(([e]) => {
+      past = !e!.isIntersecting && e!.boundingClientRect.top < 0;
+      update();
+    }).observe(status);
+    if (end) new IntersectionObserver(([e]) => { atEnd = e!.isIntersecting; update(); }).observe(end);
+  }
+</script>
