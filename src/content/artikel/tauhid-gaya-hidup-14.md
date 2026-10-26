@@ -7,6 +7,7 @@ author: "Elan Susanto"
 category: "Aqidah"
 cover: "/uploads/artikel/tauhid-gaya-hidup-14.webp"
 coverAlt: "Sampul Tauhid Gaya Hidup pertemuan ke-15: Sihir"
+poster: true
 excerpt: "Pertemuan yang ke-15 Ruang Belajar Tauhid Gaya Hidup adalah tentang Sihir"
 views: 291
 sourceUrl: "https://mahadalyusro.sch.id/artikel/tauhid-gaya-hidup-14"

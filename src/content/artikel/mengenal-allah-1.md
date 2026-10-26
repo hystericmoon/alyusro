@@ -7,6 +7,7 @@ author: "Elan Susanto"
 category: "Aqidah"
 cover: "/uploads/artikel/mengenal-allah-1.webp"
 coverAlt: "Sampul Mengenal Allah pertemuan ke-2: Maha Pencipta, dengan danau saat senja"
+poster: true
 excerpt: "Pertemuan yang ke 2 Ruang Belajar Mengenal Allah adalah tentang “ “Maha Pencipta ﷻ”."
 views: 237
 sourceUrl: "https://mahadalyusro.sch.id/artikel/mengenal-allah-1"

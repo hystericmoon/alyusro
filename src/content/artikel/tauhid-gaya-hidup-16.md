@@ -7,6 +7,7 @@ author: "Elan Susanto"
 category: "Aqidah"
 cover: "/uploads/artikel/tauhid-gaya-hidup-16.webp"
 coverAlt: "Sampul Tauhid Gaya Hidup pertemuan ke-17: Tathoyyur, merasa sial karena burung atau sesuatu"
+poster: true
 excerpt: "Pertemuan yang ke-17 Ruang Belajar Tauhid Gaya Hidup adalah tentang “Tathayyur”, yaitu merasa sial dengan sesuatu."
 views: 279
 sourceUrl: "https://mahadalyusro.sch.id/artikel/tauhid-gaya-hidup-16"

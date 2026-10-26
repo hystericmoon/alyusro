@@ -7,6 +7,7 @@ author: "Elan Susanto"
 category: "Fiqih"
 cover: "/uploads/artikel/mengenal-fikih-romadhon-1.webp"
 coverAlt: "Sampul Mengenal Fikih Romadhon 2, dengan mushaf terbuka"
+poster: true
 excerpt: "Dalam setiap ibadah kita ada rambu – rambu yang harus kita mengenalnya, dengan menganal rambu - rambu pada setiap ibadah tentunya dengan tujuan agar ibadah kita lebih sempurna…"
 views: 132
 sourceUrl: "https://mahadalyusro.sch.id/artikel/mengenal-fikih-romadhon-1"

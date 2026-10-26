@@ -27,7 +27,7 @@ Not in scope: the login dashboard and the registration system. Those stay on the
 - `design/Peta-situs.dc.html`: the site map and content inventory. It is the page list for this build.
 - `content/site.json`: single source of truth for levels, fees, PSB waves, FAQ, schedule, staff, academic calendar, contact. Pages must read from it; never hard-code a fee, date, or target in a page. Values containing `[...]` are placeholders: `known()` in `src/lib/site.ts` hides them, so no bracket ever reaches a page.
 - `content/prestasi.json`: achievements with students' full names (the school consented in October 2026). `content/fasilitas.json`: facility photos with alt text and captions.
-- `src/content/artikel/*.md`: articles (migrated from the old site with students' full names and the original cover photos; articles without a cover image get a typographic cover). `src/content/halaman/*.md`: prose for content pages; they can quote site.json with `{{halaqah.ideal}}` etc. (see `src/lib/halaman.ts`). Both are editable in Sveltia CMS at `/admin`.
+- `src/content/artikel/*.md`: articles (migrated from the old site with students' full names and the original cover photos; articles without a cover image, and on cards those whose cover is a poster or flyer (`poster: true`), get a designed cover: series or category, part number, khatam star, one tone per series). `src/content/halaman/*.md`: prose for content pages; they can quote site.json with `{{halaqah.ideal}}` etc. (see `src/lib/halaman.ts`). Both are editable in Sveltia CMS at `/admin`.
 
 ## Pages and URLs
 

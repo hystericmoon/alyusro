@@ -7,6 +7,7 @@ author: "Elan Susanto"
 category: "Aqidah"
 cover: "/uploads/artikel/tauhid-gaya-hidup-17.webp"
 coverAlt: "Sampul Tauhid Gaya Hidup pertemuan ke-18: meramal nasib dengan bintang"
+poster: true
 excerpt: "Pertemuan yang ke-18 Ruang Belajar Tauhid Gaya Hidup adalah tentang “Meramal Nasib Dengan Bintang”."
 views: 276
 sourceUrl: "https://mahadalyusro.sch.id/artikel/tauhid-gaya-hidup-17"

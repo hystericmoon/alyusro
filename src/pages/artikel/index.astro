@@ -6,6 +6,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 import Landscape from '@/components/home/Landscape.astro';
 import PageHeader from '@/components/content/PageHeader.astro';
 import ArticleCover from '@/components/artikel/ArticleCover.astro';
+import ArticleCard from '@/components/artikel/ArticleCard.astro';
 import { getArticles, filterKey, formatDate, kicker, titleHtml, NEWS } from '@/lib/articles';
 import { site, known } from '@/lib/site';
 
@@ -101,20 +102,8 @@ const chip =
       <ul class="m-0 grid list-none grid-cols-[repeat(auto-fill,minmax(min(340px,100%),1fr))] gap-x-32 gap-y-40 p-0">
         {
           list.map((a) => (
-            <li data-item data-key={filterKey(a)} class="group relative flex flex-col gap-10">
-              <div class="overflow-hidden rounded-lg">
-                <ArticleCover article={a} class="transition-transform duration-300 group-hover:scale-[1.03]" />
-              </div>
-              <span class="text-14 font-bold text-lapis">{kicker(a)}</span>
-              <a
-                href={`/artikel/${a.id}/`}
-                class="font-display text-30 font-semibold leading-[1.08] text-ink underline-offset-4 after:absolute after:inset-0 after:content-[''] group-hover:text-lapis group-hover:underline"
-              >
-                <Fragment set:html={titleHtml(a.data.title)} />
-              </a>
-              <span class="text-14 text-muted">
-                {formatDate(a.data.date)} • {a.data.author}
-              </span>
+            <li data-item data-key={filterKey(a)}>
+              <ArticleCard article={a} />
             </li>
           ))
         }

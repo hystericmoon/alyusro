@@ -7,6 +7,7 @@ author: "Elan Susanto"
 category: "Aqidah"
 cover: "/uploads/artikel/mengenal-allah-8.webp"
 coverAlt: "Sampul Mengenal Allah pertemuan ke-9: Mengenal Allah dengan makhluk-Nya"
+poster: true
 excerpt: "Pertemuan yang ke-9 dari Ruang Belajar Online Mengenal Allāh “Mengenal Allāh ﷻ Dengan Makhluk-Nya”."
 views: 174
 sourceUrl: "https://mahadalyusro.sch.id/artikel/mengenal-allah-8"

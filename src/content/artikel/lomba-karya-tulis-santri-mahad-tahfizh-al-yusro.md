@@ -5,6 +5,7 @@ author: "Yudi Saeful Rizal, S.E., M.E."
 category: "Kegiatan santri"
 cover: "/uploads/artikel/lomba-karya-tulis-santri-mahad-tahfizh-al-yusro.webp"
 coverAlt: "Poster lomba karya tulis bahasa Arab dan bahasa Indonesia dari Bidang Penelitian Ilmiah dan Perpustakaan"
+poster: true
 excerpt: "✨ Bidang Penelitian Ilmiah dan Perpustakaan (BPIP) dengan gembira mengajak para peserta didik untuk berpartisipasi pada 2 lomba berikut:"
 views: 342
 sourceUrl: "https://mahadalyusro.sch.id/artikel/lomba-karya-tulis-santri-mahad-tahfizh-al-yusro"

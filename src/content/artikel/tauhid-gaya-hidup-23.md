@@ -7,6 +7,7 @@ author: "Elan Susanto"
 category: "Aqidah"
 cover: "/uploads/artikel/tauhid-gaya-hidup-23.webp"
 coverAlt: "Sampul Tauhid Gaya Hidup pertemuan ke-24: Nikmat Allah"
+poster: true
 excerpt: "Halaqah yang ke-24 23 Ruang Belajar Tauhid Gaya Hidup adalah tentang “Menyandarkan Nikmat Kepada Allāh ﷻ”."
 views: 241
 sourceUrl: "https://mahadalyusro.sch.id/artikel/tauhid-gaya-hidup-23"

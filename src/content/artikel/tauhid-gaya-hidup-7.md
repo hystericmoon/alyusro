@@ -7,6 +7,7 @@ author: "Elan Susanto"
 category: "Aqidah"
 cover: "/uploads/artikel/tauhid-gaya-hidup-7.webp"
 coverAlt: "Sampul Tauhid Gaya Hidup pertemuan ke-8: Bertabaruk"
+poster: true
 excerpt: "Pada pertemuan yang ke-8 Ruang Belajar Tauhid Gaya Hidup adalah tentang Bertabarruk (mencari barokah)"
 views: 327
 sourceUrl: "https://mahadalyusro.sch.id/artikel/tauhid-gaya-hidup-7"

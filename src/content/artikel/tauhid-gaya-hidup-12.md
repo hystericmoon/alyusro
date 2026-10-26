@@ -7,6 +7,7 @@ author: "Elan Susanto"
 category: "Aqidah"
 cover: "/uploads/artikel/tauhid-gaya-hidup-12.webp"
 coverAlt: "Sampul Tauhid Gaya Hidup pertemuan ke-13: Syafa’at"
+poster: true
 excerpt: "Pertemuan yang ke-13 Ruang Belajar Tauhid Gaya Hidup adalah tentang Syafā’at."
 views: 314
 sourceUrl: "https://mahadalyusro.sch.id/artikel/tauhid-gaya-hidup-12"

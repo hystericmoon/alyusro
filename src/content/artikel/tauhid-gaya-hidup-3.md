@@ -7,6 +7,7 @@ author: "Elan Susanto"
 category: "Aqidah"
 cover: "/uploads/artikel/tauhid-gaya-hidup-3.webp"
 coverAlt: "Sampul Tauhid Gaya Hidup pertemuan ke-4: Syirik menghapus amalan"
+poster: true
 excerpt: "Pertemuan ke 4 Ruang Belajar Tauhid Gaya Hidup “Syirik menghapus amalan”"
 views: 383
 sourceUrl: "https://mahadalyusro.sch.id/artikel/tauhid-gaya-hidup-3"

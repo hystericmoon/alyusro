@@ -7,6 +7,7 @@ author: "Elan Susanto"
 category: "Aqidah"
 cover: "/uploads/artikel/mengenal-nabi-5.webp"
 coverAlt: "Sampul Mengenal Nabi ﷺ pertemuan ke-7: Rasul terakhir, dengan awan berbentuk hati"
+poster: true
 excerpt: "Pertemuan yang ke-7 dari Silsilah Mengenal Rasūlullāh ﷺ adalah tentang “Mengenal Beliau sebagai Rasul Terakhir”."
 views: 69
 sourceUrl: "https://mahadalyusro.sch.id/artikel/mengenal-nabi-5"

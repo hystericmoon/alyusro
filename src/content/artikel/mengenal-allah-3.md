@@ -7,6 +7,7 @@ author: "Elan Susanto"
 category: "Aqidah"
 cover: "/uploads/artikel/mengenal-allah-3.webp"
 coverAlt: "Sampul Mengenal Allah pertemuan ke-4: Pengatur Alam Semesta"
+poster: true
 excerpt: "Pertemuan yang ke-4 dari Ruang Belajar Online Mengenal Allāh ﷻ Sebagai Pengatur Alam Semesta."
 views: 278
 sourceUrl: "https://mahadalyusro.sch.id/artikel/mengenal-allah-3"

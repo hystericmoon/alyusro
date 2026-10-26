@@ -5,6 +5,7 @@ author: "Yudi Saeful Rizal, S.E., M.E."
 category: "Kerja sama"
 cover: "/uploads/artikel/program-mahad-aly-full-beasiswa.webp"
 coverAlt: "Brosur pendaftaran Program Ma’had ‘Aly 2025/2026, setingkat D2 dengan beasiswa penuh"
+poster: true
 excerpt: "Ma'had Tahfizh Al Yusro menyelenggarakan program pendidikan Ma'had 'Aly dengan beasiswa penuh. Adalah program pendidikan kaderisasi guru dan Musyrif yang diperuntukkan bagi…"
 views: 5665
 sourceUrl: "https://mahadalyusro.sch.id/artikel/program-mahad-aly-full-beasiswa"

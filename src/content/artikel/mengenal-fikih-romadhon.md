@@ -7,6 +7,7 @@ author: "Elan Susanto"
 category: "Fiqih"
 cover: "/uploads/artikel/mengenal-fikih-romadhon.webp"
 coverAlt: "Sampul Mengenal Fikih Romadhon: berilmu sebelum berkata dan beramal"
+poster: true
 excerpt: "Bulan Romadhon adalah bulan yang penuh dengan barokah dan pahala maka butuh dengan persiapan yang matang agar kita semua bisa memaksimalkan dalam beramal di bulan…"
 views: 154
 sourceUrl: "https://mahadalyusro.sch.id/artikel/mengenal-fikih-romadhon"

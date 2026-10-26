@@ -7,6 +7,7 @@ author: "Elan Susanto"
 category: "Aqidah"
 cover: "/uploads/artikel/mengenal-nabi-3.webp"
 coverAlt: "Sampul Mengenal Nabi ﷺ pertemuan ke-5: membawa cara ibadah"
+poster: true
 excerpt: "Pertemuan yang ke-5 dari Ruang Belajar Online Mengenal Rasūlullāh ﷺ adalah “Mengenal Beliau ﷺ Sebagai Utusan Yang Membawa Tata Cara Beribadah Dari Allāh ﷻ”"
 views: 102
 sourceUrl: "https://mahadalyusro.sch.id/artikel/mengenal-nabi-3"

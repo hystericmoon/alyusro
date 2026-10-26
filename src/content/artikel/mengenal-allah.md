@@ -7,6 +7,7 @@ author: "Elan Susanto"
 category: "Aqidah"
 cover: "/uploads/artikel/mengenal-allah.webp"
 coverAlt: "Sampul Mengenal Allah pertemuan ke-1, Ruang Belajar Online Kuttab Al Yusro"
+poster: true
 excerpt: "Halaqah yang ke 1 Ruang Belajar Mengenal Allah adalah tentang “ “Mengenal Allāh ﷻ”."
 views: 212
 sourceUrl: "https://mahadalyusro.sch.id/artikel/mengenal-allah"

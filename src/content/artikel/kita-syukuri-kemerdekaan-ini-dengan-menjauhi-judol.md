@@ -5,6 +5,7 @@ author: "Tegar Khoirul Azmi"
 category: "Khutbah"
 cover: "/uploads/artikel/kita-syukuri-kemerdekaan-ini-dengan-menjauhi-judol.webp"
 coverAlt: "Infografis peringatan bahaya judi online"
+poster: true
 excerpt: "Sebentar lagi akan datang 17 agustus, masyarakat Indonesia akan bergembira dalam menyambutnya. Hal itu bisa dilihat dari banyaknya panitia yang menyelengarakan perlombaan, dari…"
 views: 315
 sourceUrl: "https://mahadalyusro.sch.id/artikel/kita-syukuri-kemerdekaan-ini-dengan-menjauhi-judol"

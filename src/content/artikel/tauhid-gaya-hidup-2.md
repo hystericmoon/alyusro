@@ -7,6 +7,7 @@ author: "Elan Susanto"
 category: "Aqidah"
 cover: "/uploads/artikel/tauhid-gaya-hidup-2.webp"
 coverAlt: "Sampul Tauhid Gaya Hidup pertemuan ke-3: Bahaya Kesyirikan, dengan kapal layar di laut"
+poster: true
 excerpt: "Pertemuan ke 3 Ruang Belajar Tauhid Gaya Hidup “Bahaya Kesyirikan”"
 views: 507
 sourceUrl: "https://mahadalyusro.sch.id/artikel/tauhid-gaya-hidup-2"

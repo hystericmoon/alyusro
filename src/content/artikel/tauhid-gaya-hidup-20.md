@@ -7,6 +7,7 @@ author: "Elan Susanto"
 category: "Aqidah"
 cover: "/uploads/artikel/tauhid-gaya-hidup-20.webp"
 coverAlt: "Sampul Tauhid Gaya Hidup pertemuan ke-21: Cinta kepada Allah"
+poster: true
 excerpt: "Pertemuan yang ke-21 Ruang Belajar Tauhid Gaya Hidup adalah tentang Cinta Kepada Allāh ﷻ”."
 views: 184
 sourceUrl: "https://mahadalyusro.sch.id/artikel/tauhid-gaya-hidup-20"

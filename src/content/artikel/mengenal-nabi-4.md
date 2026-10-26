@@ -7,6 +7,7 @@ author: "Elan Susanto"
 category: "Aqidah"
 cover: "/uploads/artikel/mengenal-nabi-4.webp"
 coverAlt: "Sampul Mengenal Nabi ﷺ pertemuan ke-6: inti dakwah Rasulullah"
+poster: true
 excerpt: "Pertemuan yang ke-6 dari Silsilah Mengenal Rasūlullāh ﷺ adalah tentang “Mengenal Inti Dakwah Rasūlullāh ﷺ”."
 views: 80
 sourceUrl: "https://mahadalyusro.sch.id/artikel/mengenal-nabi-4"

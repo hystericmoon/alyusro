@@ -7,6 +7,7 @@ author: "Elan Susanto"
 category: "Aqidah"
 cover: "/uploads/artikel/tauhid-gaya-hidup-5.webp"
 coverAlt: "Sampul Tauhid Gaya Hidup pertemuan ke-6: Menyelami indahnya tauhid"
+poster: true
 excerpt: "Pertemuan yang ke-6 dari Ruang Belajar dengan Tema \"Menyelami Indahnya Tauhid\""
 views: 318
 sourceUrl: "https://mahadalyusro.sch.id/artikel/tauhid-gaya-hidup-5"

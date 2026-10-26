@@ -7,6 +7,7 @@ author: "Elan Susanto"
 category: "Aqidah"
 cover: "/uploads/artikel/tauhid-gaya-hidup-22.webp"
 coverAlt: "Sampul Tauhid Gaya Hidup pertemuan ke-23: Taat kepada ulama dalam kebenaran"
+poster: true
 excerpt: "Pertemuan yang ke-23 Ruang Belajar Tauhid Gaya Hidup adalah tentang “Ta’at Ulama Dalam Kebenaran”."
 views: 170
 sourceUrl: "https://mahadalyusro.sch.id/artikel/tauhid-gaya-hidup-22"

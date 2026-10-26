@@ -7,6 +7,7 @@ author: "Elan Susanto"
 category: "Aqidah"
 cover: "/uploads/artikel/mengenal-nabi-1.webp"
 coverAlt: "Sampul Mengenal Nabi ﷺ pertemuan ke-3: membawa larangan dari Allah"
+poster: true
 excerpt: "Pertemuan yang ke-3 dari Ruang Belajar Online Mengenal Rasūlullāh ﷺ adalah “Mengenal Beliau ﷺ Sebagai Seorang Rasūl Yang Diantara Tugasnya Adalah Membawa Larangan-larangan Dari…"
 views: 112
 sourceUrl: "https://mahadalyusro.sch.id/artikel/mengenal-nabi-1"

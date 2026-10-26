@@ -5,6 +5,7 @@ author: "Yudi Saeful Rizal, S.E., M.E."
 category: "Kerja sama"
 cover: "/uploads/artikel/ppdb-kuttab-al-yusro-gratis-pendaftaran-dan-spp-bulanan-sd-islam-sunnah-tahfizh-bahasa-arab-terbaik.webp"
 coverAlt: "Brosur PPDB Kuttab Al Yusro 2025–2026: gratis pendaftaran dan SPP bulanan"
+poster: true
 excerpt: "PPDB Kuttab Al Yusro Tahun Ajaran 2025-2026: Gratis Pendaftaran dan SPP Bulanan!"
 views: 1135
 sourceUrl: "https://mahadalyusro.sch.id/artikel/ppdb-kuttab-al-yusro-gratis-pendaftaran-dan-spp-bulanan-sd-islam-sunnah-tahfizh-bahasa-arab-terbaik"

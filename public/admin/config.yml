@@ -67,6 +67,17 @@ collections:
         widget: string
         required: false
         hint: Wajib bila ada gambar. Jelaskan isi gambar dalam satu kalimat, misalnya "Sampul Tauhid Gaya Hidup pertemuan ke-3 dengan gambar kapal layar". Jangan tulis "Deskripsi Gambar".
+      - label: Sampul berupa poster atau flyer
+        name: poster
+        widget: boolean
+        default: false
+        required: false
+        hint: Aktifkan bila sampul berisi banyak tulisan (poster kajian, flyer pendaftaran). Di halaman artikel poster tampil utuh; di daftar artikel diganti sampul tulisan otomatis agar tidak terpotong.
+      - label: Keterangan foto sampul
+        name: coverCaption
+        widget: string
+        required: false
+        hint: Opsional. Tampil di bawah foto sampul, misalnya tempat dan waktu kegiatan. Jangan menyebut nama santri.
       - label: Ringkasan
         name: excerpt
         widget: text

@@ -1,3 +1,5 @@
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
 import { getCollection, type CollectionEntry } from 'astro:content';
 
 export type Article = CollectionEntry<'artikel'>;
@@ -26,6 +28,9 @@ export async function getArticles(): Promise<Article[]> {
 /** The label shown above a title: the series, or the category for standalone pieces. */
 export const kicker = (a: Article) => a.data.series ?? a.data.category;
 
+/** Cards show the real cover only for photos; posters and missing covers get the designed one. */
+export const hasPhotoCover = (a: Article) => !!a.data.cover && !a.data.poster;
+
 /** Filter key: each series is its own filter; everything else is "Kabar ma’had". */
 export const NEWS = 'Kabar ma’had';
 export const filterKey = (a: Article) => a.data.series ?? NEWS;
@@ -33,11 +38,56 @@ export const filterKey = (a: Article) => a.data.series ?? NEWS;
 /** Older than 12 months at build time (the daily rebuild keeps this current). */
 export const isOld = (a: Article, now = new Date()) => now.getTime() - a.data.date.getTime() > 365 * 24 * 3600 * 1000;
 
-/** Up to `n` articles to read next: same series first, then same filter group, newest first. */
+/**
+ * Up to `n` articles to read next, newest first: the same series, then the
+ * same category, then the same filter group, then anything.
+ */
 export function related(all: Article[], a: Article, n = 3): Article[] {
   const others = all.filter((x) => x.id !== a.id);
-  const same = others.filter((x) => filterKey(x) === filterKey(a));
-  return [...same, ...others.filter((x) => !same.includes(x))].slice(0, n);
+  const tiers = [
+    (x: Article) => !!a.data.series && x.data.series === a.data.series,
+    (x: Article) => x.data.category === a.data.category,
+    (x: Article) => filterKey(x) === filterKey(a),
+    () => true,
+  ];
+  const out: Article[] = [];
+  for (const t of tiers) for (const x of others) if (out.length < n && !out.includes(x) && t(x)) out.push(x);
+  return out;
+}
+
+/**
+ * Pixel size of an uploaded cover (WebP, from public/), read at build time so
+ * the <img> gets width and height and the page does not shift as it loads.
+ */
+export function coverSize(src: string): { width: number; height: number } | null {
+  try {
+    const b = readFileSync(join(process.cwd(), 'public', src));
+    if (b.toString('ascii', 0, 4) !== 'RIFF' || b.toString('ascii', 8, 12) !== 'WEBP') return null;
+    const chunk = b.toString('ascii', 12, 16);
+    if (chunk === 'VP8X') return { width: 1 + b.readUIntLE(24, 3), height: 1 + b.readUIntLE(27, 3) };
+    if (chunk === 'VP8L') {
+      const bits = b.readUInt32LE(21);
+      return { width: (bits & 0x3fff) + 1, height: ((bits >> 14) & 0x3fff) + 1 };
+    }
+    if (chunk === 'VP8 ') return { width: b.readUInt16LE(26) & 0x3fff, height: b.readUInt16LE(28) & 0x3fff };
+  } catch {
+    // Missing or unreadable file: render without dimensions.
+  }
+  return null;
+}
+
+/**
+ * Background of the designed cover: one tone per series, so a series is
+ * recognisable on cards. Series take the tones in the order they started
+ * (oldest first), so adding articles never changes an existing series' tone.
+ * Standalone articles use the school navy.
+ */
+const TONES = ['bg-sky-600', 'bg-ink', 'bg-sky-dawn', 'bg-sky-500', 'bg-lapis-deep'];
+export function coverTone(a: Article, all: Article[]): string {
+  if (!a.data.series) return 'bg-lapis';
+  const order = [...all].sort((x, y) => x.data.date.getTime() - y.data.date.getTime()).map((x) => x.data.series);
+  const series = [...new Set(order.filter(Boolean))];
+  return TONES[series.indexOf(a.data.series) % TONES.length]!;
 }
 
 /** Previous and next part in the same series, by part number. */

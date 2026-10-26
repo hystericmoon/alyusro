@@ -7,6 +7,7 @@ author: "Elan Susanto"
 category: "Aqidah"
 cover: "/uploads/artikel/mengenal-allah-6.webp"
 coverAlt: "Sampul Mengenal Allah pertemuan ke-7: Pengertian Ibadah"
+poster: true
 excerpt: "Pertemuan yang ke-7 dari Ruang Belajar Online Mengenal Allāh Tentang Pengertian Ibadah"
 views: 212
 sourceUrl: "https://mahadalyusro.sch.id/artikel/mengenal-allah-6"

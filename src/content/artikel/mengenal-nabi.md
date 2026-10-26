@@ -7,6 +7,7 @@ author: "Elan Susanto"
 category: "Aqidah"
 cover: "/uploads/artikel/mengenal-nabi.webp"
 coverAlt: "Sampul Mengenal Nabi pertemuan ke-2: pembawa perintah dari Allah"
+poster: true
 excerpt: "Pertemuan yang ke-2 dari Ruang Belajar Online Mengenal Rasūlullāh ﷺ adalah “Mengenal Beliau Sebagai Seorang Rasul Yang Diantara Tugasnya Adalah Membawa Perintah Dari Allāh ﷻ”."
 views: 93
 sourceUrl: "https://mahadalyusro.sch.id/artikel/mengenal-nabi"

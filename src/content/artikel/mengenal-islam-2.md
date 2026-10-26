@@ -7,6 +7,7 @@ author: "Elan Susanto"
 category: "Aqidah"
 cover: "/uploads/artikel/mengenal-islam-2.webp"
 coverAlt: "Sampul Mengenal Islam pertemuan ke-3: apa yang membedakan para Nabi"
+poster: true
 excerpt: "Pertemuan yang ke-3 dari Mengenal Agama Islam adalah tentang “Apa Yang Membedakan Di Antara Para Nabi ‘Alayhimussalām?”."
 views: 46
 sourceUrl: "https://mahadalyusro.sch.id/artikel/mengenal-islam-2"

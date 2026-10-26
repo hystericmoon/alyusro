@@ -7,6 +7,7 @@ author: "Elan Susanto"
 category: "Aqidah"
 cover: "/uploads/artikel/tauhid-gaya-hidup-8.webp"
 coverAlt: "Sampul Tauhid Gaya Hidup pertemuan ke-9: syirik besar menyembelih untuk selain Allah"
+poster: true
 excerpt: "Pada pertemuan yang ke-9 Ruang Belajar Tauhid Gaya Hidup adalah tentang Menyembelih Untuk Selain Allāh ﷻ Termasuk Syirik Besar."
 views: 265
 sourceUrl: "https://mahadalyusro.sch.id/artikel/tauhid-gaya-hidup-8"

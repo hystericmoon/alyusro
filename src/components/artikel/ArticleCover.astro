@@ -1,44 +1,60 @@
 ---
-// Cover image, or a designed typographic cover when there is none (no image
-// yet, or the photo shows faces). In lists the image is decorative (the
-// title sits next to it); on the article page it carries its alt text.
+// Cover image, or a designed cover: when there is no image, and on cards when
+// the cover is a poster or flyer (its text would be cropped or too small).
+// The designed cover carries the series (or category) and part number with a
+// khatam star, on a tone shared by the whole series; the title is not repeated
+// (it sits right below the cover on cards, and in the h1 on the article page). In lists
+// the image is decorative (the title sits next to it); on the article page it
+// carries its alt text, and a poster is shown whole.
 import type { Article } from '@/lib/articles';
-import { kicker, titleHtml } from '@/lib/articles';
+import { kicker, titleHtml, coverSize, coverTone, getArticles } from '@/lib/articles';
 
 interface Props {
   article: Article;
   ratio?: string;
   decorative?: boolean;
   eager?: boolean;
-  /** Show a real cover at its own shape (article page: flyers must not be cropped). */
+  /** Article page: the real cover at its own shape, never the designed one. */
   natural?: boolean;
   class?: string;
 }
 const { article, ratio = '16/10', decorative = true, eager = false, natural = false, class: className } = Astro.props;
-const { cover, coverAlt, title, part } = article.data;
+const { cover, coverAlt, part, poster } = article.data;
+const useImage = !!cover && (natural || !poster);
+const size = cover ? coverSize(cover) : null;
+const tone = useImage ? '' : coverTone(article, await getArticles());
 ---
 {
-  cover ? (
+  useImage ? (
     <img
       src={cover}
       alt={decorative ? '' : coverAlt}
+      width={size?.width}
+      height={size?.height}
       loading={eager ? 'eager' : 'lazy'}
+      fetchpriority={eager ? 'high' : undefined}
       decoding="async"
-      class:list={[natural ? 'mx-auto block h-auto max-h-[720px] w-auto max-w-full' : 'block w-full bg-juz-off object-cover', className]}
+      class:list={[
+        natural ? (poster ? 'mx-auto block h-auto max-h-[720px] w-auto max-w-full' : 'block h-auto w-full') : 'block w-full bg-juz-off object-cover',
+        className,
+      ]}
       style={natural ? undefined : `aspect-ratio:${ratio}`}
     />
   ) : (
     <div
       aria-hidden="true"
-      class:list={['relative flex w-full flex-col justify-between overflow-hidden bg-lapis p-20 text-white sm:p-24', className]}
+      class:list={['relative flex w-full flex-col justify-between overflow-hidden p-20 text-white sm:p-24', tone, className]}
       style={`aspect-ratio:${ratio}`}
     >
-      <span class="text-14 font-bold text-lapis-1">{kicker(article)}</span>
-      <span
-        class="max-w-[16em] font-display text-[clamp(24px,2.6vw,34px)] font-semibold leading-[1.05] [text-wrap:balance]"
-        set:html={titleHtml(title.replace(/^Pertemuan ke-\d+: /, ''))}
-      />
-      {part && <span class="absolute right-16 top-6 font-display text-[88px] font-semibold leading-none text-lapis-3">{part}</span>}
+      <svg viewBox="-50 -50 100 100" class="pointer-events-none absolute -bottom-[22%] -right-[12%] h-[88%] text-white opacity-[0.12]" fill="none" stroke="currentColor" stroke-width="1.6">
+        <rect x="-32" y="-32" width="64" height="64" />
+        <rect x="-32" y="-32" width="64" height="64" transform="rotate(45)" />
+        <circle r="20" />
+        <rect x="-12" y="-12" width="24" height="24" />
+        <rect x="-12" y="-12" width="24" height="24" transform="rotate(45)" />
+      </svg>
+      <span class="relative max-w-[11em] font-display text-[clamp(28px,3vw,40px)] font-semibold leading-[1.02] [text-wrap:balance]" set:html={titleHtml(kicker(article))} />
+      {part && <span class="relative font-display text-[clamp(56px,6vw,80px)] font-semibold leading-[0.8] text-white/85">{part}</span>}
     </div>
   )
 }

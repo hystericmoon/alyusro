@@ -7,6 +7,7 @@ author: "Elan Susanto"
 category: "Aqidah"
 cover: "/uploads/artikel/tauhid-gaya-hidup-19.webp"
 coverAlt: "Sampul Tauhid Gaya Hidup pertemuan ke-20: Riya, dengan jamaah di depan Ka’bah"
+poster: true
 excerpt: "Pertemuan yang ke-20 Ruang Belajar Tauhid Gaya Hidup adalah adalah tentang, Riya’"
 views: 310
 sourceUrl: "https://mahadalyusro.sch.id/artikel/tauhid-gaya-hidup-19"

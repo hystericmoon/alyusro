@@ -7,6 +7,7 @@ author: "Elan Susanto"
 category: "Fiqih"
 cover: "/uploads/artikel/mengenal-fikih-romadhon-2.webp"
 coverAlt: "Sampul Mengenal Fikih Romadhon 3: pembatal-pembatal puasa"
+poster: true
 excerpt: "Diantara pembatal - pembatal puasa lainnya adalah :"
 views: 187
 sourceUrl: "https://mahadalyusro.sch.id/artikel/mengenal-fikih-romadhon-2"

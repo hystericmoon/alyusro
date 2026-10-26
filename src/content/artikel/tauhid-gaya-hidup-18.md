@@ -7,6 +7,7 @@ author: "Elan Susanto"
 category: "Aqidah"
 cover: "/uploads/artikel/tauhid-gaya-hidup-18.webp"
 coverAlt: "Sampul Tauhid Gaya Hidup pertemuan ke-19: bersumpah dengan selain nama Allah"
+poster: true
 excerpt: "Pertemuan yang ke-19 Ruang Belajar Tauhid Gaya Hidup adalah adalah tentang “Bersumpah Dengan Selain Nama Allāh ﷻ”."
 views: 185
 sourceUrl: "https://mahadalyusro.sch.id/artikel/tauhid-gaya-hidup-18"
