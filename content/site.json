@@ -47,7 +47,7 @@
       "madrasah": null
     },
     "documents": {
-      "_note": "Documents to prepare, per level slug. Levels without a list show a WhatsApp prompt.",
+      "_note": "Documents to prepare, per level slug. Only levels with a list appear on /psb.",
       "mahad-aly": {
         "items": [
           "Fotokopi KTP dan Kartu Keluarga",

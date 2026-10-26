@@ -16,16 +16,17 @@ const proof = latestTop();
 ---
 <section
   aria-labelledby="g-hero-title"
-  class="mx-auto box-border flex max-w-page flex-col gap-40 px-20 pb-96 pt-24 sm:px-40 sm:pt-40 xl:grid xl:grid-cols-[minmax(0,1fr)_minmax(0,560px)] xl:items-start xl:gap-x-80 xl:gap-y-0 xl:pt-72"
+  class="mx-auto box-border flex max-w-page flex-col gap-40 px-20 pb-96 pt-24 sm:px-40 sm:pt-40 xl:grid xl:grid-cols-[minmax(0,1fr)_minmax(0,520px)] xl:items-start xl:gap-x-72 xl:gap-y-0 xl:pt-72"
 >
   <div class="order-2 flex max-w-[640px] flex-col gap-24 xl:order-none xl:col-start-1 xl:row-span-2 xl:row-start-1 xl:pt-8">
     {/* The brand's display moment, sized between the section headings and the h1. One line at every width: the wider fallback font would wrap it on small phones until Almarai loads, shifting the hero (CLS). */}
     <p lang="ar" dir="rtl" class="m-0 self-start whitespace-nowrap font-display text-[clamp(28px,9vw,60px)] leading-[1.2] text-lapis xl:text-[58px]">{school.nameAr}</p>
     <h1
       id="g-hero-title"
-      class="m-0 font-display text-[clamp(52px,6.4vw,92px)] font-semibold leading-[0.95] tracking-[-0.01em] [text-wrap:balance]"
+      class="m-0 font-display text-[clamp(52px,6.4vw,84px)] font-semibold leading-[0.95] tracking-[-0.01em] [text-wrap:balance]"
     >
-      Hafalan 30&nbsp;juz, ditempuh juz demi&nbsp;juz
+      {/* Two lines from 640px up: "Hafalan 30 juz," / "ditempuh juz demi juz" (the 84px cap keeps the second line inside the 608px column at 1280px and up). Phones get three lines, broken in pairs so no word stands alone. */}
+      Hafalan 30&nbsp;juz, <span class="sm:whitespace-nowrap">ditempuh&nbsp;juz demi&nbsp;juz</span>
     </h1>
     <p class="m-0 max-w-[34em] text-19 leading-[1.6] text-body [text-wrap:pretty]">
       Pesantren tahfizh dan bahasa Arab di kaki Gunung Salak, Bogor. Santri menghafal Al-Qur’an secara mutqin dan
