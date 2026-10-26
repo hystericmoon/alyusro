@@ -42,7 +42,8 @@ Keep the current site’s URLs so links and search rankings survive:
 - `/prestasi`, `/kalender-akademik`, `/info/kajian`, `/pendidikan/tenaga/pendidik`: build with the content-page or list templates. Prestasi shows totals by competition and year, then the full list by name and year.
 - `/jadwal/shalat` (today and the month, Kemenag times via myquran with the build-time calculation as fallback) and `/konversi/nama` (Latin-to-Arabic names in the browser, `src/lib/nama-arab.ts`: dictionary first, then by sound). Both replace the Laravel pages.
 - `/404`: designed not-found page (levels, `/psb`, WhatsApp).
-- The closing call to action on every page is the Gunung Salak landscape (`Landscape.astro`): headline, "Daftar santri baru", and a "Mulai dari sini" panel (WhatsApp, `/psb`, map). Content pages end with a "Selanjutnya" link above it, not a second dark band.
+- The closing call to action on content and conversion pages is the Gunung Salak landscape (`Landscape.astro`): headline, "Daftar santri baru", and a "Mulai dari sini" panel (WhatsApp, `/psb`, map). Content pages end with a "Selanjutnya" link above it, not a second dark band. Utility pages (`/jadwal/shalat`, `/konversi/nama`, `/kalender-akademik`, `/info/kajian`, 404) close with the compact `ClosingBand.astro` (one line, WhatsApp, "Daftar santri baru").
+- Interior pages open with `PageHeader.astro` (breadcrumb, h1, intro, optional photo; without a photo a tinted band with the juz-cell motif). Long-form text uses the one `.prose` class (articles and content pages). Every data table sits in `TableScroll.astro` (focusable region named by its caption; `sticky` keeps the first column in view on phones). Photos use `Photo.astro` (800/1600 WebP, 1600 JPG fallback).
 - Every “Daftar” button goes to `psb.registerUrls` in `site.json` (`/dashboard/register`, or `/psbmahadaly` for Ma’had ‘Aly).
 
 ## Low-maintenance rules (the school has little staff time)
