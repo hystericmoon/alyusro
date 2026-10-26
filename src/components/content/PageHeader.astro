@@ -1,7 +1,8 @@
 ---
 // Interior page header: breadcrumb, h1, intro and an optional photo.
 // With a photo: two columns from 1024px (text left, photo right), photo
-// first on phones (CSS order, so reading order stays breadcrumb, h1, intro).
+// first on phones (CSS order, so reading order stays breadcrumb, h1, intro),
+// unless `photoFirst` is false (/psb, where the status list must come first).
 // Without one: a tinted band with the juz-cell motif from the homepage map,
 // drawn only in the empty space right of the text (from 1280px), never behind it.
 // Spacing matches the level pages (LevelPage.astro).
@@ -17,8 +18,10 @@ interface Props {
   photo?: HeaderPhoto;
   /** id of the h1, for aria-labelledby on the section */
   id?: string;
+  /** On phones the photo leads; false puts it after the text and slot. */
+  photoFirst?: boolean;
 }
-const { title, lede, crumbs, photo, id = 'page-title' } = Astro.props;
+const { title, lede, crumbs, photo, id = 'page-title', photoFirst = true } = Astro.props;
 
 // 30 cells, one per juz, filled in the homepage map's class order: a quiet
 // echo of the hafalan map. Decorative only (aria-hidden).
@@ -66,7 +69,7 @@ const motif = Array.from({ length: 30 }, (_, i) => {
             height={photo.height}
             priority
             sizes="(min-width: 1280px) 520px, (min-width: 1024px) 40vw, (min-width: 640px) calc(100vw - 80px), calc(100vw - 40px)"
-            pictureClass="order-1 block lg:order-none"
+            pictureClass={photoFirst ? 'order-1 block lg:order-none' : 'order-3 block lg:order-none lg:self-start'}
             class="block aspect-[3/2] w-full rounded-xl object-cover"
           />
         )

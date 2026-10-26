@@ -4,6 +4,7 @@
 import TableScroll from '@/components/content/TableScroll.astro';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Landscape from '@/components/home/Landscape.astro';
+import StatusBadge from '@/components/StatusBadge.astro';
 import { buildLevel } from '@/lib/level';
 import { school, infoGroupUrl, levelSummary, type Level } from '@/lib/site';
 
@@ -14,6 +15,10 @@ const v = buildLevel(Astro.props.level);
 const lv = v.level;
 // The school's own photo for this level (site.json `photo`), if there is one.
 const photo = (lv as { photo?: { src: string; srcSmall: string; alt: string; width: number; height: number } }).photo;
+// A level whose fees note is its strongest message (Ma’had ‘Aly: "Beasiswa
+// penuh, termasuk asrama dan uang makan.") gets it as a headline panel.
+const [noteHead, ...noteRest] = (lv.feesNote ?? '').split(',');
+const noteTail = noteRest.join(',').trim();
 
 // Static class names per tone, so Tailwind can see them.
 const CELL: Record<string, string> = {
@@ -58,10 +63,21 @@ const btnGhostNight = 'btn-ghost-night';
           {lv.nameAr && <span lang="ar" dir="rtl" class="basis-full text-left font-display text-[44px] leading-[1.1] text-lapis sm:basis-auto">{lv.nameAr}</span>}
         </div>
         <p class="m-0 max-w-[34em] text-19 leading-[1.6] text-body [text-wrap:pretty]">{lv.intro}</p>
+        {
+          lv.feesNote && (
+            <div class="flex flex-col items-start gap-6 self-stretch rounded-xl bg-lapis px-24 py-22 text-white sm:px-28 sm:py-26">
+              <p class="m-0 flex flex-col gap-6">
+                <span class="font-display text-[clamp(40px,4.6vw,64px)] font-semibold leading-[0.95]">{noteHead!.trim()}</span>
+                {noteTail && <span class="text-[clamp(18px,1.6vw,21px)] leading-[1.4] text-sky-50">{noteTail.charAt(0).toUpperCase() + noteTail.slice(1)}</span>}
+              </p>
+              <a href="#biaya" class="-mb-8 inline-flex min-h-44 items-center text-15 font-bold text-white underline underline-offset-4 hover:text-sky-50">Lihat rincian biaya</a>
+            </div>
+          )
+        }
         <div class="flex flex-wrap gap-12">
           {
             v.open && (
-              <a href="#pendaftaran" class="btn-primary">
+              <a href={v.registerUrl} class="btn-primary">
                 Daftar {lv.name}
               </a>
             )
@@ -83,7 +99,7 @@ const btnGhostNight = 'btn-ghost-night';
         }
         <div class="flex flex-wrap items-center justify-between gap-x-16 gap-y-4 py-14">
           <dt class="text-muted">Pendaftaran</dt>
-          <dd class:list={['m-0 text-right font-bold', v.open ? 'text-lapis' : 'text-muted']}>{v.open ? 'Dibuka' : 'Belum dibuka'}</dd>
+          <dd class="m-0"><StatusBadge open={v.open} /></dd>
         </div>
       </dl>
     </div>

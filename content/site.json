@@ -427,7 +427,14 @@
         "Mandiri, siap memimpin dan dipimpin, serta pekerja keras",
         "Terampil berbicara di depan umum dan berorganisasi",
         "Siap melanjutkan studi ke perguruan tinggi Timur Tengah"
-      ]
+      ],
+      "photo": {
+        "src": "/photos/kampus-udara-1600.webp",
+        "srcSmall": "/photos/kampus-udara-800.webp",
+        "alt": "Kampus Al Yusro dilihat dari udara: gedung bertingkat beratap abu-abu, aula, dan jalan masuk yang ditanami bunga",
+        "width": 1600,
+        "height": 960
+      }
     }
   ],
   "dailySchedule": {
