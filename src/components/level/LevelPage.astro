@@ -183,9 +183,10 @@ const btnGhostNight = 'btn-ghost-night';
 
   <section id="lulusan" aria-labelledby="j-lulusan" class="scroll-mt-48">
     <div class={wrap}>
-      <h2 id="j-lulusan" class:list={[h2, 'mb-32']}>Lulusan {lv.name} diharapkan</h2>
-      <ul class="m-0 grid list-none grid-cols-[repeat(auto-fit,minmax(min(340px,100%),1fr))] gap-12 p-0">
-        {lv.outcomes.map((o) => <li class="card px-20 py-18 text-ink [text-wrap:pretty]">{o}</li>)}
+      <h2 id="j-lulusan" class:list={[h2, 'mb-40']}>Lulusan {lv.name} diharapkan</h2>
+      {/* A list set large, two columns from 760px, separated by space rather than boxes. */}
+      <ul class="m-0 grid list-none gap-x-64 gap-y-24 p-0 md:grid-cols-2">
+        {lv.outcomes.map((o) => <li class="max-w-[30em] text-[clamp(19px,1.7vw,22px)] leading-[1.45] text-ink [text-wrap:pretty]">{o}</li>)}
       </ul>
     </div>
   </section>
@@ -301,8 +302,8 @@ const btnGhostNight = 'btn-ghost-night';
         {
           v.head && (
             <>
-              <p class="m-0 text-15 text-muted">{lv.headRole}</p>
               <p class="m-0 font-display text-30 font-semibold leading-[1.15]">{v.head}</p>
+              <p class="m-0 text-17 text-body">{lv.headRole}</p>
             </>
           )
         }

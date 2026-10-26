@@ -52,7 +52,6 @@ const feeYears = levels
 
 const docs = site.psb.documents as Record<string, { items: string[]; note?: string } | string>;
 const docLevels = levels.filter((l) => typeof docs[l.slug] === 'object');
-const docHeading = ordered.find((v) => !docLevels.includes(v.level))?.level.name;
 const faq = site.psb.faq.map((f) => ({
   q: f.q,
   a: f.a.replace('{ideal}', numberWord(school.halaqahRatio.ideal)).replace('{max}', numberWord(school.halaqahRatio.max)),
@@ -215,33 +214,29 @@ const td = 'px-16 py-18';
     </div>
   </section>
 
-  <section aria-labelledby="p-berkas">
-    <div class={wrap}>
-      <h2 id="p-berkas" class:list={[h2, 'mb-32']}>Berkas yang disiapkan</h2>
-      <div class="grid grid-cols-[repeat(auto-fit,minmax(min(380px,100%),1fr))] items-start gap-16">
-        <div class="card p-24 sm:p-28">
-          <h3 class="m-0 mb-8 text-18">{docHeading ? `${docHeading} dan jenjang lain` : 'Jenjang lain'}</h3>
-          <p class="m-0 text-body">
-            Daftar berkas diumumkan panitia saat pendaftaran dibuka. <a href={school.whatsapp.url} class="font-bold">Tanyakan lewat WhatsApp</a>
-          </p>
+  {
+    docLevels.length > 0 && (
+      <section aria-labelledby="p-berkas">
+        <div class:list={[wrap, 'flex flex-wrap gap-x-64 gap-y-32']}>
+          <h2 id="p-berkas" class:list={[h2, 'max-w-[420px] flex-[1_1_300px]']}>Berkas yang disiapkan</h2>
+          <div class="flex min-w-0 flex-[1.4_1_480px] flex-col gap-16">
+            {docLevels.map((l) => {
+              const d = docs[l.slug] as { items: string[]; note?: string };
+              return (
+                <div class="card p-24 sm:p-28">
+                  <h3 class="m-0 mb-8 text-18">{l.name}</h3>
+                  <ul class="m-0 flex flex-col gap-4 pl-20 text-body">
+                    {d.items.map((it) => <li>{it}</li>)}
+                  </ul>
+                  {d.note && <p class="m-0 mt-12 text-15 text-muted">{d.note}</p>}
+                </div>
+              );
+            })}
+          </div>
         </div>
-        {
-          docLevels.map((l) => {
-            const d = docs[l.slug] as { items: string[]; note?: string };
-            return (
-              <div class="card p-24 sm:p-28">
-                <h3 class="m-0 mb-8 text-18">{l.name}</h3>
-                <ul class="m-0 flex flex-col gap-4 pl-20 text-body">
-                  {d.items.map((it) => <li>{it}</li>)}
-                </ul>
-                {d.note && <p class="m-0 mt-12 text-15 text-muted">{d.note}</p>}
-              </div>
-            );
-          })
-        }
-      </div>
-    </div>
-  </section>
+      </section>
+    )
+  }
 
   <section aria-labelledby="p-faq" class="bg-white">
     <div class:list={[wrap, 'flex flex-wrap gap-x-64 gap-y-32']}>
