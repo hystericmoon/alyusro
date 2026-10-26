@@ -7,6 +7,7 @@ author: "Elan Susanto"
 category: "Aqidah"
 cover: "/uploads/artikel/mengenal-islam.webp"
 coverAlt: "Sampul Mengenal Islam pertemuan ke-1, dengan menara masjid"
+poster: true
 excerpt: "Pertemuan yang pertama dari Mengenal Agama Islam adalah tentang “Pengertian Islam Secara Bahasa dan Syari’at”."
 views: 51
 sourceUrl: "https://mahadalyusro.sch.id/artikel/mengenal-islam"

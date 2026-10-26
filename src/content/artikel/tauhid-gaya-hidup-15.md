@@ -7,6 +7,7 @@ author: "Elan Susanto"
 category: "Aqidah"
 cover: "/uploads/artikel/tauhid-gaya-hidup-15.webp"
 coverAlt: "Sampul Tauhid Gaya Hidup pertemuan ke-16: Dukun"
+poster: true
 excerpt: "Pertemuan yang ke-16 Ruang Belajar Tauhid Gaya Hidup adalah tentang Dukun"
 views: 186
 sourceUrl: "https://mahadalyusro.sch.id/artikel/tauhid-gaya-hidup-15"

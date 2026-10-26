@@ -5,7 +5,8 @@ import { render } from 'astro:content';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Landscape from '@/components/home/Landscape.astro';
 import ArticleCover from '@/components/artikel/ArticleCover.astro';
-import { getArticles, formatDate, isOld, kicker, related, seriesNeighbours, titleHtml, NEWS, type Article } from '@/lib/articles';
+import ArticleCard from '@/components/artikel/ArticleCard.astro';
+import { getArticles, formatDate, isOld, kicker, related, seriesNeighbours, titleHtml, type Article } from '@/lib/articles';
 
 export async function getStaticPaths() {
   const all = await getArticles();
@@ -20,7 +21,13 @@ const old = isOld(article);
 const psbRelated = !d.series;
 const { prev, next } = seriesNeighbours(all, article);
 const more = related(all, article);
-const moreTitle = d.series ? `Serial ${d.series} lainnya` : `${NEWS} lainnya`;
+// Say where the suggestions come from only when all of them share it.
+const moreFrom =
+  d.series && more.every((a) => a.data.series === d.series)
+    ? `Dari serial ${d.series}`
+    : more.every((a) => a.data.category === d.category)
+      ? `Dari kategori ${d.category}`
+      : null;
 const url = new URL(`/artikel/${article.id}/`, Astro.site).toString();
 const share = {
   whatsapp: `https://wa.me/?text=${encodeURIComponent(`${d.title} ${url}`)}`,
@@ -73,9 +80,18 @@ const shareBtn =
       )
     }
 
-    <div class="mx-auto my-40 max-w-[1040px]">
-      <ArticleCover article={article} ratio="16/8" decorative={false} eager natural />
-    </div>
+    {
+      d.cover ? (
+        <figure class="mx-auto my-40 max-w-[760px]">
+          <ArticleCover article={article} decorative={false} eager natural class="rounded-lg" />
+          {d.coverCaption && <figcaption class="mt-10 text-14 leading-[1.5] text-muted">{d.coverCaption}</figcaption>}
+        </figure>
+      ) : (
+        <div class="mx-auto my-40 max-w-[760px] overflow-hidden rounded-lg">
+          <ArticleCover article={article} ratio="16/8" />
+        </div>
+      )
+    }
 
     <div class="mx-auto max-w-[760px]">
       <div class="prose">
@@ -102,8 +118,7 @@ const shareBtn =
       }
 
       <div class="mt-32 flex flex-wrap items-center gap-10">
-        <span class="mr-6 text-15 font-bold">Bagikan</span>
-        <a href={share.whatsapp} class={shareBtn}>WhatsApp</a>
+        <a href={share.whatsapp} class={shareBtn}>Bagikan ke WhatsApp</a>
         <a href={share.facebook} class={shareBtn}>Facebook</a>
         <button type="button" data-copy={url} hidden class:list={[shareBtn, 'cursor-pointer']}>Salin tautan</button>
         <span data-copy-status role="status" class="text-14 text-muted"></span>
@@ -113,20 +128,10 @@ const shareBtn =
 
   <aside aria-labelledby="ad-more" class="bg-white">
     <div class="mx-auto box-border max-w-page px-20 pb-80 pt-64 sm:px-40">
-      <h2 id="ad-more" class="m-0 mb-28 font-display text-[40px] font-semibold leading-none">{moreTitle}</h2>
-      <ul class="m-0 grid list-none grid-cols-[repeat(auto-fit,minmax(min(300px,100%),1fr))] gap-32 p-0">
-        {
-          more.map((a) => (
-            <li class="relative flex flex-col gap-8 rounded-lg bg-paper p-20 sm:p-24">
-              <a href={`/artikel/${a.id}/`} class="font-display text-[28px] font-semibold leading-[1.1] text-ink underline-offset-4 after:absolute after:inset-0 after:rounded-lg after:content-[''] hover:text-lapis">
-                <Fragment set:html={titleHtml(a.data.title)} />
-              </a>
-              <span class="text-14 text-muted">
-                {kicker(a)} • {formatDate(a.data.date)}
-              </span>
-            </li>
-          ))
-        }
+      <h2 id="ad-more" class:list={['m-0 font-display text-[40px] font-semibold leading-none', moreFrom ? 'mb-8' : 'mb-28']}>Artikel lainnya</h2>
+      {moreFrom && <p class="m-0 mb-28 text-15 text-muted">{moreFrom}</p>}
+      <ul class="m-0 grid list-none grid-cols-[repeat(auto-fill,minmax(min(300px,100%),1fr))] gap-x-32 gap-y-40 p-0">
+        {more.map((a) => <li><ArticleCard article={a} as="h3" /></li>)}
       </ul>
     </div>
   </aside>

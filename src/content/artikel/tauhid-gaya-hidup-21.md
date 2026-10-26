@@ -7,6 +7,7 @@ author: "Elan Susanto"
 category: "Aqidah"
 cover: "/uploads/artikel/tauhid-gaya-hidup-21.webp"
 coverAlt: "Sampul Tauhid Gaya Hidup pertemuan ke-22: Takut kepada Allah"
+poster: true
 excerpt: "Pertemuan yang ke-22 Ruang Belajar Tauhid Gaya Hidup adalah tentang “Takut Kepada Allāh ﷻ”."
 views: 275
 sourceUrl: "https://mahadalyusro.sch.id/artikel/tauhid-gaya-hidup-21"

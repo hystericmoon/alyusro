@@ -7,6 +7,7 @@ author: "Elan Susanto"
 category: "Aqidah"
 cover: "/uploads/artikel/mengenal-islam-3.webp"
 coverAlt: "Sampul Mengenal Islam pertemuan ke-4: Keutamaan Islam, dengan kafilah unta di gurun"
+poster: true
 excerpt: "Pertemuan yang ke-4 dari Mengenal Agama Islam adalah tentang “Keutamaan Islam Yang Dibawa Oleh Nabi Muhammad ﷺ”."
 views: 11
 sourceUrl: "https://mahadalyusro.sch.id/artikel/mengenal-islam-3"

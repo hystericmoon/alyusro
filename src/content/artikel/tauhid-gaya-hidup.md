@@ -7,6 +7,7 @@ author: "Elan Susanto"
 category: "Aqidah"
 cover: "/uploads/artikel/tauhid-gaya-hidup.webp"
 coverAlt: "Sampul Tauhid Gaya Hidup pertemuan ke-1: mengapa harus mempelajari tauhid"
+poster: true
 excerpt: "Pertemuan pertama Ruang Belajar \"Tauhid Gaya Hidup\" “Mengapa Harus Mempelajari Tauhid?”"
 views: 603
 sourceUrl: "https://mahadalyusro.sch.id/artikel/tauhid-gaya-hidup"

@@ -7,6 +7,7 @@ author: "Elan Susanto"
 category: "Fiqih"
 cover: "/uploads/artikel/mengenal-fikih-romadhon-4.webp"
 coverAlt: "Sampul Mengenal Fikih Puasa 5: orang-orang yang boleh tidak berpuasa"
+poster: true
 excerpt: "Orang-orang yang dibolehkan tidak berpuasa"
 views: 217
 sourceUrl: "https://mahadalyusro.sch.id/artikel/mengenal-fikih-romadhon-4"

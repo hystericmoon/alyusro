@@ -7,6 +7,7 @@ author: "Elan Susanto"
 category: "Aqidah"
 cover: "/uploads/artikel/tauhid-gaya-hidup-11.webp"
 coverAlt: "Sampul Tauhid Gaya Hidup pertemuan ke-12: syirik besar berdoa kepada selain Allah"
+poster: true
 excerpt: "Pertemuan yang ke-12 Ruang Belajar Tauhid Gaya Hidup adalah tentang “Berdo’a Kepada Selain Allāh ﷻ Adalah Syirik Besar”."
 views: 293
 sourceUrl: "https://mahadalyusro.sch.id/artikel/tauhid-gaya-hidup-11"

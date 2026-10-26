@@ -7,6 +7,7 @@ author: "Elan Susanto"
 category: "Aqidah"
 cover: "/uploads/artikel/tauhid-gaya-hidup-13.webp"
 coverAlt: "Sampul Tauhid Gaya Hidup pertemuan ke-14: Pintu Kesyirikan"
+poster: true
 excerpt: "Pertemuan yang ke-14 Ruang Belajar Tauhid Gaya Hidup adalah tentang Pintu Kesyirikan."
 views: 231
 sourceUrl: "https://mahadalyusro.sch.id/artikel/tauhid-gaya-hidup-13"

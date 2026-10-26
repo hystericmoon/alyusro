@@ -7,6 +7,7 @@ author: "Elan Susanto"
 category: "Aqidah"
 cover: "/uploads/artikel/mengenal-allah-4.webp"
 coverAlt: "Sampul Mengenal Allah pertemuan ke-5: satu-satunya Dzat yang berhak disembah, dengan siluet orang berdoa"
+poster: true
 excerpt: "Pertemuan yang ke-5 dari Ruang Belajar Online Mengenal Allāh ﷻ Sebagai Satu-satunya Dzat Yang Berhak Disembah."
 views: 248
 sourceUrl: "https://mahadalyusro.sch.id/artikel/mengenal-allah-4"

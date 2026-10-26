@@ -7,6 +7,7 @@ author: "Elan Susanto"
 category: "Aqidah"
 cover: "/uploads/artikel/mengenal-nabi-muhammad.webp"
 coverAlt: "Sampul Mengenal Nabi Muhammad ﷺ pertemuan ke-1, dengan Kubah Hijau Masjid Nabawi"
+poster: true
 excerpt: "Pertemuan yang Pertama Ruang Belajar Online dari Mengenal Rasūlullāh ﷺ adalah tentang “Pentingnya Mengenal Beliau ﷺ”."
 views: 105
 sourceUrl: "https://mahadalyusro.sch.id/artikel/mengenal-nabi-muhammad"

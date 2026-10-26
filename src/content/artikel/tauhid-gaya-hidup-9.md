@@ -7,6 +7,7 @@ author: "Elan Susanto"
 category: "Aqidah"
 cover: "/uploads/artikel/tauhid-gaya-hidup-9.webp"
 coverAlt: "Sampul Tauhid Gaya Hidup pertemuan ke-10: syirik besar bernadzar untuk selain Allah"
+poster: true
 excerpt: "Pada Pertemuan yang ke-10 Ruang Belajar Tauhid Gaya Hidup adalah tentang Termasuk Syirik Bernadzar Untuk Selain Allāh ﷻ."
 views: 300
 sourceUrl: "https://mahadalyusro.sch.id/artikel/tauhid-gaya-hidup-9"

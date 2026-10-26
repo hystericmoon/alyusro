@@ -7,6 +7,7 @@ author: "Elan Susanto"
 category: "Aqidah"
 cover: "/uploads/artikel/mengenal-allah-9.webp"
 coverAlt: "Sampul Mengenal Allah pertemuan ke-10: Mengenal Nama dan Sifat Allah, dengan gambar Ka’bah"
+poster: true
 excerpt: "Pertemuan yang ke-10 dari Ruang Belajar Online Mengenal Allāh adalah tentang “Mengenal Allāh ﷻ Dengan Nama dan Sifat-Nya”."
 views: 144
 sourceUrl: "https://mahadalyusro.sch.id/artikel/mengenal-allah-9"

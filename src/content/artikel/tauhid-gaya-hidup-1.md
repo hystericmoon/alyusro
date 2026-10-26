@@ -7,6 +7,7 @@ author: "Elan Susanto"
 category: "Aqidah"
 cover: "/uploads/artikel/tauhid-gaya-hidup-1.webp"
 coverAlt: "Sampul Tauhid Gaya Hidup pertemuan ke-2: syarat mutlak masuk surga, dengan kiswah Ka’bah"
+poster: true
 excerpt: "Pertemuan ke 2 Ruang Belajar Tauhid Gaya Hidup “Tauhid syarat mutlak masuk surga”"
 views: 485
 sourceUrl: "https://mahadalyusro.sch.id/artikel/tauhid-gaya-hidup-1"

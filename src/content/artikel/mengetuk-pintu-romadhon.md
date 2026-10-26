@@ -5,6 +5,7 @@ author: "Elan Susanto"
 category: "Fiqih"
 cover: "/uploads/artikel/mengetuk-pintu-romadhon.webp"
 coverAlt: "Siluet seseorang di ambang pintu menghadap bulan purnama, bertuliskan Mengetuk Pintu Romadhon"
+poster: true
 excerpt: "Wahai kaum muslimin, hendaknya kita mengetahui bahwa salah satu nikmat yang banyak disyukuri meski oleh seorang yang lalai adalah nikmat ditundanya ajal dan sampainya kita di…"
 views: 257
 sourceUrl: "https://mahadalyusro.sch.id/artikel/mengetuk-pintu-romadhon"

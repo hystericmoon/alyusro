@@ -16,6 +16,10 @@ const artikel = defineCollection({
       category: z.string(),
       cover: z.string().optional(),
       coverAlt: z.string().optional(),
+      // A poster or flyer with text on it: shown whole on the article page,
+      // replaced by the designed cover on cards (text would be cropped or tiny).
+      poster: z.boolean().default(false),
+      coverCaption: z.string().optional(),
       excerpt: z.string().optional(),
       draft: z.boolean().default(false),
       views: z.number().default(0), // snapshot from the old site; only picks the featured article

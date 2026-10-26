@@ -1,0 +1,30 @@
+---
+// One article card (index and "Artikel lainnya"): cover at one ratio, the
+// series or category (unless the designed cover already shows it), the title
+// as the link (the whole card is clickable), and the date and author.
+import ArticleCover from '@/components/artikel/ArticleCover.astro';
+import { formatDate, hasPhotoCover, kicker, titleHtml, type Article } from '@/lib/articles';
+
+interface Props {
+  article: Article;
+  /** Heading level of the title, when the card list has a heading above it. */
+  as?: 'span' | 'h3';
+}
+const { article: a, as: Title = 'span' } = Astro.props;
+---
+<div class="group relative flex flex-col gap-10">
+  <div class="overflow-hidden rounded-lg">
+    <ArticleCover article={a} class="transition-transform duration-300 group-hover:scale-[1.03]" />
+  </div>
+  {hasPhotoCover(a) && <span class="text-14 font-bold text-lapis">{kicker(a)}</span>}
+  <Title class="m-0 font-display text-30 font-semibold leading-[1.08]">
+    <a
+      href={`/artikel/${a.id}/`}
+      class="text-ink underline-offset-4 after:absolute after:inset-0 after:content-[''] group-hover:text-lapis group-hover:underline"
+      set:html={titleHtml(a.data.title)}
+    />
+  </Title>
+  <span class="text-14 text-muted">
+    {formatDate(a.data.date)} • {a.data.author}
+  </span>
+</div>

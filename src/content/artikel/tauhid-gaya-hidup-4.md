@@ -7,6 +7,7 @@ author: "Elan Susanto"
 category: "Aqidah"
 cover: "/uploads/artikel/tauhid-gaya-hidup-4.webp"
 coverAlt: "Sampul Tauhid Gaya Hidup pertemuan ke-5: Taubat dari kesyirikan"
+poster: true
 excerpt: "Pertemuan ke 5 Ruang Belajar Tauhid Gaya Hidup “Taubat dari Kesyirikan”"
 views: 403
 sourceUrl: "https://mahadalyusro.sch.id/artikel/tauhid-gaya-hidup-4"
