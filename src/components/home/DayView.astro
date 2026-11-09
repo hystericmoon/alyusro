@@ -27,7 +27,7 @@ const config = JSON.stringify({
 const hours = ['04.00', '06.00', '08.00', '10.00', '12.00', '14.00', '16.00', '18.00', '20.00'];
 const at = (i: number) => `${(i / (hours.length - 1)) * 100}%`;
 ---
-<section data-day-section aria-labelledby="g-day-title" class="relative overflow-hidden bg-ink text-on-night [--stars:0.5]">
+<section data-day-section aria-labelledby="g-day-title" class:list={['relative overflow-hidden bg-ink text-on-night [--stars:0.5]', photo && 'mx-12 mt-12 rounded-panel sm:mx-16 sm:mt-16']}>
   <StarField count={42} seed={3} class="inset-x-0 top-0 h-[64px] sm:h-[84px]" />
   <div
     data-day-view

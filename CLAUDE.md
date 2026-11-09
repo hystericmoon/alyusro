@@ -17,7 +17,7 @@ Not in scope: the login dashboard and the registration system. Those stay on the
   - Every non-interactive page ships zero client JS.
 - The live day view is a small script (`src/components/home/DayView.astro`) sharing its logic with the build in `src/lib/day-view.ts`.
 - Tailwind v4, themed in `src/styles/global.css` with `--*: initial`, so only the tokens below exist (colors, fonts, radius, font sizes named by pixel value, spacing at 1px per step: `p-24` is 24px). Extra fills the designs use are listed there as derived tokens. Buttons are shared classes: `btn-primary`, `btn-secondary`, `btn-light`, `btn-ghost-night`.
-- Motion: GSAP for at most three moments: the juz map fills in class order (VII to XI) when it scrolls into view, the level terraces rise in sequence, and the day-view "now" line animates to the current time. GSAP loads only when motion is allowed. Everything else is CSS: micro-interactions (button press, chip preview, terrace lift), the living sky (sun position and sky tint follow the time in Bogor), and night stars in the day view. With `prefers-reduced-motion`, show the final state with no animation.
+- Motion: GSAP for at most three moments: the juz map fills in class order (VII to XI) when it scrolls into view, the level cards rise in sequence, and the day-view "now" line animates to the current time. GSAP loads only when motion is allowed. Everything else is CSS: micro-interactions (button press, chip preview, level card lift), the living sky (sun position and sky tint follow the time in Bogor), and night stars in the day view. With `prefers-reduced-motion`, show the final state with no animation.
 - Articles: Astro content collection in `src/content/artikel/` (Markdown), edited by school staff through Sveltia CMS at `/admin`. Login, registration and PSB forms stay on the school's Laravel system.
 - Deploy target: Netlify (`netlify.toml`; build `npm run build`, output `dist`, Node 22 via `.nvmrc` and `engines`). Headers and redirects live in `public/_headers` and `public/_redirects`. Cloudflare Pages also works (`wrangler.toml`) but cannot proxy `/dashboard` to Laravel later, so Netlify is the chosen host. The preview is `noindex` until the school switches over.
 
@@ -33,7 +33,7 @@ Not in scope: the login dashboard and the registration system. Those stay on the
 
 Keep the current site’s URLs so links and search rankings survive:
 
-- `/` homepage: `Beranda-gabungan` (hafalan map hero, “Sehari di Al Yusro” day view, levels as terraces, Gunung Salak landscape footer). Exactly four sections.
+- `/` homepage: `Beranda-gabungan` (hafalan map hero, “Sehari di Al Yusro” day view, levels as a bento grid, Gunung Salak landscape footer). Exactly four sections. The hero and the day view are inset rounded panels (`--radius-panel`, 32px); the hero ends in four fact tiles (a `<dl>`) computed from `site.json`.
 - `/jenjang/pendidikan/{taud,kuttab,mahdon,madrasah,darul-ilmi}` and `/mahad-aly`: one template, `Jenjang-template`.
 - `/psb`: `Pendaftaran` hub.
 - `/kurikulum/tahfizh`: `Kurikulum-tahfizh` content page. Same template for `/kurikulum/bahasa-arab`, `/tentang` (new), `/sehari-di-mahad` (new); leave out anything the school has not published.
@@ -62,7 +62,7 @@ Keep the current site’s URLs so links and search rankings survive:
   - `lapis` = school navy `#073E6B` (from mahadalyusro.sch.id): primary buttons, links, active states, focus ring. `lapis-deep` `#052D4F` (derived: button hover/press).
   - Juz map scale `lapis-1..5`: `#DEEAF6 #9CC1DF #629DCB #1C71B3 #073E6B`, pale tint to navy through the logo blue `#1C71B3` (step 4, exact). Neighbouring steps differ by at least 1.5:1.
   - `amber` = logo gold `#E3AF14`, used only for time (the “now” line, the sun, the next prayer). `amber-edge` `#7A5C00` (derived: 1px edge so the gold keeps 3:1 on light fills). No gold anywhere else.
-  - `sky-*` (terraces, day-view blocks and bands) are derived on the navy's hue: `#E3EDF7 #C4D9EE #9EC0E2`, dawn `#2A5E96`, `#1C71B3`, `#125891`.
+  - `sky-*` (level cards, day-view blocks and bands) are derived on the navy's hue: `#E3EDF7 #C4D9EE #9EC0E2`, dawn `#2A5E96`, `#1C71B3`, `#125891`.
   - Logo: `public/logo.svg` (full lockup), `public/logo-mark.svg` (emblem, header mark), `public/favicon.png` rendered from the emblem.
 - Shape: pill buttons and filter chips; 10px cells and small blocks, 16px cards, 22–28px panels and photos (tokens in `global.css`).
 - No thin rules or 1px outlined boxes. Separate with space, a tone step (`.card` is white on paper; paper on white sections) or striped table rows (`--stripe`). The only lines left are the day-view timeline's hour and prayer gridlines (a chart).

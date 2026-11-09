@@ -137,6 +137,7 @@
   --radius-md: 16px;
   --radius-lg: 22px;
   --radius-xl: 28px;
+  --radius-panel: 32px; /* inset page panels (hero, day view) */
   --radius-full: 9999px;
 
   --default-transition-duration: 150ms;
@@ -386,6 +387,25 @@ html:has(#menu-hp:popover-open) {
   .card {
     background: var(--color-white);
     border-radius: var(--radius-lg);
+  }
+  /* Inset hero panel: pale sky into paper, with a warm dawn glow at the top right. */
+  .panel-sky {
+    background:
+      radial-gradient(900px 480px at 88% -8%, var(--color-dawn-glow), transparent 62%),
+      linear-gradient(180deg, var(--color-sky-50), var(--color-paper));
+  }
+  /* Darkens the lower part of a bento photo so white text keeps AA over any photo. */
+  .bento-scrim::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--color-lapis-deep) 25%, transparent) 0%,
+      color-mix(in srgb, var(--color-lapis-deep) 70%, transparent) 45%,
+      color-mix(in srgb, var(--color-lapis-deep) 94%, transparent) 100%
+    );
   }
   .glass {
     background: rgb(255 255 255 / 0.8);
