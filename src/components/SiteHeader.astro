@@ -21,7 +21,7 @@ const isCurrent = (href: string) => norm(href) === here;
   class="absolute left-16 top-[-100px] z-50 rounded-sm bg-ink px-16 py-10 text-16 font-bold text-white focus:top-16 focus:text-white"
 >Langsung ke isi</a>
 <header>
-  <div class="mx-auto box-border flex max-w-page flex-nowrap items-center gap-x-16 gap-y-12 px-16 py-16 sm:gap-x-32 sm:px-40">
+  <div class="mx-auto box-border flex max-w-page flex-nowrap items-center gap-x-16 gap-y-12 px-16 py-16 sm:gap-x-24 sm:px-40">
     <a href="/" class="mr-auto flex min-h-44 min-w-0 items-center gap-12 text-ink no-underline hover:text-ink" aria-current={here === '/' ? 'page' : undefined}>
       <img src="/logo-mark.svg" alt="" width="44" height="44" class="size-40 flex-none sm:size-44" />
       <span class="flex min-w-0 flex-col gap-3">
@@ -31,27 +31,27 @@ const isCurrent = (href: string) => norm(href) === here;
     </a>
 
     <nav aria-label="Menu utama" data-header-nav class="hidden xl:block">
-      <ul class="m-0 flex list-none flex-wrap gap-x-4 p-0">
+      <ul class="m-0 flex list-none flex-wrap gap-x-6 p-0">
         {
           mainNav.map((group) => (
             <li class="relative">
               <details name="menu-utama" class="group">
                 <summary
                   aria-current={group.links.some((l) => isCurrent(l.href)) ? 'true' : undefined}
-                  class="flex min-h-44 cursor-pointer select-none items-center gap-6 rounded-full px-14 text-16 font-medium text-ink transition-colors duration-150 hover:bg-white aria-[current]:bg-lapis-1 aria-[current]:font-bold aria-[current]:text-lapis"
+                  class="flex min-h-44 cursor-pointer select-none items-center gap-6 rounded-full bg-white px-14 text-16 font-medium text-ink transition-colors duration-150 hover:bg-lapis-1 group-open:bg-lapis-1 aria-[current]:bg-lapis-1 aria-[current]:font-bold aria-[current]:text-lapis"
                 >
                   {group.label}
                   <svg aria-hidden="true" width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="group-open:rotate-180">
                     <path d="M2.5 4.5 6 8l3.5-3.5" />
                   </svg>
                 </summary>
-                <ul class="absolute left-0 top-full z-40 m-0 mt-6 box-border flex min-w-[360px] list-none flex-col glass rounded-lg p-8">
+                <ul class="absolute left-0 top-full z-40 m-0 mt-6 box-border flex min-w-[360px] list-none flex-col glass rounded-xl p-8">
                   {group.links.map((l) => (
                     <li>
                       <a
                         href={l.href}
                         aria-current={isCurrent(l.href) ? 'page' : undefined}
-                        class="flex min-h-44 items-center justify-between gap-16 rounded-md px-14 text-16 font-medium text-ink no-underline transition-colors duration-150 hover:bg-lapis-1 hover:text-lapis aria-[current=page]:font-bold aria-[current=page]:text-lapis"
+                        class="flex min-h-44 items-center justify-between gap-16 rounded-full px-18 text-16 font-medium text-ink no-underline transition-colors duration-150 hover:bg-lapis-1 hover:text-lapis aria-[current=page]:font-bold aria-[current=page]:text-lapis"
                       >
                         <span class="whitespace-nowrap">{l.label}</span>
                         {l.note && <span class="whitespace-nowrap text-14 font-normal text-muted">{l.note}</span>}
@@ -66,8 +66,8 @@ const isCurrent = (href: string) => norm(href) === here;
       </ul>
     </nav>
 
-    <div class="hidden flex-none items-center gap-x-20 xl:flex">
-      <a href={actions.login.href} class="link-slide inline-flex min-h-44 items-center text-16 font-medium text-ink">{actions.login.label}</a>
+    <div class="hidden flex-none items-center gap-x-6 xl:flex">
+      <a href={actions.login.href} class="inline-flex min-h-44 items-center rounded-full bg-white px-14 text-16 font-medium text-ink no-underline transition-colors duration-150 hover:bg-lapis-1 hover:text-ink">{actions.login.label}</a>
       <a href={actions.register.href} class="btn-primary">{actions.register.label}</a>
     </div>
 
