@@ -1,0 +1,132 @@
+---
+// Section 3: the six levels as a bento grid, all values from site.json.
+// Each card is one link (its "Lihat jenjang" link stretches over the card).
+// A card takes a photo only when the level has one in site.json, and falls
+// back to its tone otherwise.
+import { levels, known, type Level } from '@/lib/site';
+
+type Card = { tone: string; sub: string; chip: string; span: string; photo?: 'cover' | 'side' };
+// One entry per level, in site.json order. Class names are written out in full so Tailwind sees them.
+const CARDS: Card[] = [
+  { tone: 'bg-sky-50 text-ink', sub: 'text-body', chip: 'bg-white text-ink', span: '' },
+  { tone: 'bg-sky-600 text-white', sub: 'text-white', chip: 'bg-lapis-deep/80 text-white', span: '', photo: 'cover' },
+  { tone: 'bg-sky-200 text-ink', sub: 'text-ink', chip: 'bg-white text-ink', span: '' },
+  { tone: 'bg-lapis text-white', sub: 'text-white', chip: 'bg-lapis-deep/80 text-white', span: 'md:col-span-2', photo: 'cover' },
+  { tone: 'bg-sky-500 text-white', sub: 'text-white', chip: 'bg-lapis-deep/80 text-white', span: '', photo: 'cover' },
+  { tone: 'bg-lapis-deep text-white', sub: 'text-white', chip: 'bg-white/15 text-white', span: 'md:col-span-3', photo: 'side' },
+];
+const fallback = CARDS[0]!;
+
+const chips = (level: Level): string[] => {
+  const out: string[] = [];
+  if (known(level.setara)) out.push(level.setara);
+  const duration = known(level.duration);
+  if (duration) out.push(level.durationLabel === 'Usia' ? `Usia ${duration}` : (duration as string));
+  return out;
+};
+---
+<section id="jenjang" aria-labelledby="g-jenjang-title" class="scroll-mt-16">
+  <div class="mx-auto box-border max-w-page px-20 pt-72 sm:px-40 sm:pt-96">
+    <div class="mb-40 flex flex-wrap items-end justify-between gap-x-48 gap-y-16 sm:mb-48">
+      <h2 id="g-jenjang-title" class="m-0 max-w-[12em] font-display text-[clamp(40px,4.4vw,64px)] font-semibold leading-none">
+        Dari TK hingga D2, jenjang demi&nbsp;jenjang
+      </h2>
+      <p class="m-0 max-w-[28em] text-muted">Setiap jenjang punya target hafalan sendiri. Pilih yang sesuai usia anak.</p>
+    </div>
+    <ol data-terraces data-motion="pending" class="m-0 grid list-none grid-cols-1 gap-12 p-0 md:grid-cols-3">
+      {
+        levels.map((level, i) => {
+          const t = CARDS[i] ?? fallback;
+          const photo = level.photo as { src: string; srcSmall: string; alt: string; width: number; height: number } | null | undefined;
+          const withPhoto = t.photo && photo ? t.photo : undefined;
+          // Without its photo a card keeps a plain tone, so text never sits on a missing image.
+          const tone = t.photo && !photo ? 'bg-lapis text-white' : t.tone;
+          const chipTone = t.photo && !photo ? 'bg-lapis-deep/80 text-white' : t.chip;
+          return (
+            <li
+              data-terrace
+              class:list={[
+                'group relative box-border flex min-w-0 overflow-hidden rounded-xl',
+                // The card lifts when hovered or its link is focused.
+                'transition-transform duration-200 ease-out hover:-translate-y-4 focus-within:-translate-y-4',
+                'has-[a:focus-visible]:outline-2 has-[a:focus-visible]:outline-offset-2 has-[a:focus-visible]:outline-lapis has-[a:focus-visible]:shadow-[0_0_0_2px_var(--color-white)]',
+                tone,
+                t.span,
+                withPhoto === 'side' ? 'flex-col md:flex-row' : 'min-h-[260px] flex-col md:min-h-[300px]',
+              ]}
+            >
+              {withPhoto === 'cover' && photo && (
+                <>
+                  <picture class="absolute inset-0 z-0 block">
+                    <source type="image/webp" srcset={`${photo.srcSmall} 800w, ${photo.src} 1600w`} sizes={t.span ? '(min-width: 1280px) 840px, (min-width: 760px) 66vw, 100vw' : '(min-width: 1280px) 420px, (min-width: 760px) 33vw, 100vw'} />
+                    <img src={photo.src.replace(/\.webp$/, '.jpg')} width={photo.width} height={photo.height} loading="lazy" decoding="async" alt={photo.alt} class="size-full object-cover" />
+                  </picture>
+                  <span aria-hidden="true" class="bento-scrim absolute inset-0"></span>
+                </>
+              )}
+              <div class:list={['relative z-[2] flex flex-1 flex-col gap-10 p-22 sm:p-26', withPhoto === 'side' && 'md:basis-1/2']}>
+                <p class:list={['m-0 flex flex-wrap gap-6', withPhoto === 'cover' && 'mb-auto']}>
+                  {chips(level).map((c) => (
+                    <span class:list={['inline-flex min-h-28 items-center rounded-full px-12 text-13 font-bold leading-none', chipTone]}>{c}</span>
+                  ))}
+                  {level.psbOpen === true && (
+                    <span class="inline-flex min-h-28 items-center rounded-full bg-white px-12 text-13 font-bold leading-none text-lapis">Pendaftaran dibuka</span>
+                  )}
+                </p>
+                <h3 class="m-0 font-display text-[clamp(34px,3.2vw,46px)] font-semibold leading-[1.02]">{level.name}</h3>
+                {level.nameAr && (
+                  <span lang="ar" dir="rtl" class:list={['self-start font-display text-25 leading-[1.2]', t.sub]}>{level.nameAr}</span>
+                )}
+                <p class:list={['m-0 mt-auto pt-12 text-15 leading-[1.4]', t.sub]}>
+                  Target hafalan
+                  <br />
+                  <strong class="font-display text-[clamp(26px,2.4vw,32px)] font-semibold leading-[1.1]">{level.target}</strong>
+                </p>
+                <a
+                  href={level.path}
+                  aria-label={`Lihat jenjang ${level.name}`}
+                  class:list={[
+                    'inline-flex min-h-44 items-center gap-6 self-start text-15 font-bold text-current no-underline outline-none hover:text-current focus-visible:shadow-none',
+                    'after:absolute after:inset-0 after:z-[3] after:rounded-[inherit] after:content-[\'\']',
+                  ]}
+                >
+                  <span class="underline-offset-4 group-hover:underline group-has-[a:focus-visible]:underline">Lihat jenjang</span>
+                  <svg aria-hidden="true" width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="flex-none transition-transform duration-200 group-hover:translate-x-3 group-has-[a:focus-visible]:translate-x-3"><path d="M4 10h12M11 5l5 5-5 5"></path></svg>
+                </a>
+              </div>
+              {withPhoto === 'side' && photo && (
+                <picture class="relative block min-h-[200px] md:basis-1/2">
+                  <source type="image/webp" srcset={`${photo.srcSmall} 800w, ${photo.src} 1600w`} sizes="(min-width: 1280px) 600px, (min-width: 760px) 50vw, 100vw" />
+                  <img src={photo.src.replace(/\.webp$/, '.jpg')} width={photo.width} height={photo.height} loading="lazy" decoding="async" alt={photo.alt} class="absolute inset-0 size-full object-cover" />
+                </picture>
+              )}
+            </li>
+          );
+        })
+      }
+    </ol>
+  </div>
+</section>
+
+<script>
+  import { loadGsap, onceInView, prefersReducedMotion } from '@/lib/motion';
+
+  // Motion moment 2: the level cards rise one after another, lowest level first.
+  const list = document.querySelector<HTMLElement>('[data-terraces]');
+  if (list) {
+    if (prefersReducedMotion() || !document.documentElement.classList.contains('motion-ok')) {
+      list.dataset.motion = 'done';
+    } else {
+      onceInView(list, async () => {
+        const gsap = await loadGsap();
+        const steps = list.querySelectorAll('[data-terrace]');
+        gsap.fromTo(
+          steps,
+          { y: 48, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.6, ease: 'power2.out', stagger: 0.09, clearProps: 'transform,opacity' },
+        );
+        list.dataset.motion = 'done';
+      }, 0.2);
+    }
+  }
+</script>

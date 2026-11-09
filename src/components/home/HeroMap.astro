@@ -6,17 +6,23 @@
 import JuzMap from '@/components/home/JuzMap.astro';
 import { buildJuzMap } from '@/lib/juz-map';
 import { latestTop } from '@/lib/prestasi';
-import { school, openLevels, registerUrl, infoGroupUrl } from '@/lib/site';
+import { school, levels, levelBySlug, openLevels, registerUrl, infoGroupUrl } from '@/lib/site';
 
 const map = buildJuzMap();
 const open = openLevels();
 const openNames = open.map((l) => `${l.name} (${l.setara.charAt(0).toLowerCase()}${l.setara.slice(1)})`).join(', ');
 const primaryOpen = open[0];
 const proof = latestTop();
+
+// Fact tiles: every value is computed from site.json, nothing typed in.
+const totalJuz = map.classes.reduce((n, c) => n + c.juz.length, 0);
+const lastLevel = levelBySlug('darul-ilmi').name;
+const firstName = levels[0]?.name;
+const lastName = levels[levels.length - 1]?.name;
 ---
-<section
-  aria-labelledby="g-hero-title"
-  class="mx-auto box-border flex max-w-page flex-col gap-40 px-20 pb-96 pt-24 sm:px-40 sm:pt-40 xl:grid xl:grid-cols-[minmax(0,1fr)_minmax(0,520px)] xl:items-start xl:gap-x-72 xl:gap-y-0 xl:pt-72"
+<section aria-labelledby="g-hero-title" class="panel-sky mx-12 mt-12 box-border rounded-panel pb-20 sm:mx-16 sm:mt-16 sm:pb-24">
+<div
+  class="mx-auto box-border flex max-w-page flex-col gap-40 px-20 pb-40 pt-32 sm:px-40 sm:pt-48 xl:grid xl:grid-cols-[minmax(0,1fr)_minmax(0,520px)] xl:items-start xl:gap-x-72 xl:gap-y-0 xl:pt-64"
 >
   <div class="order-2 flex max-w-[640px] flex-col gap-24 xl:order-none xl:col-start-1 xl:row-span-2 xl:row-start-1 xl:pt-8">
     {/* The brand's display moment, sized between the section headings and the h1. One line at every width: the wider fallback font would wrap it on small phones until Almarai loads, shifting the hero (CLS). */}
@@ -45,19 +51,6 @@ const proof = latestTop();
         Tanya lewat WhatsApp
       </a>
     </div>
-    {
-      primaryOpen ? (
-        <p class="m-0 rounded-md bg-lapis-1 px-18 py-14 text-15 text-body">
-          Pendaftaran {openNames} sedang dibuka.{' '}
-          <a href={primaryOpen.path} class="font-bold underline-offset-[3px]">Lihat cara mendaftar</a>
-        </p>
-      ) : (
-        <p class="m-0 rounded-md bg-white px-18 py-14 text-15 text-body">
-          Pendaftaran santri baru belum dibuka.{' '}
-          <a href={infoGroupUrl} class="font-bold underline-offset-[3px]">Gabung grup info WhatsApp</a>
-        </p>
-      )
-    }
     {
       proof && (
         <a href="/prestasi/" class="cta-next -my-6 block min-h-44 self-start box-border py-10 text-15 leading-[1.5] text-body no-underline hover:text-ink">
@@ -97,4 +90,36 @@ const proof = latestTop();
       <JuzMap ariaLabel={map.ariaLabel} classes={map.classes} readouts={map.readouts} />
     </div>
   </div>
+</div>
+
+  <dl class="mx-auto mb-0 mt-0 grid max-w-page grid-cols-2 gap-10 px-20 sm:gap-12 sm:px-40 lg:grid-cols-4">
+    <div class="flex min-h-[112px] flex-col justify-between gap-8 rounded-lg bg-white/90 px-22 py-20">
+      <dt class="order-2 text-15 leading-[1.4] text-muted">Jenjang{firstName && lastName ? `, dari ${firstName} sampai ${lastName}` : ''}</dt>
+      <dd class="order-1 m-0 font-display text-[clamp(40px,4.4vw,56px)] font-semibold leading-none text-ink">{levels.length}</dd>
+    </div>
+    <div class="flex min-h-[112px] flex-col justify-between gap-8 rounded-lg bg-white/90 px-22 py-20">
+      <dt class="order-2 text-15 leading-[1.4] text-muted">Hafalan genap di {lastLevel}</dt>
+      <dd class="order-1 m-0 font-display text-[clamp(40px,4.4vw,56px)] font-semibold leading-none text-ink">{totalJuz}<span class="ml-4 text-22 font-bold text-muted">juz</span></dd>
+    </div>
+    <div class="flex min-h-[112px] flex-col justify-between gap-8 rounded-lg bg-white/90 px-22 py-20">
+      <dt class="order-2 text-15 leading-[1.4] text-muted">Santri per halaqah, idealnya (maksimal {school.halaqahRatio.max})</dt>
+      <dd class="order-1 m-0 font-display text-[clamp(40px,4.4vw,56px)] font-semibold leading-none text-ink">{school.halaqahRatio.ideal}</dd>
+    </div>
+    <div class="flex min-h-[112px] flex-col justify-between gap-8 rounded-lg bg-lapis px-22 py-20 text-white">
+      <dt class="text-15 leading-[1.4] text-white">Santri baru</dt>
+      {
+        primaryOpen ? (
+          <dd class="m-0 text-17 font-bold leading-[1.3]">
+            Pendaftaran {openNames} sedang dibuka.{' '}
+            <a href={primaryOpen.path} class="text-white underline underline-offset-[3px] hover:text-white">Lihat cara mendaftar</a>
+          </dd>
+        ) : (
+          <dd class="m-0 text-17 font-bold leading-[1.3]">
+            Pendaftaran belum dibuka.{' '}
+            <a href={infoGroupUrl} class="text-white underline underline-offset-[3px] hover:text-white">Gabung grup info WhatsApp</a>
+          </dd>
+        )
+      }
+    </div>
+  </dl>
 </section>
